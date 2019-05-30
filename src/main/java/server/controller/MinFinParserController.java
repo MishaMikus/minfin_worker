@@ -2,7 +2,6 @@ package server.controller;
 
 import org.springframework.http.HttpStatus;
 import server.BaseController;
-import org.apache.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
@@ -12,14 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 @Controller
 public class MinFinParserController extends BaseController {
-
-    protected final Logger LOGGER = Logger.getLogger(this.getClass());
-
     @RequestMapping(value = "/minfin/parser/**")
     public ResponseEntity baseRedbackController(
             HttpServletRequest request,
             HttpServletResponse response) {
-        LOGGER.info("baseRedbackController()");
+        System.out.println(request);
         return new ResponseEntity("hello world",HttpStatus.OK);
     }
 
