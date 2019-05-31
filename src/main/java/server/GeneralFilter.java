@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static server.BaseController.getFullURL;
+
 @WebFilter(urlPatterns = {"/*"})
 public class GeneralFilter extends HttpFilter {
     protected final Logger LOGGER = Logger.getLogger(this.getClass());
@@ -25,6 +27,8 @@ public class GeneralFilter extends HttpFilter {
         String queryString = req.getQueryString();
         MultiReadHttpServletRequest multiReadHttpServletRequest = new MultiReadHttpServletRequest(req);
         MultiReadHttpServletResponse multiReadHttpServletResponse = new MultiReadHttpServletResponse(res);
+
+        System.out.println(req.getMethod()+" "+getFullURL(req));
 
         //avoid swagger requests
         if (!urlHasSwaggerSignature(url)) {

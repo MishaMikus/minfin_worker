@@ -15,7 +15,6 @@ public class MinFinParserController extends BaseController {
     public ResponseEntity baseRedbackController(
             HttpServletRequest request,
             HttpServletResponse response) {
-        System.out.println(request.getMethod()+" "+getFullURL(request));
         return new ResponseEntity("hello world",HttpStatus.OK);
     }
 }
