@@ -1,6 +1,5 @@
 package server;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;

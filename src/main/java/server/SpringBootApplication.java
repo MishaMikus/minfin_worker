@@ -14,11 +14,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @RestController
 @EnableAutoConfiguration(exclude = {
@@ -26,12 +21,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
         HibernateJpaAutoConfiguration.class,
         DataSourceTransactionManagerAutoConfiguration.class,
         JdbcTemplateAutoConfiguration.class})
-@ComponentScan(basePackages = {"server.controller"})
+@ComponentScan(basePackages = {"server"})
 @Configuration
-@EnableSwagger2
 public class SpringBootApplication {
-
-    protected final Logger LOGGER = Logger.getLogger(this.getClass());
 
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
@@ -49,22 +41,9 @@ public class SpringBootApplication {
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class);
-        viewResolver.setPrefix("/");
+        viewResolver.setPrefix("/WEB-INF/jsp/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
-    }
-
-    @Configuration
-    @EnableSwagger2
-    public class SwaggerConfig {
-        @Bean
-        public Docket productApi() {
-            return new Docket(DocumentationType.SWAGGER_2)
-                    .select()
-                    .apis(RequestHandlerSelectors.basePackage("server.controller"))
-                    .paths(PathSelectors.any())
-                    .build();
-        }
     }
 }
 

@@ -11,11 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static server.BaseController.getFullURL;
 
 @WebFilter(urlPatterns = {"/*"})
 public class GeneralFilter extends HttpFilter {
@@ -28,15 +23,10 @@ public class GeneralFilter extends HttpFilter {
         MultiReadHttpServletRequest multiReadHttpServletRequest = new MultiReadHttpServletRequest(req);
         MultiReadHttpServletResponse multiReadHttpServletResponse = new MultiReadHttpServletResponse(res);
 
-        System.out.println(req.getMethod()+" "+getFullURL(req));
-
-        //avoid swagger requests
-        if (!urlHasSwaggerSignature(url)) {
-            LOGGER.info("<<<--- REQUEST : " + req.getMethod() + " " + url + (queryString == null ? "" : "?" + queryString));
-            String body = multiReadHttpServletRequest.getBody();
-            if (body != null && !body.trim().isEmpty()) {
-                LOGGER.info("<<<--- REQUEST : BODY : " + cutForLog(body));
-            }
+        LOGGER.info("<<<--- REQUEST : " + req.getMethod() + " " + url + (queryString == null ? "" : "?" + queryString));
+        String body = multiReadHttpServletRequest.getBody();
+        if (body != null && !body.trim().isEmpty()) {
+            LOGGER.info("<<<--- REQUEST : BODY : " + body);
         }
 
         LocalDateTime startDateTime = LocalDateTime.now();
@@ -44,33 +34,9 @@ public class GeneralFilter extends HttpFilter {
         LocalDateTime finishDateTime = LocalDateTime.now();
         Duration duration = Duration.between(startDateTime, finishDateTime);
 
-        if (!urlHasSwaggerSignature(url)) {
-            String body = multiReadHttpServletResponse.getBody();
-            LOGGER.info("--->>> RESPONSE : " + multiReadHttpServletResponse.getStatus() + ((body != null && !body.trim().isEmpty()) ? (" BODY : " + cutForLog(body)) : ""));
-        }
+        LOGGER.info("--->>> RESPONSE["+duration.toMillis()+" ms] : " + multiReadHttpServletResponse.getStatus() + ((body != null && !body.trim().isEmpty()) ? (" BODY : " + body) : ""));
     }
 
-    private String cutForLog(String body) {
-        //TODO remove on release
-        //return (body.length()>200)?body.substring(0,100)+" ... "+body.substring(body.length()-100):body;
-        return body;
-    }
-
-    private static final List<String> SWAGGER_URL_PART_COLLECTION = new ArrayList<>(Arrays.asList(
-            "swagger-ui.html",
-            "swagger-resources",
-            "v2/api-docs",
-            "/csrf",
-            "webjars",
-            "/favicon.ico"
-    ));
-
-    private boolean urlHasSwaggerSignature(String url) {
-        for (String swaggerPart : SWAGGER_URL_PART_COLLECTION) {
-            if (url.contains(swaggerPart)) return true;
-        }
-        return false;
-    }
 
     @Override
     public void destroy() {
