@@ -1,4 +1,4 @@
-package server.controller;
+package server.rest;
 
 import org.springframework.http.HttpStatus;
 import server.BaseController;
@@ -15,6 +15,6 @@ public class MinFinParserController extends BaseController {
     public ResponseEntity baseRedbackController(
             HttpServletRequest request,
             HttpServletResponse response) {
-        return new ResponseEntity("hello world",HttpStatus.OK);
+        return new ResponseEntity("MinFinParserController",HttpStatus.OK);
     }
 }

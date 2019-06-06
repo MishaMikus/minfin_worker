@@ -1,20 +1,18 @@
 package server;
 
-import org.apache.log4j.Logger;
-
 import javax.servlet.ServletOutputStream;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 import java.io.*;
 
 public class MultiReadHttpServletResponse extends HttpServletResponseWrapper {
-    protected final Logger LOGGER = Logger.getLogger(this.getClass());
     private ServletOutputStream outputStream;
     private PrintWriter writer;
     private ServletOutputStreamCopier copier;
 
-    public MultiReadHttpServletResponse(HttpServletResponse response) {
-        super(response);
+    public MultiReadHttpServletResponse(ServletResponse response) {
+        super((HttpServletResponse) response);
     }
 
     @Override

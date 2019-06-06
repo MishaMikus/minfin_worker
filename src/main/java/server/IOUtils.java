@@ -14,7 +14,6 @@ import java.util.zip.ZipOutputStream;
 
 public class IOUtils {
     public static final String FS = File.separator;
-    private final static org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(IOUtils.class);
 
     public static String readTextFromResources(String fileName) {
         ClassLoader classLoader = IOUtils.class.getClassLoader();
@@ -26,7 +25,7 @@ public class IOUtils {
         try {
             return new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
         } catch (Exception e) {
-            LOGGER.warn("can't read file '" + file.getAbsolutePath() + "'");
+            System.out.println("can't read file '" + file.getAbsolutePath() + "'");
             e.printStackTrace();
         }
         return null;
@@ -36,7 +35,7 @@ public class IOUtils {
         try {
             return Files.readAllBytes(file.toPath());
         } catch (Exception e) {
-            LOGGER.warn("can't read file '" + file.getAbsolutePath() + "'");
+            System.out.println("can't read file '" + file.getAbsolutePath() + "'");
             e.printStackTrace();
         }
         return null;
@@ -51,25 +50,25 @@ public class IOUtils {
                 propertiesMap.put(propertyName, properties.get(propertyName).toString());
             }
         } else {
-            LOGGER.warn("property file '" + file.getAbsolutePath() + "' not found");
+            System.out.println("property file '" + file.getAbsolutePath() + "' not found");
         }
         return propertiesMap;
     }
 
     public static void copyDir(File srcFolder, File destFolder) throws IOException {
         if (!srcFolder.exists()) {
-            LOGGER.warn("Directory '" + srcFolder.getAbsolutePath() + "' does not exist.");
+            System.out.println("Directory '" + srcFolder.getAbsolutePath() + "' does not exist.");
             return;
         } else {
             copyFolder(srcFolder, destFolder);
         }
-        LOGGER.info("COPY '" + srcFolder.getAbsolutePath() + "' to '" + destFolder.getAbsolutePath() + "' DONE");
+        System.out.println("COPY '" + srcFolder.getAbsolutePath() + "' to '" + destFolder.getAbsolutePath() + "' DONE");
     }
 
     private static void copyFolder(File src, File dest) throws IOException {
 
         if (src.getName().startsWith("~$")) {
-            LOGGER.warn("SKIP COPY for '" + src.getAbsolutePath() + "'");
+            System.out.println("SKIP COPY for '" + src.getAbsolutePath() + "'");
             return;
         }
 
@@ -93,26 +92,26 @@ public class IOUtils {
             }
             in.close();
             out.close();
-            LOGGER.info("File copied from '" + src.getAbsolutePath() + "' to '" + dest.getAbsolutePath());
+            System.out.println("File copied from '" + src.getAbsolutePath() + "' to '" + dest.getAbsolutePath());
         }
     }
 
     public static void mkDir(File dir) {
-        LOGGER.info("try to create " + dir.getAbsoluteFile().getAbsolutePath());
+        System.out.println("try to create " + dir.getAbsoluteFile().getAbsolutePath());
         if (dir.exists() && dir.isDirectory()) {
-            LOGGER.info("dir '" + dir.getAbsolutePath() + "' already exists");
+            System.out.println("dir '" + dir.getAbsolutePath() + "' already exists");
         } else {
             Long start = new Date().getTime();
             while (!dir.getAbsoluteFile().mkdir() && new Date().getTime() < (start + 5 * 1000)) {
                 if (dir.exists()) {
-                    LOGGER.info("dir '" + dir.getAbsolutePath() + "' created");
+                    System.out.println("dir '" + dir.getAbsolutePath() + "' created");
                 } else {
                     if (new Date().getTime() >= (start + 5 * 1000))
-                        LOGGER.warn("can't create '" + dir.getAbsolutePath() + "' dir");
+                        System.out.println("can't create '" + dir.getAbsolutePath() + "' dir");
                 }
             }
         }
-        LOGGER.info("dir.exists() '" + dir.getAbsolutePath() + "': " + dir.exists());
+        System.out.println("dir.exists() '" + dir.getAbsolutePath() + "': " + dir.exists());
     }
 
     public static void mkDir(String relativePath) {
@@ -126,20 +125,20 @@ public class IOUtils {
         try (PrintWriter out = new PrintWriter(file)) {
             out.println(content);
         } catch (FileNotFoundException e) {
-            LOGGER.warn("can't write to file '" + file.getAbsolutePath() + "'");
+            System.out.println("can't write to file '" + file.getAbsolutePath() + "'");
         }
         if (file.exists()) {
-            LOGGER.info("saveTextToFile('" + file.getAbsolutePath() + "')[length:" + content.length() + "] DONE ");
+            System.out.println("saveTextToFile('" + file.getAbsolutePath() + "')[length:" + content.length() + "] DONE ");
         }
     }
 
     private static void mkFile(File file) {
         try {
             if (file.getAbsoluteFile().createNewFile()) {
-                LOGGER.info("create '" + file.getAbsoluteFile().getAbsolutePath() + "' SUCCESS");
+                System.out.println("create '" + file.getAbsoluteFile().getAbsolutePath() + "' SUCCESS");
             }
         } catch (IOException e) {
-            LOGGER.warn("create '" + file.getAbsolutePath() + "' FAIL");
+            System.out.println("create '" + file.getAbsolutePath() + "' FAIL");
         }
     }
 
@@ -166,10 +165,10 @@ public class IOUtils {
             }
             Long size = fileNeedToBeZipped.length();
             Long zipSize = zipFile.length();
-            LOGGER.info("zippedFile has " + ((100 * zipSize) / size) + "% of input file");
+            System.out.println("zippedFile has " + ((100 * zipSize) / size) + "% of input file");
             return zipFile;
         } else {
-            LOGGER.warn("file '" + fileNeedToBeZipped.getAbsolutePath() + "' does't exist");
+            System.out.println("file '" + fileNeedToBeZipped.getAbsolutePath() + "' does't exist");
             return fileNeedToBeZipped;
         }
     }

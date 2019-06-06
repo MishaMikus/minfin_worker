@@ -1,18 +1,18 @@
 package server;
 
-import org.apache.log4j.Logger;
 import javax.servlet.ReadListener;
 import javax.servlet.ServletInputStream;
+import javax.servlet.ServletRequest;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import java.io.*;
 
 public class MultiReadHttpServletRequest extends HttpServletRequestWrapper {
-    protected final Logger LOGGER = Logger.getLogger(this.getClass());
     private ByteArrayOutputStream cachedBytes;
 
-    public MultiReadHttpServletRequest(HttpServletRequest request) {
-        super(request);
+    public MultiReadHttpServletRequest(ServletRequest request) {
+        super((HttpServletRequest) request);
     }
 
     @Override
@@ -56,9 +56,10 @@ public class MultiReadHttpServletRequest extends HttpServletRequestWrapper {
         }
 
         @Override
-        public void setReadListener(ReadListener readListener) {
+        public void setReadListener(ReadListener listener) {
 
         }
+
 
         @Override
         public int read() throws IOException {

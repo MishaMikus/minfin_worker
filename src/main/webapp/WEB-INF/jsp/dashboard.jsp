@@ -1,5 +1,6 @@
+<jsp:useBean id="msg" scope="session" type="java.lang.String"/>
 <html>
 <body>
-Minfin Dashboard
+${msg}
 </body>
 </html>

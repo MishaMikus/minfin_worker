@@ -32,7 +32,7 @@ public class ServletOutputStreamCopier extends ServletOutputStream {
     }
 
     @Override
-    public void setWriteListener(WriteListener writeListener) {
+    public void setWriteListener(WriteListener listener) {
 
     }
 }
