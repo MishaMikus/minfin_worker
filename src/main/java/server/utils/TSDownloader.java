@@ -1,4 +1,4 @@
-package downloader;
+package server.utils;
 
 import org.apache.commons.io.FileUtils;
 
@@ -7,12 +7,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class TSDownloader {
 
 
-    public static void main(String[] args) throws IOException {
-        baskino();
-    }
+//    public static void main(String[] args) throws IOException {
+//        baskino();
+//    }
 
     //baskino
     private static void baskino() throws IOException {
