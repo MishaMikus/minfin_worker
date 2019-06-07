@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import java.util.HashMap;
+
 @RestController
 @EnableAutoConfiguration(exclude = {
         DataSourceAutoConfiguration.class,
@@ -28,6 +30,10 @@ public class SpringBootApplication {
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(SpringBootApplication.class);
+
+        HashMap<String, Object> props = new HashMap<>();
+        props.put("server.port", 80);
+        springApplication.setDefaultProperties(props);
         springApplication.run(args);
     }
 
