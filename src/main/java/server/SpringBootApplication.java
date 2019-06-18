@@ -32,7 +32,7 @@ public class SpringBootApplication {
         SpringApplication springApplication = new SpringApplication(SpringBootApplication.class);
 
         HashMap<String, Object> props = new HashMap<>();
-        props.put("server.port", 80);
+        props.put("server.port", 8080);
         springApplication.setDefaultProperties(props);
         springApplication.run(args);
     }
