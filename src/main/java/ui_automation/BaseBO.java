@@ -1,45 +1,31 @@
 package ui_automation;
 
-import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.chrome.ChromeOptions;
-
-import java.util.Map;
-
 import static com.codeborne.selenide.Configuration.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class BaseBO {
+
+    void deleteProposal() {
+        try {
+            executeJavaScriptAction("DELETE OLD", "document.querySelectorAll(\".au-delete-deal.js-au-delete-deal\")[0].click();");
+        } catch (Exception e) {
+            System.out.println("CAN'T DELETE OLD");
+        }
+        acceptAlert();
+    }
+
     public BaseBO() {
         timeout = 10000;
         baseUrl = "https://minfin.com.ua";
-        startMaximized = false;
+//        startMaximized = false;
         browser = "chrome";
-        browserPosition = "890x10";
-        browserSize = "780x950";
+//        browserPosition = "890x10";
+//        browserSize = "780x950";
         savePageSource = true;
         headless = true;
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--headless");
-        Capabilities capabilities = new Capabilities() {
-            @Override
-            public Map<String, ?> asMap() {
-                System.out.println("asMap " + options.asMap());
-                return options.asMap();
-            }
-
-            @Override
-            public Object getCapability(String s) {
-                System.out.println("getCapability " + s);
-                return options.asMap().get(s);
-            }
-        };
-        Configuration.browserCapabilities.merge(capabilities);
         //System.getProperties().list(System.out);
         if (!System.getProperties().containsValue("windows")) {
             System.setProperty("webdriver.chrome.driver", "/tmp/chromedriver");
@@ -47,7 +33,7 @@ public class BaseBO {
     }
 
     void goToPath(String path) {
-        System.out.println("GOTO SELL : " + baseUrl + path);
+        System.out.println("GOTO PAGE : " + baseUrl + path);
         open(path);
     }
 

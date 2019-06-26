@@ -5,24 +5,34 @@ import static com.codeborne.selenide.Selenide.$;
 public class CalculateBO extends BaseBO {
 
     public String getAverageSell() {
-        goToPath("/currency/auction/usd/sell/lvov/");
+        new SellBO().gotoSellPage();
         String avSell = $(".au-status--group---wrapper.au-status--group").findAll(".au-mid-buysell").get(1).text();
         return avSell.substring(avSell.indexOf(":") + 1, avSell.indexOf("грн")).trim();
     }
 
     public String getAverageDecreasedSell(int decreaseCoin) {
         String av = getAverageSell();
+        return change(av, decreaseCoin, -1);
+    }
+
+    private String change(String av, int decreaseCoin, int side) {
         String uah = av.split(",")[0];
         String coin = av.split(",")[1];
         Integer coinInt = Integer.parseInt(coin) + Integer.parseInt(uah) * 100;
-        coinInt -= decreaseCoin;
+        coinInt += decreaseCoin * side;
         uah = (coinInt / 100) + "";
         coin = String.format("%02d", coinInt % 100);
         return uah + "." + coin;
     }
 
-    public String getMyProposalTime() {
-        goToPath("/currency/auction/usd/sell/lvov/");
-        return $(".au-delete-deal.js-au-delete-deal").parent().findAll(".au-deal-time").get(0).text();
+    public String getAverageIncreasedBuy(int increaseCoin) {
+        String av = getAverageBuy();
+        return change(av, increaseCoin, +1);
+    }
+
+    private String getAverageBuy() {
+        new BuyBO().gotoBuyPage();
+        String avBuy = $(".au-status--group---wrapper.au-status--group").findAll(".au-mid-buysell").get(0).text();
+        return avBuy.substring(avBuy.indexOf(":") + 1, avBuy.indexOf("грн")).trim();
     }
 }

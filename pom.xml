@@ -20,17 +20,24 @@
     </properties>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.google.api-client</groupId>-->
-<!--            <artifactId>google-api-client</artifactId>-->
-<!--            <version>1.23.0</version>-->
-<!--        </dependency>-->
 
-<!--        <dependency>-->
-<!--            <groupId>com.google.apis</groupId>-->
-<!--            <artifactId>google-api-services-sheets</artifactId>-->
-<!--            <version>v4-rev581-1.25.0</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.3.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.11</version>
+        </dependency>
 
         <dependency>
             <groupId>com.codeborne</groupId>
@@ -50,40 +57,47 @@
             <version>2.6</version>
         </dependency>
 
-        <!-- This is a web application -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Tomcat embedded container-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <!-- JSTL for JSP -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>javax.servlet</groupId>-->
+<!--            <artifactId>jstl</artifactId>-->
+<!--        </dependency>-->
 
-        <!-- Need this to compile JSP -->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <!-- Need this to compile JSP,
-            tomcat-embed-jasper version is not working, no idea why -->
         <dependency>
-            <groupId>org.eclipse.jdt.core.compiler</groupId>
-            <artifactId>ecj</artifactId>
-            <version>4.6.1</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.eclipse.jdt.core.compiler</groupId>-->
+<!--            <artifactId>ecj</artifactId>-->
+<!--            <version>4.6.1</version>-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.webjars</groupId>
