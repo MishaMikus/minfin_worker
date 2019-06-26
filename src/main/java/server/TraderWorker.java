@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 
 @Component
 public class TraderWorker {
-    private static final Long TIME_DELTA = 1000L * 60 * 1;//each 16 minutes
+    private static final Long TIME_DELTA = 1000L * 60 * 16;//each 16 minutes
     private TaskScheduler scheduler = new ConcurrentTaskScheduler();
 
     @PostConstruct
