@@ -20,4 +20,9 @@ public class CalculateBO extends BaseBO {
         coin = String.format("%02d", coinInt % 100);
         return uah + "." + coin;
     }
+
+    public String getMyProposalTime() {
+        goToPath("/currency/auction/usd/sell/lvov/");
+        return $(".au-delete-deal.js-au-delete-deal").parent().findAll(".au-deal-time").get(0).text();
+    }
 }
