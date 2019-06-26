@@ -42,7 +42,7 @@ public class BaseBO {
         Configuration.browserCapabilities.merge(capabilities);
         //System.getProperties().list(System.out);
         if (!System.getProperties().containsValue("windows")) {
-            browserBinary = "/tmp/chromedriver";
+            System.setProperty("webdriver.chrome.driver", "/tmp/chromedriver");
         }
     }
 
