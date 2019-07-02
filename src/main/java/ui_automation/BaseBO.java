@@ -23,6 +23,7 @@ public class BaseBO {
         browser = "chrome";
         savePageSource = true;
         headless = true;
+        remote=" http://localhost:4444/wd/hub";
     }
 
     void goToPath(String path) {
