@@ -17,6 +17,8 @@ public class TradeStatusDAO extends GenericAbstractDAO<TradeStatus> {
     }
 
     public TradeStatus getLatestOpened() {
-        return findAll().stream().max(Comparator.comparing(TradeStatus::getStart)).orElse(null);
+        TradeStatus res = findAll().stream().max(Comparator.comparing(TradeStatus::getStart_date)).orElse(null);
+        System.out.println("getLatestOpened : " + res);
+        return res;
     }
 }

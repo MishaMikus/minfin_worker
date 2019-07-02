@@ -1,4 +1,4 @@
-package server.views.dashboard;
+package server.dashboard.view;
 
 public class TransactionView {
     private String date;

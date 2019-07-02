@@ -19,6 +19,17 @@ public class TransactionType {
     @JoinColumn(name="to", nullable=false)
     private Currency to;
 
+    @Column
+    private String name;
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;
@@ -50,6 +61,7 @@ public class TransactionType {
                 "id=" + id +
                 ", from=" + from +
                 ", to=" + to +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

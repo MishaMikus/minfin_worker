@@ -1,7 +1,7 @@
 package ui_automation;
 
 import com.codeborne.selenide.Selenide;
-import server.views.dashboard.TradeStatusHelper;
+import server.dashboard.service.TradeStatusHelper;
 
 import java.util.Date;
 
@@ -23,7 +23,7 @@ public class Trader {
             //buy
             int wantToBuyAmount = new Bank().wantToBuy();
             if (wantToBuyAmount > 0) {
-                String course = new CalculateBO().getAverageIncreasedBuy(2);
+                String course = new CalculateBO().getAverageIncreasedBuy(1);
                 new BuyBO().buy(wantToBuyAmount + "", course, address);
             }
             Selenide.close();

@@ -1,8 +1,9 @@
-package server.views.dashboard;
+package server.dashboard.service;
 
 import org.springframework.stereotype.Service;
 import orm.entity.deal.Deal;
 import orm.entity.deal.DealDAO;
+import server.dashboard.view.DealView;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -11,8 +12,9 @@ import java.util.List;
 import static orm.entity.currency.CurrencyDAO.USD_CURRENCY;
 
 @Service
+public
 class DealTable {
-     List<DealView> dealTable() {
+     public List<DealView> dealTable() {
         List<DealView> dealTable = new ArrayList<>();
         List<Deal> dealList = new DealDAO().findAll();
         dealList.sort(Comparator.comparing(Deal::getDate));

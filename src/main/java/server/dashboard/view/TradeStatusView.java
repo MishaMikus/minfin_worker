@@ -1,4 +1,4 @@
-package server.views.dashboard;
+package server.dashboard.view;
 
 public class TradeStatusView {
     private String buttonColor;

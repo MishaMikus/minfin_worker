@@ -1,5 +1,6 @@
 package orm;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
@@ -15,6 +16,7 @@ import java.util.Properties;
 public class HibernateUtil {
     private static SessionFactory sessionFactory;
     public static final long STATEMENT_BATCH_SIZE = 1000;
+    private static Session session;
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
@@ -25,15 +27,15 @@ public class HibernateUtil {
 
                 Properties prop = new Properties();
                 prop.setProperty(Environment.DRIVER, com.mysql.jdbc.Driver.class.getCanonicalName());
-                prop.setProperty(Environment.URL, "jdbc:mysql://"+cred_prop.get("host")+":3306/minfin?useSSL=false");
+                prop.setProperty(Environment.URL, "jdbc:mysql://" + cred_prop.get("host") + ":3306/minfin?useSSL=false");
                 prop.setProperty(Environment.USER, cred_prop.get("user").toString());
                 prop.setProperty(Environment.PASS, cred_prop.get("pass").toString());
                 prop.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQL5Dialect.class.getCanonicalName());
                 prop.setProperty(Environment.USE_NEW_ID_GENERATOR_MAPPINGS, String.valueOf(false));
-                prop.setProperty(Environment.STATEMENT_BATCH_SIZE, STATEMENT_BATCH_SIZE +"");
+                prop.setProperty(Environment.STATEMENT_BATCH_SIZE, STATEMENT_BATCH_SIZE + "");
 
-                //prop.setProperty(Environment.SHOW_SQL, String.valueOf(true));
-                //prop.setProperty(Environment.FORMAT_SQL, String.valueOf(true));
+                // prop.setProperty(Environment.SHOW_SQL, String.valueOf(true));
+                // prop.setProperty(Environment.FORMAT_SQL, String.valueOf(true));
                 prop.setProperty(Environment.GLOBALLY_QUOTED_IDENTIFIERS, String.valueOf(true));
 
                 ClassPathScanningCandidateComponentProvider scanner = new ClassPathScanningCandidateComponentProvider(false);
@@ -53,6 +55,13 @@ public class HibernateUtil {
             }
         }
         return sessionFactory;
+    }
+
+    public static Session getSession() {
+        if (session == null) {
+            session = getSessionFactory().openSession();
+        }
+        return session;
     }
 
 }

@@ -1,6 +1,8 @@
 package orm.entity;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 
 import javax.persistence.Table;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -15,56 +17,54 @@ import java.util.Date;
 import java.util.List;
 import java.util.function.BiFunction;
 
-import static orm.HibernateUtil.STATEMENT_BATCH_SIZE;
-import static orm.HibernateUtil.getSessionFactory;
+import static orm.HibernateUtil.*;
 
 public abstract class GenericAbstractDAO<E> {
 
-    private boolean connected = false;
     private final Class<E> entityClass;
 
     public GenericAbstractDAO(Class<E> entityClass) {
         this.entityClass = entityClass;
     }
 
+    public void update(E entity) {
+        beginTransaction();
+        getSession().update(entity);
+        commitTransaction();
+        System.out.println("update " + entity);
+    }
+
     public Serializable save(E entity) {
-        Session session = getSessionFactory().openSession();
-        session.beginTransaction();
-        Serializable saveResult = session.save(entity);
-        session.getTransaction().commit();
-        session.close();
+        beginTransaction();
+        Serializable saveResult = getSession().save(entity);
+        commitTransaction();
+        System.out.println("save " + entity);
         return saveResult;
     }
 
     public void saveBatch(List<E> entityList) {
-        Session session = getSessionFactory().openSession();
-        session.beginTransaction();
+        beginTransaction();
         for (int i = 0; i < entityList.size(); i++) {
-            session.saveOrUpdate(entityList.get(i));
+            getSession().saveOrUpdate(entityList.get(i));
             if (i % STATEMENT_BATCH_SIZE == 0) {
                 System.out.println(new Date() + " " + getCatalogName() + "." + getTableName() + " add " + i + " records");
-                session.flush();
-                session.clear();
+                getSession().flush();
+                getSession().clear();
             }
         }
-
-        session.getTransaction().commit();
-        session.close();
+        commitTransaction();
     }
 
     public void updateBatch(List<E> entityList) {
-        if (connected) {
-            beginTransaction();
-            Date start = new Date();
-            for (int i = 0; i < entityList.size(); i++) {
-                getSession().update(entityList.get(i));
-                if (i % STATEMENT_BATCH_SIZE == 0) {
-                    getSession().flush();
-                    getSession().clear();
-                }
+        beginTransaction();
+        for (int i = 0; i < entityList.size(); i++) {
+            getSession().update(entityList.get(i));
+            if (i % STATEMENT_BATCH_SIZE == 0) {
+                getSession().flush();
+                getSession().clear();
             }
-            commitTransaction();
         }
+        commitTransaction();
     }
 
     public List<E> findAll() {
@@ -88,11 +88,9 @@ public abstract class GenericAbstractDAO<E> {
     }
 
     public void clear() {
-        if (connected) {
-            beginTransaction();
-            getSession().clear();
-            commitTransaction();
-        }
+        beginTransaction();
+        getSession().clear();
+        commitTransaction();
     }
 
     public void close() {
@@ -100,14 +98,12 @@ public abstract class GenericAbstractDAO<E> {
     }
 
     public void truncateTable() {
-        if (connected) {
-            try {
-                beginTransaction();
-                getSession().createSQLQuery("truncate table " + getCatalogName() + "." + getTableName()).executeUpdate();
-                commitTransaction();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        try {
+            beginTransaction();
+            getSession().createSQLQuery("truncate table " + getCatalogName() + "." + getTableName()).executeUpdate();
+            commitTransaction();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -151,11 +147,9 @@ public abstract class GenericAbstractDAO<E> {
 
     public long getDuplicatedEventQueueSize(String sql) {
         long res = 0;
-        if (connected) {
-            beginTransaction();
-            res = getSession().createSQLQuery(sql).list().size();
-            commitTransaction();
-        }
+        beginTransaction();
+        res = getSession().createSQLQuery(sql).list().size();
+        commitTransaction();
         return res;
     }
 
@@ -165,14 +159,6 @@ public abstract class GenericAbstractDAO<E> {
 
     public Long count() {
         return getCountWhere(null);
-    }
-
-    public void update(E entity) {
-        if (connected) {
-            beginTransaction();
-            getSession().update(entity);
-            commitTransaction();
-        }
     }
 
     public List<String> selectListResult(String query) {
@@ -205,8 +191,7 @@ public abstract class GenericAbstractDAO<E> {
 
     private List<E> findAllWhere(BiFunction<CriteriaBuilder, Root<E>, Predicate> where) {
         List<E> res;
-        Session session = getSessionFactory().openSession();
-        session.beginTransaction();
+        beginTransaction();
         CriteriaBuilder cb = getSession().getCriteriaBuilder();
         CriteriaQuery<E> query = cb.createQuery(entityClass);
         Root<E> root = query.from(entityClass);
@@ -216,8 +201,8 @@ public abstract class GenericAbstractDAO<E> {
         }
 
         res = getSession().createQuery(query).getResultList();
-        session.getTransaction().commit();
-        session.close();
+        commitTransaction();
+        System.out.println("findAllWhere(" + where + ") " + getTableName() + " : " + res.size());
         return res;
     }
 
@@ -250,30 +235,20 @@ public abstract class GenericAbstractDAO<E> {
 
     private long getCountWhere(BiFunction<CriteriaBuilder, Root<E>, Predicate> where) {
         long res = 0;
-        if (connected) {
-            beginTransaction();
-            CriteriaBuilder builder = getSession().getCriteriaBuilder();
-            CriteriaQuery<Long> query = builder.createQuery(Long.class);
-            Root<E> root = query.from(entityClass);
-            query.select(builder.count(root));
+        beginTransaction();
+        CriteriaBuilder builder = getSession().getCriteriaBuilder();
+        CriteriaQuery<Long> query = builder.createQuery(Long.class);
+        Root<E> root = query.from(entityClass);
+        query.select(builder.count(root));
 
-            if (where != null) {
-                query.where(where.apply(builder, root));
-            }
-
-            res = getSession().createQuery(query).getSingleResult();
-            commitTransaction();
+        if (where != null) {
+            query.where(where.apply(builder, root));
         }
+
+        res = getSession().createQuery(query).getSingleResult();
+        commitTransaction();
+        System.out.println("getCountWhere(" + where + ") : " + res);
         return res;
-    }
-
-    private Session getSession() {
-        try {
-            return getSessionFactory().openSession();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return getSessionFactory().getCurrentSession();
-        }
     }
 
     private void commitTransaction() {
@@ -296,5 +271,26 @@ public abstract class GenericAbstractDAO<E> {
         Timestamp end = new Timestamp(endDate.getTime());
         Timestamp start = new Timestamp(startDate.getTime());
         return (cb, root) -> cb.between(root.get(name).as(Timestamp.class), start, end);
+    }
+
+    public Long sum(String name) {
+        beginTransaction();
+        Criteria criteria = getSession().createCriteria(entityClass);
+        criteria.setProjection(Projections.sum(name));
+        List list = criteria.list();
+        commitTransaction();
+        long res = 0;
+        if (list.size() > 0) {
+            res = (long) list.get(0);
+        }
+        System.out.println("sum(" + name + ")." + getTableName() + " : " + res);
+        return res;
+    }
+
+    public void deleteById(Integer id) {
+        beginTransaction();
+        getSession().delete(getSession().load(entityClass, id));
+        commitTransaction();
+        System.out.println("deleteById[" + id + "] " + getTableName());
     }
 }

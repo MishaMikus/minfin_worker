@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS `minfin`.`transaction`
 CREATE TABLE IF NOT EXISTS `minfin`.`trade_status`
 (
     `id`    INT      NOT NULL AUTO_INCREMENT,
-    `start` DATETIME NULL,
-    `end`   DATETIME NULL,
+    `start_date` DATETIME NULL,
+    `end_date`   DATETIME NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -58,13 +58,15 @@ CREATE TABLE `minfin`.`transaction_type`
     `id`   INT NOT NULL AUTO_INCREMENT,
     `from` INT NULL,
     `to`   INT NULL,
+    `name` VARCHAR(45) NULL,
     PRIMARY KEY (`id`)
 );
-INSERT INTO `minfin`.`transaction_type` (`id`, `from`, `to`)
-VALUES ('1', '1', '2');
-INSERT INTO `minfin`.`transaction_type` (`id`, `from`, `to`)
-VALUES ('2', '2', '1');
-INSERT INTO `minfin`.`transaction_type` (`id`, `from`, `to`)
-VALUES ('3', '1', '1');
-INSERT INTO `minfin`.`transaction_type` (`id`, `from`, `to`)
-VALUES ('4', '2', '2');
+
+INSERT INTO `minfin`.`transaction_type` (`id`, `from`, `to`, `name`)
+VALUES ('1', '1', '2', 'usd-uah');
+INSERT INTO `minfin`.`transaction_type` (`id`, `from`, `to`, `name`)
+VALUES ('2', '2', '1', 'uah-usd');
+INSERT INTO `minfin`.`transaction_type` (`id`, `from`, `to`, `name`)
+VALUES ('3', '1', '1', 'invest_usd');
+INSERT INTO `minfin`.`transaction_type` (`id`, `from`, `to`, `name`)
+VALUES ('4', '2', '2', 'invest_uah');
