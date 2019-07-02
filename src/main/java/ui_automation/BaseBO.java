@@ -20,16 +20,9 @@ public class BaseBO {
     public BaseBO() {
         timeout = 10000;
         baseUrl = "https://minfin.com.ua";
-//        startMaximized = false;
         browser = "chrome";
-//        browserPosition = "890x10";
-//        browserSize = "780x950";
         savePageSource = true;
         headless = true;
-        //System.getProperties().list(System.out);
-        if (!System.getProperties().containsValue("windows")) {
-            System.setProperty("webdriver.chrome.driver", "/tmp/chromedriver");
-        }
     }
 
     void goToPath(String path) {
