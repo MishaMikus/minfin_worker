@@ -7,6 +7,7 @@ import orm.entity.deal.DealDAO;
 import java.util.Date;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class MyDealBO extends BaseBO {
     public void saveResults(String url, Currency currency) {

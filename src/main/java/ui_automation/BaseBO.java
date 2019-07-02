@@ -1,10 +1,12 @@
 package ui_automation;
 
 import org.openqa.selenium.Alert;
+
 import static com.codeborne.selenide.Configuration.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static util.ApplicationPropertyUtil.applicationPropertyGet;
 
 public class BaseBO {
 
@@ -22,8 +24,10 @@ public class BaseBO {
         baseUrl = "https://minfin.com.ua";
         browser = "chrome";
         savePageSource = true;
-        headless = true;
-        remote=" http://localhost:4444/wd/hub";
+        //headless = true;
+        if (applicationPropertyGet("remote").equals("true")) {
+            remote = " http://localhost:4444/wd/hub";
+        }
     }
 
     void goToPath(String path) {

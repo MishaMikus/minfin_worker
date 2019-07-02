@@ -3,6 +3,8 @@ package ui_automation;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+import static util.ApplicationPropertyUtil.applicationPropertyGet;
+
 public class Bank {
     public int wantToSell() {
         String dealTime = new SellBO().gotoSellPage().getMyProposalTime();
@@ -12,16 +14,22 @@ public class Bank {
     }
 
     private boolean theTimeHasCome(String dealTime) {
+
         String currentTime = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
+
         System.out.println("dealTime : " + dealTime + " ===>>> currentTime : " + currentTime);
         long dealTimeMS = 0;
         if (dealTime != null) {
             dealTimeMS = Integer.parseInt(dealTime.split(":")[0]) * 60 * 60 * 1000L + Integer.parseInt(dealTime.split(":")[1]) * 60 * 1000L;
         }
 
-        long currentTimeMS = Integer.parseInt(currentTime.split(":")[0]) * 60 * 60 * 1000L + Integer.parseInt(currentTime.split(":")[1]) * 60 * 1000L;
+        long currentTimeMS = deltaMS() + Integer.parseInt(currentTime.split(":")[0]) * 60 * 60 * 1000L + Integer.parseInt(currentTime.split(":")[1]) * 60 * 1000L;
 
         return (currentTimeMS - dealTimeMS) > (16 * 60 * 1000);
+    }
+
+    private Long deltaMS() {
+        return Integer.parseInt(applicationPropertyGet("time.delta.hours")) * 1000 * 60 * 60L;
     }
 
 
