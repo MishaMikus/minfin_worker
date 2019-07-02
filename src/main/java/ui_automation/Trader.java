@@ -34,7 +34,7 @@ public class Trader {
 
     public static void deleteDeal() {
         new LoginBO().login(applicationPropertyGet("minfin.user"), applicationPropertyGet("minfin.pass"));
-        new SellBO().deleteProposal();
-        new BuyBO().deleteProposal();
+        new SellBO().gotoSellPage().deleteProposal();
+        new BuyBO().gotoBuyPage().deleteProposal();
     }
 }
