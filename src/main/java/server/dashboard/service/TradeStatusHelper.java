@@ -51,8 +51,6 @@ public class TradeStatusHelper {
         }
     }
 
-    public static void main(String[] args) {
-        new TradeStatusHelper().pushTradeButton();
-    }
+
 
 }

@@ -68,9 +68,6 @@
                         <option value="invest_uah">invest_uah</option>
                         <option value="usd-uah">usd-uah</option>
                         <option value="uah-usd">uah-usd</option>
-                        <%--                    invest - course input disabled--%>
-                        <%--                    usd-ush - usd_move input dissabled--%>
-                        <%--                    uah-usd - uah_move input dissabled--%>
                     </select>
                 </label>
             </td>
@@ -88,7 +85,6 @@
             <td>
                 <div role="button" onclick="document.getElementById('addForm').submit();" style="background-color: lightgreen">add
                 </div>
-<%--                <input style="background-color: lightgreen" type="submit" value="+">--%>
             </td>
         </tr>
     </table>
