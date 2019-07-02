@@ -25,7 +25,7 @@ public class HibernateUtil {
 
                 Properties prop = new Properties();
                 prop.setProperty(Environment.DRIVER, com.mysql.jdbc.Driver.class.getCanonicalName());
-                prop.setProperty(Environment.URL, "jdbc:mysql://"+cred_prop.get("host")+":3306/minfin");
+                prop.setProperty(Environment.URL, "jdbc:mysql://"+cred_prop.get("host")+":3306/minfin?useSSL=false");
                 prop.setProperty(Environment.USER, cred_prop.get("user").toString());
                 prop.setProperty(Environment.PASS, cred_prop.get("pass").toString());
                 prop.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQL5Dialect.class.getCanonicalName());

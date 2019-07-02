@@ -3,6 +3,7 @@ package server;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.concurrent.ConcurrentTaskScheduler;
 import org.springframework.stereotype.Component;
+import ui_automation.Trader;
 
 import javax.annotation.PostConstruct;
 
@@ -13,6 +14,6 @@ public class TraderWorker {
 
     @PostConstruct
     private void execute() {
-      //  scheduler.scheduleAtFixedRate(Trader::trade, TIME_DELTA);
+        scheduler.scheduleAtFixedRate(Trader::trade, TIME_DELTA);
     }
 }

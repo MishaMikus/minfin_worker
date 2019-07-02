@@ -1,11 +1,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="transactionTable" scope="session" type="java.util.List<server.views.dashboard.TransactionView>"/>
 <jsp:useBean id="lastTransactionView" scope="session" type="server.views.dashboard.TransactionView"/>
+<jsp:useBean id="tradeStatus" scope="session" type="server.views.dashboard.TradeStatusView"/>
 <jsp:useBean id="dealTable" scope="session" type="java.util.List<server.views.dashboard.DealView>"/>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <body>
 <table border="1">
+    <a href="/trade">
+        <button style="background-color: ${tradeStatus.buttonColor}">${tradeStatus.buttonLabel}</button>
+    </a>
+    ${tradeStatus.message}
     <tr>
         <th colspan="8">TRANSACTION TABLE</th>
     </tr>
@@ -19,18 +24,20 @@
         <th>каса-гривня</th>
         <th bgcolor="#d3d3d3"></th>
     </tr>
-    <c:forEach items="${transactionTable}" var="transactionView">
-        <tr>
-            <td>${transactionView.date}</td>
-            <td>${transactionView.transaction}</td>
-            <td>${transactionView.course}</td>
-            <td>${transactionView.usd_change}</td>
-            <td>${transactionView.uah_change}</td>
-            <td>${transactionView.usd}</td>
-            <td>${transactionView.uah}</td>
-            <td bgcolor="#d3d3d3"></td>
-        </tr>
-    </c:forEach>
+    <c:if test="${transactionTable!=null}">
+        <c:forEach items="${transactionTable}" var="transactionView">
+            <tr>
+                <td>${transactionView.date}</td>
+                <td>${transactionView.transaction}</td>
+                <td>${transactionView.course}</td>
+                <td>${transactionView.usd_change}</td>
+                <td>${transactionView.uah_change}</td>
+                <td>${transactionView.usd}</td>
+                <td>${transactionView.uah}</td>
+                <td bgcolor="#d3d3d3"></td>
+            </tr>
+        </c:forEach></c:if>
+    <c:if test="${lastTransactionView!=null}">
     <tr>
         <td>${lastTransactionView.date}</td>
         <td>${lastTransactionView.transaction}</td>
@@ -45,6 +52,7 @@
             </a>
         </td>
     </tr>
+    </c:if>
     <tr>
         <td bgcolor="#d3d3d3"></td>
         <td>
