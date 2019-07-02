@@ -8,6 +8,8 @@ import server.dashboard.view.TradeStatusView;
 import java.util.Date;
 import java.util.List;
 
+import static ui_automation.Trader.deleteDeal;
+
 @Service
 public class TradeStatusHelper {
 
@@ -44,13 +46,15 @@ public class TradeStatusHelper {
         System.out.println("pushTradeButton");
         TradeStatus latest = tradeStatusDAO.getLatestOpened();
         if (tradeStatusDAO.getLatestOpened() == null || latest.getEnd_date() != null) {
+            //Start new Trading
             tradeStatusDAO.save(new TradeStatus(new Date()));
         } else {
+            //Close trading
             latest.setEnd_date(new Date());
             tradeStatusDAO.update(latest);
+            deleteDeal();
         }
     }
-
 
 
 }

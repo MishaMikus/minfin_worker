@@ -5,14 +5,16 @@ import server.dashboard.service.TradeStatusHelper;
 
 import java.util.Date;
 
+import static util.ApplicationPropertyUtil.applicationPropertyGet;
+
 public class Trader {
 
     public static void trade() {
         if (new TradeStatusHelper().isActiveTrading()) {
             System.out.println(new Date() + "==>>TRY to TRADE");
-            new LoginBO().login("tradingLviv", "dbb906");
+            new LoginBO().login(applicationPropertyGet("minfin.user"), applicationPropertyGet("minfin.pass"));
 
-            String address = "Центр, вул. Франка, початок Франка і Зеленої";
+            String address = applicationPropertyGet("minfin.address");
             //sell
             int wantToSellAmount = new Bank().wantToSell();
             if (wantToSellAmount > 0) {
@@ -28,5 +30,11 @@ public class Trader {
             }
             Selenide.close();
         }
+    }
+
+    public static void deleteDeal() {
+        new LoginBO().login(applicationPropertyGet("minfin.user"), applicationPropertyGet("minfin.pass"));
+        new SellBO().deleteProposal();
+        new BuyBO().deleteProposal();
     }
 }

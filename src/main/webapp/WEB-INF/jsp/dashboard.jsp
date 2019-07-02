@@ -6,13 +6,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <body>
+<a href="trade">
+    <button style="background-color: ${tradeStatus.buttonColor}">${tradeStatus.buttonLabel}</button>
+</a>
+<br>
+${tradeStatus.message}
 <form method="post" action="add" id="addForm">
     <table border="1">
-        <a href="trade">
-            <button style="background-color: ${tradeStatus.buttonColor}">${tradeStatus.buttonLabel}</button>
-        </a>
-        <br>
-        ${tradeStatus.message}
         <tr>
             <th colspan="8">TRANSACTION TABLE</th>
         </tr>
@@ -53,7 +53,7 @@
                 <td>${lastTransactionView.uah}</td>
                 <td>
                     <div role="button" onclick="window.location='delete/${lastTransactionView.id}'"
-                            style="background-color: lightsalmon">del
+                         style="background-color: lightsalmon">del
                     </div>
                 </td>
             </tr>
@@ -83,7 +83,8 @@
             <td bgcolor="#d3d3d3"></td>
             <td bgcolor="#d3d3d3"></td>
             <td>
-                <div role="button" onclick="document.getElementById('addForm').submit();" style="background-color: lightgreen">add
+                <div role="button" onclick="document.getElementById('addForm').submit();"
+                     style="background-color: lightgreen">add
                 </div>
             </td>
         </tr>

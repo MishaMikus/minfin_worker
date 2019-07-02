@@ -10,8 +10,9 @@ import org.springframework.core.type.filter.AnnotationTypeFilter;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
-import java.io.InputStream;
 import java.util.Properties;
+
+import static util.ApplicationPropertyUtil.applicationProperty;
 
 public class HibernateUtil {
     private static SessionFactory sessionFactory;
@@ -21,15 +22,11 @@ public class HibernateUtil {
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
-                Properties cred_prop = new Properties();
-                InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream("hibernate.properties");
-                cred_prop.load(stream);
-
                 Properties prop = new Properties();
                 prop.setProperty(Environment.DRIVER, com.mysql.jdbc.Driver.class.getCanonicalName());
-                prop.setProperty(Environment.URL, "jdbc:mysql://" + cred_prop.get("host") + ":3306/minfin?useSSL=false");
-                prop.setProperty(Environment.USER, cred_prop.get("user").toString());
-                prop.setProperty(Environment.PASS, cred_prop.get("pass").toString());
+                prop.setProperty(Environment.URL, "jdbc:mysql://" + applicationProperty().get("sql.host") + ":3306/minfin?useSSL=false");
+                prop.setProperty(Environment.USER, applicationProperty().get("sql.user").toString());
+                prop.setProperty(Environment.PASS, applicationProperty().get("sql.pass").toString());
                 prop.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQL5Dialect.class.getCanonicalName());
                 prop.setProperty(Environment.USE_NEW_ID_GENERATOR_MAPPINGS, String.valueOf(false));
                 prop.setProperty(Environment.STATEMENT_BATCH_SIZE, STATEMENT_BATCH_SIZE + "");
