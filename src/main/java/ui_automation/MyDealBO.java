@@ -7,7 +7,7 @@ import orm.entity.deal.DealDAO;
 import java.util.Date;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
+import static ui_automation.Bank.LOCAL_DELTA_TIME_MS;
 
 public class MyDealBO extends BaseBO {
     public void saveResults(String url, Currency currency) {
@@ -15,7 +15,7 @@ public class MyDealBO extends BaseBO {
         Deal deal = new Deal();
         deal.setTime(time);
         deal.setUrl(url);
-        deal.setDate(new Date());
+        deal.setDate(new Date(new Date().getTime()+LOCAL_DELTA_TIME_MS));
         deal.setCurrencyRate(getMyCurrencyRate());
         deal.setCurrency(currency);
         deal.setSum(getMySum());

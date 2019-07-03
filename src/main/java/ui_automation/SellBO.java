@@ -25,7 +25,7 @@ public class SellBO extends MyDealBO {
     }
 
     public String getAverageSellByLatestDeal() {
-        System.exit(0);
+
         return "";
     }
 }
