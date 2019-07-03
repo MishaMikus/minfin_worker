@@ -5,9 +5,8 @@ import static com.codeborne.selenide.Selenide.$;
 public class CalculateBO extends BaseBO {
 
     public String getAverageSell() {
-        new SellBO().gotoSellPage();
-        String avSell = $(".au-status--group---wrapper.au-status--group").findAll(".au-mid-buysell").get(1).text();
-        return avSell.substring(avSell.indexOf(":") + 1, avSell.indexOf("грн")).trim();
+        return new SellBO().gotoSellPage().getAverageMinfinSell();
+        //return new SellBO().gotoSellPage().getAverageSellByLatestDeal();
     }
 
     public String getAverageDecreasedSell(int decreaseCoin) {

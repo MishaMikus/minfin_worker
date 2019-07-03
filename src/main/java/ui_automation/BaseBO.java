@@ -24,9 +24,9 @@ public class BaseBO {
         baseUrl = "https://minfin.com.ua";
         browser = "chrome";
         savePageSource = true;
-        headless = true;
         if (applicationPropertyGet("remote").equals("true")) {
             remote = " http://localhost:4444/wd/hub";
+            headless = true;
         }
     }
 

@@ -15,6 +15,9 @@ import static orm.entity.currency.CurrencyDAO.USD_CURRENCY;
 @Service
 public
 class DealTable {
+
+    private static final int TABLE_ROW_LIMIT = 10;
+
     public List<DealView> dealTable() {
         List<DealView> dealTable = new ArrayList<>();
         List<Deal> dealList = new DealDAO().findAll();
@@ -28,6 +31,7 @@ class DealTable {
             dealTable.add(dealView);
         }
         Collections.reverse(dealTable);
+        dealList.subList(0, dealList.size() > TABLE_ROW_LIMIT ? TABLE_ROW_LIMIT : dealList.size() - 1);
         return dealTable;
     }
 }

@@ -1,5 +1,6 @@
 package ui_automation;
 
+import static com.codeborne.selenide.Selenide.$;
 import static orm.entity.currency.CurrencyDAO.USD_CURRENCY;
 
 public class SellBO extends MyDealBO {
@@ -16,6 +17,16 @@ public class SellBO extends MyDealBO {
     SellBO gotoSellPage() {
         goToPath(url);
         return this;
+    }
+
+    public String getAverageMinfinSell() {
+        String avSell = $(".au-status--group---wrapper.au-status--group").findAll(".au-mid-buysell").get(1).text();
+        return avSell.substring(avSell.indexOf(":") + 1, avSell.indexOf("грн")).trim();
+    }
+
+    public String getAverageSellByLatestDeal() {
+        System.exit(0);
+        return "";
     }
 }
 
