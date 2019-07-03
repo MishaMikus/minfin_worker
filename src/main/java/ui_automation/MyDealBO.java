@@ -23,6 +23,7 @@ public class MyDealBO extends BaseBO {
         deal.setMsg(getMyMessage());
         deal.setPhone(getMyPhone());
         new DealDAO().save(deal);
+        ViberMinfinRestClient.getInstance().sendDealMessage(deal);
     }
 
     String getMyProposalTime() {

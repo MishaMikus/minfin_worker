@@ -26,7 +26,7 @@ class DealTable {
             DealView dealView = new DealView();
             dealView.setCourse(deal.getCurrencyRate());
             dealView.setDate(deal.getDate() + "");
-            dealView.setType(deal.getCurrency().equals(USD_CURRENCY) ? sellMark() : buyMark());
+            dealView.setType(deal.getCurrency().equals(USD_CURRENCY) ? SELL_MARK : BUY_MARK);
             dealView.setUsd(deal.getSum());
             dealTable.add(dealView);
         }
@@ -35,11 +35,6 @@ class DealTable {
         return dealTable;
     }
 
-    private String buyMark() {
-        return "<a href=\"https://minfin.com.ua/currency/auction/usd/buy/lvov/\">купую долар</a>";
-    }
-
-    private String sellMark() {
-        return "<a href=\"https://minfin.com.ua/currency/auction/usd/sell/lvov/\">продаю долар</a>";
-    }
+    public static final String SELL_MARK = "<a href=\"https://minfin.com.ua/currency/auction/usd/sell/lvov/\">продаю долар</a>";
+    public static final String BUY_MARK = "<a href=\"https://minfin.com.ua/currency/auction/usd/buy/lvov/\">купую долар</a>";
 }
