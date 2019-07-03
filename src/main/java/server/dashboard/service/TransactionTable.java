@@ -16,11 +16,10 @@ import java.util.List;
 public
 class TransactionTable {
 
-    private TransactionDAO transactionDAO = new TransactionDAO();
 
     public List<TransactionView> transactionTable() {
         List<TransactionView> transactionTable = new ArrayList<>();
-        List<Transaction> transactionList = transactionDAO.findAll();
+        List<Transaction> transactionList = TransactionDAO.getInstance().findAll();
         transactionList.sort(Comparator.comparing(Transaction::getDate));
         for (Transaction transaction : transactionList) {
             TransactionView transactionView = new TransactionView();
@@ -70,14 +69,14 @@ class TransactionTable {
             transaction.setChange_usd(usd_actionInteger);
             transaction.setDate(new Date());
 
-            if (transactionDAO.count() == 0) {
+            if (TransactionDAO.getInstance().count() == 0) {
                 transaction.setUah_before(0);
                 transaction.setUsd_before(0);
                 transaction.setUsd_after(usd_actionInteger);
                 transaction.setUah_after(uah_actionInteger);
             } else {
-                Integer sumUah = transactionDAO.sum("change_uah").intValue();
-                Integer sumUsd = transactionDAO.sum("change_usd").intValue();
+                Integer sumUah = TransactionDAO.getInstance().sum("change_uah").intValue();
+                Integer sumUsd = TransactionDAO.getInstance().sum("change_usd").intValue();
 
                 transaction.setUah_before(sumUah);
                 transaction.setUah_after(sumUah + uah_actionInteger);
@@ -86,7 +85,7 @@ class TransactionTable {
                 transaction.setUsd_after(sumUsd + usd_actionInteger);
             }
 
-            transactionDAO.save(transaction);
+            TransactionDAO.getInstance().save(transaction);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -102,17 +101,17 @@ class TransactionTable {
 
     private Double parseCourse(String course) {
         try {
-           return Double.parseDouble(course);
+            return Double.parseDouble(course);
         } catch (Exception e) {
-           return 0d;
+            return 0d;
         }
     }
 
     private TransactionType findTransactionType(String type) {
-        return new TransactionTypeDAO().findWhereEqual("name", type);
+        return TransactionTypeDAO.getInstance().findWhereEqual("name", type);
     }
 
     public void delete(Integer id) {
-        transactionDAO.deleteById(id);
+        TransactionDAO.getInstance().deleteById(id);
     }
 }

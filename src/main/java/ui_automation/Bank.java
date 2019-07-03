@@ -1,12 +1,15 @@
 package ui_automation;
 
+import orm.entity.transaction.TransactionDAO;
+
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import static util.ApplicationPropertyUtil.applicationPropertyGet;
 
 public class Bank {
-    public static final Long LOCAL_DELTA_TIME_MS=Integer.parseInt(applicationPropertyGet("time.delta.hours")) * 1000 * 60 * 60L;
+    public static final Long LOCAL_DELTA_TIME_MS = Integer.parseInt(applicationPropertyGet("time.delta.hours")) * 1000 * 60 * 60L;
+
     public int wantToSell() {
         String dealTime = new SellBO().gotoSellPage().getMyProposalTime();
         if (theTimeHasCome(dealTime)) {
@@ -38,14 +41,20 @@ public class Bank {
     }
 
     private int buyAmount() {
-        //TODO depends on CASSA
-        return 1000;
-        //return 0;
+        orm.entity.transaction.Transaction latestTransaction = TransactionDAO.getInstance().getLatest();
+        double rate = 25d;
+        if (latestTransaction != null) {
+            rate = latestTransaction.getCurrency_rate();
+        }
+        return (int) (Math.round((TransactionDAO.getInstance().sum("change_uah").intValue() / rate) / 1000d) * 1000d);
     }
 
     private int sellAmount() {
-        //TODO depends on CASSA
-        return 0;
-        //return 1000;
+        return Math.round(TransactionDAO.getInstance().sum("change_usd").intValue() / 1000) * 1000;
     }
+
+//    public static void main(String[] args) {
+//        System.out.println("new Bank().buyAmount() : "+new Bank().buyAmount());
+//        System.out.println("new Bank().sellAmount() : "+new Bank().sellAmount());
+//    }
 }

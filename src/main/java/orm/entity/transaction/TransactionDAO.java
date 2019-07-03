@@ -1,7 +1,8 @@
 package orm.entity.transaction;
 
 import orm.entity.GenericAbstractDAO;
-import orm.entity.deal.Deal;
+
+import java.util.Comparator;
 
 public class TransactionDAO extends GenericAbstractDAO<Transaction> {
 
@@ -13,5 +14,9 @@ public class TransactionDAO extends GenericAbstractDAO<Transaction> {
 
     public static TransactionDAO getInstance() {
         return INSTANCE;
+    }
+
+    public Transaction getLatest() {
+        return findAll().stream().max(Comparator.comparing(Transaction::getDate)).orElse(null);
     }
 }
