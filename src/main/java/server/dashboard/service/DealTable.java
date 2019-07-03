@@ -26,12 +26,20 @@ class DealTable {
             DealView dealView = new DealView();
             dealView.setCourse(deal.getCurrencyRate());
             dealView.setDate(deal.getDate() + "");
-            dealView.setType(deal.getCurrency().equals(USD_CURRENCY) ? "продаю долар" : "купую долар");
+            dealView.setType(deal.getCurrency().equals(USD_CURRENCY) ? sellMark() : buyMark());
             dealView.setUsd(deal.getSum());
             dealTable.add(dealView);
         }
         Collections.reverse(dealTable);
         dealTable = dealTable.subList(0, dealList.size() > TABLE_ROW_LIMIT ? TABLE_ROW_LIMIT : (dealList.size() - 1));
         return dealTable;
+    }
+
+    private String buyMark() {
+        return "<a href=\"https://minfin.com.ua/currency/auction/usd/buy/lvov/\">купую долар</a>";
+    }
+
+    private String sellMark() {
+        return "<a href=\"https://minfin.com.ua/currency/auction/usd/sell/lvov/\">продаю долар</a>";
     }
 }

@@ -5,7 +5,6 @@ import org.openqa.selenium.Alert;
 import static com.codeborne.selenide.Configuration.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static com.codeborne.selenide.WebDriverRunner.source;
 import static util.ApplicationPropertyUtil.applicationPropertyGet;
 
 public class BaseBO {
@@ -19,7 +18,7 @@ public class BaseBO {
         acceptAlert();
     }
 
-    public BaseBO() {
+    static {
         timeout = 10000;
         baseUrl = "https://minfin.com.ua";
         browser = "chrome";
@@ -27,8 +26,8 @@ public class BaseBO {
         if (applicationPropertyGet("remote").equals("true")) {
             remote = " http://localhost:4444/wd/hub";
             headless = true;
-            System.out.println("remote : "+remote);
-            System.out.println("headless : "+headless);
+            System.out.println("remote : " + remote);
+            System.out.println("headless : " + headless);
         }
     }
 
