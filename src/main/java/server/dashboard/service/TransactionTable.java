@@ -12,6 +12,8 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+import static ui_automation.Bank.LOCAL_DELTA_TIME_MS;
+
 @Service
 public
 class TransactionTable {
@@ -24,7 +26,14 @@ class TransactionTable {
         for (Transaction transaction : transactionList) {
             TransactionView transactionView = new TransactionView();
             transactionView.setDate(transaction.getDate() + "");
-            transactionView.setCourse(transaction.getCurrency_rate() + "");
+            double rate=0;
+            try{
+                rate=transaction.getCurrency_rate();
+            }catch (Exception e){
+
+            }
+
+            transactionView.setCourse(rate + "");
 
             String transactionString = transaction.getType().getFrom().getName() + "->" + transaction.getType().getTo().getName();
             if (transaction.getType().getFrom().getId() == transaction.getType().getTo().getId()) {
@@ -67,7 +76,7 @@ class TransactionTable {
             transaction.setCurrency_rate(courseDouble);
             transaction.setChange_uah(uah_actionInteger);
             transaction.setChange_usd(usd_actionInteger);
-            transaction.setDate(new Date());
+            transaction.setDate(new Date(new Date().getTime()+LOCAL_DELTA_TIME_MS));
 
             if (TransactionDAO.getInstance().count() == 0) {
                 transaction.setUah_before(0);

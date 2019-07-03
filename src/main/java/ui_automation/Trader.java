@@ -10,24 +10,28 @@ import static util.ApplicationPropertyUtil.applicationPropertyGet;
 public class Trader {
 
     public static void trade() {
-        if (new TradeStatusHelper().isActiveTrading()) {
-            System.out.println(new Date() + "==>>TRY to TRADE");
-            new LoginBO().login(applicationPropertyGet("minfin.user"), applicationPropertyGet("minfin.pass"));
+        try {
+            if (new TradeStatusHelper().isActiveTrading()) {
+                System.out.println(new Date() + "==>>TRY to TRADE");
+                new LoginBO().login(applicationPropertyGet("minfin.user"), applicationPropertyGet("minfin.pass"));
 
-            String address = applicationPropertyGet("minfin.address");
-            //sell
-            int wantToSellAmount = new Bank().wantToSell();
-            if (wantToSellAmount > 0) {
-                String course = new CalculateBO().getAverageDecreasedSell(1);
-                new SellBO().sell(wantToSellAmount + "", course, address);
-            }
+                String address = applicationPropertyGet("minfin.address");
+                //sell
+                int wantToSellAmount = new Bank().wantToSell();
+                if (wantToSellAmount > 0) {
+                    String course = new CalculateBO().getAverageDecreasedSell(1);
+                    new SellBO().sell(wantToSellAmount + "", course, address);
+                }
 
-            //buy
-            int wantToBuyAmount = new Bank().wantToBuy();
-            if (wantToBuyAmount > 0) {
-                String course = new CalculateBO().getAverageIncreasedBuy(1);
-                new BuyBO().buy(wantToBuyAmount + "", course, address);
+                //buy
+                int wantToBuyAmount = new Bank().wantToBuy();
+                if (wantToBuyAmount > 0) {
+                    String course = new CalculateBO().getAverageIncreasedBuy(1);
+                    new BuyBO().buy(wantToBuyAmount + "", course, address);
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         Selenide.close();
     }

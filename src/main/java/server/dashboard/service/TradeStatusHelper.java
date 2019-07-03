@@ -8,6 +8,7 @@ import server.dashboard.view.TradeStatusView;
 import java.util.Date;
 import java.util.List;
 
+import static ui_automation.Bank.LOCAL_DELTA_TIME_MS;
 import static ui_automation.Trader.deleteDeal;
 
 @Service
@@ -45,12 +46,13 @@ public class TradeStatusHelper {
     public void pushTradeButton() {
         System.out.println("pushTradeButton");
         TradeStatus latest = tradeStatusDAO.getLatestOpened();
+        Date now=new Date(new Date().getTime()+LOCAL_DELTA_TIME_MS);
         if (tradeStatusDAO.getLatestOpened() == null || latest.getEnd_date() != null) {
             //Start new Trading
-            tradeStatusDAO.save(new TradeStatus(new Date()));
+            tradeStatusDAO.save(new TradeStatus(now));
         } else {
             //Close trading
-            latest.setEnd_date(new Date());
+            latest.setEnd_date(now);
             tradeStatusDAO.update(latest);
             deleteDeal();
         }
