@@ -31,7 +31,7 @@ class DealTable {
             dealTable.add(dealView);
         }
         Collections.reverse(dealTable);
-        dealList.subList(0, dealList.size() > TABLE_ROW_LIMIT ? TABLE_ROW_LIMIT : dealList.size() - 1);
+        dealList.subList(0, dealList.size() > TABLE_ROW_LIMIT ? TABLE_ROW_LIMIT : (dealList.size() - 1));
         return dealTable;
     }
 }
