@@ -17,7 +17,8 @@ public class ApplicationPropertyUtil {
             properties.put("minfin.address", "Центр, вул. Франка, початок Франка і Зеленої");
             properties.put("remote", System.getProperty("remote", "false"));
             properties.put("time.delta.hours", System.getProperty("time.delta.hours", "0"));
-            System.out.println("Properties : " + properties.keySet());
+            System.out.println("properties.keySet() : " + properties.keySet());
+            System.out.println("properties.values() : " + properties.values());
         } catch (IOException e) {
             e.printStackTrace();
         }
