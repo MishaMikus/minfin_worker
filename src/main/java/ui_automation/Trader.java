@@ -28,8 +28,8 @@ public class Trader {
                 String course = new CalculateBO().getAverageIncreasedBuy(1);
                 new BuyBO().buy(wantToBuyAmount + "", course, address);
             }
-            Selenide.close();
         }
+        Selenide.close();
     }
 
     public static void deleteDeal() {
