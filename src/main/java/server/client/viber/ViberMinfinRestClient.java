@@ -21,10 +21,10 @@ public class ViberMinfinRestClient {
         return INSTANCE;
     }
 
-    public static void main(String[] args) {
-        Deal deal = DealDAO.getInstance().findAll().get((int) (DealDAO.getInstance().count() - 1));
-        getInstance().sendDealMessage(deal, new Bank().balanceUSD(), new Bank().balanceUAH());
-    }
+//    public static void main(String[] args) {
+//        Deal deal = DealDAO.getInstance().findAll().get((int) (DealDAO.getInstance().count() - 1));
+//        getInstance().sendDealMessage(deal, new Bank().balanceUSD(), new Bank().balanceUAH());
+//    }
 
     public void sendDealMessage(Deal deal, double usd, double uah) {
         ApacheRestClient apacheRestClient = new ApacheRestClient();
