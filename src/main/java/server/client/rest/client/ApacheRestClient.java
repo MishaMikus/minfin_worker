@@ -1,4 +1,4 @@
-package server.rest.rest.client;
+package server.client.rest.client;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.Header;
@@ -8,25 +8,23 @@ import org.apache.http.ProtocolException;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.RedirectStrategy;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.client.DefaultRedirectStrategy;
+import org.apache.http.impl.client.*;
 import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HttpContext;
-import server.rest.rest.model.RequestModel;
-import server.rest.rest.model.ResponseModel;
+import server.client.rest.model.RequestModel;
+import server.client.rest.model.ResponseModel;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -38,7 +36,7 @@ public class ApacheRestClient implements RestClient {
     @Override
     public ResponseModel call(RequestModel requestModel) {
         HttpEntityEnclosingRequestBase request = null;
-        DefaultHttpClient httpClient = null;
+        HttpClientBuilder httpClient = null;
         try {
             //METHOD
             request = new HttpEntityEnclosingRequestBase() {
@@ -63,11 +61,8 @@ public class ApacheRestClient implements RestClient {
 
             //BODY
             if (requestModel.getBody() != null) {
-                try {
-                    request.setEntity(new StringEntity(requestModel.getBody().toString()));
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
+                String charset=null==requestModel.getCharset()?"UTF-8":requestModel.getCharset();
+                request.setEntity(new StringEntity(requestModel.getBody().toString(),charset));
             }
 
 
@@ -84,9 +79,9 @@ public class ApacheRestClient implements RestClient {
             }
 
             //COOKIES
-            httpClient = new DefaultHttpClient();
+            httpClient = HttpClientBuilder.create();
             if (requestModel.getUseCookie()) {
-                httpClient.setCookieStore(makeCookieStore());
+                httpClient.disableCookieManagement();
             }
 
 
@@ -125,10 +120,11 @@ public class ApacheRestClient implements RestClient {
         //===========SEND======>>>====GET=RESPONSE===========
         HttpResponse response = null;
         ResponseModel responseModel = null;
+        HttpClientContext context = new HttpClientContext();
         Date start = new Date();
         try {
             if (httpClient != null) {
-                response = httpClient.execute(request);
+                response = httpClient.build().execute(request, context);
             }
             responseModel = new ResponseModel();
 
@@ -150,7 +146,8 @@ public class ApacheRestClient implements RestClient {
             responseModel.setResponseTime(new Date().getTime() - start.getTime());
 
             //RESPONSE COOKIES
-            responseModel.setCookiesMap(parseCookies(httpClient));
+
+            responseModel.setCookiesMap(parseCookies(context.getCookieStore()));
             if (requestModel.getUseCookie()) {
                 cookies.putAll(responseModel.getCookiesMap());
             }
@@ -185,10 +182,9 @@ public class ApacheRestClient implements RestClient {
         return headerMap;
     }
 
-    private Map<String, String> parseCookies(DefaultHttpClient httpClient) {
+    private Map<String, String> parseCookies(CookieStore cookieStore) {
         Map<String, String> cookiesMap = new HashMap<>();
-
-        for (Cookie cookie : httpClient.getCookieStore().getCookies()) {
+        for (Cookie cookie : cookieStore.getCookies()) {
             cookiesMap.put(cookie.getName(), cookie.getValue());
         }
         return cookiesMap;

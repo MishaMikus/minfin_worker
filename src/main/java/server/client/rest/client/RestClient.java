@@ -1,7 +1,7 @@
-package server.rest.rest.client;
+package server.client.rest.client;
 
-import server.rest.rest.model.RequestModel;
-import server.rest.rest.model.ResponseModel;
+import server.client.rest.model.RequestModel;
+import server.client.rest.model.ResponseModel;
 
 import java.util.HashMap;
 import java.util.Map;

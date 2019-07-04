@@ -1,4 +1,4 @@
-package server.rest.rest.model;
+package server.client.rest.model;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

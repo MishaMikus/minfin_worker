@@ -1,4 +1,4 @@
-package server.rest;
+package server.client;
 
 import org.springframework.http.HttpStatus;
 import server.BaseController;

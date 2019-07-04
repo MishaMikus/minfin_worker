@@ -41,17 +41,26 @@ public class Bank {
     }
 
     private int buyAmount() {
-        orm.entity.transaction.Transaction latestTransaction = TransactionDAO.getInstance().getLatest();
-        double rate = 25d;
-        if (latestTransaction != null) {
-            rate = latestTransaction.getCurrency_rate();
-        }
-        return (int) (Math.round((TransactionDAO.getInstance().sum("change_uah").intValue() / rate) / 1000d) * 1000d);
+        return (int) (Math.round((balanceUAH() / TransactionDAO.getInstance().getLatest().getCurrency_rate()) / 1000d) * 1000d);
     }
 
     private int sellAmount() {
-        return Math.round(TransactionDAO.getInstance().sum("change_usd").intValue() / 1000) * 1000;
+        return Math.round(balanceUSD() / 1000) * 1000;
     }
+
+
+    public int balanceUAH() {
+        return balance("change_uah");
+    }
+
+    public int balanceUSD() {
+        return balance("change_usd");
+    }
+
+    private int balance(String wallet) {
+        return TransactionDAO.getInstance().sum(wallet).intValue();
+    }
+
 
 //    public static void main(String[] args) {
 //        System.out.println("new Bank().buyAmount() : "+new Bank().buyAmount());

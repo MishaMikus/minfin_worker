@@ -1,4 +1,4 @@
-package server.rest.rest.model;
+package server.client.rest.model;
 
 import java.io.File;
 import java.util.HashMap;
@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class RequestModel {
+    private String charset;
     private Boolean urlEncodingEnabled;
     private String path;
     private String contentType;
@@ -25,6 +26,14 @@ public class RequestModel {
     private Boolean useCookie = true;//default
     private Boolean responseIfErrorLog = true;
     private Boolean followRedirects;
+
+    public String getCharset() {
+        return charset;
+    }
+
+    public void setCharset(String charset) {
+        this.charset = charset;
+    }
 
     public String getBodyEncoding() {
         return bodyEncoding;

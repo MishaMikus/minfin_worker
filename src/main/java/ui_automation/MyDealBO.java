@@ -3,6 +3,7 @@ package ui_automation;
 import orm.entity.currency.Currency;
 import orm.entity.deal.Deal;
 import orm.entity.deal.DealDAO;
+import server.client.viber.ViberMinfinRestClient;
 
 import java.util.Date;
 
@@ -23,7 +24,7 @@ public class MyDealBO extends BaseBO {
         deal.setMsg(getMyMessage());
         deal.setPhone(getMyPhone());
         new DealDAO().save(deal);
-        ViberMinfinRestClient.getInstance().sendDealMessage(deal);
+        ViberMinfinRestClient.getInstance().sendDealMessage(deal, new Bank().balanceUSD(), new Bank().balanceUAH());
     }
 
     String getMyProposalTime() {
