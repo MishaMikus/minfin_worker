@@ -51,12 +51,12 @@ public class ViberMinfinRestClient {
         return INSTANCE;
     }
 
-    public static void main(String[] args) {
-        Deal deal = DealDAO.getInstance().findAll().get((int) (DealDAO.getInstance().count() - 1));
-        getInstance().sendStartMessage(new Bank().balanceUSD(), new Bank().balanceUAH());
-        getInstance().sendDealMessage(deal, new Bank().balanceUSD(), new Bank().balanceUAH());
-        getInstance().sendEndMessage(new Bank().balanceUSD(), new Bank().balanceUAH());
-    }
+//    public static void main(String[] args) {
+//        Deal deal = DealDAO.getInstance().findAll().get((int) (DealDAO.getInstance().count() - 1));
+//        getInstance().sendStartMessage(new Bank().balanceUSD(), new Bank().balanceUAH());
+//        getInstance().sendDealMessage(deal, new Bank().balanceUSD(), new Bank().balanceUAH());
+//        getInstance().sendEndMessage(new Bank().balanceUSD(), new Bank().balanceUAH());
+//    }
 
     public void sendEndMessage(int balanceUSD, int balanceUAH) {
         for (String receiver : receiverArray) {
