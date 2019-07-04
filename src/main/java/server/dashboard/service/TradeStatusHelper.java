@@ -3,7 +3,9 @@ package server.dashboard.service;
 import org.springframework.stereotype.Service;
 import orm.entity.trade.TradeStatus;
 import orm.entity.trade.TradeStatusDAO;
+import server.client.viber.ViberMinfinRestClient;
 import server.dashboard.view.TradeStatusView;
+import ui_automation.Bank;
 
 import java.util.Date;
 import java.util.List;
@@ -46,15 +48,17 @@ public class TradeStatusHelper {
     public void pushTradeButton() {
         System.out.println("pushTradeButton");
         TradeStatus latest = tradeStatusDAO.getLatestOpened();
-        Date now=new Date(new Date().getTime()+LOCAL_DELTA_TIME_MS);
+        Date now = new Date(new Date().getTime() + LOCAL_DELTA_TIME_MS);
         if (tradeStatusDAO.getLatestOpened() == null || latest.getEnd_date() != null) {
             //Start new Trading
             tradeStatusDAO.save(new TradeStatus(now));
+            ViberMinfinRestClient.getInstance().sendStartMessage(new Bank().balanceUSD(), new Bank().balanceUAH());
         } else {
             //Close trading
             latest.setEnd_date(now);
             tradeStatusDAO.update(latest);
             deleteDeal();
+            ViberMinfinRestClient.getInstance().sendEndMessage(new Bank().balanceUSD(), new Bank().balanceUAH());
         }
     }
 
