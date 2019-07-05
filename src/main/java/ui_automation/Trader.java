@@ -1,15 +1,29 @@
 package ui_automation;
 
 import com.codeborne.selenide.Selenide;
+import orm.entity.deal.Deal;
 import server.dashboard.service.TradeStatusHelper;
 
 import java.util.Date;
+import java.util.List;
 
 import static util.ApplicationPropertyUtil.applicationPropertyGet;
 
 public class Trader {
 
+//    public static void main(String[] args) {
+//        check();
+//    }
+
+    public static void check() {
+        new LoginBO().login(applicationPropertyGet("minfin.user"), applicationPropertyGet("minfin.pass"));
+        List<Deal> myDealList = new MyDealBO().updateMyDealList();
+        System.out.println(myDealList);
+    }
+
+
     public static void trade() {
+        check();
         try {
             if (new TradeStatusHelper().isActiveTrading()) {
                 System.out.println(new Date() + "==>>TRY to TRADE");

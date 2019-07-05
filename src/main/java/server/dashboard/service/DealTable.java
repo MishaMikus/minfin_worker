@@ -27,6 +27,8 @@ class DealTable {
             dealView.setCourse(deal.getCurrencyRate());
             dealView.setDate(deal.getDate() + "");
             dealView.setType(deal.getCurrency().equals(USD_CURRENCY) ? SELL_MARK : BUY_MARK);
+            dealView.setViews(deal.getWatchCount() + "");
+            dealView.setStatus(null==deal.getActive()||!deal.getActive()?"закрито":"відкрито");
             dealView.setUsd(deal.getSum());
             dealTable.add(dealView);
         }

@@ -32,6 +32,11 @@ public class Deal {
     @Column
     private String msg;//<div class="au-msg-wrapper js-au-msg-wrapper">Сихів_Довженка 2 ,целиком, Можна частинами, Можна більше</div>
 
+    @Column
+    private Integer watchCount;
+    @Column
+    private Boolean active;
+
 
     @Override
     public String toString() {
@@ -40,29 +45,15 @@ public class Deal {
                 ", url='" + url + '\'' +
                 ", minfin_id='" + minfin_id + '\'' +
                 ", time='" + time + '\'' +
-                ", date='" + date + '\'' +
+                ", date=" + date +
                 ", currencyRate='" + currencyRate + '\'' +
                 ", sum='" + sum + '\'' +
-                ", currency='" + currency + '\'' +
+                ", currency=" + currency +
                 ", phone='" + phone + '\'' +
                 ", msg='" + msg + '\'' +
+                ", watchCount=" + watchCount +
+                ", active=" + active +
                 '}';
-    }
-
-    public Currency getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(Currency currency) {
-        this.currency = currency;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public Integer getId() {
@@ -97,6 +88,14 @@ public class Deal {
         this.time = time;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public String getCurrencyRate() {
         return currencyRate;
     }
@@ -113,6 +112,13 @@ public class Deal {
         this.sum = sum;
     }
 
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
 
     public String getPhone() {
         return phone;
@@ -128,5 +134,21 @@ public class Deal {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public Integer getWatchCount() {
+        return watchCount;
+    }
+
+    public void setWatchCount(Integer watchCount) {
+        this.watchCount = watchCount;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

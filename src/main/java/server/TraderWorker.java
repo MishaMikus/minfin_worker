@@ -16,4 +16,5 @@ public class TraderWorker {
     private void execute() {
         scheduler.scheduleAtFixedRate(Trader::trade, TIME_DELTA);
     }
+
 }

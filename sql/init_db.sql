@@ -12,6 +12,8 @@ CREATE TABLE IF NOT EXISTS `minfin`.`deal`
     `currency`     INT          NOT NULL,
     `phone`        VARCHAR(45)  NULL,
     `msg`          VARCHAR(255) NULL,
+    `watchCount`   INT          NULL,
+    `active`       BOOLEAN      NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -32,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `minfin`.`transaction`
 
 CREATE TABLE IF NOT EXISTS `minfin`.`trade_status`
 (
-    `id`    INT      NOT NULL AUTO_INCREMENT,
+    `id`         INT      NOT NULL AUTO_INCREMENT,
     `start_date` DATETIME NULL,
     `end_date`   DATETIME NULL,
     PRIMARY KEY (`id`)
@@ -55,9 +57,9 @@ VALUES ('2', 'uah', '₴');
 DROP TABLE `minfin`.`transaction_type`;
 CREATE TABLE `minfin`.`transaction_type`
 (
-    `id`   INT NOT NULL AUTO_INCREMENT,
-    `from` INT NULL,
-    `to`   INT NULL,
+    `id`   INT         NOT NULL AUTO_INCREMENT,
+    `from` INT         NULL,
+    `to`   INT         NULL,
     `name` VARCHAR(45) NULL,
     PRIMARY KEY (`id`)
 );

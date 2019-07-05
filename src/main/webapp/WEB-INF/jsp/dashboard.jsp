@@ -100,6 +100,8 @@ ${tradeStatus.message}
         <th>курс (грн за 1 дол)</th>
         <th>тип</th>
         <th>кількість</th>
+        <th>переглядів</th>
+        <th>статус</th>
     </tr>
 
     <c:forEach items="${dealTable}" var="dealView">
@@ -108,6 +110,8 @@ ${tradeStatus.message}
             <td>${dealView.course}</td>
             <td>${dealView.type}</td>
             <td>${dealView.usd}</td>
+            <td>${dealView.views}</td>
+            <td>${dealView.status}</td>
         </tr>
     </c:forEach>
 </table>
