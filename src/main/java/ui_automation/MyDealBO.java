@@ -23,15 +23,13 @@ public class MyDealBO extends BaseBO {
         deal.setUrl(url);
         deal.setDate(new Date(new Date().getTime() + LOCAL_DELTA_TIME_MS));
         deal.setCurrencyRate(getMyCurrencyRate());
-        if (deal.getCurrencyRate() != null) {
-            deal.setCurrency(currency);
-            deal.setSum(getMySum());
-            deal.setMinfin_id(getMyMinfinId());
-            deal.setMsg(getMyMessage());
-            deal.setPhone(getMyPhone());
-            new DealDAO().save(deal);
-            ViberMinfinRestClient.getInstance().sendDealMessage(deal, new Bank().balanceUSD(), new Bank().balanceUAH());
-        }
+        deal.setCurrency(currency);
+        deal.setSum(getMySum());
+        deal.setMinfin_id(getMyMinfinId());
+        deal.setMsg(getMyMessage());
+        deal.setPhone(getMyPhone());
+        new DealDAO().save(deal);
+        ViberMinfinRestClient.getInstance().sendDealMessage(deal, new Bank().balanceUSD(), new Bank().balanceUAH());
     }
 
     String getMyProposalTime() {
