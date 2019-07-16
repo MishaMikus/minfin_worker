@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerA
 import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -25,9 +26,8 @@ import java.util.HashMap;
 })
 @ComponentScan(basePackages = {"server"})
 @Configuration
-public class SpringBootApplication {
+public class SpringBootApplication extends SpringBootServletInitializer {
 
-    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(SpringBootApplication.class);
 

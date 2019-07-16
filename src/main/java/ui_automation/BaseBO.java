@@ -32,6 +32,7 @@ public class BaseBO {
     }
 
     void goToPath(String path) {
+        //GOTO PAGE : https://minfin.com.ua/login
         System.out.println("GOTO PAGE : " + baseUrl + path);
         open(path);
     }
