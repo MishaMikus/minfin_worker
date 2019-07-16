@@ -6,7 +6,6 @@ import orm.entity.deal.Deal;
 import orm.entity.deal.DealDAO;
 import server.client.viber.ViberMinfinRestClient;
 
-import javax.persistence.Column;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,13 +23,15 @@ public class MyDealBO extends BaseBO {
         deal.setUrl(url);
         deal.setDate(new Date(new Date().getTime() + LOCAL_DELTA_TIME_MS));
         deal.setCurrencyRate(getMyCurrencyRate());
-        deal.setCurrency(currency);
-        deal.setSum(getMySum());
-        deal.setMinfin_id(getMyMinfinId());
-        deal.setMsg(getMyMessage());
-        deal.setPhone(getMyPhone());
-        new DealDAO().save(deal);
-        ViberMinfinRestClient.getInstance().sendDealMessage(deal, new Bank().balanceUSD(), new Bank().balanceUAH());
+        if (deal.getCurrencyRate() != null) {
+            deal.setCurrency(currency);
+            deal.setSum(getMySum());
+            deal.setMinfin_id(getMyMinfinId());
+            deal.setMsg(getMyMessage());
+            deal.setPhone(getMyPhone());
+            new DealDAO().save(deal);
+            ViberMinfinRestClient.getInstance().sendDealMessage(deal, new Bank().balanceUSD(), new Bank().balanceUAH());
+        }
     }
 
     String getMyProposalTime() {
@@ -56,7 +57,9 @@ public class MyDealBO extends BaseBO {
     }
 
     private String getMyCurrencyRate() {
-        return $(".au-delete-deal.js-au-delete-deal").parent().findAll(".au-deal-currency").get(0).text();
+        if ($(".au-delete-deal.js-au-delete-deal").isDisplayed()) {
+            return $(".au-delete-deal.js-au-delete-deal").parent().findAll(".au-deal-currency").get(0).text();
+        } else return null;
     }
 
     public List<Deal> updateMyDealList() {
@@ -84,7 +87,7 @@ public class MyDealBO extends BaseBO {
                 deal.setMsg(dealTad.findAll(".au-deal-msg").get(0).text());
                 deal.setDate(new Date());
                 deal.setPhone("MyPhone");
-                System.out.println("deal.setCurrency : "+sum.split("\n")[0]);
+                System.out.println("deal.setCurrency : " + sum.split("\n")[0]);
                 deal.setCurrency(sum.split("\n")[0].equals("Продам") ? USD_CURRENCY : UAH_CURRENCY);
                 DealDAO.getInstance().save(deal);
                 res.add(deal);
