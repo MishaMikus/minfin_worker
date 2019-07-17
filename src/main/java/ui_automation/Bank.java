@@ -31,7 +31,7 @@ public class Bank {
         long currentTimeMS = LOCAL_DELTA_TIME_MS + Integer.parseInt(currentTime.split(":")[0]) * 60 * 60 * 1000L + Integer.parseInt(currentTime.split(":")[1]) * 60 * 1000L;
         long timeElapsed = (currentTimeMS - dealTimeMS);
         System.out.println("timeElapsed MS : " + timeElapsed);
-        boolean res = timeElapsed > (DEAL_LIFE_TIME_MS * 60 * 1000);
+        boolean res = timeElapsed > DEAL_LIFE_TIME_MS;
         System.out.println("theTimeHasCome : " + res);
         return res;
     }
