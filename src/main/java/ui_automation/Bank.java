@@ -9,9 +9,9 @@ import static util.ApplicationPropertyUtil.applicationPropertyGet;
 
 public class Bank {
     public static final Long LOCAL_DELTA_TIME_MS = Integer.parseInt(applicationPropertyGet("time.delta.hours")) * 1000 * 60 * 60L;
-    public static final Long DEAL_FIFE_TIME_MS = Integer.parseInt(applicationPropertyGet("deal.life.lime.minutes")) * 1000  * 60L;
+    private static final Long DEAL_LIFE_TIME_MS = Integer.parseInt(applicationPropertyGet("deal.life.lime.minutes")) * 1000 * 60L;
 
-    public int wantToSell() {
+    int wantToSell() {
         String dealTime = new SellBO().gotoSellPage().getMyProposalTime();
         if (theTimeHasCome(dealTime)) {
             return sellAmount();
@@ -29,8 +29,11 @@ public class Bank {
         }
 
         long currentTimeMS = LOCAL_DELTA_TIME_MS + Integer.parseInt(currentTime.split(":")[0]) * 60 * 60 * 1000L + Integer.parseInt(currentTime.split(":")[1]) * 60 * 1000L;
-
-        return (currentTimeMS - dealTimeMS) > (DEAL_FIFE_TIME_MS * 60 * 1000);
+        long timeElapsed = (currentTimeMS - dealTimeMS);
+        System.out.println("timeElapsed MS : " + timeElapsed);
+        boolean res = timeElapsed > (DEAL_LIFE_TIME_MS * 60 * 1000);
+        System.out.println("theTimeHasCome : " + res);
+        return res;
     }
 
 
