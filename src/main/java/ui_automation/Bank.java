@@ -9,6 +9,7 @@ import static util.ApplicationPropertyUtil.applicationPropertyGet;
 
 public class Bank {
     public static final Long LOCAL_DELTA_TIME_MS = Integer.parseInt(applicationPropertyGet("time.delta.hours")) * 1000 * 60 * 60L;
+    public static final Long DEAL_FIFE_TIME_MS = Integer.parseInt(applicationPropertyGet("deal.life.lime.minutes")) * 1000  * 60L;
 
     public int wantToSell() {
         String dealTime = new SellBO().gotoSellPage().getMyProposalTime();
@@ -29,7 +30,7 @@ public class Bank {
 
         long currentTimeMS = LOCAL_DELTA_TIME_MS + Integer.parseInt(currentTime.split(":")[0]) * 60 * 60 * 1000L + Integer.parseInt(currentTime.split(":")[1]) * 60 * 1000L;
 
-        return (currentTimeMS - dealTimeMS) > (16 * 60 * 1000);
+        return (currentTimeMS - dealTimeMS) > (DEAL_FIFE_TIME_MS * 60 * 1000);
     }
 
 

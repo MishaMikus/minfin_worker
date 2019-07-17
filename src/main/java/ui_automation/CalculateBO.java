@@ -32,6 +32,7 @@ public class CalculateBO extends BaseBO {
     private String getAverageBuy() {
         new BuyBO().gotoBuyPage();
         String avBuy = $(".au-status--group---wrapper.au-status--group").findAll(".au-mid-buysell").get(0).text();
+        System.out.println("avBuy : "+avBuy);
         return avBuy.substring(avBuy.indexOf(":") + 1, avBuy.indexOf("грн")).trim();
     }
 }
