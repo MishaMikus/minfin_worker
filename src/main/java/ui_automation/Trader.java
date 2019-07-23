@@ -16,9 +16,13 @@ public class Trader {
 //    }
 
     public static void check() {
-        new LoginBO().login(applicationPropertyGet("minfin.user"), applicationPropertyGet("minfin.pass"));
-        List<Deal> myDealList = new MyDealBO().updateMyDealList();
-        System.out.println(myDealList);
+        try {
+            new LoginBO().login(applicationPropertyGet("minfin.user"), applicationPropertyGet("minfin.pass"));
+            List<Deal> myDealList = new MyDealBO().updateMyDealList();
+            System.out.println(myDealList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
