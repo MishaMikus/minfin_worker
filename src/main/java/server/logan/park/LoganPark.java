@@ -177,6 +177,8 @@ public class LoganPark extends BaseController {
     private static final SimpleDateFormat SDF_DAY_YEAR = new SimpleDateFormat("dd.MM.yyyy");
 
     private String dayLabel(Date start, Date end) {
+        System.out.println(start);
+        System.out.println(end);
         if (start.getTime() / 1000 / 60 / 60 / 24 != end.getTime() / 1000 / 60 / 60 / 24) {
             return normalizeUTF_UTF("ніч з") +" "+ SDF_DAY.format(start) + " "+normalizeUTF_UTF("по")+" " + SDF_DAY.format(end);
         } else return normalizeUTF_UTF("день") +" " + SDF_DAY_YEAR.format(start);
