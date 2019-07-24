@@ -101,7 +101,7 @@ public class LoganPark extends BaseController {
                         "</tr>");
         for (String driver : driverMap.keySet()) {
             List<List<Date>> dateRange = calculateDateRange(driverMap.get(driver));
-            if (dateRange != null) {
+            if (dateRange != null && dateRange.size() > 1) {
                 for (List<Date> range : dateRange) {
 
                     Date start = range.get(0);
@@ -180,8 +180,8 @@ public class LoganPark extends BaseController {
         System.out.println(start);
         System.out.println(end);
         if (start.getTime() / 1000 / 60 / 60 / 24 != end.getTime() / 1000 / 60 / 60 / 24) {
-            return normalizeUTF_UTF("ніч з") +" "+ SDF_DAY.format(start) + " "+normalizeUTF_UTF("по")+" " + SDF_DAY.format(end);
-        } else return normalizeUTF_UTF("день") +" " + SDF_DAY_YEAR.format(start);
+            return normalizeUTF_UTF("ніч з") + " " + SDF_DAY.format(start) + " " + normalizeUTF_UTF("по") + " " + SDF_DAY.format(end);
+        } else return normalizeUTF_UTF("день") + " " + SDF_DAY_YEAR.format(start);
     }
 
     private Map<Date, List<Object>> getRangeMap(Date start, Date end, Map<Date, List<Object>> dateListMap) {
