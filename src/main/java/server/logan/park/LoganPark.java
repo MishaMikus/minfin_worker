@@ -177,11 +177,14 @@ public class LoganPark extends BaseController {
     private static final SimpleDateFormat SDF_DAY_YEAR = new SimpleDateFormat("dd.MM.yyyy");
 
     private String dayLabel(Date start, Date end) {
-        if (start == null) start = new Date();
-        if (end == null) end = new Date();
-        if (start.getTime() / 1000 / 60 / 60 / 24 != end.getTime() / 1000 / 60 / 60 / 24) {
-            return normalizeUTF_UTF("ніч з") + " " + SDF_DAY.format(start) + " " + normalizeUTF_UTF("по") + " " + SDF_DAY.format(end);
-        } else return normalizeUTF_UTF("день") + " " + SDF_DAY_YEAR.format(start);
+        try {
+            if (start.getTime() / 1000 / 60 / 60 / 24 != end.getTime() / 1000 / 60 / 60 / 24) {
+                return normalizeUTF_UTF("ніч з") + " " + SDF_DAY.format(start) + " " + normalizeUTF_UTF("по") + " " + SDF_DAY.format(end);
+            } else return normalizeUTF_UTF("день") + " " + SDF_DAY_YEAR.format(start);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "dayLabelERROR";
     }
 
     private Map<Date, List<Object>> getRangeMap(Date start, Date end, Map<Date, List<Object>> dateListMap) {
