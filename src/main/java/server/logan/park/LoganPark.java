@@ -106,7 +106,7 @@ public class LoganPark extends BaseController {
 
                     Date start = range.get(0);
                     Date end = range.get(1);
-
+                    System.out.println(normalizeUTF_UTF(driver) + " " +dateRange);
                     String workoutName = normalizeUTF_UTF(driver) + " " + dayLabel(start, end);
 
                     Map<Date, List<Object>> rangeMap = getRangeMap(start, end, driverMap.get(driver));
@@ -177,14 +177,9 @@ public class LoganPark extends BaseController {
     private static final SimpleDateFormat SDF_DAY_YEAR = new SimpleDateFormat("dd.MM.yyyy");
 
     private String dayLabel(Date start, Date end) {
-        try {
             if (start.getTime() / 1000 / 60 / 60 / 24 != end.getTime() / 1000 / 60 / 60 / 24) {
                 return normalizeUTF_UTF("ніч з") + " " + SDF_DAY.format(start) + " " + normalizeUTF_UTF("по") + " " + SDF_DAY.format(end);
             } else return normalizeUTF_UTF("день") + " " + SDF_DAY_YEAR.format(start);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "dayLabelERROR";
     }
 
     private Map<Date, List<Object>> getRangeMap(Date start, Date end, Map<Date, List<Object>> dateListMap) {
