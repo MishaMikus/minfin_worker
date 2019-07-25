@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -83,6 +84,10 @@ public class LoganPark extends BaseController {
                 .append("</th>" +
 
                         "<th>")
+                .append(normalizeUTF_UTF("поїздок"))
+                .append("</th>" +
+
+                        "<th>")
                 .append(normalizeUTF_UTF("загалом"))
                 .append("</th>" +
 
@@ -100,17 +105,23 @@ public class LoganPark extends BaseController {
 
                         "</tr>");
         for (String driver : driverMap.keySet()) {
+
             List<List<Date>> dateRange = calculateDateRange(driverMap.get(driver));
             if (dateRange != null && dateRange.size() > 1) {
+                stringBuilder
+                        .append("<tr>")
+                        .append("<td colspan=6>")
+                        .append(normalizeUTF_UTF(driver))
+                        .append("</td>")
+                        .append("</tr>");
                 for (List<Date> range : dateRange) {
 
                     Date start = range.get(0);
                     Date end = range.get(1);
-                    System.out.println(normalizeUTF_UTF(driver) + " " +dateRange);
-                    String workoutName = normalizeUTF_UTF(driver) + " " + dayLabel(start, end);
+                    String workoutName =  dayLabel(start, end);
 
                     Map<Date, List<Object>> rangeMap = getRangeMap(start, end, driverMap.get(driver));
-
+                    Integer count = getTripCount(rangeMap);
                     Long cash = getCash(rangeMap);
                     Long amount = getAmount(rangeMap);
                     Long sallary = Math.round(amount.doubleValue() * 0.35);
@@ -121,9 +132,12 @@ public class LoganPark extends BaseController {
                             .append("</td><td>")
 
                             .append(" ")
-                            .append(amount)
+                            .append(count)
                             .append("</td><td>")
 
+                            .append(" ")
+                            .append(amount)
+                            .append("</td><td>")
 
                             .append(" ")
                             .append(cash)
@@ -145,13 +159,18 @@ public class LoganPark extends BaseController {
         return stringBuilder.toString();
     }
 
-    private String normalizeUTF_UTF(String driver) {
-        try {
-            return new String(driver.getBytes("UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+    private Integer getTripCount(Map<Date, List<Object>> rangeMap) {
+        Integer count = 0;
+        for (List<Object> trip : rangeMap.values()) {
+            if ("trip".equals(trip.get(1))) {
+                count++;
+            }
         }
-        return null;
+        return count;
+    }
+
+    private String normalizeUTF_UTF(String driver) {
+        return new String(driver.getBytes(StandardCharsets.UTF_8));
     }
 
 
@@ -177,9 +196,9 @@ public class LoganPark extends BaseController {
     private static final SimpleDateFormat SDF_DAY_YEAR = new SimpleDateFormat("dd.MM.yyyy");
 
     private String dayLabel(Date start, Date end) {
-            if (start.getTime() / 1000 / 60 / 60 / 24 != end.getTime() / 1000 / 60 / 60 / 24) {
-                return normalizeUTF_UTF("ніч з") + " " + SDF_DAY.format(start) + " " + normalizeUTF_UTF("по") + " " + SDF_DAY.format(end);
-            } else return normalizeUTF_UTF("день") + " " + SDF_DAY_YEAR.format(start);
+        if (start.getTime() / 1000 / 60 / 60 / 24 != end.getTime() / 1000 / 60 / 60 / 24) {
+            return normalizeUTF_UTF("ніч з") + " " + SDF_DAY.format(start) + " " + normalizeUTF_UTF("по") + " " + SDF_DAY.format(end);
+        } else return normalizeUTF_UTF("день") + " " + SDF_DAY_YEAR.format(start);
     }
 
     private Map<Date, List<Object>> getRangeMap(Date start, Date end, Map<Date, List<Object>> dateListMap) {
@@ -215,7 +234,7 @@ public class LoganPark extends BaseController {
         }
         List<Date> currentRange = new ArrayList<>();
         currentRange.add(start);
-        currentRange.add(end);
+        currentRange.add(end == null ? start : end);
         res.add(currentRange);
         return res;
     }
