@@ -16,7 +16,7 @@ ${paymentView.name}
 ${paymentView.report}
 
 </c:if>
-<a href="https://partners.uber.com/p3/fleet-manager/payments">https://partners.uber.com/p3/fleet-manager/payments</a>
-<img src="${pageContext.request.contextPath}/resources/images/instruction.png" alt="instruction: 1. save payment fo csv file; 2. upload file">
+<a href="https://partners.uber.com/p3/fleet-manager/payments">https://partners.uber.com/p3/fleet-manager/payments</a><br>
+<img src="${pageContext.request.contextPath}/resources/images/instruction.png" alt="instruction: 1. save payment to csv file; 2. upload file">
 </body>
 </html>
