@@ -31,7 +31,6 @@ public class SpringBootApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(SpringBootApplication.class);
-
         HashMap<String, Object> props = new HashMap<>();
         props.put("server.port", 8080);
         springApplication.setDefaultProperties(props);
@@ -56,8 +55,9 @@ public class SpringBootApplication extends SpringBootServletInitializer {
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver multipartResolver() {
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(100000);
+        multipartResolver.setMaxUploadSize(-1);
         return multipartResolver;
     }
+
 }
 
