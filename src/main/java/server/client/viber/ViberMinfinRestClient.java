@@ -2,11 +2,9 @@ package server.client.viber;
 
 import org.json.JSONObject;
 import orm.entity.deal.Deal;
-import orm.entity.deal.DealDAO;
 import server.client.rest.client.ApacheRestClient;
 import server.client.rest.model.RequestModel;
 import server.client.viber.model.ViberMessage;
-import ui_automation.Bank;
 
 import java.util.Random;
 

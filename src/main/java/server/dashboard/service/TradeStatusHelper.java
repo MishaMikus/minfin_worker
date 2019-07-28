@@ -5,13 +5,13 @@ import orm.entity.trade.TradeStatus;
 import orm.entity.trade.TradeStatusDAO;
 import server.client.viber.ViberMinfinRestClient;
 import server.dashboard.view.TradeStatusView;
-import ui_automation.Bank;
+import ui_automation.minfin.Bank;
 
 import java.util.Date;
 import java.util.List;
 
-import static ui_automation.Bank.LOCAL_DELTA_TIME_MS;
-import static ui_automation.Trader.deleteDeal;
+import static ui_automation.minfin.Bank.LOCAL_DELTA_TIME_MS;
+import static ui_automation.minfin.Trader.deleteDeal;
 
 @Service
 public class TradeStatusHelper {

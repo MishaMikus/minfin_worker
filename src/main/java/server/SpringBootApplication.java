@@ -30,10 +30,7 @@ import java.util.HashMap;
 public class SpringBootApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        SpringApplication springApplication = new SpringApplication(SpringBootApplication.class);
-        HashMap<String, Object> props = new HashMap<>();
-        springApplication.setDefaultProperties(props);
-        springApplication.run(args);
+        new SpringApplication(SpringBootApplication.class).run(args);
     }
 
     @Bean

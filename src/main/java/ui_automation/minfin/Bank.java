@@ -1,4 +1,4 @@
-package ui_automation;
+package ui_automation.minfin;
 
 import orm.entity.transaction.TransactionDAO;
 

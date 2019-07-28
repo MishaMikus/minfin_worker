@@ -1,4 +1,4 @@
-package ui_automation;
+package ui_automation.minfin;
 
 import static com.codeborne.selenide.Selenide.$;
 

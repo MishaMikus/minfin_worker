@@ -4,6 +4,15 @@ public class PaymentView {
     private String content;
     private String name;
     private String report;
+    private String allDataTable;
+
+    public String getAllDataTable() {
+        return allDataTable;
+    }
+
+    public void setAllDataTable(String allDataTable) {
+        this.allDataTable = allDataTable;
+    }
 
     public String getReport() {
         return report;

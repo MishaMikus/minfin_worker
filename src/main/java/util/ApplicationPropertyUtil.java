@@ -31,4 +31,14 @@ public class ApplicationPropertyUtil {
     public static String applicationPropertyGet(String propertyName) {
         return applicationProperty().getProperty(propertyName);
     }
+
+    public static boolean getBoolean(String key, boolean defaultValue) {
+        try {
+            return Boolean.parseBoolean(applicationPropertyGet(key));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return defaultValue;
+        }
+
+    }
 }

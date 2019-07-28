@@ -1,4 +1,4 @@
-package ui_automation;
+package ui_automation.minfin;
 
 public class NewBO extends BaseBO {
     private final static String url = "/currency/auction/new";

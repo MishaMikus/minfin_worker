@@ -1,4 +1,4 @@
-package ui_automation;
+package ui_automation.minfin;
 
 import static com.codeborne.selenide.Selenide.$;
 import static orm.entity.currency.CurrencyDAO.USD_CURRENCY;

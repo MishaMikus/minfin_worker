@@ -1,4 +1,4 @@
-package ui_automation;
+package ui_automation.minfin;
 
 import com.codeborne.selenide.SelenideElement;
 import orm.entity.currency.Currency;
@@ -13,7 +13,7 @@ import java.util.List;
 import static com.codeborne.selenide.Selenide.$;
 import static orm.entity.currency.CurrencyDAO.UAH_CURRENCY;
 import static orm.entity.currency.CurrencyDAO.USD_CURRENCY;
-import static ui_automation.Bank.LOCAL_DELTA_TIME_MS;
+import static ui_automation.minfin.Bank.LOCAL_DELTA_TIME_MS;
 
 public class MyDealBO extends BaseBO {
     public void saveResults(String url, Currency currency) {

@@ -12,7 +12,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import static ui_automation.Bank.LOCAL_DELTA_TIME_MS;
+import static ui_automation.minfin.Bank.LOCAL_DELTA_TIME_MS;
 
 @Service
 public
