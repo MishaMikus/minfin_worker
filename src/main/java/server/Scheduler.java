@@ -22,5 +22,4 @@ public class Scheduler {
         if(TRADING_MODE){ schedulerTrader.scheduleAtFixedRate(Trader::trade, TIME_DELTA);}
         if(UBER_MODE){ schedulerUber.scheduleAtFixedRate(Uber::stat, TIME_DELTA);}
     }
-
 }

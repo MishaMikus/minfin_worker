@@ -1,25 +1,21 @@
 package server.logan.park.view;
 
 public class PaymentView {
-    private String content;
     private String name;
-    private String report;
-    private String allDataTable;
+    private String count;
+    private String amount;
+    private String cash;
+    private String salary;
+    private String change;
 
-    public String getAllDataTable() {
-        return allDataTable;
-    }
 
-    public void setAllDataTable(String allDataTable) {
-        this.allDataTable = allDataTable;
-    }
-
-    public String getReport() {
-        return report;
-    }
-
-    public void setReport(String report) {
-        this.report = report;
+    public PaymentView(String name, String count, String amount, String cash, String salary, String change) {
+        this.name = name;
+        this.count = count;
+        this.amount = amount;
+        this.cash = cash;
+        this.salary = salary;
+        this.change = change;
     }
 
     public String getName() {
@@ -30,26 +26,43 @@ public class PaymentView {
         this.name = name;
     }
 
-    public PaymentView(String content) {
-        this.content = content;
+    public String getCount() {
+        return count;
     }
 
-    public PaymentView() {
-
+    public void setCount(String count) {
+        this.count = count;
     }
 
-    public String getContent() {
-        return content;
+    public String getAmount() {
+        return amount;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
 
-    @Override
-    public String toString() {
-        return "PaymentView{" +
-                "content='" + content + '\'' +
-                '}';
+    public String getCash() {
+        return cash;
+    }
+
+    public void setCash(String cash) {
+        this.cash = cash;
+    }
+
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
+    public String getChange() {
+        return change;
+    }
+
+    public void setChange(String change) {
+        this.change = change;
     }
 }

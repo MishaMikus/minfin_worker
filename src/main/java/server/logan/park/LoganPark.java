@@ -11,10 +11,7 @@ import server.logan.park.view.PaymentView;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.HashMap;
 
 @Controller
 public class LoganPark extends BaseController {
@@ -22,8 +19,9 @@ public class LoganPark extends BaseController {
 
     @RequestMapping(value = ENDPOINT)
     public String getLoganPark(HttpServletRequest request) {
-        if (request.getSession(true).getAttribute("paymentView") == null) {
-            request.getSession(true).setAttribute("paymentView", new PaymentView());
+        if (request.getSession(true).getAttribute("paymentTable") == null) {
+            request.getSession(true).setAttribute("fileName", "");
+            request.getSession(true).setAttribute("paymentTable", new HashMap<>());
         }
         return "logan_park";
     }
@@ -36,14 +34,8 @@ public class LoganPark extends BaseController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        PaymentTabHelper paymentTabHelper=new PaymentTabHelper();
-        PaymentView paymentView = new PaymentView(content);
-        paymentView.setName(file.getOriginalFilename());
-        paymentView.setReport(new String(paymentTabHelper.makeReport(content).getBytes(), Charset.forName("UTF-8")));
-        paymentView.setAllDataTable(new String(paymentTabHelper.makeAllDataTable(content).getBytes(), Charset.forName("UTF-8")));
-        System.out.println(paymentView.getReport());
-        paymentView.setContent(content);
-        request.getSession(true).setAttribute("paymentView", paymentView);
+        request.getSession(true).setAttribute("fileName", file.getOriginalFilename());
+        request.getSession(true).setAttribute("paymentTable", new PaymentTabHelper(content).makeMap());
         return "redirect:" + ENDPOINT;
     }
 }
