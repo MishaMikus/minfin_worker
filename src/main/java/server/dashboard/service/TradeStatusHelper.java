@@ -1,12 +1,15 @@
 package server.dashboard.service;
 
 import org.springframework.stereotype.Service;
+import orm.entity.sell_price.SellPrice;
+import orm.entity.sell_price.SellPriceDAO;
 import orm.entity.trade.TradeStatus;
 import orm.entity.trade.TradeStatusDAO;
 import server.client.viber.ViberMinfinRestClient;
 import server.dashboard.view.TradeStatusView;
 import ui_automation.minfin.Bank;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -62,5 +65,21 @@ public class TradeStatusHelper {
         }
     }
 
+    public Double priceSell() {
+        List<SellPrice> sellPriceList = new SellPriceDAO().findAll();
+        if (sellPriceList != null && sellPriceList.size() > 0) {
+            sellPriceList.sort(Comparator.comparing(SellPrice::getDate));
+            return sellPriceList.get(sellPriceList.size() - 1).getPrice();
+        }
+        return null;
+    }
 
+//    public static void main(String[] args) {
+//        System.out.println(new  TradeStatusHelper().priceSell());
+//    }
+
+    public String priceBuy() {
+        //TODO
+        return "";
+    }
 }

@@ -2,7 +2,7 @@ package ui_automation.minfin;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class CalculateBO extends BaseBO {
+public class CalculateBO extends BaseMinfinBO {
 
     public String getAverageSell() {
         return new SellBO().gotoSellPage().getAverageMinfinSell();

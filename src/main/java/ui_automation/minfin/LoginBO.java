@@ -1,5 +1,5 @@
 package ui_automation.minfin;
-public class LoginBO extends BaseBO{
+public class LoginBO extends BaseMinfinBO {
     public void login(String login, String pass) {
         goToPath("/login");
         try{

@@ -1,6 +1,6 @@
 package ui_automation.minfin;
 
-public class NewBO extends BaseBO {
+public class NewBO extends BaseMinfinBO {
     private final static String url = "/currency/auction/new";
 
     public void create(String type, String amount, String course, String message) {

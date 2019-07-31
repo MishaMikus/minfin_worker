@@ -1,16 +1,12 @@
 package server.client.rest.model;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 class MapQuery {
     private String urlEncodeUTF8(String s) {
-        try {
-            return URLEncoder.encode(s, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            throw new UnsupportedOperationException(e);
-        }
+        return URLEncoder.encode(s, StandardCharsets.UTF_8);
     }
 
     String urlEncodeUTF8(Map<?, ?> map) {

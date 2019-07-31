@@ -15,7 +15,7 @@ import static orm.entity.currency.CurrencyDAO.UAH_CURRENCY;
 import static orm.entity.currency.CurrencyDAO.USD_CURRENCY;
 import static ui_automation.minfin.Bank.LOCAL_DELTA_TIME_MS;
 
-public class MyDealBO extends BaseBO {
+public class MyDealBO extends BaseMinfinBO {
     public void saveResults(String url, Currency currency) {
         String time = getMyProposalTime();
         Deal deal = new Deal();

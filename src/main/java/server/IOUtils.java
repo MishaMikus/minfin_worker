@@ -76,7 +76,7 @@ public class IOUtils {
             if (!dest.exists()) {
                 mkDir(dest);
             }
-            String files[] = src.list();
+            String[] files = src.list();
             if (files != null) {
                 for (String file : files) {
                     copyFolder(new File(src, file), new File(dest, file));

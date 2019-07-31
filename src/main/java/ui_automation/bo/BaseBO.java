@@ -1,26 +1,17 @@
-package ui_automation.minfin;
+package ui_automation.bo;
 
 import org.openqa.selenium.Alert;
 
 import static com.codeborne.selenide.Configuration.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Configuration.headless;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static util.ApplicationPropertyUtil.applicationPropertyGet;
 
 public class BaseBO {
-
-    void deleteProposal() {
-        try {
-            executeJavaScriptAction("DELETE OLD", "document.querySelectorAll(\".au-delete-deal.js-au-delete-deal\")[0].click();");
-        } catch (Exception e) {
-            System.out.println("CAN'T DELETE OLD");
-        }
-        acceptAlert();
-    }
-
     static {
         timeout = 10000;
-        baseUrl = "https://minfin.com.ua";
         browser = "chrome";
         savePageSource = true;
         if (applicationPropertyGet("remote").equals("true")) {
@@ -31,18 +22,19 @@ public class BaseBO {
         }
     }
 
-    void goToPath(String path) {
+
+    protected void goToPath(String path) {
         //GOTO PAGE : https://minfin.com.ua/login
         System.out.println("GOTO PAGE : " + baseUrl + path);
         open(path);
     }
 
-    String executeJavaScriptAction(String actionName, String script) {
+    protected String executeJavaScriptAction(String actionName, String script) {
         System.out.println(actionName + " : " + script);
         return executeJavaScript(script);
     }
 
-    void acceptAlert() {
+    protected void acceptAlert() {
         try {
             Alert alert = getWebDriver().switchTo().alert();
             System.out.println("ACCEPT DIALOG : accept");
@@ -51,5 +43,4 @@ public class BaseBO {
             System.out.println("NO ANY ACCEPT DIALOG");
         }
     }
-
 }

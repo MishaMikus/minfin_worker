@@ -28,6 +28,11 @@ public class Trader {
 
     public static void trade() {
         check();
+        tradeAction();
+        Selenide.close();
+    }
+
+    private static void tradeAction() {
         try {
             if (new TradeStatusHelper().isActiveTrading()) {
                 System.out.println(new Date() + "==>>TRY to TRADE");
@@ -37,7 +42,7 @@ public class Trader {
                 //sell
                 int wantToSellAmount = new Bank().wantToSell();
                 if (wantToSellAmount > 0) {
-                    String course = new CalculateBO().getAverageDecreasedSell(1);
+                    String course = new TradeStatusHelper().priceSell()+"";
                     new SellBO().sell(wantToSellAmount + "", course, address);
                 }
 
@@ -51,7 +56,6 @@ public class Trader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Selenide.close();
     }
 
     public static void deleteDeal() {

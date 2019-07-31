@@ -116,5 +116,15 @@ ${tradeStatus.message}
     </c:forEach>
 </table>
 
+<form method="post" action="price" id="priceForm">
+    <label>
+        <input name="price_sell" type="text" value="${price_sell}">
+        <input name="price_buy" type="text" value="${price_buy}">
+    </label>
+    <div role="button" onclick="document.getElementById('priceForm').submit();">
+        update price
+    </div>
+</form>
+
 </body>
 </html>

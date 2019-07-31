@@ -18,7 +18,6 @@ import static ui_automation.minfin.Bank.LOCAL_DELTA_TIME_MS;
 public
 class TransactionTable {
 
-
     public List<TransactionView> transactionTable() {
         List<TransactionView> transactionTable = new ArrayList<>();
         List<Transaction> transactionList = TransactionDAO.getInstance().findAll();

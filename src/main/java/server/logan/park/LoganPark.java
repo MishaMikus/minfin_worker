@@ -11,6 +11,7 @@ import server.logan.park.view.PaymentView;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 @Controller
@@ -30,7 +31,7 @@ public class LoganPark extends BaseController {
     public String uploadPaymentCSV(HttpServletRequest request, @RequestParam("payment_file") MultipartFile file) {
         String content = "NO_content";
         try {
-            content = new String(file.getBytes(), Charset.forName("UTF-8"));
+            content = new String(file.getBytes(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }

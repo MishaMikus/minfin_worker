@@ -32,6 +32,17 @@ public class Dashboard extends BaseController {
         return "redirect:/dashboard";
     }
 
+    @RequestMapping(value = "/price")
+    public String postPrice(HttpServletRequest request) {
+        String price_sell=request.getParameter("price_sell");
+        String price_buy=request.getParameter("price_buy");
+
+        System.out.println(price_sell);
+        System.out.println(price_buy);
+
+        return "redirect:/dashboard";
+    }
+
     @RequestMapping(value = "/add")
     public String postAdd(HttpServletRequest request) {
         transactionTable.add(request.getParameter("type"),
@@ -52,6 +63,8 @@ public class Dashboard extends BaseController {
         makeTransactionTableContent(request);
         request.getSession(true).setAttribute("dealTable", dealTable.dealTable());
         request.getSession(true).setAttribute("tradeStatus", tradeStatusHelper.actualTradeStatus());
+        request.getSession(true).setAttribute("price_sell", tradeStatusHelper.priceSell());
+        request.getSession(true).setAttribute("price_buy", tradeStatusHelper.priceBuy());
         return "dashboard";
     }
 

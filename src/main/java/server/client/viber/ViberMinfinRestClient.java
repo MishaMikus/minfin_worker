@@ -40,7 +40,6 @@ public class ViberMinfinRestClient {
                     "(car)(airplane)(bicycle)(policecar)(ambulance)(taxi)(trafficlight)(stop_sign)(ufo)(rocket)(run)" +
                     "(paintbrush)(color_palette)(down_graph)(up_graph)(shrug)(crystal_ball)(checkmark)(tablet)(baby_bottle)" +
                     "(anchor)(spiral)(over18)(do_not_enter)(handicap)(first_aid)(moneybag)(eyes").split("\\)\\(");
-    ;
     private static final ViberMinfinRestClient INSTANCE = new ViberMinfinRestClient();
     private ApacheRestClient apacheRestClient = new ApacheRestClient();
     private String[] receiverArray = applicationPropertyGet("viber.receiver.list").split(",");
