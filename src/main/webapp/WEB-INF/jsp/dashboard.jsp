@@ -1,3 +1,4 @@
+<jsp:useBean id="price_buy" scope="request" type="java.lang.String"/>
 <jsp:useBean id="price_sell" scope="request" type="java.lang.String"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="transactionTable" scope="session" type="java.util.List<server.dashboard.view.TransactionView>"/>
