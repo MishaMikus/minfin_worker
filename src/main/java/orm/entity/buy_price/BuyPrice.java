@@ -1,11 +1,11 @@
-package orm.entity.sell_price;
+package orm.entity.buy_price;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(schema = "minfin", name = "sell_price")
-public class SellPrice {
+@Table(schema = "minfin", name = "buy_price")
+public class BuyPrice {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
@@ -26,7 +26,7 @@ public class SellPrice {
                 '}';
     }
 
-    public SellPrice(Double price) {
+    public BuyPrice(Double price) {
         this.date = new Date();
         this.price = price;
     }
@@ -55,6 +55,6 @@ public class SellPrice {
         this.date = date;
     }
 
-    public SellPrice() {
+    public BuyPrice() {
     }
 }

@@ -3,6 +3,10 @@ package server.dashboard;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import orm.entity.buy_price.BuyPrice;
+import orm.entity.buy_price.BuyPriceDAO;
+import orm.entity.sell_price.SellPrice;
+import orm.entity.sell_price.SellPriceDAO;
 import server.BaseController;
 import server.dashboard.service.DealTable;
 import server.dashboard.service.TradeStatusHelper;
@@ -34,9 +38,14 @@ public class Dashboard extends BaseController {
 
     @RequestMapping(value = "/price")
     public String postPrice(HttpServletRequest request) {
-        String price_sell=request.getParameter("price_sell");
-        String price_buy=request.getParameter("price_buy");
-
+        String price_sell = request.getParameter("price_sell");
+        String price_buy = request.getParameter("price_buy");
+        try {
+            new SellPriceDAO().save(new SellPrice(Double.parseDouble(price_sell)));
+            new BuyPriceDAO().save(new BuyPrice(Double.parseDouble(price_buy)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println(price_sell);
         System.out.println(price_buy);
 
@@ -58,13 +67,13 @@ public class Dashboard extends BaseController {
         return "redirect:/dashboard";
     }
 
-    @RequestMapping(value = {"/dashboard","/"})
+    @RequestMapping(value = {"/dashboard", "/"})
     public String getDashboard(HttpServletRequest request) {
         makeTransactionTableContent(request);
         request.getSession(true).setAttribute("dealTable", dealTable.dealTable());
         request.getSession(true).setAttribute("tradeStatus", tradeStatusHelper.actualTradeStatus());
-        request.getSession(true).setAttribute("price_sell", tradeStatusHelper.priceSell());
-        request.getSession(true).setAttribute("price_buy", tradeStatusHelper.priceBuy());
+        request.getSession(true).setAttribute("price_sell", tradeStatusHelper.priceSell() + "");
+        request.getSession(true).setAttribute("price_buy", tradeStatusHelper.priceBuy() + "");
         return "dashboard";
     }
 

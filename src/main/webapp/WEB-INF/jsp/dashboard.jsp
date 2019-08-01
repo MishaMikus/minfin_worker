@@ -1,11 +1,11 @@
-<jsp:useBean id="price_buy" scope="request" type="java.lang.String"/>
-<jsp:useBean id="price_sell" scope="request" type="java.lang.String"/>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="transactionTable" scope="session" type="java.util.List<server.dashboard.view.TransactionView>"/>
 <jsp:useBean id="lastTransactionView" scope="session" type="server.dashboard.view.TransactionView"/>
 <jsp:useBean id="tradeStatus" scope="session" type="server.dashboard.view.TradeStatusView"/>
 <jsp:useBean id="dealTable" scope="session" type="java.util.List<server.dashboard.view.DealView>"/>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<jsp:useBean id="price_buy" scope="session" type="java.lang.String"/>
+<jsp:useBean id="price_sell" scope="session" type="java.lang.String"/>
 <html>
 <body>
 <a href="trade">
@@ -117,7 +117,7 @@ ${tradeStatus.message}
         </tr>
     </c:forEach>
 </table>
-
+<c:if test="${price_sell!=null}">
 <form method="post" action="price" id="priceForm">
     <label>
         <input name="price_sell" type="text" value="${price_sell}">
@@ -130,6 +130,6 @@ ${tradeStatus.message}
     </button>
 
 </form>
-
+</c:if>
 </body>
 </html>

@@ -1,6 +1,8 @@
 package server.dashboard.service;
 
 import org.springframework.stereotype.Service;
+import orm.entity.buy_price.BuyPrice;
+import orm.entity.buy_price.BuyPriceDAO;
 import orm.entity.sell_price.SellPrice;
 import orm.entity.sell_price.SellPriceDAO;
 import orm.entity.trade.TradeStatus;
@@ -75,11 +77,15 @@ public class TradeStatusHelper {
     }
 
 //    public static void main(String[] args) {
-//        System.out.println(new TradeStatusHelper().priceSell());
+//        System.out.println(new TradeStatusHelper().priceBuy());
 //    }
 
-    public String priceBuy() {
-        //TODO
-        return "";
+    public Double priceBuy() {
+        List<BuyPrice> buyPriceList = new BuyPriceDAO().findAll();
+        if (buyPriceList != null && buyPriceList.size() > 0) {
+            buyPriceList.sort(Comparator.comparing(BuyPrice::getDate));
+            return buyPriceList.get(buyPriceList.size() - 1).getPrice();
+        }
+        return null;
     }
 }

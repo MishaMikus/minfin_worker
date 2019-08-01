@@ -190,7 +190,8 @@ public abstract class GenericAbstractDAO<E> {
     }
 
     private List<E> findAllWhere(BiFunction<CriteriaBuilder, Root<E>, Predicate> where) {
-        List<E> res;
+        List<E> res = new ArrayList<>();
+        try {
         beginTransaction();
         CriteriaBuilder cb = getSession().getCriteriaBuilder();
         CriteriaQuery<E> query = cb.createQuery(entityClass);
@@ -199,8 +200,10 @@ public abstract class GenericAbstractDAO<E> {
         if (where != null) {
             query.where(where.apply(cb, root));
         }
-
-        res = getSession().createQuery(query).getResultList();
+            res = getSession().createQuery(query).getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         commitTransaction();
         System.out.println("findAllWhere(" + where + ") " + getTableName() + " : " + res.size());
         return res;

@@ -8,6 +8,14 @@ CREATE TABLE IF NOT EXISTS `minfin`.`sell_price`
     PRIMARY KEY (`id`)
 );
 
+CREATE TABLE IF NOT EXISTS `minfin`.`buy_price`
+(
+    `id`           INT          NOT NULL AUTO_INCREMENT,
+    `date`         DATETIME     NULL,
+    `price` DOUBLE,
+    PRIMARY KEY (`id`)
+);
+
 CREATE TABLE IF NOT EXISTS `minfin`.`deal`
 (
     `id`           INT          NOT NULL AUTO_INCREMENT,
