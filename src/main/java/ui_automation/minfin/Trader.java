@@ -37,9 +37,9 @@ public class Trader {
 
 
     public static void trade() {
+        Selenide.close();
         check();
         tradeAction();
-        Selenide.close();
     }
 
     private static void refreshPrice() {
