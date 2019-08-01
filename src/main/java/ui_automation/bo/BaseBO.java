@@ -30,8 +30,16 @@ public class BaseBO {
     }
 
     protected String executeJavaScriptAction(String actionName, String script) {
-        System.out.println(actionName + " : " + script);
-        return executeJavaScript(script);
+        try {
+
+
+            System.out.println(actionName + " : " + script);
+            return executeJavaScript(script);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("FAIL executeJavaScriptAction : " + actionName + " : " + script);
+            return null;
+        }
     }
 
     protected void acceptAlert() {

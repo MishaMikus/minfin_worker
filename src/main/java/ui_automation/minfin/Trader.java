@@ -23,6 +23,7 @@ public class Trader {
     private static final String ADDRESS = applicationPropertyGet("minfin.address");
     private static final String PRICE_REGEX = "<span class=\"au-deal-currency\">([\\d]+,[\\d]+)";
 
+
     public static void check() {
         if (login()) {
             try {
@@ -87,7 +88,7 @@ public class Trader {
         try {
             int wantToBuyAmount = new Bank().wantToBuy();
             if (wantToBuyAmount > 0) {
-                String course = (new TradeStatusHelper().priceBuy()+0.01) + "";
+                String course = (new TradeStatusHelper().priceBuy() + 0.01) + "";
                 new BuyBO().buy(wantToBuyAmount + "", course, ADDRESS);
             }
         } catch (Exception e) {
@@ -100,7 +101,7 @@ public class Trader {
         try {
             int wantToSellAmount = new Bank().wantToSell();
             if (wantToSellAmount > 0) {
-                String course = (new TradeStatusHelper().priceSell()-0.01) + "";
+                String course = (new TradeStatusHelper().priceSell() - 0.01) + "";
                 new SellBO().sell(wantToSellAmount + "", course, ADDRESS);
             }
         } catch (Exception e) {
