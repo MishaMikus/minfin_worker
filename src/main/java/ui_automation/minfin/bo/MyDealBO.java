@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static orm.entity.currency.CurrencyDAO.UAH_CURRENCY;
 import static orm.entity.currency.CurrencyDAO.USD_CURRENCY;
 import static ui_automation.minfin.Bank.LOCAL_DELTA_TIME_MS;
@@ -64,33 +65,37 @@ public class MyDealBO extends BaseMinfinBO {
     public List<Deal> updateMyDealList() {
         goToPath("/currency/auction/list");
         List<Deal> res = new ArrayList<>();
-        for (SelenideElement dealTad : $(".au-my-deals-wrap.js-myDealsWrap").findAll(".au-my-deal.js-au-deal")) {
-            String id = dealTad.findAll(".au-refresh-btn.js-au-refresh-deal").get(0).attr("data-bid");
-            Deal deal = DealDAO.getInstance().findWhereEqual("minfin_id", id);
-            if (deal != null) {
-                deal.setWatchCount(
-                        Integer.parseInt(dealTad.findAll(".au-deal-views.icon-eye-1").get(0).text().replaceAll("\\D", "")));
-                deal.setActive(true);
-                res.add(deal);
-                DealDAO.getInstance().update(deal);
-            } else {
-                deal = new Deal();
-                deal.setMinfin_id(id);
-                deal.setWatchCount(
-                        Integer.parseInt(dealTad.findAll(".au-deal-views.icon-eye-1").get(0).text().replaceAll("\\D", "")));
-                deal.setActive(true);
-                deal.setTime(dealTad.findAll(".au-deal-time").get(0).text().split("\n")[0].trim());
-                String sum = dealTad.findAll(".au-deal-sum").get(0).text();
-                deal.setSum(sum.split("\n")[1]);
-                deal.setCurrencyRate(sum.split("\n")[2]);
-                deal.setMsg(dealTad.findAll(".au-deal-msg").get(0).text());
-                deal.setDate(new Date());
-                deal.setPhone("MyPhone");
-                System.out.println("deal.setCurrency : " + sum.split("\n")[0]);
-                deal.setCurrency(sum.split("\n")[0].equals("Продам") ? USD_CURRENCY : UAH_CURRENCY);
-                DealDAO.getInstance().save(deal);
-                res.add(deal);
+        if ($$(".au-my-deals-wrap.js-myDealsWrap").size() > 0) {
+            for (SelenideElement dealTad : $(".au-my-deals-wrap.js-myDealsWrap").findAll(".au-my-deal.js-au-deal")) {
+                String id = dealTad.findAll(".au-refresh-btn.js-au-refresh-deal").get(0).attr("data-bid");
+                Deal deal = DealDAO.getInstance().findWhereEqual("minfin_id", id);
+                if (deal != null) {
+                    deal.setWatchCount(
+                            Integer.parseInt(dealTad.findAll(".au-deal-views.icon-eye-1").get(0).text().replaceAll("\\D", "")));
+                    deal.setActive(true);
+                    res.add(deal);
+                    DealDAO.getInstance().update(deal);
+                } else {
+                    deal = new Deal();
+                    deal.setMinfin_id(id);
+                    deal.setWatchCount(
+                            Integer.parseInt(dealTad.findAll(".au-deal-views.icon-eye-1").get(0).text().replaceAll("\\D", "")));
+                    deal.setActive(true);
+                    deal.setTime(dealTad.findAll(".au-deal-time").get(0).text().split("\n")[0].trim());
+                    String sum = dealTad.findAll(".au-deal-sum").get(0).text();
+                    deal.setSum(sum.split("\n")[1]);
+                    deal.setCurrencyRate(sum.split("\n")[2]);
+                    deal.setMsg(dealTad.findAll(".au-deal-msg").get(0).text());
+                    deal.setDate(new Date());
+                    deal.setPhone("MyPhone");
+                    System.out.println("deal.setCurrency : " + sum.split("\n")[0]);
+                    deal.setCurrency(sum.split("\n")[0].equals("Продам") ? USD_CURRENCY : UAH_CURRENCY);
+                    DealDAO.getInstance().save(deal);
+                    res.add(deal);
+                }
             }
+        } else {
+            System.out.println("NO ANY .au-my-deals-wrap.js-myDealsWrap");
         }
         return res;
     }

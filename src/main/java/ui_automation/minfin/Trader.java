@@ -38,7 +38,7 @@ public class Trader {
 
     public static void trade() {
         Selenide.close();
-        check();
+        // check();
         tradeAction();
     }
 
