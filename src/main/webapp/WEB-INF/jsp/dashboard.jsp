@@ -3,7 +3,6 @@
 <jsp:useBean id="transactionTable" scope="session" type="java.util.List<server.dashboard.view.TransactionView>"/>
 <jsp:useBean id="lastTransactionView" scope="session" type="server.dashboard.view.TransactionView"/>
 <jsp:useBean id="tradeStatus" scope="session" type="server.dashboard.view.TradeStatusView"/>
-<jsp:useBean id="dealTable" scope="session" type="java.util.List<server.dashboard.view.DealView>"/>
 <jsp:useBean id="price_buy" scope="session" type="java.lang.String"/>
 <jsp:useBean id="price_sell" scope="session" type="java.lang.String"/>
 <jsp:useBean id="price_sell_date" scope="session" type="java.lang.String"/>
@@ -96,52 +95,56 @@ ${tradeStatus.message}
 </form>
 <br>
 <c:if test="${price_sell!=null}">
-    <table border="1">
-        <tr>
-            <td>
-                <form method="post" action="price" id="priceForm">
-                    <label>
-                        <label for="price_sell">[${price_sell_date}] Продавати по </label><br>
-                        <input name="price_sell" id="price_sell" type="text" value="${price_sell}"><br>
+    <form method="post" action="price" id="priceForm">
+        <table border="1">
+            <tr>
+                <td>
+                    <label for="price_sell">${price_sell_date}</label><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="price_sell">Продавати по </label><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input name="price_sell" id="price_sell" type="text" value="${price_sell}"><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+...
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="price_buy">${price_buy_date}</label><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="price_buy">Купляти по</label><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input name="price_buy" id="price_buy" type="text" value="${price_buy}"><br>
+                </td>
+            </tr>
 
-                        <label for="price_buy">[${price_buy_date}]Купляти по</label><br>
-                        <input name="price_buy" id="price_buy" type="text" value="${price_buy}"><br>
-                    </label>
+            <tr>
+                <td>
                     <button>
                         <div role="button" onclick="document.getElementById('priceForm').submit();">
                             update price
                         </div>
                     </button>
-                </form>
-            </td>
-        </tr>
-    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
     <br>
 </c:if>
-
-<table border="1">
-    <tr>
-        <th colspan="5">DEAL TABLE</th>
-    </tr>
-    <tr>
-        <th>дата</th>
-        <th>курс (грн за 1 дол)</th>
-        <th>тип</th>
-        <th>кількість</th>
-        <th>переглядів</th>
-        <th>статус</th>
-    </tr>
-
-    <c:forEach items="${dealTable}" var="dealView">
-        <tr>
-            <td>${dealView.date}</td>
-            <td>${dealView.course}</td>
-            <td>${dealView.type}</td>
-            <td>${dealView.usd}</td>
-            <td>${dealView.views}</td>
-            <td>${dealView.status}</td>
-        </tr>
-    </c:forEach>
-</table>
 </body>
 </html>

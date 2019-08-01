@@ -74,7 +74,6 @@ public class Trader {
             if (startTrading()) {
                 sellIfNeed();
                 buyIfNeed();
-                refreshPrice();
             }
         }
     }
@@ -90,6 +89,7 @@ public class Trader {
             if (wantToBuyAmount > 0) {
                 String course = (new TradeStatusHelper().priceBuy() + 0.01) + "";
                 new BuyBO().buy(wantToBuyAmount + "", course, ADDRESS);
+                refreshPrice();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -103,6 +103,7 @@ public class Trader {
             if (wantToSellAmount > 0) {
                 String course = (new TradeStatusHelper().priceSell() - 0.01) + "";
                 new SellBO().sell(wantToSellAmount + "", course, ADDRESS);
+                refreshPrice();
             }
         } catch (Exception e) {
             e.printStackTrace();
