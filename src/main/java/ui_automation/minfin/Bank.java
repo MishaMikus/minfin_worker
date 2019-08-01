@@ -1,6 +1,8 @@
 package ui_automation.minfin;
 
 import orm.entity.transaction.TransactionDAO;
+import ui_automation.minfin.bo.BuyBO;
+import ui_automation.minfin.bo.SellBO;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -64,10 +66,4 @@ public class Bank {
     private int balance(String wallet) {
         return TransactionDAO.getInstance().sum(wallet).intValue();
     }
-
-
-//    public static void main(String[] args) {
-//        System.out.println("new Bank().buyAmount() : "+new Bank().buyAmount());
-//        System.out.println("new Bank().sellAmount() : "+new Bank().sellAmount());
-//    }
 }

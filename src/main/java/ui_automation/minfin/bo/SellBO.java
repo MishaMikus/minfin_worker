@@ -1,4 +1,4 @@
-package ui_automation.minfin;
+package ui_automation.minfin.bo;
 
 import static com.codeborne.selenide.Selenide.$;
 import static orm.entity.currency.CurrencyDAO.USD_CURRENCY;
@@ -14,7 +14,7 @@ public class SellBO extends MyDealBO {
         new MyDealBO().saveResults(url, USD_CURRENCY);
     }
 
-    SellBO gotoSellPage() {
+    public SellBO gotoSellPage() {
         goToPath(url);
         return this;
     }

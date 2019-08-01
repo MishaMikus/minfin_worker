@@ -68,12 +68,16 @@ public class TradeStatusHelper {
     }
 
     public Double priceSell() {
+        return findPriceSell().getPrice();
+    }
+
+    private SellPrice findPriceSell() {
         List<SellPrice> sellPriceList = new SellPriceDAO().findAll();
         if (sellPriceList != null && sellPriceList.size() > 0) {
             sellPriceList.sort(Comparator.comparing(SellPrice::getDate));
-            return sellPriceList.get(sellPriceList.size() - 1).getPrice();
+            return sellPriceList.get(sellPriceList.size() - 1);
         }
-        return null;
+        return new SellPrice();
     }
 
 //    public static void main(String[] args) {
@@ -81,11 +85,23 @@ public class TradeStatusHelper {
 //    }
 
     public Double priceBuy() {
+        return findPriceBuy().getPrice();
+    }
+
+    private BuyPrice findPriceBuy() {
         List<BuyPrice> buyPriceList = new BuyPriceDAO().findAll();
         if (buyPriceList != null && buyPriceList.size() > 0) {
             buyPriceList.sort(Comparator.comparing(BuyPrice::getDate));
-            return buyPriceList.get(buyPriceList.size() - 1).getPrice();
+            return buyPriceList.get(buyPriceList.size() - 1);
         }
-        return null;
+        return new BuyPrice();
+    }
+
+    public Date priceSellDate() {
+        return findPriceSell().getDate();
+    }
+
+    public Date priceBuyDate() {
+        return findPriceBuy().getDate();
     }
 }

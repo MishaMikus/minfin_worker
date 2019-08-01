@@ -6,6 +6,8 @@
 <jsp:useBean id="dealTable" scope="session" type="java.util.List<server.dashboard.view.DealView>"/>
 <jsp:useBean id="price_buy" scope="session" type="java.lang.String"/>
 <jsp:useBean id="price_sell" scope="session" type="java.lang.String"/>
+<jsp:useBean id="price_sell_date" scope="session" type="java.lang.String"/>
+<jsp:useBean id="price_buy_date" scope="session" type="java.lang.String"/>
 <html>
 <body>
 <a href="trade">
@@ -93,6 +95,30 @@ ${tradeStatus.message}
     </table>
 </form>
 <br>
+<c:if test="${price_sell!=null}">
+    <table border="1">
+        <tr>
+            <td>
+                <form method="post" action="price" id="priceForm">
+                    <label>
+                        <label for="price_sell">[${price_sell_date}] Продавати по </label><br>
+                        <input name="price_sell" id="price_sell" type="text" value="${price_sell}"><br>
+
+                        <label for="price_buy">[${price_buy_date}]Купляти по</label><br>
+                        <input name="price_buy" id="price_buy" type="text" value="${price_buy}"><br>
+                    </label>
+                    <button>
+                        <div role="button" onclick="document.getElementById('priceForm').submit();">
+                            update price
+                        </div>
+                    </button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br>
+</c:if>
+
 <table border="1">
     <tr>
         <th colspan="5">DEAL TABLE</th>
@@ -117,19 +143,5 @@ ${tradeStatus.message}
         </tr>
     </c:forEach>
 </table>
-<c:if test="${price_sell!=null}">
-<form method="post" action="price" id="priceForm">
-    <label>
-        <input name="price_sell" type="text" value="${price_sell}">
-        <input name="price_buy" type="text" value="${price_buy}">
-    </label>
-    <button>
-        <div role="button" onclick="document.getElementById('priceForm').submit();">
-            update price
-        </div>
-    </button>
-
-</form>
-</c:if>
 </body>
 </html>

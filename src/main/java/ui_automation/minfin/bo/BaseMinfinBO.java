@@ -1,4 +1,4 @@
-package ui_automation.minfin;
+package ui_automation.minfin.bo;
 
 import ui_automation.bo.BaseBO;
 
@@ -10,7 +10,7 @@ public class BaseMinfinBO extends BaseBO {
         baseUrl = "https://minfin.com.ua";
     }
 
-    void deleteProposal() {
+    public void deleteProposal() {
         try {
             executeJavaScriptAction("DELETE OLD", "document.querySelectorAll(\".au-delete-deal.js-au-delete-deal\")[0].click();");
         } catch (Exception e) {

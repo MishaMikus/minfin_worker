@@ -74,6 +74,9 @@ public class Dashboard extends BaseController {
         request.getSession(true).setAttribute("tradeStatus", tradeStatusHelper.actualTradeStatus());
         request.getSession(true).setAttribute("price_sell", tradeStatusHelper.priceSell() + "");
         request.getSession(true).setAttribute("price_buy", tradeStatusHelper.priceBuy() + "");
+
+        request.getSession(true).setAttribute("price_sell_date", tradeStatusHelper.priceSellDate() + "");
+        request.getSession(true).setAttribute("price_buy_date", tradeStatusHelper.priceBuyDate() + "");
         return "dashboard";
     }
 
@@ -82,7 +85,6 @@ public class Dashboard extends BaseController {
         HttpSession session = request.getSession(true);
         if (transactionTableList.size() > 0) {
             session.setAttribute("lastTransactionView", transactionTableList.get(transactionTableList.size() - 1));
-
             transactionTableList.remove(transactionTableList.size() - 1);
             session.setAttribute("transactionTable", transactionTableList);
         } else {

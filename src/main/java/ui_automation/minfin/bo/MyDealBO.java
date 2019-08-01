@@ -1,10 +1,11 @@
-package ui_automation.minfin;
+package ui_automation.minfin.bo;
 
 import com.codeborne.selenide.SelenideElement;
 import orm.entity.currency.Currency;
 import orm.entity.deal.Deal;
 import orm.entity.deal.DealDAO;
 import server.client.viber.ViberMinfinRestClient;
+import ui_automation.minfin.Bank;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,7 +33,7 @@ public class MyDealBO extends BaseMinfinBO {
         ViberMinfinRestClient.getInstance().sendDealMessage(deal, new Bank().balanceUSD(), new Bank().balanceUAH());
     }
 
-    String getMyProposalTime() {
+    public String getMyProposalTime() {
         if ($(".au-delete-deal.js-au-delete-deal").isDisplayed()) {
             return $(".au-delete-deal.js-au-delete-deal").parent().findAll(".au-deal-time").get(0).text();
         } else return null;

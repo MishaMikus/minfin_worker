@@ -1,4 +1,4 @@
-package ui_automation.minfin;
+package ui_automation.minfin.bo;
 
 import static orm.entity.currency.CurrencyDAO.UAH_CURRENCY;
 
@@ -13,7 +13,7 @@ public class BuyBO extends MyDealBO {
         new MyDealBO().saveResults(url, UAH_CURRENCY);
     }
 
-    BuyBO gotoBuyPage() {
+    public BuyBO gotoBuyPage() {
         goToPath(url);
         return this;
     }

@@ -14,11 +14,7 @@ public class ApplicationPropertyUtil {
         try {
             InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("application.properties");
             properties.load(new InputStreamReader(Objects.requireNonNull(input), StandardCharsets.UTF_8));
-            properties.put("minfin.address", "Центр, вул. Франка, початок Франка і Зеленої");
-//            properties.put("remote", System.getProperty("remote", "false"));
-//            properties.put("time.delta.hours", System.getProperty("time.delta.hours", "0"));
-            System.out.println("properties.keySet() : " + properties.keySet());
-            System.out.println("properties.values() : " + properties.values());
+            properties.put("minfin.address", "Центр, вул. Франка, початок Франка і Зеленої. Кратно 1000$");
         } catch (IOException e) {
             e.printStackTrace();
         }
