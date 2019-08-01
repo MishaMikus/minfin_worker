@@ -3,6 +3,7 @@ package ui_automation.minfin.bo;
 public class LoginBO extends BaseMinfinBO {
     public boolean login(String login, String pass) {
         goToPath("/signout");
+        goToPath("/");
         goToPath("/login");
         try {
             executeJavaScriptAction("SET LOGIN", "document.getElementsByName(\"Login\")[3].value='" + login + "';");
