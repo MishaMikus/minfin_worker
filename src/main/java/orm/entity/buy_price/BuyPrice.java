@@ -19,7 +19,7 @@ public class BuyPrice {
 
     @Override
     public String toString() {
-        return "SellPrice{" +
+        return "BuyPrice{" +
                 "id=" + id +
                 ", price=" + price +
                 ", date=" + date +
