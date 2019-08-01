@@ -74,9 +74,9 @@ public class TradeStatusHelper {
         return null;
     }
 
-//    public static void main(String[] args) {
-//        System.out.println(new  TradeStatusHelper().priceSell());
-//    }
+    public static void main(String[] args) {
+        System.out.println(new TradeStatusHelper().priceSell());
+    }
 
     public String priceBuy() {
         //TODO

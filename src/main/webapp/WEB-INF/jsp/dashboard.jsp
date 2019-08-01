@@ -1,3 +1,4 @@
+<jsp:useBean id="price_sell" scope="request" type="java.lang.String"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="transactionTable" scope="session" type="java.util.List<server.dashboard.view.TransactionView>"/>
 <jsp:useBean id="lastTransactionView" scope="session" type="server.dashboard.view.TransactionView"/>
@@ -121,9 +122,12 @@ ${tradeStatus.message}
         <input name="price_sell" type="text" value="${price_sell}">
         <input name="price_buy" type="text" value="${price_buy}">
     </label>
-    <div role="button" onclick="document.getElementById('priceForm').submit();">
-        update price
-    </div>
+    <button>
+        <div role="button" onclick="document.getElementById('priceForm').submit();">
+            update price
+        </div>
+    </button>
+
 </form>
 
 </body>
