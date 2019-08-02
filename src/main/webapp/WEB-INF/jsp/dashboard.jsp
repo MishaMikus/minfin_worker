@@ -124,7 +124,7 @@ ${tradeStatus.message}
             </tr>
             <tr>
                 <td>
-                    <label for="price_buy"><a href="https://minfin.com.ua/currency/auction/usd/sell/lvov"> Купляти по</a></label><br>
+                    <label for="price_buy"><a href="https://minfin.com.ua/currency/auction/usd/buy/lvov"> Купляти по</a></label><br>
                 </td>
             </tr>
             <tr>

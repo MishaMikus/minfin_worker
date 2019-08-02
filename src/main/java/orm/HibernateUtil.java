@@ -30,6 +30,7 @@ public class HibernateUtil {
                 prop.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQL5Dialect.class.getCanonicalName());
                 prop.setProperty(Environment.USE_NEW_ID_GENERATOR_MAPPINGS, String.valueOf(false));
                 prop.setProperty(Environment.STATEMENT_BATCH_SIZE, STATEMENT_BATCH_SIZE + "");
+                prop.setProperty(Environment.POOL_SIZE, 1000 + "");
 
                 // prop.setProperty(Environment.SHOW_SQL, String.valueOf(true));
                 // prop.setProperty(Environment.FORMAT_SQL, String.valueOf(true));
