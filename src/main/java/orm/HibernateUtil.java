@@ -30,10 +30,18 @@ public class HibernateUtil {
                 prop.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQL5Dialect.class.getCanonicalName());
                 prop.setProperty(Environment.USE_NEW_ID_GENERATOR_MAPPINGS, String.valueOf(false));
                 prop.setProperty(Environment.STATEMENT_BATCH_SIZE, STATEMENT_BATCH_SIZE + "");
-                prop.setProperty(Environment.POOL_SIZE, 1000 + "");
+
+               //prop.setProperty(Environment.POOL_SIZE, 1000 + "");
+
+                prop.setProperty(Environment.C3P0_MIN_SIZE, 5 + "");
+                prop.setProperty(Environment.C3P0_MAX_SIZE, 500 + "");
+                prop.setProperty(Environment.C3P0_TIMEOUT, 1000+"" );
+                prop.setProperty(Environment.C3P0_MAX_STATEMENTS, 100 + "");
+                prop.setProperty(Environment.C3P0_IDLE_TEST_PERIOD, 3000 + "");
 
                 // prop.setProperty(Environment.SHOW_SQL, String.valueOf(true));
                 // prop.setProperty(Environment.FORMAT_SQL, String.valueOf(true));
+
                 prop.setProperty(Environment.GLOBALLY_QUOTED_IDENTIFIERS, String.valueOf(true));
 
                 ClassPathScanningCandidateComponentProvider scanner = new ClassPathScanningCandidateComponentProvider(false);

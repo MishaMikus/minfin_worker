@@ -38,7 +38,6 @@ public class Trader {
 
     public static void trade() {
         Selenide.close();
-        // check();
         tradeAction();
     }
 
@@ -75,6 +74,8 @@ public class Trader {
                 sellIfNeed();
                 buyIfNeed();
             }
+        } else {
+            refreshPrice();
         }
     }
 
