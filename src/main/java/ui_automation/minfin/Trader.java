@@ -46,12 +46,10 @@ public class Trader {
         System.out.println("START refreshPrice");
         try {
             String sellContent = HTMLUtil.getContentByURL("https://minfin.com.ua/currency/auction/usd/sell/lvov");
-            System.out.println("sellContent : "+sellContent);
             Double price_sell = getAverageFirst10Prices(RegExpUtil.findsByRegex(sellContent, PRICE_REGEX, 1));
             new SellPriceDAO().save(new SellPrice(price_sell));
 
             String buyContent = HTMLUtil.getContentByURL("https://minfin.com.ua/currency/auction/usd/buy/lvov");
-            System.out.println("buyContent : "+buyContent);
             Double price_buy = getAverageFirst10Prices(RegExpUtil.findsByRegex(buyContent, PRICE_REGEX, 1));
             new BuyPriceDAO().save(new BuyPrice(price_buy));
 
