@@ -42,6 +42,7 @@ public class Trader {
     }
 
     private static void refreshPrice() {
+        System.out.println("START refreshPrice");
         try {
             String sellContent = HTMLUtil.getContentByURL("https://minfin.com.ua/currency/auction/usd/sell/lvov");
             Double price_sell = getAverageFirst10Prices(RegExpUtil.findsByRegex(sellContent, PRICE_REGEX, 1));
