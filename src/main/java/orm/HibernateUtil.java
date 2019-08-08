@@ -31,7 +31,7 @@ public class HibernateUtil {
                 prop.setProperty(Environment.USE_NEW_ID_GENERATOR_MAPPINGS, String.valueOf(false));
                 prop.setProperty(Environment.STATEMENT_BATCH_SIZE, STATEMENT_BATCH_SIZE + "");
 
-               //prop.setProperty(Environment.POOL_SIZE, 1000 + "");
+               prop.setProperty(Environment.POOL_SIZE, 1000 + "");
 
                 prop.setProperty(Environment.C3P0_MIN_SIZE, 5 + "");
                 prop.setProperty(Environment.C3P0_MAX_SIZE, 500 + "");

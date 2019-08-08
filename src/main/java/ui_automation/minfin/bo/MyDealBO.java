@@ -19,19 +19,21 @@ import static ui_automation.minfin.Bank.LOCAL_DELTA_TIME_MS;
 
 public class MyDealBO extends BaseMinfinBO {
     public void saveResults(String url, Currency currency) {
-        String time = getMyProposalTime();
-        Deal deal = new Deal();
-        deal.setTime(time);
-        deal.setUrl(url);
-        deal.setDate(new Date(new Date().getTime() + LOCAL_DELTA_TIME_MS));
-        deal.setCurrencyRate(getMyCurrencyRate());
-        deal.setCurrency(currency);
-        deal.setSum(getMySum());
-        deal.setMinfin_id(getMyMinfinId());
-        deal.setMsg(getMyMessage());
-        deal.setPhone(getMyPhone());
-        new DealDAO().save(deal);
-        ViberMinfinRestClient.getInstance().sendDealMessage(deal, new Bank().balanceUSD(), new Bank().balanceUAH());
+        if ($$(".au-delete-deal.js-au-delete-deal").size() > 0) {
+            String time = getMyProposalTime();
+            Deal deal = new Deal();
+            deal.setTime(time);
+            deal.setUrl(url);
+            deal.setDate(new Date(new Date().getTime() + LOCAL_DELTA_TIME_MS));
+            deal.setCurrencyRate(getMyCurrencyRate());
+            deal.setCurrency(currency);
+            deal.setSum(getMySum());
+            deal.setMinfin_id(getMyMinfinId());
+            deal.setMsg(getMyMessage());
+            deal.setPhone(getMyPhone());
+            new DealDAO().save(deal);
+            ViberMinfinRestClient.getInstance().sendDealMessage(deal, new Bank().balanceUSD(), new Bank().balanceUAH());
+        }
     }
 
     public String getMyProposalTime() {
