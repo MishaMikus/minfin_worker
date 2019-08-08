@@ -28,6 +28,16 @@ public class ApplicationPropertyUtil {
         return applicationProperty().getProperty(propertyName);
     }
 
+
+    public static Integer applicationPropertyGetInteger(String propertyName) {
+        try {
+            return Integer.parseInt(applicationPropertyGet(propertyName));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
     public static boolean getBoolean(String key, boolean defaultValue) {
         try {
             return Boolean.parseBoolean(applicationPropertyGet(key));

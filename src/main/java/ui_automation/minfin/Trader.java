@@ -18,9 +18,11 @@ import java.util.Date;
 import java.util.List;
 
 import static util.ApplicationPropertyUtil.applicationPropertyGet;
+import static util.ApplicationPropertyUtil.applicationPropertyGetInteger;
 
 public class Trader {
     private static final String ADDRESS = applicationPropertyGet("minfin.address");
+    private static final Integer DEAL_PRICE_HISTORY_DEEP = applicationPropertyGetInteger("minfin.history.deal.deep");
     private static final String PRICE_REGEX = "<span class=\"au-deal-currency\">([\\d]+,[\\d]+)";
 
 
@@ -61,14 +63,37 @@ public class Trader {
 
     private static Double getAverageFirst10Prices(List<String> priceList) {
         Double average = 0d;
-        priceList = priceList.subList(0, 10);
+        priceList = priceList.subList(0, DEAL_PRICE_HISTORY_DEEP);
         Integer count = 0;
         for (String price : priceList) {
-            System.out.println("getAverageFirst10Prices : "+price);
-            average += Double.parseDouble(price.replaceAll(",", "."));
-            count++;
+            Double value = parseDouble(price);
+            if (similar(value, priceList)) {
+                System.out.println("getAverageFirst10Prices : " + price);
+                average += value;
+                count++;
+            }
         }
         return Math.round(average / count * 100) / 100d;
+    }
+
+    private static Double parseDouble(String doubleString) {
+        return Double.parseDouble(doubleString.replaceAll(",", "."));
+    }
+
+    private static boolean similar(Double value, List<String> listContainingMe) {
+        Double sum=0d;
+        for (String currentValue : listContainingMe) {
+            sum +=parseDouble(currentValue);
+        }
+        sum-=value;
+        double average=sum/(listContainingMe.size()-1);
+        double delta=average-value;
+        double deltaPercentage=delta/average*100;
+
+        //if more 1% delta then fuck the value;
+        boolean res=deltaPercentage>-1d&&deltaPercentage<1d;
+        System.out.println("[value : "+value + "] [similar : "+res+"] [average : "+average+"] [delta : "+delta+"] [deltaPercentage : "+deltaPercentage+"]");
+        return res;
     }
 
     private static void tradeAction() {
@@ -76,7 +101,8 @@ public class Trader {
             if (startTrading()) {
                 sellIfNeed();
                 buyIfNeed();
-            }}
+            }
+        }
     }
 
     private static boolean startTrading() {
