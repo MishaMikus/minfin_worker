@@ -1,5 +1,6 @@
 package ui_automation.minfin;
 
+import orm.entity.buy_price.BuyPriceDAO;
 import orm.entity.transaction.TransactionDAO;
 import ui_automation.minfin.bo.BuyBO;
 import ui_automation.minfin.bo.SellBO;
@@ -47,7 +48,15 @@ public class Bank {
     }
 
     private int buyAmount() {
-        return (int) (Math.round((balanceUAH() / TransactionDAO.getInstance().getLatest().getCurrency_rate()) / 1000d) * 1000d);
+        int balanceUAH=balanceUAH();
+
+        double rate= BuyPriceDAO.getInstance().getLatest().getPrice();
+
+        double usd=((double) balanceUAH) / rate;
+
+        int res=(int) (Math.round(usd / 1000d) * 1000d);
+
+        return res;
     }
 
     private int sellAmount() {
