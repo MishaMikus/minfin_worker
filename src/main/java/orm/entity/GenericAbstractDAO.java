@@ -205,7 +205,7 @@ public abstract class GenericAbstractDAO<E> {
             e.printStackTrace();
         }
         commitTransaction();
-        System.out.println("findAllWhere(" + where + ") " + getTableName() + " : " + res.size());
+        //System.out.println("findAllWhere(" + where + ") " + getTableName() + " : " + res.size());
         return res;
     }
 

@@ -68,7 +68,7 @@ public class Trader {
         for (String price : priceList) {
             Double value = parseDouble(price);
             if (similar(value, priceList)) {
-                System.out.println("getAverageFirst10Prices : " + price);
+               // System.out.println("getAverageFirst10Prices : " + price);
                 average += value;
                 count++;
             }
@@ -92,7 +92,7 @@ public class Trader {
 
         //if more 1% delta then fuck the value;
         boolean res=deltaPercentage>-1d&&deltaPercentage<1d;
-        System.out.println("[value : "+value + "] [similar : "+res+"] [average : "+average+"] [delta : "+delta+"] [deltaPercentage : "+deltaPercentage+"]");
+       // System.out.println("[value : "+value + "] [similar : "+res+"] [average : "+average+"] [delta : "+delta+"] [deltaPercentage : "+deltaPercentage+"]");
         return res;
     }
 
