@@ -88,3 +88,27 @@ INSERT INTO `minfin`.`transaction_type` (`id`, `from`, `to`, `name`)
 VALUES ('3', '1', '1', 'invest_usd');
 INSERT INTO `minfin`.`transaction_type` (`id`, `from`, `to`, `name`)
 VALUES ('4', '2', '2', 'invest_uah');
+
+DROP TABLE `minfin`.`user_role`;
+CREATE TABLE `minfin`.`user_role` (`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+`name` VARCHAR(45) NULL,
+PRIMARY KEY (`id`),
+UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+
+INSERT INTO `minfin`.`user_role` (`name`) VALUES ('admin');
+INSERT INTO `minfin`.`user_role` (`name`) VALUES ('cashier');
+INSERT INTO `minfin`.`user_role` (`name`) VALUES ('uber_admin');
+
+DROP TABLE `minfin`.`user`;
+CREATE TABLE `minfin`.`user` (
+                                 `id` INT NOT NULL AUTO_INCREMENT,
+                                 `login` VARCHAR(45) NOT NULL,
+                                 `pass` VARCHAR(45) NOT NULL,
+                                 `role` INT NOT NULL,
+                                 PRIMARY KEY (`id`),
+                                 UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+                                 UNIQUE INDEX `login_UNIQUE` (`login` ASC));
+
+INSERT INTO `minfin`.`user` (`login`, `pass`, `role`) VALUES ('misha', '1111', '1');
+INSERT INTO `minfin`.`user` (`login`, `pass`, `role`) VALUES ('vovik', '1111', '2');
+INSERT INTO `minfin`.`user` (`login`, `pass`, `role`) VALUES ('luchyk', '1111', '3');

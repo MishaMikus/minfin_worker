@@ -1,5 +1,6 @@
 package server;
 
+import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -29,29 +30,36 @@ import java.util.HashMap;
 @Configuration
 public class SpringBootApplication extends SpringBootServletInitializer {
 
+    private final Logger LOGGER = Logger.getLogger(SpringBootApplication.class);
+
     public static void main(String[] args) {
         new SpringApplication(SpringBootApplication.class).run(args);
     }
 
     @Bean
-    @SuppressWarnings("unchecked")
     public FilterRegistrationBean someFilterRegistration() {
+        LOGGER.info("setup filter " + GeneralFilter.class.getCanonicalName());
         return new FilterRegistrationBean(new GeneralFilter());
     }
 
     @Bean
     public InternalResourceViewResolver viewResolver() {
+        LOGGER.info("setup Resolver " + InternalResourceViewResolver.class.getCanonicalName());
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/jsp/");
         resolver.setSuffix(".jsp");
         resolver.setViewClass(JstlView.class);
+        LOGGER.info("setup JstlView " + JstlView.class.getCanonicalName());
         return resolver;
     }
 
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver multipartResolver() {
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(-1);
+        int maxUploadSize = -1;
+        multipartResolver.setMaxUploadSize(maxUploadSize);
+        LOGGER.info("setup multipartResolver " + CommonsMultipartResolver.class.getCanonicalName());
+        LOGGER.info("setup setMaxUploadSize '" + maxUploadSize + "'");
         return multipartResolver;
     }
 

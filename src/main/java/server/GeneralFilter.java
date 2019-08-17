@@ -1,6 +1,8 @@
 package server;
 
 
+import org.apache.log4j.Logger;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
@@ -9,6 +11,8 @@ import java.time.LocalDateTime;
 
 @WebFilter(urlPatterns = {"/*"})
 public class GeneralFilter implements Filter {
+
+    private final Logger LOGGER = Logger.getLogger(this.getClass());
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -24,18 +28,18 @@ public class GeneralFilter implements Filter {
         String url = multiReadHttpServletRequest.getRequestURL().toString();
         String queryString = multiReadHttpServletRequest.getQueryString();
 
-        System.out.println("<<<--- REQUEST : " + multiReadHttpServletRequest.getMethod() + " " + url + (queryString == null ? "" : "?" + queryString));
+        LOGGER.info("<<<--- REQUEST : " + multiReadHttpServletRequest.getMethod() + " " + url + (queryString == null ? "" : "?" + queryString));
         String body = multiReadHttpServletRequest.getBody();
-        if (body != null && !body.trim().isEmpty()) {
-            System.out.println("<<<--- REQUEST : BODY : " + body);
+        String bodyLog = body.length() < 200 ? body : body.substring(0, 100) + " ... " + body.substring(body.length()-100);
+        if (!body.trim().isEmpty()) {
+            LOGGER.info("<<<--- REQUEST : BODY : " + bodyLog);
         }
 
         LocalDateTime startDateTime = LocalDateTime.now();
         filterChain.doFilter(multiReadHttpServletRequest, multiReadHttpServletResponse);
         LocalDateTime finishDateTime = LocalDateTime.now();
         Duration duration = Duration.between(startDateTime, finishDateTime);
-
-        System.out.println("--->>> RESPONSE[" + duration.toMillis() + " ms] : " + ((body != null && !body.trim().isEmpty()) ? (" BODY : " + body) : ""));
+        LOGGER.info("--->>> RESPONSE[" + duration.toMillis() + " ms] : " + (!body.trim().isEmpty() ? " BODY : " + bodyLog : ""));
 
     }
 
