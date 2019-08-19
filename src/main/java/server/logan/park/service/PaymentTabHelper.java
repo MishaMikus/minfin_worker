@@ -84,10 +84,6 @@ public class PaymentTabHelper {
     }
 
     private List<List<Date>> calculateDateRange(Map<Date, List<Object>> dateListMap) {
-        if (dateListMap.size() < 2) {
-            return null;
-        }
-
         List<Date> daleList = new ArrayList<>(dateListMap.keySet());
         Collections.sort(daleList);
         Date start = daleList.get(0);
@@ -253,7 +249,7 @@ public class PaymentTabHelper {
         String[] rowArray = row.split(",");
         String[] tipRowArray = tipRow.split(",");
         Date date = parseRowDate(rowArray);
-        return "[" + SDF_DD_MM_YYYY_HH_MM.format(date) + "] [" + rowArray[4] + "] [tip : " + tipRowArray[4] + "] [" + rowArray[6] + "]";
+        return "[" + SDF_DD_MM_YYYY_HH_MM.format(date) + "] [" + rowArray[4] + "] [tip : " + tipRowArray[4] + "]";
     }
 
     private boolean tipAndTrip(List<String> rowList) {
@@ -287,14 +283,19 @@ public class PaymentTabHelper {
         String[] rowArray = row.split(",");
         String[] cashRowArray = cashRow.split(",");
         Date date = parseRowDate(rowArray);
-        return "[" + SDF_DD_MM_YYYY_HH_MM.format(date) + "] [" + rowArray[4] + "] [" + cashRowArray[4] + "] [" + rowArray[6] + "]";
+        return "[" + SDF_DD_MM_YYYY_HH_MM.format(date) + "] [" + rowArray[4] + "] [cash : " + cashRowArray[4] + "]";
     }
 
     private String makeSingleUsualText(String row) {
         //[16.08.2019 11:38] [39.91] [trip]
         String[] rowArray = row.split(",");
         Date date = parseRowDate(rowArray);
-        return "[" + SDF_DD_MM_YYYY_HH_MM.format(date) + "] [" + rowArray[4] + "] [" + rowArray[6] + "]";
+        String type=rowArray[6];
+        if(rowArray[6].equals("trip")){
+        return "[" + SDF_DD_MM_YYYY_HH_MM.format(date) + "] [" + rowArray[4] + "]";}
+        else{
+            return makeUnUsualText(new ArrayList<>(Collections.singletonList(row)));
+        }
     }
 
     private Date parseRowDate(String[] rowArray) {
@@ -341,7 +342,7 @@ public class PaymentTabHelper {
             if (firstRow) {
                 firstRow = false;
             } else {
-                LOGGER.info("i:" + (i++) + " " + row);
+                LOGGER.info("row["+i+"]:" + (i++) + " " + row);
                 row = row.replaceAll("\"", "");
                 String[] rowArray = row.split(",");
                 String timestamp = rowArray[5];
@@ -361,6 +362,7 @@ public class PaymentTabHelper {
                 driverMap.get(driverName).put(new Date(date.getTime() + i), Arrays.asList(amount, itemType, row));
             }
         }
+
         return driverMap;
     }
 }
