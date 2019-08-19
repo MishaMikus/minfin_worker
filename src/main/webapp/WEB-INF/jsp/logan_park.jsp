@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="fileName" scope="session" type="java.lang.String"/>
 <jsp:useBean id="paymentTable" scope="session"
-             type="java.util.HashMap<java.lang.String,java.util.ArrayList<server.logan.park.view.PaymentView>>"/>
+             type="java.util.HashMap<java.lang.String,server.logan.park.service.PaymentDriverRecord>"/>
 <html>
 <head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styles.css">
@@ -35,7 +35,7 @@
                 <th>решту від готівки</th>
             </tr>
 
-            <c:forEach items="${entry.value}" var="paymentView">
+            <c:forEach items="${entry.value.recordList}" var="paymentView">
                 <tr>
                     <td>${paymentView.name}</td>
                     <td>${paymentView.start}</td>
@@ -71,6 +71,17 @@
                     <td>${paymentView.change}</td>
                 </tr>
             </c:forEach>
+            <tr>
+                <th colspan="3">Разом</th>
+                <th>${entry.value.summary.duration}</th>
+                <th>${entry.value.summary.count}</th>
+                <th>${entry.value.summary.amount}</th>
+                <th>${entry.value.summary.tips}</th>
+                <th>${entry.value.summary.promotion}</th>
+                <th>${entry.value.summary.cash}</th>
+                <th>${entry.value.summary.salary}</th>
+                <th>${entry.value.summary.change}</th>
+            </tr>
             </tbody>
         </table>
         <br>
