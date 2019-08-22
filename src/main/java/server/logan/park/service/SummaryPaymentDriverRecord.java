@@ -1,6 +1,7 @@
 package server.logan.park.service;
 
 public class SummaryPaymentDriverRecord {
+    private String rate;
     private String count;
     private String amount;
     private String cash;
@@ -9,6 +10,9 @@ public class SummaryPaymentDriverRecord {
     private String tips;
     private String promotion;
     private String duration;
+    private String uahPerHour;
+    private String uahPerTrip;
+    private String salaryWithTips;
 
     @Override
     public String toString() {
@@ -21,7 +25,42 @@ public class SummaryPaymentDriverRecord {
                 ", tips='" + tips + '\'' +
                 ", promotion='" + promotion + '\'' +
                 ", duration='" + duration + '\'' +
+                ", uahPerHour='" + uahPerHour + '\'' +
+                ", uahPerTrip='" + uahPerTrip + '\'' +
+                ", salaryWithTips='" + salaryWithTips + '\'' +
                 '}';
+    }
+
+    public String getRate() {
+        return rate;
+    }
+
+    public void setRate(String rate) {
+        this.rate = rate;
+    }
+
+    public String getUahPerHour() {
+        return uahPerHour;
+    }
+
+    public void setUahPerHour(String uahPerHour) {
+        this.uahPerHour = uahPerHour;
+    }
+
+    public String getUahPerTrip() {
+        return uahPerTrip;
+    }
+
+    public void setUahPerTrip(String uahPerTrip) {
+        this.uahPerTrip = uahPerTrip;
+    }
+
+    public String getSalaryWithTips() {
+        return salaryWithTips;
+    }
+
+    public void setSalaryWithTips(String salaryWithTips) {
+        this.salaryWithTips = salaryWithTips;
     }
 
     public String getCount() {

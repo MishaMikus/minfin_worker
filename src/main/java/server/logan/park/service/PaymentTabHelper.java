@@ -118,7 +118,7 @@ public class PaymentTabHelper {
             if (!EXCLUDE_DRIVER_LIST.contains(driver)) {
                 map.putIfAbsent(driver, new PaymentDriverRecord());
                 List<List<Date>> dateRange = calculateDateRange(driverMap.get(driver));
-                if (dateRange != null && dateRange.size() > 0) {
+                if (dateRange.size() > 0) {
                     for (List<Date> range : dateRange) {
                         Date start = range.get(0);
                         Date end = range.get(1);
@@ -151,7 +151,24 @@ public class PaymentTabHelper {
                 }
             }
         }
+        makeRate(map);
         return map;
+    }
+
+    private void makeRate(Map<String, PaymentDriverRecord> map) {
+        TreeMap<Double,PaymentDriverRecord> sortMap=new TreeMap<>();
+        for(PaymentDriverRecord paymentDriverRecord:map.values()){
+            sortMap.put(-Double.parseDouble(paymentDriverRecord.getSummary().getUahPerHour()),paymentDriverRecord);
+        }
+
+        List<PaymentDriverRecord> list=new ArrayList<>(sortMap.values());
+        for(PaymentDriverRecord paymentDriverRecord:list){
+            paymentDriverRecord.getSummary().setRate(list.indexOf(paymentDriverRecord)+"");
+        }
+
+        for(PaymentDriverRecord paymentDriverRecord:map.values()){
+            System.out.println(paymentDriverRecord.getSummary().getRate());
+        }
     }
 
     private SummaryPaymentDriverRecord makeSummary(List<PaymentView> recordList) {
@@ -176,6 +193,7 @@ public class PaymentTabHelper {
             promotion += Integer.parseInt(paymentView.getPromotion());
             duration += Double.parseDouble(paymentView.getDuration());
         }
+
         summaryPaymentDriverRecord.setCount(count + "");
         summaryPaymentDriverRecord.setAmount(amount + "");
         summaryPaymentDriverRecord.setCash(cash + "");
@@ -183,7 +201,11 @@ public class PaymentTabHelper {
         summaryPaymentDriverRecord.setChange(change + "");
         summaryPaymentDriverRecord.setTips(tips + "");
         summaryPaymentDriverRecord.setPromotion(promotion + "");
-        summaryPaymentDriverRecord.setDuration(Math.round(duration*100)/100.0 + "");
+        summaryPaymentDriverRecord.setDuration(Math.round(duration * 100) / 100.0 + "");
+        summaryPaymentDriverRecord.setSalaryWithTips((salary + tips) + "");
+        summaryPaymentDriverRecord.setUahPerHour(Math.round(amount / duration * 100) / 100.0 + "");
+        summaryPaymentDriverRecord.setUahPerTrip(Math.round(amount / (double) count * 100) / 100.0 + "");
+
         return summaryPaymentDriverRecord;
     }
 
@@ -290,10 +312,10 @@ public class PaymentTabHelper {
         //[16.08.2019 11:38] [39.91] [trip]
         String[] rowArray = row.split(",");
         Date date = parseRowDate(rowArray);
-        String type=rowArray[6];
-        if(rowArray[6].equals("trip")){
-        return "[" + SDF_DD_MM_YYYY_HH_MM.format(date) + "] [" + rowArray[4] + "]";}
-        else{
+        String type = rowArray[6];
+        if (rowArray[6].equals("trip")) {
+            return "[" + SDF_DD_MM_YYYY_HH_MM.format(date) + "] [" + rowArray[4] + "]";
+        } else {
             return makeUnUsualText(new ArrayList<>(Collections.singletonList(row)));
         }
     }
@@ -342,7 +364,7 @@ public class PaymentTabHelper {
             if (firstRow) {
                 firstRow = false;
             } else {
-                LOGGER.info("row["+i+"]:" + (i++) + " " + row);
+                LOGGER.info("row[" + i + "]:" + (i++) + " " + row);
                 row = row.replaceAll("\"", "");
                 String[] rowArray = row.split(",");
                 String timestamp = rowArray[5];

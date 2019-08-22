@@ -19,7 +19,8 @@
         <table border="1">
             <tbody>
             <tr>
-                <td colspan=11>${entry.key}</td>
+                <th colspan=10>${entry.key}</th>
+                <th>${entry.value.summary.rate}</th>
             </tr>
             <tr>
                 <th>зміна</th>
@@ -82,6 +83,17 @@
                 <th>${entry.value.summary.salary}</th>
                 <th>${entry.value.summary.change}</th>
             </tr>
+
+            <tr>
+                <th>грн за годину</th>
+                <th>${entry.value.summary.uahPerHour}</th>
+                <th>гривень за поїздку</th>
+                <th>${entry.value.summary.uahPerTrip}</th>
+                <th colspan="3"></th>
+                <th colspan="2">Видати на руки : </th>
+                <th>${entry.value.summary.salaryWithTips}</th>
+            </tr>
+
             </tbody>
         </table>
         <br>
