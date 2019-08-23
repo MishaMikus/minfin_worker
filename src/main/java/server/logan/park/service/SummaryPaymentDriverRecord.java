@@ -13,22 +13,14 @@ public class SummaryPaymentDriverRecord {
     private String uahPerHour;
     private String uahPerTrip;
     private String salaryWithTips;
+    private String changeWithoutTips;
 
-    @Override
-    public String toString() {
-        return "SummaryPaymentDriverRecord{" +
-                "count='" + count + '\'' +
-                ", amount='" + amount + '\'' +
-                ", cash='" + cash + '\'' +
-                ", salary='" + salary + '\'' +
-                ", change='" + change + '\'' +
-                ", tips='" + tips + '\'' +
-                ", promotion='" + promotion + '\'' +
-                ", duration='" + duration + '\'' +
-                ", uahPerHour='" + uahPerHour + '\'' +
-                ", uahPerTrip='" + uahPerTrip + '\'' +
-                ", salaryWithTips='" + salaryWithTips + '\'' +
-                '}';
+    public String getChangeWithoutTips() {
+        return changeWithoutTips;
+    }
+
+    public void setChangeWithoutTips(String changeWithoutTips) {
+        this.changeWithoutTips = changeWithoutTips;
     }
 
     public String getRate() {

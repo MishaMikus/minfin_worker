@@ -12,6 +12,8 @@ public class PaymentTabHelper {
     private final Logger LOGGER = Logger.getLogger(this.getClass());
     private String content;
 
+    private static final int WORKOUT_HOUR_DIFF=6;
+
     public PaymentTabHelper(String content) {
         this.content = content;
     }
@@ -91,7 +93,7 @@ public class PaymentTabHelper {
         List<List<Date>> res = new ArrayList<>();
         for (Date date : daleList) {
             int diff = end == null ? 0 : (int) (((date.getTime() - end.getTime()) / 1000) / 60) / 60;
-            if (diff > 2) {
+            if (diff > WORKOUT_HOUR_DIFF) {
                 List<Date> currentRange = new ArrayList<>();
                 currentRange.add(start);
                 currentRange.add(end);
@@ -148,27 +150,30 @@ public class PaymentTabHelper {
                         map.get(driver).getRecordList().add(paymentView);
                     }
                     map.get(driver).setSummary(makeSummary(map.get(driver).getRecordList()));
+                    map.get(driver).setDriverName(driver);
                 }
             }
         }
-        makeRate(map);
+        map=makeRateAndSortByRate(map);
         return map;
     }
 
-    private void makeRate(Map<String, PaymentDriverRecord> map) {
+    private Map<String, PaymentDriverRecord> makeRateAndSortByRate(Map<String, PaymentDriverRecord> map) {
         TreeMap<Double,PaymentDriverRecord> sortMap=new TreeMap<>();
         for(PaymentDriverRecord paymentDriverRecord:map.values()){
             sortMap.put(-Double.parseDouble(paymentDriverRecord.getSummary().getUahPerHour()),paymentDriverRecord);
         }
 
         List<PaymentDriverRecord> list=new ArrayList<>(sortMap.values());
-        for(PaymentDriverRecord paymentDriverRecord:list){
+        for(PaymentDriverRecord paymentDriverRecord:new ArrayList<>(sortMap.values())){
             paymentDriverRecord.getSummary().setRate(list.indexOf(paymentDriverRecord)+"");
         }
 
-        for(PaymentDriverRecord paymentDriverRecord:map.values()){
-            System.out.println(paymentDriverRecord.getSummary().getRate());
+        Map<String, PaymentDriverRecord> linkedHashMap=new LinkedHashMap<>();
+        for(Map.Entry<Double,PaymentDriverRecord> entry : sortMap.entrySet()){
+            linkedHashMap.put(entry.getValue().getDriverName(),entry.getValue());
         }
+        return linkedHashMap;
     }
 
     private SummaryPaymentDriverRecord makeSummary(List<PaymentView> recordList) {
@@ -199,6 +204,7 @@ public class PaymentTabHelper {
         summaryPaymentDriverRecord.setCash(cash + "");
         summaryPaymentDriverRecord.setSalary(salary + "");
         summaryPaymentDriverRecord.setChange(change + "");
+        summaryPaymentDriverRecord.setChangeWithoutTips((change-tips)+"");
         summaryPaymentDriverRecord.setTips(tips + "");
         summaryPaymentDriverRecord.setPromotion(promotion + "");
         summaryPaymentDriverRecord.setDuration(Math.round(duration * 100) / 100.0 + "");

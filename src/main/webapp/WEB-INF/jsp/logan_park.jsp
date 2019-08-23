@@ -92,6 +92,7 @@
                 <th colspan="3"></th>
                 <th colspan="2">Видати на руки : </th>
                 <th>${entry.value.summary.salaryWithTips}</th>
+                <th>${entry.value.summary.changeWithoutTips}</th>
             </tr>
 
             </tbody>

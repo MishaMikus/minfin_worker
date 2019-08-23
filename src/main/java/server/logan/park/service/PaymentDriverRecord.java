@@ -7,6 +7,15 @@ import java.util.List;
 public class PaymentDriverRecord {
     private List<PaymentView> recordList;
     private SummaryPaymentDriverRecord summary;
+    private String driverName;
+
+    public String getDriverName() {
+        return driverName;
+    }
+
+    public void setDriverName(String driverName) {
+        this.driverName = driverName;
+    }
 
     public List<PaymentView> getRecordList() {
         return recordList;

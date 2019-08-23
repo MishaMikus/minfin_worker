@@ -1,14 +1,12 @@
 package orm.entity;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
 
 import javax.persistence.Table;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.sql.Timestamp;
@@ -20,7 +18,7 @@ import java.util.function.BiFunction;
 import static orm.HibernateUtil.*;
 
 public abstract class GenericAbstractDAO<E> {
-
+    private final Logger LOGGER = Logger.getLogger(this.getClass());
     private final Class<E> entityClass;
 
     public GenericAbstractDAO(Class<E> entityClass) {
@@ -190,22 +188,18 @@ public abstract class GenericAbstractDAO<E> {
     }
 
     private List<E> findAllWhere(BiFunction<CriteriaBuilder, Root<E>, Predicate> where) {
-        List<E> res = new ArrayList<>();
-        try {
         beginTransaction();
         CriteriaBuilder cb = getSession().getCriteriaBuilder();
-        CriteriaQuery<E> query = cb.createQuery(entityClass);
-        Root<E> root = query.from(entityClass);
+        CriteriaQuery<E> query = cb.createQuery(this.entityClass);
+        Root<E> root = query.from(this.entityClass);
         query.select(root);
         if (where != null) {
             query.where(where.apply(cb, root));
         }
-            res = getSession().createQuery(query).getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        List<E> res = getSession().createQuery(query).getResultList();
         commitTransaction();
-        //System.out.println("findAllWhere(" + where + ") " + getTableName() + " : " + res.size());
+        LOGGER.info("findAllWhere(" + where + ") " + getTableName() + " : " + res.size());
         return res;
     }
 
