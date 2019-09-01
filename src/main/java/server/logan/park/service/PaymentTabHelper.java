@@ -207,6 +207,7 @@ public class PaymentTabHelper {
                     entry.getValue().getSummary().setChangeWithoutTips(changeWithoutTips + "");
 
                     entry.getValue().getSummary().setFormula("40%");
+                    entry.getValue().setRecordList(recalculate40(entry.getValue().getRecordList()));
                 } else {
                     entry.getValue().getSummary().setFormula("35%");
                 }
@@ -216,6 +217,16 @@ public class PaymentTabHelper {
 
         }
         return map;
+    }
+
+    private List<PaymentView> recalculate40(List<PaymentView> recordList) {
+        for(PaymentView paymentView:recordList){
+            Integer salary= Math.toIntExact(Math.round(Integer.parseInt(paymentView.getAmount()) * 0.4d));
+            Integer cash=Integer.parseInt(paymentView.getCash());
+            paymentView.setSalary(salary+"");
+            paymentView.setChange((cash-salary)+"");
+        }
+        return recordList;
     }
 
     private Map<String, PaymentDriverRecord> makeRateAndSortByRate(Map<String, PaymentDriverRecord> map) {
