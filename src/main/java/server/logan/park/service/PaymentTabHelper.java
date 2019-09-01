@@ -155,6 +155,66 @@ public class PaymentTabHelper {
             }
         }
         map=makeRateAndSortByRate(map);
+        map=recalculateWithMotivation(map);
+        return map;
+    }
+
+    private Map<String, PaymentDriverRecord> recalculateWithMotivation(Map<String, PaymentDriverRecord> map) {
+//old iurij formula
+        for(Map.Entry<String, PaymentDriverRecord> entry :map.entrySet()) {
+            if (entry.getKey().equals("Юрій_Горбатий")) {
+                Integer amount = Integer.valueOf(entry.getValue().getSummary().getAmount());
+                if (amount >= 10000 && amount < 12000) {
+                    Integer salary = Integer.parseInt(entry.getValue().getSummary().getSalary())+500;
+                    entry.getValue().getSummary().setSalary((salary) + "");
+                    Integer change = Integer.valueOf(entry.getValue().getSummary().getChange());
+                    entry.getValue().getSummary().setChange((change - 500) + "");
+                    Integer changeWithoutTips = Integer.valueOf(entry.getValue().getSummary().getChangeWithoutTips());
+                    entry.getValue().getSummary().setChangeWithoutTips((changeWithoutTips - 500) + "");
+                    entry.getValue().getSummary().setFormula("35% + 500/10k");
+
+                    Integer salaryWithTips=salary+Long.valueOf(Integer.parseInt(entry.getValue().getSummary().getTips())).intValue();
+                    entry.getValue().getSummary().setSalaryWithTips((salaryWithTips) +"");
+                } else {
+                    if (amount >= 12000) {
+                        Integer salary = Integer.parseInt(entry.getValue().getSummary().getSalary())+1000;
+                        entry.getValue().getSummary().setSalary((salary) + "");
+                        Integer change = Integer.valueOf(entry.getValue().getSummary().getChange());
+                        entry.getValue().getSummary().setChange((change - 1000) + "");
+                        Integer changeWithoutTips = Integer.valueOf(entry.getValue().getSummary().getChangeWithoutTips());
+                        entry.getValue().getSummary().setChangeWithoutTips((changeWithoutTips - 1000) + "");
+                        entry.getValue().getSummary().setFormula("35% + 1000/12k");
+
+                        Integer salaryWithTips=salary+Long.valueOf(Integer.parseInt(entry.getValue().getSummary().getTips())).intValue();
+                        entry.getValue().getSummary().setSalaryWithTips((salaryWithTips) +"");
+
+                    } else {
+                        entry.getValue().getSummary().setFormula("35%");
+                    }
+                }
+            } else {
+                //40% calculation for others drivers
+                Integer amount = Integer.valueOf(entry.getValue().getSummary().getAmount());
+                if (amount >= 10000) {
+                    Integer salary = Long.valueOf(Math.round(Integer.parseInt(entry.getValue().getSummary().getAmount()) * 0.4d)).intValue();
+                    entry.getValue().getSummary().setSalary(salary+ "");
+                    Integer salaryWithTips=salary+Long.valueOf(Integer.parseInt(entry.getValue().getSummary().getTips())).intValue();
+                    entry.getValue().getSummary().setSalaryWithTips((salaryWithTips) +"");
+
+                    Integer change = Integer.parseInt(entry.getValue().getSummary().getCash())-salary;
+                    entry.getValue().getSummary().setChange(change+"");
+                    Integer changeWithoutTips = change-Integer.parseInt(entry.getValue().getSummary().getTips());
+                    entry.getValue().getSummary().setChangeWithoutTips(changeWithoutTips + "");
+
+                    entry.getValue().getSummary().setFormula("40%");
+                } else {
+                    entry.getValue().getSummary().setFormula("35%");
+                }
+            }
+
+
+
+        }
         return map;
     }
 
@@ -202,16 +262,19 @@ public class PaymentTabHelper {
         summaryPaymentDriverRecord.setCount(count + "");
         summaryPaymentDriverRecord.setAmount(amount + "");
         summaryPaymentDriverRecord.setCash(cash + "");
-        summaryPaymentDriverRecord.setSalary(salary + "");
-        summaryPaymentDriverRecord.setChange(change + "");
-        summaryPaymentDriverRecord.setChangeWithoutTips((change-tips)+"");
+
         summaryPaymentDriverRecord.setTips(tips + "");
         summaryPaymentDriverRecord.setPromotion(promotion + "");
         summaryPaymentDriverRecord.setDuration(Math.round(duration * 100) / 100.0 + "");
-        summaryPaymentDriverRecord.setSalaryWithTips((salary + tips) + "");
+
         summaryPaymentDriverRecord.setUahPerHour(Math.round(amount / duration * 100) / 100.0 + "");
         summaryPaymentDriverRecord.setUahPerTrip(Math.round(amount / (double) count * 100) / 100.0 + "");
 
+
+        summaryPaymentDriverRecord.setSalary(salary + "");
+        summaryPaymentDriverRecord.setSalaryWithTips((salary + tips) + "");
+        summaryPaymentDriverRecord.setChange(change + "");
+        summaryPaymentDriverRecord.setChangeWithoutTips((change-tips)+"");
         return summaryPaymentDriverRecord;
     }
 

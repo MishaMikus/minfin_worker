@@ -17,7 +17,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import java.util.HashMap;
 
 @RestController
 @EnableAutoConfiguration(exclude = {

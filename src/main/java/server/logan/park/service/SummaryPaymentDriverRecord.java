@@ -14,6 +14,15 @@ public class SummaryPaymentDriverRecord {
     private String uahPerTrip;
     private String salaryWithTips;
     private String changeWithoutTips;
+    private String formula;
+
+    public String getFormula() {
+        return formula;
+    }
+
+    public void setFormula(String formula) {
+        this.formula = formula;
+    }
 
     public String getChangeWithoutTips() {
         return changeWithoutTips;

@@ -89,7 +89,7 @@
                 <th>${entry.value.summary.uahPerHour}</th>
                 <th>гривень за поїздку</th>
                 <th>${entry.value.summary.uahPerTrip}</th>
-                <th colspan="3"></th>
+                <th colspan="3">${entry.value.summary.formula}</th>
                 <th colspan="2">Видати на руки : </th>
                 <th>${entry.value.summary.salaryWithTips}</th>
                 <th>${entry.value.summary.changeWithoutTips}</th>
