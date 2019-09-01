@@ -276,11 +276,20 @@ public class PaymentTabHelper {
 
         summaryPaymentDriverRecord.setTips(tips + "");
         summaryPaymentDriverRecord.setPromotion(promotion + "");
+        if(duration>0){
         summaryPaymentDriverRecord.setDuration(Math.round(duration * 100) / 100.0 + "");
+        summaryPaymentDriverRecord.setUahPerHour(Math.round(amount / duration * 100) / 100.0 + "");}
+        else{
 
-        summaryPaymentDriverRecord.setUahPerHour(Math.round(amount / duration * 100) / 100.0 + "");
-        summaryPaymentDriverRecord.setUahPerTrip(Math.round(amount / (double) count * 100) / 100.0 + "");
+            summaryPaymentDriverRecord.setDuration("0");
+            summaryPaymentDriverRecord.setUahPerHour("0");}
+        if(count>0) {
+            summaryPaymentDriverRecord.setUahPerTrip(Math.round(amount / (double) count * 100) / 100.0 + "");
+        }else{
 
+            summaryPaymentDriverRecord.setUahPerTrip("0");
+
+        }
 
         summaryPaymentDriverRecord.setSalary(salary + "");
         summaryPaymentDriverRecord.setSalaryWithTips((salary + tips) + "");
