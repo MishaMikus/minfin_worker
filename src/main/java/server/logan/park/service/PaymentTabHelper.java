@@ -1,6 +1,9 @@
 package server.logan.park.service;
 
 import org.apache.log4j.Logger;
+import orm.entity.uber_driver.UberDriver;
+import orm.entity.uber_driver.UberDriverDAO;
+import server.logan.park.view.OwnerPaymentView;
 import server.logan.park.view.PaymentView;
 import server.logan.park.view.TripView;
 
@@ -12,16 +15,19 @@ public class PaymentTabHelper {
     private final Logger LOGGER = Logger.getLogger(this.getClass());
     private String content;
 
-    private static final int WORKOUT_HOUR_DIFF=6;
+    private static final int WORKOUT_HOUR_DIFF = 6;
+    private List<UberDriver> uberDriverList;
 
     public PaymentTabHelper(String content) {
         this.content = content;
+        primaryParsedData = parsePrimaryData();
+        uberDriverList= UberDriverDAO.getInstance().findAll();
     }
 
-    private static final List<String> EXCLUDE_DRIVER_LIST = new ArrayList<>(Arrays.asList(
-            "Мар'ян_Торган",
-            "Богдан_Мікусь",
-            "Михайло_Мікусь"));
+    public Map<String, Map<Date, List<Object>>> getPrimaryParsedData() {
+        return primaryParsedData;
+    }
+
 
     private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
@@ -38,7 +44,6 @@ public class PaymentTabHelper {
 
     private Long getAmount(Map<Date, List<Object>> rangeMap) {
         return collectAmount(rangeMap.values(), "trip")
-                // + collectAmount(rangeMap.values(), "tip")
                 + collectAmount(rangeMap.values(), "promotion");
     }
 
@@ -85,6 +90,14 @@ public class PaymentTabHelper {
         return res;
     }
 
+    private Map<Date, List<Object>> getRangeMap(Map<Date, List<Object>> dateListMap) {
+        Map<Date, List<Object>> res = new HashMap<>();
+        for (Date date : dateListMap.keySet()) {
+            res.putIfAbsent(date, dateListMap.get(date));
+        }
+        return res;
+    }
+
     private List<List<Date>> calculateDateRange(Map<Date, List<Object>> dateListMap) {
         List<Date> daleList = new ArrayList<>(dateListMap.keySet());
         Collections.sort(daleList);
@@ -115,9 +128,10 @@ public class PaymentTabHelper {
 
         //"ac67df0b-abbb-4d15-876d-6cc76f95b7c3","","Юрий","Сосинский","18.0","2019-08-16T14:19:45+03:00","promotion","Промокод","Компенсація сервісного збору Убер"
         Map<String, PaymentDriverRecord> map = new HashMap<>();
-        Map<String, Map<Date, List<Object>>> driverMap = parsePrimaryData();
+        Map<String, Map<Date, List<Object>>> driverMap = getPrimaryParsedData();
         for (String driver : driverMap.keySet()) {
-            if (!EXCLUDE_DRIVER_LIST.contains(driver)) {
+            UberDriver currentDriver = driverByName(driver, uberDriverList);
+            if (currentDriver != null && !currentDriver.getDriverType().startsWith("owner")) {
                 map.putIfAbsent(driver, new PaymentDriverRecord());
                 List<List<Date>> dateRange = calculateDateRange(driverMap.get(driver));
                 if (dateRange.size() > 0) {
@@ -154,18 +168,19 @@ public class PaymentTabHelper {
                 }
             }
         }
-        map=makeRateAndSortByRate(map);
-        map=recalculateWithMotivation(map);
+        map = makeRateAndSortByRate(map);
+        map = recalculateWithMotivation(map);
         return map;
     }
 
     private Map<String, PaymentDriverRecord> recalculateWithMotivation(Map<String, PaymentDriverRecord> map) {
+
 //old iurij formula
-        for(Map.Entry<String, PaymentDriverRecord> entry :map.entrySet()) {
+        for (Map.Entry<String, PaymentDriverRecord> entry : map.entrySet()) {
             if (entry.getKey().equals("Юрій_Горбатий")) {
                 Integer amount = Integer.valueOf(entry.getValue().getSummary().getAmount());
                 if (amount >= 10000 && amount < 12000) {
-                    Integer salary = Integer.parseInt(entry.getValue().getSummary().getSalary())+500;
+                    Integer salary = Integer.parseInt(entry.getValue().getSummary().getSalary()) + 500;
                     entry.getValue().getSummary().setSalary((salary) + "");
                     Integer change = Integer.valueOf(entry.getValue().getSummary().getChange());
                     entry.getValue().getSummary().setChange((change - 500) + "");
@@ -173,11 +188,11 @@ public class PaymentTabHelper {
                     entry.getValue().getSummary().setChangeWithoutTips((changeWithoutTips - 500) + "");
                     entry.getValue().getSummary().setFormula("35% + 500/10k");
 
-                    Integer salaryWithTips=salary+Long.valueOf(Integer.parseInt(entry.getValue().getSummary().getTips())).intValue();
-                    entry.getValue().getSummary().setSalaryWithTips((salaryWithTips) +"");
+                    Integer salaryWithTips = salary + Long.valueOf(Integer.parseInt(entry.getValue().getSummary().getTips())).intValue();
+                    entry.getValue().getSummary().setSalaryWithTips((salaryWithTips) + "");
                 } else {
                     if (amount >= 12000) {
-                        Integer salary = Integer.parseInt(entry.getValue().getSummary().getSalary())+1000;
+                        Integer salary = Integer.parseInt(entry.getValue().getSummary().getSalary()) + 1000;
                         entry.getValue().getSummary().setSalary((salary) + "");
                         Integer change = Integer.valueOf(entry.getValue().getSummary().getChange());
                         entry.getValue().getSummary().setChange((change - 1000) + "");
@@ -185,8 +200,8 @@ public class PaymentTabHelper {
                         entry.getValue().getSummary().setChangeWithoutTips((changeWithoutTips - 1000) + "");
                         entry.getValue().getSummary().setFormula("35% + 1000/12k");
 
-                        Integer salaryWithTips=salary+Long.valueOf(Integer.parseInt(entry.getValue().getSummary().getTips())).intValue();
-                        entry.getValue().getSummary().setSalaryWithTips((salaryWithTips) +"");
+                        Integer salaryWithTips = salary + Long.valueOf(Integer.parseInt(entry.getValue().getSummary().getTips())).intValue();
+                        entry.getValue().getSummary().setSalaryWithTips((salaryWithTips) + "");
 
                     } else {
                         entry.getValue().getSummary().setFormula("35%");
@@ -197,13 +212,13 @@ public class PaymentTabHelper {
                 Integer amount = Integer.valueOf(entry.getValue().getSummary().getAmount());
                 if (amount >= 10000) {
                     Integer salary = Long.valueOf(Math.round(Integer.parseInt(entry.getValue().getSummary().getAmount()) * 0.4d)).intValue();
-                    entry.getValue().getSummary().setSalary(salary+ "");
-                    Integer salaryWithTips=salary+Long.valueOf(Integer.parseInt(entry.getValue().getSummary().getTips())).intValue();
-                    entry.getValue().getSummary().setSalaryWithTips((salaryWithTips) +"");
+                    entry.getValue().getSummary().setSalary(salary + "");
+                    Integer salaryWithTips = salary + Long.valueOf(Integer.parseInt(entry.getValue().getSummary().getTips())).intValue();
+                    entry.getValue().getSummary().setSalaryWithTips((salaryWithTips) + "");
 
-                    Integer change = Integer.parseInt(entry.getValue().getSummary().getCash())-salary;
-                    entry.getValue().getSummary().setChange(change+"");
-                    Integer changeWithoutTips = change-Integer.parseInt(entry.getValue().getSummary().getTips());
+                    Integer change = Integer.parseInt(entry.getValue().getSummary().getCash()) - salary;
+                    entry.getValue().getSummary().setChange(change + "");
+                    Integer changeWithoutTips = change - Integer.parseInt(entry.getValue().getSummary().getTips());
                     entry.getValue().getSummary().setChangeWithoutTips(changeWithoutTips + "");
 
                     entry.getValue().getSummary().setFormula("40%");
@@ -214,35 +229,34 @@ public class PaymentTabHelper {
             }
 
 
-
         }
         return map;
     }
 
     private List<PaymentView> recalculate40(List<PaymentView> recordList) {
-        for(PaymentView paymentView:recordList){
-            Integer salary= Math.toIntExact(Math.round(Integer.parseInt(paymentView.getAmount()) * 0.4d));
-            Integer cash=Integer.parseInt(paymentView.getCash());
-            paymentView.setSalary(salary+"");
-            paymentView.setChange((cash-salary)+"");
+        for (PaymentView paymentView : recordList) {
+            Integer salary = Math.toIntExact(Math.round(Integer.parseInt(paymentView.getAmount()) * 0.4d));
+            Integer cash = Integer.parseInt(paymentView.getCash());
+            paymentView.setSalary(salary + "");
+            paymentView.setChange((cash - salary) + "");
         }
         return recordList;
     }
 
     private Map<String, PaymentDriverRecord> makeRateAndSortByRate(Map<String, PaymentDriverRecord> map) {
-        TreeMap<Double,PaymentDriverRecord> sortMap=new TreeMap<>();
-        for(PaymentDriverRecord paymentDriverRecord:map.values()){
-            sortMap.put(-Double.parseDouble(paymentDriverRecord.getSummary().getUahPerHour()),paymentDriverRecord);
+        TreeMap<Double, PaymentDriverRecord> sortMap = new TreeMap<>();
+        for (PaymentDriverRecord paymentDriverRecord : map.values()) {
+            sortMap.put(-Double.parseDouble(paymentDriverRecord.getSummary().getUahPerHour()), paymentDriverRecord);
         }
 
-        List<PaymentDriverRecord> list=new ArrayList<>(sortMap.values());
-        for(PaymentDriverRecord paymentDriverRecord:new ArrayList<>(sortMap.values())){
-            paymentDriverRecord.getSummary().setRate(list.indexOf(paymentDriverRecord)+"");
+        List<PaymentDriverRecord> list = new ArrayList<>(sortMap.values());
+        for (PaymentDriverRecord paymentDriverRecord : new ArrayList<>(sortMap.values())) {
+            paymentDriverRecord.getSummary().setRate(list.indexOf(paymentDriverRecord) + "");
         }
 
-        Map<String, PaymentDriverRecord> linkedHashMap=new LinkedHashMap<>();
-        for(Map.Entry<Double,PaymentDriverRecord> entry : sortMap.entrySet()){
-            linkedHashMap.put(entry.getValue().getDriverName(),entry.getValue());
+        Map<String, PaymentDriverRecord> linkedHashMap = new LinkedHashMap<>();
+        for (Map.Entry<Double, PaymentDriverRecord> entry : sortMap.entrySet()) {
+            linkedHashMap.put(entry.getValue().getDriverName(), entry.getValue());
         }
         return linkedHashMap;
     }
@@ -276,16 +290,17 @@ public class PaymentTabHelper {
 
         summaryPaymentDriverRecord.setTips(tips + "");
         summaryPaymentDriverRecord.setPromotion(promotion + "");
-        if(duration>0){
-        summaryPaymentDriverRecord.setDuration(Math.round(duration * 100) / 100.0 + "");
-        summaryPaymentDriverRecord.setUahPerHour(Math.round(amount / duration * 100) / 100.0 + "");}
-        else{
+        if (duration > 0) {
+            summaryPaymentDriverRecord.setDuration(Math.round(duration * 100) / 100.0 + "");
+            summaryPaymentDriverRecord.setUahPerHour(Math.round(amount / duration * 100) / 100.0 + "");
+        } else {
 
             summaryPaymentDriverRecord.setDuration("0");
-            summaryPaymentDriverRecord.setUahPerHour("0");}
-        if(count>0) {
+            summaryPaymentDriverRecord.setUahPerHour("0");
+        }
+        if (count > 0) {
             summaryPaymentDriverRecord.setUahPerTrip(Math.round(amount / (double) count * 100) / 100.0 + "");
-        }else{
+        } else {
 
             summaryPaymentDriverRecord.setUahPerTrip("0");
 
@@ -294,7 +309,7 @@ public class PaymentTabHelper {
         summaryPaymentDriverRecord.setSalary(salary + "");
         summaryPaymentDriverRecord.setSalaryWithTips((salary + tips) + "");
         summaryPaymentDriverRecord.setChange(change + "");
-        summaryPaymentDriverRecord.setChangeWithoutTips((change-tips)+"");
+        summaryPaymentDriverRecord.setChangeWithoutTips((change - tips) + "");
         return summaryPaymentDriverRecord;
     }
 
@@ -445,6 +460,8 @@ public class PaymentTabHelper {
         return text.toString();
     }
 
+    private Map<String, Map<Date, List<Object>>> primaryParsedData;
+
     private Map<String, Map<Date, List<Object>>> parsePrimaryData() {
         Map<String, Map<Date, List<Object>>> driverMap = new HashMap<>();
         boolean firstRow = true;
@@ -473,8 +490,87 @@ public class PaymentTabHelper {
                 driverMap.get(driverName).put(new Date(date.getTime() + i), Arrays.asList(amount, itemType, row));
             }
         }
-
-        return driverMap;
+        primaryParsedData = driverMap;
+        return getPrimaryParsedData();
     }
+
+    public Map<String, PaymentOwnerRecord> makeOwnerMap() {
+        Map<String, PaymentOwnerRecord> map = new HashMap<>();
+
+        for (String driver : primaryParsedData.keySet()) {
+            UberDriver currentDriver = driverByName(driver, uberDriverList);
+            if (currentDriver != null && currentDriver.getDriverType().startsWith("owner")) {
+                map.putIfAbsent(driver, new PaymentOwnerRecord());
+                Map<Date, List<Object>> rangeMap = getRangeMap(primaryParsedData.get(driver));
+                Date start = rangeMap.keySet().stream().min(Date::compareTo).orElse(new Date());
+                Date end = rangeMap.keySet().stream().max(Date::compareTo).orElse(new Date());
+                map.get(driver).setDriverName(driver);
+
+                Long cash = getCash(rangeMap);
+                // готівка
+
+                Long amount = getAmountForOwner(rangeMap);
+                // дохід
+
+                Integer count = getTripCount(rangeMap);
+
+                Long tips = getTips(rangeMap);
+
+                Long promotion = getPromotion(rangeMap);
+
+                OwnerPaymentView ownerPaymentView = new OwnerPaymentView(count + "", amount + "", cash + "");
+                ownerPaymentView.setTips(tips + "");
+                ownerPaymentView.setPromotion(promotion + "");
+
+                ownerPaymentView.setTripListId("tripListId_" + UUID.randomUUID().toString());
+                ownerPaymentView.setTripList(makeTripList(rangeMap));
+
+
+                Integer taxPercentage = Integer.parseInt(currentDriver.getDriverType().split("_")[1]);
+                ownerPaymentView.setTaxPercentage(taxPercentage+"");
+                //відсоток комісії
+
+                String dateRangeName=SDF_DAY_YEAR.format(start)+"-"+SDF_DAY_YEAR.format(end);
+                ownerPaymentView.setDateRangeName(dateRangeName+"");
+                //дата
+
+                Long amountMinusCommission = Math.round(amount*((100-taxPercentage)/100d));
+                ownerPaymentView.setAmountMinusCommission(amountMinusCommission+"");
+                // чистий дохід (без комісії)
+
+                Long commission = Math.round(amount*((taxPercentage)/100d));
+                ownerPaymentView.setCommission(commission+"");
+                // комісія
+
+                Long nonCash = amount-cash;
+                ownerPaymentView.setNonCash(nonCash+"");
+                // безготівка
+
+                Long withdraw = nonCash-commission;
+                ownerPaymentView.setWithdraw(withdraw+"");
+                // на виведення
+
+                map.get(driver).setOwnerPaymentViews(ownerPaymentView);
+            }
+        }
+        return map;
+    }
+
+    private Long getAmountForOwner(Map<Date, List<Object>> rangeMap) {
+        return collectAmount(rangeMap.values(), "trip")
+                 + collectAmount(rangeMap.values(), "tip")
+                + collectAmount(rangeMap.values(), "promotion");
+    }
+
+    private UberDriver driverByName(String driver, List<UberDriver> uberDriverList) {
+        for (UberDriver uberDriver : uberDriverList) {
+            if (uberDriver.getName().equals(driver)) {
+                return uberDriver;
+            }
+        }
+        return null;
+    }
+
+
 }
 

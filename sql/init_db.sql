@@ -112,3 +112,32 @@ CREATE TABLE `minfin`.`user` (
 INSERT INTO `minfin`.`user` (`login`, `pass`, `role`) VALUES ('misha', '1111', '1');
 INSERT INTO `minfin`.`user` (`login`, `pass`, `role`) VALUES ('vovik', '1111', '2');
 INSERT INTO `minfin`.`user` (`login`, `pass`, `role`) VALUES ('luchyk', '1111', '3');
+
+DROP TABLE if exists `minfin`.`uber_driver`;
+CREATE TABLE `minfin`.`uber_driver`
+(
+    `driverUUID` VARCHAR(36) NOT NULL,
+    `driverType` VARCHAR(127) NOT NULL DEFAULT 'usual40',
+    `name` VARCHAR(255) NOT NULL);
+INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
+VALUES ('252ccf66-ff11-468d-8488-3d4e046be9c0', 'usual_35_500_1000', 'Юрій_Горбатий');
+INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
+VALUES ('198ed624-f207-4229-96ad-7ab9d1e320db', 'usual40', 'Андрій_Павлеса');
+INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
+VALUES ('6f5cd143-0077-437d-bad4-eeb75577852a', 'owner_0', 'Володимир_Лучків');
+INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
+VALUES ('6dfce16e-9334-4091-96a8-77d3508eaab5', 'usual40', 'Ростислав_Петрик');
+INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
+VALUES ('8097b7d7-3b55-4493-89b7-1d59ed68844a', 'usual40', 'Ігор_Висоцький');
+INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
+VALUES ('5c67ca64-6673-451b-b4f4-ce0d34365b9b', 'usual40', 'Владислав_Форкун');
+INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
+VALUES ('62d19332-7f86-4104-b547-ac5eb542a32d', 'usual40', 'Костянтин_Кобзяк');
+INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
+VALUES ('64dbdba4-b0a5-4e22-95ec-f3b37d7b61f3', 'owner_0', 'Mykhailo_Mikus');
+INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
+VALUES ('661d24c5-4cad-4c63-a30f-ab7957599415', 'owner_5', 'Мар\'ян_Торган');
+INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
+VALUES ('2a180965-5af6-41ea-bfd6-c59cb99e4268', 'partner', 'Михайло_Мікусь');
+INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
+VALUES ('24de51c0-4e0e-4d3a-9e8a-40b2ae946936', 'owner_5', 'Богдан_Мікусь');

@@ -3,6 +3,8 @@
 <jsp:useBean id="fileName" scope="session" type="java.lang.String"/>
 <jsp:useBean id="paymentTable" scope="session"
              type="java.util.HashMap<java.lang.String,server.logan.park.service.PaymentDriverRecord>"/>
+<jsp:useBean id="ownerTable" scope="session"
+             type="java.util.HashMap<java.lang.String,server.logan.park.service.PaymentOwnerRecord>"/>
 <html>
 <head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styles.css">
@@ -95,6 +97,63 @@
                 <th>${entry.value.summary.changeWithoutTips}</th>
             </tr>
 
+            </tbody>
+        </table>
+        <br>
+    </c:forEach>
+</c:if>
+
+<c:if test="${!empty sessionScope.ownerTable}">
+    <c:forEach items="${ownerTable}" var="entry">
+        <table border="1">
+            <tbody>
+            <tr>
+                <th colspan="6">${entry.key}</th>
+                <th colspan="4">На виведення : ${entry.value.ownerPaymentViews.withdraw}</th>
+            </tr>
+            <tr>
+                <th>період</th>
+                <th>відсоток комісії</th>
+                <th>чистий дохід</th>
+                <th>комісія</th>
+                <th>безготівка</th>
+                <th>кількість поїздок</th>
+                <th>дохід</th>
+                <th>готівка</th>
+                <th>чайові</th>
+                <th>промо</th>
+
+            </tr>
+                <tr>
+                    <td>${entry.value.ownerPaymentViews.dateRangeName}</td>
+                    <td>${entry.value.ownerPaymentViews.taxPercentage}%</td>
+                    <td>${entry.value.ownerPaymentViews.amountMinusCommission}</td>
+                    <td>${entry.value.ownerPaymentViews.commission}</td>
+                    <td>${entry.value.ownerPaymentViews.nonCash}</td>
+                    <td><div class="block-item-text">
+                        <input type="checkbox" hidden class="read-more-state" id="${entry.value.ownerPaymentViews.tripListId}">
+                        <div class="read-more-wrap">
+                            <button>
+                                <label for="${entry.value.ownerPaymentViews.tripListId}" class="read-more-trigger_closed">
+                                        ${entry.value.ownerPaymentViews.count}
+                                </label>
+                                <label for="${entry.value.ownerPaymentViews.tripListId}" class="read-more-trigger_opened">
+                                        ${entry.value.ownerPaymentViews.count}
+                                </label>
+                            </button>
+                            <p class="read-more-target">
+                                <c:forEach items="${entry.value.ownerPaymentViews.tripList}" var="tripView">
+                                    <a href="https://partners.uber.com/p3/payments/trips/${tripView.id}">${tripView.text}</a><br>
+                                </c:forEach>
+                            </p>
+                        </div>
+                    </div></td>
+
+                    <td>${entry.value.ownerPaymentViews.amount}</td>
+                    <td>${entry.value.ownerPaymentViews.cash}</td>
+                    <td>${entry.value.ownerPaymentViews.tips}</td>
+                    <td>${entry.value.ownerPaymentViews.promotion}</td>
+                </tr>
             </tbody>
         </table>
         <br>

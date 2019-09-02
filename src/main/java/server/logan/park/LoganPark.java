@@ -23,6 +23,7 @@ public class LoganPark extends BaseController {
         if (request.getSession(true).getAttribute("paymentTable") == null) {
             request.getSession(true).setAttribute("fileName", "");
             request.getSession(true).setAttribute("paymentTable", new HashMap<>());
+            request.getSession(true).setAttribute("ownerTable", new HashMap<>());
         }
         return "logan_park";
     }
@@ -36,7 +37,9 @@ public class LoganPark extends BaseController {
             e.printStackTrace();
         }
         request.getSession(true).setAttribute("fileName", file.getOriginalFilename());
-        request.getSession(true).setAttribute("paymentTable", new PaymentTabHelper(content).makeMap());
+        PaymentTabHelper paymentTabHelper=new PaymentTabHelper(content);
+        request.getSession(true).setAttribute("paymentTable", paymentTabHelper.makeMap());
+        request.getSession(true).setAttribute("ownerTable", paymentTabHelper.makeOwnerMap());
         return "redirect:" + ENDPOINT;
     }
 }

@@ -33,11 +33,11 @@ public class HibernateUtil {
 
                prop.setProperty(Environment.POOL_SIZE, 1000 + "");
 
-                prop.setProperty(Environment.C3P0_MIN_SIZE, 5 + "");
-                prop.setProperty(Environment.C3P0_MAX_SIZE, 500 + "");
-                prop.setProperty(Environment.C3P0_TIMEOUT, 1000+"" );
-                prop.setProperty(Environment.C3P0_MAX_STATEMENTS, 100 + "");
-                prop.setProperty(Environment.C3P0_IDLE_TEST_PERIOD, 3000 + "");
+//                prop.setProperty(Environment.C3P0_MIN_SIZE, 5 + "");
+//                prop.setProperty(Environment.C3P0_MAX_SIZE, 500 + "");
+//                prop.setProperty(Environment.C3P0_TIMEOUT, 1000+"" );
+//                prop.setProperty(Environment.C3P0_MAX_STATEMENTS, 100 + "");
+//                prop.setProperty(Environment.C3P0_IDLE_TEST_PERIOD, 3000 + "");
 
                 // prop.setProperty(Environment.SHOW_SQL, String.valueOf(true));
                 // prop.setProperty(Environment.FORMAT_SQL, String.valueOf(true));
