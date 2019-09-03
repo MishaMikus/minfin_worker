@@ -1,16 +1,15 @@
 package server.logan.park;
 
+import server.logan.park.service.GeneralPartnerSummary;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import server.BaseController;
 import server.logan.park.service.PaymentTabHelper;
-import server.logan.park.view.PaymentView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
@@ -24,6 +23,8 @@ public class LoganPark extends BaseController {
             request.getSession(true).setAttribute("fileName", "");
             request.getSession(true).setAttribute("paymentTable", new HashMap<>());
             request.getSession(true).setAttribute("ownerTable", new HashMap<>());
+            request.getSession(true).setAttribute("generalPartnerSummary", new GeneralPartnerSummary());
+
         }
         return "logan_park";
     }
@@ -40,6 +41,7 @@ public class LoganPark extends BaseController {
         PaymentTabHelper paymentTabHelper=new PaymentTabHelper(content);
         request.getSession(true).setAttribute("paymentTable", paymentTabHelper.makeMap());
         request.getSession(true).setAttribute("ownerTable", paymentTabHelper.makeOwnerMap());
+        request.getSession(true).setAttribute("generalPartnerSummary", paymentTabHelper.makeGeneralPartnerSummary());
         return "redirect:" + ENDPOINT;
     }
 }

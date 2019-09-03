@@ -12,6 +12,13 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class PaymentTabHelper {
+
+    private static final SimpleDateFormat SDF_DAY = new SimpleDateFormat("dd.MM");
+    private static final SimpleDateFormat SDF_DAY_YEAR = new SimpleDateFormat("dd.MM.yyyy");
+    private Map<String, PaymentDriverRecord> paymentDriverRecordMap;
+    private Map<String, PaymentOwnerRecord> paymentOwnerRecordMap;
+    private static final SimpleDateFormat SDF_DD_MM_YYYY_HH_MM = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+    static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     private final Logger LOGGER = Logger.getLogger(this.getClass());
     private String content;
 
@@ -21,20 +28,17 @@ public class PaymentTabHelper {
     public PaymentTabHelper(String content) {
         this.content = content;
         primaryParsedData = parsePrimaryData();
-        uberDriverList= UberDriverDAO.getInstance().findAll();
+        uberDriverList = UberDriverDAO.getInstance().findAll();
     }
 
-    public Map<String, Map<Date, List<Object>>> getPrimaryParsedData() {
+    public Map<String, Map<Date, PaymentRecordRow>> getPrimaryParsedData() {
         return primaryParsedData;
     }
 
-
-    private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-
-    private Integer getTripCount(Map<Date, List<Object>> rangeMap) {
+    private Integer getTripCount(Map<Date, PaymentRecordRow> rangeMap) {
         Integer count = 0;
-        for (List<Object> trip : rangeMap.values()) {
-            if ("trip".equals(trip.get(1))) {
+        for (PaymentRecordRow paymentRecordRow : rangeMap.values()) {
+            if ("trip".equals(paymentRecordRow.getItemType())) {
                 count++;
             }
         }
@@ -42,37 +46,33 @@ public class PaymentTabHelper {
     }
 
 
-    private Long getAmount(Map<Date, List<Object>> rangeMap) {
+    private Long getAmount(Map<Date, PaymentRecordRow> rangeMap) {
         return collectAmount(rangeMap.values(), "trip")
                 + collectAmount(rangeMap.values(), "promotion");
     }
 
-    private Long collectAmount(Collection<List<Object>> values, String key) {
+    private Long collectAmount(Collection<PaymentRecordRow> paymentRecordRowSet, String key) {
         Double amount = 0d;
-        for (List<Object> trip : values) {
-            if (key.equals(trip.get(1))) {
-                amount += Double.parseDouble(trip.get(0).toString());
+        for (PaymentRecordRow trip : paymentRecordRowSet) {
+            if (key.equals(trip.getItemType())) {
+                amount += trip.getAmount();
             }
         }
         return Math.round(amount);
     }
 
-    private Long getCash(Map<Date, List<Object>> rangeMap) {
+    private Long getCash(Map<Date, PaymentRecordRow> rangeMap) {
         return -collectAmount(rangeMap.values(), "cash_collected");
     }
 
-    private Long getTips(Map<Date, List<Object>> rangeMap) {
+    private Long getTips(Map<Date, PaymentRecordRow> rangeMap) {
         return collectAmount(rangeMap.values(), "tip");
     }
 
-    private Long getPromotion(Map<Date, List<Object>> rangeMap) {
+    private Long getPromotion(Map<Date, PaymentRecordRow> rangeMap) {
         return collectAmount(rangeMap.values(), "promotion");
     }
 
-    private static final SimpleDateFormat SDF_DAY = new SimpleDateFormat("dd.MM");
-    private static final SimpleDateFormat SDF_DAY_YEAR = new SimpleDateFormat("dd.MM.yyyy");
-
-    private static final SimpleDateFormat SDF_DD_MM_YYYY_HH_MM = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
     private String dayLabel(Date start, Date end) {
         if (start.getTime() / 1000 / 60 / 60 / 24 != end.getTime() / 1000 / 60 / 60 / 24) {
@@ -80,8 +80,8 @@ public class PaymentTabHelper {
         } else return "день " + SDF_DAY_YEAR.format(start);
     }
 
-    private Map<Date, List<Object>> getRangeMap(Date start, Date end, Map<Date, List<Object>> dateListMap) {
-        Map<Date, List<Object>> res = new HashMap<>();
+    private Map<Date, PaymentRecordRow> getRangeMap(Date start, Date end, Map<Date, PaymentRecordRow> dateListMap) {
+        Map<Date, PaymentRecordRow> res = new HashMap<>();
         for (Date date : dateListMap.keySet()) {
             if (date.getTime() >= start.getTime() && date.getTime() <= end.getTime()) {
                 res.putIfAbsent(date, dateListMap.get(date));
@@ -90,15 +90,15 @@ public class PaymentTabHelper {
         return res;
     }
 
-    private Map<Date, List<Object>> getRangeMap(Map<Date, List<Object>> dateListMap) {
-        Map<Date, List<Object>> res = new HashMap<>();
+    private Map<Date, PaymentRecordRow> getRangeMap(Map<Date, PaymentRecordRow> dateListMap) {
+        Map<Date, PaymentRecordRow> res = new HashMap<>();
         for (Date date : dateListMap.keySet()) {
             res.putIfAbsent(date, dateListMap.get(date));
         }
         return res;
     }
 
-    private List<List<Date>> calculateDateRange(Map<Date, List<Object>> dateListMap) {
+    private List<List<Date>> calculateDateRange(Map<Date, PaymentRecordRow> dateListMap) {
         List<Date> daleList = new ArrayList<>(dateListMap.keySet());
         Collections.sort(daleList);
         Date start = daleList.get(0);
@@ -128,9 +128,9 @@ public class PaymentTabHelper {
 
         //"ac67df0b-abbb-4d15-876d-6cc76f95b7c3","","Юрий","Сосинский","18.0","2019-08-16T14:19:45+03:00","promotion","Промокод","Компенсація сервісного збору Убер"
         Map<String, PaymentDriverRecord> map = new HashMap<>();
-        Map<String, Map<Date, List<Object>>> driverMap = getPrimaryParsedData();
+        Map<String, Map<Date, PaymentRecordRow>> driverMap = getPrimaryParsedData();
         for (String driver : driverMap.keySet()) {
-            UberDriver currentDriver = driverByName(driver, uberDriverList);
+            UberDriver currentDriver = driverByName(driver);
             if (currentDriver != null && !currentDriver.getDriverType().startsWith("owner")) {
                 map.putIfAbsent(driver, new PaymentDriverRecord());
                 List<List<Date>> dateRange = calculateDateRange(driverMap.get(driver));
@@ -139,7 +139,7 @@ public class PaymentTabHelper {
                         Date start = range.get(0);
                         Date end = range.get(1);
                         String workoutName = dayLabel(start, end);
-                        Map<Date, List<Object>> rangeMap = getRangeMap(start, end, driverMap.get(driver));
+                        Map<Date, PaymentRecordRow> rangeMap = getRangeMap(start, end, driverMap.get(driver));
                         Integer count = getTripCount(rangeMap);
                         Long cash = getCash(rangeMap);
                         Long tips = getTips(rangeMap);
@@ -170,6 +170,7 @@ public class PaymentTabHelper {
         }
         map = makeRateAndSortByRate(map);
         map = recalculateWithMotivation(map);
+        paymentDriverRecordMap=map;
         return map;
     }
 
@@ -313,22 +314,15 @@ public class PaymentTabHelper {
         return summaryPaymentDriverRecord;
     }
 
-    private List<TripView> makeTripList(Map<Date, List<Object>> rangeMap) {
-
-        Map<String, List<String>> groupByTripMap = new HashMap<>();
-        for (List<Object> parsedRow : rangeMap.values()) {
-            String row = parsedRow.get(2) + "";
-            String tripUUID = row.split(",")[1];
-            if (tripUUID.trim().isEmpty()) {
-                tripUUID = "NO_TRIP_ID";
-            }
-
-            groupByTripMap.putIfAbsent(tripUUID, new ArrayList<>());
-            groupByTripMap.get(tripUUID).add(row);
+    private List<TripView> makeTripList(Map<Date, PaymentRecordRow> rangeMap) {
+        Map<String, List<PaymentRecordRow>> groupByTripMap = new HashMap<>();
+        for (PaymentRecordRow parsedRow : rangeMap.values()) {
+            groupByTripMap.putIfAbsent(parsedRow.getTripUUID(), new ArrayList<>());
+            groupByTripMap.get(parsedRow.getTripUUID()).add(parsedRow);
         }
 
         List<TripView> res = new ArrayList<>();
-        for (Map.Entry<String, List<String>> entry : groupByTripMap.entrySet()) {
+        for (Map.Entry<String, List<PaymentRecordRow>> entry : groupByTripMap.entrySet()) {
             //[16.08.2019 11:38] [39.91] [-12.33] [trip]
             res.add(makeTripView(entry.getKey(), entry.getValue()));
         }
@@ -337,57 +331,54 @@ public class PaymentTabHelper {
         return res;
     }
 
-    private TripView makeTripView(String id, List<String> rowList) {
+    private TripView makeTripView(String id, List<PaymentRecordRow> rowList) {
         TripView tripView = new TripView();
         tripView.setId(id);
         if (rowList.size() == 1) {
             tripView.setText(makeSingleUsualText(rowList.get(0)));
-            tripView.setDate(parseRowDate(rowList.get(0).split(",")));
+            tripView.setDate(rowList.get(0).getTimestamp());
         }
         if (rowList.size() == 2) {
             if (tipAndTrip(rowList)) {
                 tripView.setText(makeUsualTipTripText(rowList));
-                tripView.setDate(parseOldestDate(rowList));
+                tripView.setDate(oldestDate(rowList));
 
             } else {
                 tripView.setText(makeCashUsualText(rowList));
-                tripView.setDate(parseOldestDate(rowList));
+                tripView.setDate(oldestDate(rowList));
             }
         }
         if (rowList.size() > 2) {
             tripView.setText(makeUnUsualText(rowList));
-            tripView.setDate(parseOldestDate(rowList));
+            tripView.setDate(oldestDate(rowList));
         }
         return tripView;
     }
 
-    private String makeUsualTipTripText(List<String> rowList) {
+    private String makeUsualTipTripText(List<PaymentRecordRow> rowList) {
         //[16.08.2019 18:04] [77.41] [tip : 10] [trip]
-        String tipRow;
-        String row;
-        if (rowList.get(0).split(",")[6].equals("tip")) {
+        PaymentRecordRow tipRow;
+        PaymentRecordRow row;
+        if (rowList.get(0).getItemType().equals("tip")) {
             tipRow = rowList.get(0);
             row = rowList.get(1);
         } else {
             tipRow = rowList.get(1);
             row = rowList.get(0);
         }
-        String[] rowArray = row.split(",");
-        String[] tipRowArray = tipRow.split(",");
-        Date date = parseRowDate(rowArray);
-        return "[" + SDF_DD_MM_YYYY_HH_MM.format(date) + "] [" + rowArray[4] + "] [tip : " + tipRowArray[4] + "]";
+        return "[" + SDF_DD_MM_YYYY_HH_MM.format(row.getTimestamp()) + "] [" + row.getAmount() + "] [tip : " + tipRow.getAmount() + "]";
     }
 
-    private boolean tipAndTrip(List<String> rowList) {
-        String recordType0 = rowList.get(0).split(",")[6];
-        String recordType1 = rowList.get(1).split(",")[6];
+    private boolean tipAndTrip(List<PaymentRecordRow> rowList) {
+        String recordType0 = rowList.get(0).getItemType();
+        String recordType1 = rowList.get(1).getItemType();
         return (recordType0.equals("tip") || recordType0.equals("trip")) && (recordType1.equals("tip") || recordType1.equals("trip"));
     }
 
-    private Date parseOldestDate(List<String> rowList) {
+    private Date oldestDate(List<PaymentRecordRow> rowList) {
         Date date = new Date();
-        for (String row : rowList) {
-            Date currentDate = parseRowDate(row.split(","));
+        for (PaymentRecordRow row : rowList) {
+            Date currentDate = row.getTimestamp();
             if (date.getTime() > currentDate.getTime()) {
                 date = currentDate;
             }
@@ -395,30 +386,24 @@ public class PaymentTabHelper {
         return date;
     }
 
-    private String makeCashUsualText(List<String> rowList) {
+    private String makeCashUsualText(List<PaymentRecordRow> rowList) {
         //[16.08.2019 18:04] [77.41] [-103.22] [trip]
-        String cashRow;
-        String row;
-        if (rowList.get(0).split(",")[6].equals("cash_collected")) {
+        PaymentRecordRow cashRow;
+        PaymentRecordRow row;
+        if (rowList.get(0).getItemType().equals("cash_collected")) {
             cashRow = rowList.get(0);
             row = rowList.get(1);
         } else {
             cashRow = rowList.get(1);
             row = rowList.get(0);
         }
-        String[] rowArray = row.split(",");
-        String[] cashRowArray = cashRow.split(",");
-        Date date = parseRowDate(rowArray);
-        return "[" + SDF_DD_MM_YYYY_HH_MM.format(date) + "] [" + rowArray[4] + "] [cash : " + cashRowArray[4] + "]";
+        return "[" + SDF_DD_MM_YYYY_HH_MM.format(row.getTimestamp()) + "] [" + row.getAmount() + "] [cash : " + cashRow.getAmount() + "]";
     }
 
-    private String makeSingleUsualText(String row) {
+    private String makeSingleUsualText(PaymentRecordRow row) {
         //[16.08.2019 11:38] [39.91] [trip]
-        String[] rowArray = row.split(",");
-        Date date = parseRowDate(rowArray);
-        String type = rowArray[6];
-        if (rowArray[6].equals("trip")) {
-            return "[" + SDF_DD_MM_YYYY_HH_MM.format(date) + "] [" + rowArray[4] + "]";
+        if (row.getItemType().equals("trip")) {
+            return "[" + SDF_DD_MM_YYYY_HH_MM.format(row.getTimestamp()) + "] [" + row.getAmount() + "]";
         } else {
             return makeUnUsualText(new ArrayList<>(Collections.singletonList(row)));
         }
@@ -435,22 +420,16 @@ public class PaymentTabHelper {
         return res;
     }
 
-    private String makeUnUsualText(List<String> rowList) {
+    private String makeUnUsualText(List<PaymentRecordRow> rowList) {
         StringBuilder text = new StringBuilder();
-        for (String row : rowList) {
-            String[] rowArray = row.split(",");
-            Date date = parseRowDate(rowArray);
+        for (PaymentRecordRow row : rowList) {
             try {
-                String disclaimer = "";
-                if (rowArray.length == 9) {
-                    disclaimer = rowArray[8];
-                }
                 text.append("[")
-                        .append(SDF_DD_MM_YYYY_HH_MM.format(date)).append("] ").append("[")
-                        .append(rowArray[4]).append("] ").append("[")
-                        .append(rowArray[6]).append("] ").append("[")
-                        .append(rowArray[7]).append("] ").append("[")
-                        .append(disclaimer).append("]");
+                        .append(SDF_DD_MM_YYYY_HH_MM.format(row.getTimestamp())).append("] ").append("[")
+                        .append(row.getAmount()).append("] ").append("[")
+                        .append(row.getItemType()).append("] ").append("[")
+                        .append(row.getDescription()).append("] ").append("[")
+                        .append(row.getDisclaimer()).append("]");
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println(row);
@@ -460,34 +439,21 @@ public class PaymentTabHelper {
         return text.toString();
     }
 
-    private Map<String, Map<Date, List<Object>>> primaryParsedData;
+    private Map<String, Map<Date, PaymentRecordRow>> primaryParsedData;
 
-    private Map<String, Map<Date, List<Object>>> parsePrimaryData() {
-        Map<String, Map<Date, List<Object>>> driverMap = new HashMap<>();
+    private Map<String, Map<Date, PaymentRecordRow>> parsePrimaryData() {
+        Map<String, Map<Date, PaymentRecordRow>> driverMap = new HashMap<>();
         boolean firstRow = true;
         int i = 0;
         for (String row : content.split("\n")) {
             if (firstRow) {
                 firstRow = false;
             } else {
-                LOGGER.info("row[" + i + "]:" + (i++) + " " + row);
-                row = row.replaceAll("\"", "");
-                String[] rowArray = row.split(",");
-                String timestamp = rowArray[5];
-                String driverName = rowArray[2] + "_" + rowArray[3];
-                String amount = rowArray[4];
-                String itemType = rowArray[6];
-
-                //2019-07-24T11:08:21+03:00
-                Date date = null;
-                try {
-                    date = SDF.parse(timestamp.split("\\+")[0]);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                driverMap.putIfAbsent(driverName, new HashMap<>());
-                assert date != null;
-                driverMap.get(driverName).put(new Date(date.getTime() + i), Arrays.asList(amount, itemType, row));
+                PaymentRecordRow paymentRecordRow = PaymentRecordRow.makeMeFromStringRow(row, i++);
+                driverMap.putIfAbsent(paymentRecordRow.driverName(), new HashMap<>());
+                driverMap.get(paymentRecordRow.driverName()).put(
+                        new Date(paymentRecordRow.getTimestamp().getTime() + i),
+                        paymentRecordRow);
             }
         }
         primaryParsedData = driverMap;
@@ -498,10 +464,10 @@ public class PaymentTabHelper {
         Map<String, PaymentOwnerRecord> map = new HashMap<>();
 
         for (String driver : primaryParsedData.keySet()) {
-            UberDriver currentDriver = driverByName(driver, uberDriverList);
+            UberDriver currentDriver = driverByName(driver);
             if (currentDriver != null && currentDriver.getDriverType().startsWith("owner")) {
                 map.putIfAbsent(driver, new PaymentOwnerRecord());
-                Map<Date, List<Object>> rangeMap = getRangeMap(primaryParsedData.get(driver));
+                Map<Date, PaymentRecordRow> rangeMap = getRangeMap(primaryParsedData.get(driver));
                 Date start = rangeMap.keySet().stream().min(Date::compareTo).orElse(new Date());
                 Date end = rangeMap.keySet().stream().max(Date::compareTo).orElse(new Date());
                 map.get(driver).setDriverName(driver);
@@ -527,42 +493,43 @@ public class PaymentTabHelper {
 
 
                 Integer taxPercentage = Integer.parseInt(currentDriver.getDriverType().split("_")[1]);
-                ownerPaymentView.setTaxPercentage(taxPercentage+"");
+                ownerPaymentView.setTaxPercentage(taxPercentage + "");
                 //відсоток комісії
 
-                String dateRangeName=SDF_DAY_YEAR.format(start)+"-"+SDF_DAY_YEAR.format(end);
-                ownerPaymentView.setDateRangeName(dateRangeName+"");
+                String dateRangeName = SDF_DAY_YEAR.format(start) + "-" + SDF_DAY_YEAR.format(end);
+                ownerPaymentView.setDateRangeName(dateRangeName + "");
                 //дата
 
-                Long amountMinusCommission = Math.round(amount*((100-taxPercentage)/100d));
-                ownerPaymentView.setAmountMinusCommission(amountMinusCommission+"");
+                Long amountMinusCommission = Math.round(amount * ((100 - taxPercentage) / 100d));
+                ownerPaymentView.setAmountMinusCommission(amountMinusCommission + "");
                 // чистий дохід (без комісії)
 
-                Long commission = Math.round(amount*((taxPercentage)/100d));
-                ownerPaymentView.setCommission(commission+"");
+                Long commission = Math.round(amount * ((taxPercentage) / 100d));
+                ownerPaymentView.setCommission(commission + "");
                 // комісія
 
-                Long nonCash = amount-cash;
-                ownerPaymentView.setNonCash(nonCash+"");
+                Long nonCash = amount - cash;
+                ownerPaymentView.setNonCash(nonCash + "");
                 // безготівка
 
-                Long withdraw = nonCash-commission;
-                ownerPaymentView.setWithdraw(withdraw+"");
+                Long withdraw = nonCash - commission;
+                ownerPaymentView.setWithdraw(withdraw + "");
                 // на виведення
 
                 map.get(driver).setOwnerPaymentViews(ownerPaymentView);
             }
         }
+        paymentOwnerRecordMap=map;
         return map;
     }
 
-    private Long getAmountForOwner(Map<Date, List<Object>> rangeMap) {
+    private Long getAmountForOwner(Map<Date, PaymentRecordRow> rangeMap) {
         return collectAmount(rangeMap.values(), "trip")
-                 + collectAmount(rangeMap.values(), "tip")
+                + collectAmount(rangeMap.values(), "tip")
                 + collectAmount(rangeMap.values(), "promotion");
     }
 
-    private UberDriver driverByName(String driver, List<UberDriver> uberDriverList) {
+    private UberDriver driverByName(String driver) {
         for (UberDriver uberDriver : uberDriverList) {
             if (uberDriver.getName().equals(driver)) {
                 return uberDriver;
@@ -572,5 +539,69 @@ public class PaymentTabHelper {
     }
 
 
+    public GeneralPartnerSummary makeGeneralPartnerSummary() {
+        GeneralPartnerSummary res = new GeneralPartnerSummary();
+        Double profit = makeGeneralPartnerSummaryNonCash();
+        Double cash = makeGeneralPartnerSummaryCash();
+        double transfer = profit - cash;
+        double tax = transfer * 0.05;
+        double withdraw = collectAllWithdraws();
+        double realProfit = profit - tax - withdraw;
+        res.setProfit(Math.round(profit) + "");
+        res.setCash(Math.round(cash) + "");
+        res.setTransfer(Math.round(transfer) + "");
+        res.setTax(Math.round(tax) + "");
+        res.setWithdraw(Math.round(withdraw) + "");
+        res.setRealProfit(Math.round(realProfit) + "");
+        return res;
+    }
+
+    private double collectAllWithdraws() {
+        double res=0d;
+        if(paymentDriverRecordMap==null){
+            makeMap();
+        }
+        for(PaymentDriverRecord paymentDriverRecord:paymentDriverRecordMap.values()){
+            res+=Double.parseDouble(paymentDriverRecord.getSummary().getSalaryWithTips());
+        }
+
+        if(paymentOwnerRecordMap==null){
+            makeOwnerMap();
+        }
+        for(PaymentOwnerRecord paymentOwnerRecord:paymentOwnerRecordMap.values()){
+            res+=Double.parseDouble(paymentOwnerRecord.getOwnerPaymentViews().getWithdraw());
+        }
+        return res;
+    }
+
+    private Double makeGeneralPartnerSummaryCash() {
+        Double amount = 0d;
+        for (Map<Date, PaymentRecordRow> datedMap : primaryParsedData.values()) {
+            for (PaymentRecordRow paymentRecordRow : datedMap.values()) {
+                UberDriver currentDriver = driverByName(paymentRecordRow.driverName());
+                if (currentDriver != null && !currentDriver.getDriverType().equals("partner")) {
+                    if (paymentRecordRow.getItemType().equals("cash_collected")) {
+                        amount += paymentRecordRow.getAmount();
+                    }
+                }
+            }
+        }
+        return -amount;
+    }
+
+    private Double makeGeneralPartnerSummaryNonCash() {
+        Double amount = 0d;
+        for (Map<Date, PaymentRecordRow> datedMap : primaryParsedData.values()) {
+            for (PaymentRecordRow paymentRecordRow : datedMap.values()) {
+                UberDriver currentDriver = driverByName(paymentRecordRow.driverName());
+                if (currentDriver != null && !currentDriver.getDriverType().equals("partner")) {
+                    if (!paymentRecordRow.getItemType().equals("cash_collected")) {
+                        amount += paymentRecordRow.getAmount();
+                    }
+                }
+            }
+        }
+        return amount;
+    }
 }
 

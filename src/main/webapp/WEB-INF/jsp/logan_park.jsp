@@ -5,6 +5,9 @@
              type="java.util.HashMap<java.lang.String,server.logan.park.service.PaymentDriverRecord>"/>
 <jsp:useBean id="ownerTable" scope="session"
              type="java.util.HashMap<java.lang.String,server.logan.park.service.PaymentOwnerRecord>"/>
+<jsp:useBean id="generalPartnerSummary" scope="session"
+             type="server.logan.park.service.GeneralPartnerSummary"/>
+
 <html>
 <head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styles.css">
@@ -158,6 +161,29 @@
         </table>
         <br>
     </c:forEach>
+</c:if>
+
+<c:if test="${!empty sessionScope.generalPartnerSummary}">
+    <table border="1">
+        <tbody>
+        <tr>
+            <th>прибуток</th>
+            <th>готівка</th>
+            <th>прихід</th>
+            <th>податок</th>
+            <th>виплати</th>
+            <th>чистий залишок</th>
+        </tr>
+        <tr>
+            <td>${generalPartnerSummary.profit}</td>
+            <td>${generalPartnerSummary.cash}</td>
+            <td>${generalPartnerSummary.transfer}</td>
+            <td>${generalPartnerSummary.tax}</td>
+            <td>${generalPartnerSummary.withdraw}</td>
+            <td>${generalPartnerSummary.realProfit}</td>
+        </tr>
+        </tbody>
+    </table>
 </c:if>
 <a href="https://partners.uber.com/p3/fleet-manager/payments">https://partners.uber.com/p3/fleet-manager/payments</a><br>
 <img src="${pageContext.request.contextPath}/resources/images/instruction.png"
