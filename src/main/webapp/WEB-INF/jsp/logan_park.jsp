@@ -163,7 +163,7 @@
     </c:forEach>
 </c:if>
 
-<c:if test="${!empty sessionScope.generalPartnerSummary}">
+<c:if test="${!empty sessionScope.generalPartnerSummary.profit}">
     <table border="1">
         <tbody>
         <tr>

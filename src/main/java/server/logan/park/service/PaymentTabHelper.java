@@ -570,6 +570,7 @@ public class PaymentTabHelper {
         }
         for(PaymentOwnerRecord paymentOwnerRecord:paymentOwnerRecordMap.values()){
             res+=Double.parseDouble(paymentOwnerRecord.getOwnerPaymentViews().getWithdraw());
+            res+=Double.parseDouble(paymentOwnerRecord.getOwnerPaymentViews().getCash());
         }
         return res;
     }
