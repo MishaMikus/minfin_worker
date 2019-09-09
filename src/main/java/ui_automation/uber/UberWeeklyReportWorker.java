@@ -37,9 +37,9 @@ public class UberWeeklyReportWorker {
 
     }
 
-    public static void main(String[] args) {
-        runWorker();
-    }
+//    public static void main(String[] args) {
+//        runWorker();
+//    }
 
     private static final Long AUTOMATICALLY_UPDATE_TIME=5*60*1000L;
 
