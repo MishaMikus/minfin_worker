@@ -38,7 +38,7 @@ public class ViberUberRestClient extends BaseViberRestClient{
         return new JSONObject(viberMessage).toString();
     }
 
-    public static void main(String[] args) {
-        getInstance().sendNeedSMSCodeRequest();
-    }
+//    public static void main(String[] args) {
+//        getInstance().sendNeedSMSCodeRequest();
+//    }
 }

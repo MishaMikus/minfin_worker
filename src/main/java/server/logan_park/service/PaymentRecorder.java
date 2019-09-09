@@ -7,13 +7,10 @@ import orm.entity.uber.driver.UberDriverDAO;
 import orm.entity.uber.item_type.UberItemTypeDAO;
 import orm.entity.uber.payment_record_row.UberPaymentRecordRow;
 import orm.entity.uber.payment_record_row.UberPaymentRecordRowDAO;
-import parser.IOUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import static ui_automation.uber.bo.UberBO.PAYMENT_DATA_FILE;
 
 public class PaymentRecorder {
 
@@ -40,9 +37,9 @@ public class PaymentRecorder {
         }
     }
 
-    public static void main(String[] args) {
-        new PaymentRecorder(IOUtils.readTextFromFile(PAYMENT_DATA_FILE)).recordToBD();
-    }
+//    public static void main(String[] args) {
+//        new PaymentRecorder(IOUtils.readTextFromFile(PAYMENT_DATA_FILE)).recordToBD();
+//    }
 
     public void recordToBD() {
         LOGGER.info("primaryParsedData.size() : " + primaryParsedData.size());

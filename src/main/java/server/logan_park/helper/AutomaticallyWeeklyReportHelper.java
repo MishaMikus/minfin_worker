@@ -14,12 +14,12 @@ public class AutomaticallyWeeklyReportHelper extends CommonWeeklyReportHelper {
         super();
     }
 
-    public static void main(String[] args) {
-        AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper=new AutomaticallyWeeklyReportHelper();
-        System.out.println(automaticallyWeeklyReportHelper.makeMap());
-        System.out.println(automaticallyWeeklyReportHelper.makeOwnerMap());
-        System.out.println(automaticallyWeeklyReportHelper.makeGeneralPartnerSummary());
-    }
+//    public static void main(String[] args) {
+//        AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper=new AutomaticallyWeeklyReportHelper();
+//        System.out.println(automaticallyWeeklyReportHelper.makeMap());
+//        System.out.println(automaticallyWeeklyReportHelper.makeOwnerMap());
+//        System.out.println(automaticallyWeeklyReportHelper.makeGeneralPartnerSummary());
+//    }
 
     Map<String, Map<Date, PaymentRecordRawRow>> parsePrimaryData() {
         Integer weekHash = getLatestHash();

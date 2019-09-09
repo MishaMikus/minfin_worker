@@ -37,9 +37,9 @@ public class UberWeeklyReportWorker {
 
     }
 
-    public static void main(String[] args) {
-        runWorker();
-    }
+//    public static void main(String[] args) {
+//        runWorker();
+//    }
 
     private static void runWorker() {
         Long pingTime=1000L;
