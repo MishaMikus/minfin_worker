@@ -27,4 +27,8 @@ public class UberUpdateWeekReportRequestDAO extends GenericAbstractDAO<UberUpdat
         return uberUpdateWeekReportRequest;
     }
 
+//    public static void main(String[] args) {
+//        while(true){
+//        getInstance().latest();}
+//    }
 }

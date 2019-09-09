@@ -17,7 +17,7 @@ import static util.ApplicationPropertyUtil.applicationProperty;
 public class HibernateUtil {
     private static SessionFactory sessionFactory;
     public static final long STATEMENT_BATCH_SIZE = 1000;
-    private static Session session;
+    public static Session session;
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {

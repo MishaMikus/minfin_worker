@@ -37,19 +37,21 @@ public class UberWeeklyReportWorker {
 
     }
 
-//    public static void main(String[] args) {
-//        runWorker();
-//    }
+    public static void main(String[] args) {
+        runWorker();
+    }
+
+    private static final Long AUTOMATICALLY_UPDATE_TIME=5*60*1000L;
 
     private static void runWorker() {
-        Long pingTime=10000L;
         new UberLoginBO()
                 .loginIfNotAuthorized(ApplicationPropertyUtil.applicationPropertyGet("uber.login")
                         , ApplicationPropertyUtil.applicationPropertyGet("uber.password"))
                 .setSMSCodeIfNeed();
         while (true){
-            LOGGER.info("check updateRequests");
             UberUpdateWeekReportRequest latest = UberUpdateWeekReportRequestDAO.getInstance().latest();
+
+            //manually
             if(latest!=null&&!latest.getStarted()){
                 latest.setStarted(true);
                 try {
@@ -64,10 +66,14 @@ public class UberWeeklyReportWorker {
                     UberUpdateWeekReportRequestDAO.getInstance().update(latest);
                 }
             }
-            try {
-                Thread.sleep(pingTime);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+
+            //automatically
+            if(latest==null||(latest.getUpdated()!=null&&new Date().getTime()-latest.getUpdated().getTime()>AUTOMATICALLY_UPDATE_TIME)){
+                LOGGER.info("MAKE AUTOMATICALLY UPDATE");
+                UberUpdateWeekReportRequest uberUpdateWeekReportRequest=new UberUpdateWeekReportRequest();
+                uberUpdateWeekReportRequest.setCreated(new Date());
+                uberUpdateWeekReportRequest.setStarted(false);
+                UberUpdateWeekReportRequestDAO.getInstance().save(uberUpdateWeekReportRequest);
             }
         }
     }

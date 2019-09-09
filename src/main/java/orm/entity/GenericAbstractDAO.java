@@ -2,8 +2,8 @@ package orm.entity;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
-import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
+import orm.HibernateUtil;
 
 import javax.persistence.Table;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -32,6 +32,7 @@ public abstract class GenericAbstractDAO<E> {
         beginTransaction();
         getSession().update(entity);
         commitTransaction();
+        closeSession();
         LOGGER.info("update " + entity);
     }
 
@@ -39,11 +40,13 @@ public abstract class GenericAbstractDAO<E> {
         beginTransaction();
         Serializable saveResult = getSession().save(entity);
         commitTransaction();
+        closeSession();
         LOGGER.info("save " + entity);
         return saveResult;
     }
 
     public void saveBatch(List<E> entityList) {
+        Long start = new Date().getTime();
         beginTransaction();
         for (int i = 0; i < entityList.size(); i++) {
             getSession().saveOrUpdate(entityList.get(i));
@@ -54,6 +57,8 @@ public abstract class GenericAbstractDAO<E> {
             }
         }
         commitTransaction();
+        closeSession();
+        LOGGER.info("save " + entityList.size() + " records to " + getTableName() + " for " + (new Date().getTime() - start) + " ms");
     }
 
     public void updateBatch(List<E> entityList) {
@@ -66,6 +71,7 @@ public abstract class GenericAbstractDAO<E> {
             }
         }
         commitTransaction();
+        closeSession();
     }
 
     public List<E> findAll() {
@@ -94,8 +100,9 @@ public abstract class GenericAbstractDAO<E> {
         commitTransaction();
     }
 
-    public void close() {
+    public void closeSession() {
         getSession().close();
+        HibernateUtil.session = null;
     }
 
     public void truncateTable() {
@@ -106,6 +113,7 @@ public abstract class GenericAbstractDAO<E> {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        closeSession();
     }
 
     public static <T> String tableLabel(Class<T> eventQueueClass) {
@@ -151,6 +159,7 @@ public abstract class GenericAbstractDAO<E> {
         beginTransaction();
         res = getSession().createSQLQuery(sql).list().size();
         commitTransaction();
+        closeSession();
         return res;
     }
 
@@ -167,7 +176,8 @@ public abstract class GenericAbstractDAO<E> {
         beginTransaction();
         List<String> res = getSession().createSQLQuery(query).list();
         commitTransaction();
-        System.out.println("SQL Response : " + res.size() + " records [query : " + query + "]");
+        closeSession();
+        LOGGER.info("SQL Response : " + res.size() + " records [query : " + query + "]");
         return res;
     }
 
@@ -182,11 +192,10 @@ public abstract class GenericAbstractDAO<E> {
 
     public E findById(final Serializable id) {
         E res = null;
-        Session session = getSessionFactory().openSession();
-        session.beginTransaction();
+        beginTransaction();
         res = session.get(entityClass, id);
-        session.getTransaction().commit();
-        session.close();
+        commitTransaction();
+        closeSession();
         return res;
     }
 
@@ -202,6 +211,7 @@ public abstract class GenericAbstractDAO<E> {
 
         List<E> res = getSession().createQuery(query).getResultList();
         commitTransaction();
+        closeSession();
         LOGGER.info("findAllWhere(" + where + ") " + getTableName() + " : " + res.size());
         return res;
     }
@@ -227,10 +237,11 @@ public abstract class GenericAbstractDAO<E> {
         commitTransaction();
 
         if (res.size() == 0) {
-            LOGGER.warn("can't find latest object in "+getTableName()+" by Date field " + fieldName);
+            LOGGER.warn("can't find latest object in " + getTableName() + " by Date field " + fieldName);
             return null;
         }
         getSession().refresh(res.get(0));
+        closeSession();
         return res.get(0);
     }
 
@@ -255,6 +266,7 @@ public abstract class GenericAbstractDAO<E> {
 
         res = getSession().createQuery(query).getResultList();
         commitTransaction();
+        closeSession();
         return res;
     }
 
@@ -272,7 +284,8 @@ public abstract class GenericAbstractDAO<E> {
 
         res = getSession().createQuery(query).getSingleResult();
         commitTransaction();
-        System.out.println("getCountWhere(" + where + ") : " + res);
+        closeSession();
+        LOGGER.info("getCountWhere(" + where + ") : " + res);
         return res;
     }
 
@@ -308,7 +321,8 @@ public abstract class GenericAbstractDAO<E> {
         if (list.size() > 0) {
             res = (long) list.get(0);
         }
-        System.out.println("sum(" + name + ")." + getTableName() + " : " + res);
+        closeSession();
+        LOGGER.info("sum(" + name + ")." + getTableName() + " : " + res);
         return res;
     }
 
@@ -316,7 +330,8 @@ public abstract class GenericAbstractDAO<E> {
         beginTransaction();
         getSession().delete(getSession().load(entityClass, id));
         commitTransaction();
-        System.out.println("deleteById[" + id + "] " + getTableName());
+        closeSession();
+        LOGGER.info("deleteById[" + id + "] " + getTableName());
     }
 
 }

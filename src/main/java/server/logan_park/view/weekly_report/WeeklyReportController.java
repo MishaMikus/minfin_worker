@@ -54,10 +54,18 @@ public class WeeklyReportController extends BaseController {
         AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper =new AutomaticallyWeeklyReportHelper();
 
         UberUpdateWeekReportRequest uberUpdateWeekReportRequest=UberUpdateWeekReportRequestDAO.getInstance().latest();
-        modelAndView.addObject("latestUpdateDate", uberUpdateWeekReportRequest.getUpdated());
+
         Long duration=uberUpdateWeekReportRequest.getUpdated()==null
                 ?new Date().getTime()-uberUpdateWeekReportRequest.getCreated().getTime()
                 :uberUpdateWeekReportRequest.getUpdated().getTime()-uberUpdateWeekReportRequest.getCreated().getTime();
+
+
+        String latestUpdateDateLabel=uberUpdateWeekReportRequest.getUpdated()==null?"inProgress":
+                uberUpdateWeekReportRequest.getUpdated()+"";
+        String status=uberUpdateWeekReportRequest.getUpdated()==null?"inProgress":"old";
+
+        modelAndView.addObject("latestUpdateDate", latestUpdateDateLabel);
+        modelAndView.addObject("updateStatus", status);
         modelAndView.addObject("latestUpdateDuration", duration);
         modelAndView.addObject("weekHashLabel", automaticallyWeeklyReportHelper.getCurrentWeekHash());
         modelAndView.addObject("paymentTable", automaticallyWeeklyReportHelper.makeMap());
