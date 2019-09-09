@@ -1,7 +1,7 @@
 package ui_automation.minfin;
 
-import orm.entity.buy_price.BuyPriceDAO;
-import orm.entity.transaction.TransactionDAO;
+import orm.entity.minfin.buy_price.BuyPriceDAO;
+import orm.entity.minfin.transaction.TransactionDAO;
 import ui_automation.minfin.bo.BuyBO;
 import ui_automation.minfin.bo.SellBO;
 

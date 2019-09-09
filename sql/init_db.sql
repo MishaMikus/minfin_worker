@@ -2,16 +2,16 @@ CREATE SCHEMA IF NOT EXISTS `minfin`;
 
 CREATE TABLE IF NOT EXISTS `minfin`.`sell_price`
 (
-    `id`           INT          NOT NULL AUTO_INCREMENT,
-    `date`         DATETIME     NULL,
+    `id`    INT      NOT NULL AUTO_INCREMENT,
+    `date`  DATETIME NULL,
     `price` DOUBLE,
     PRIMARY KEY (`id`)
 );
 
 CREATE TABLE IF NOT EXISTS `minfin`.`buy_price`
 (
-    `id`           INT          NOT NULL AUTO_INCREMENT,
-    `date`         DATETIME     NULL,
+    `id`    INT      NOT NULL AUTO_INCREMENT,
+    `date`  DATETIME NULL,
     `price` DOUBLE,
     PRIMARY KEY (`id`)
 );
@@ -90,35 +90,49 @@ INSERT INTO `minfin`.`transaction_type` (`id`, `from`, `to`, `name`)
 VALUES ('4', '2', '2', 'invest_uah');
 
 DROP TABLE `minfin`.`user_role`;
-CREATE TABLE `minfin`.`user_role` (`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-`name` VARCHAR(45) NULL,
-PRIMARY KEY (`id`),
-UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+CREATE TABLE `minfin`.`user_role`
+(
+    `id`   INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(45)  NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE INDEX `id_UNIQUE` (`id` ASC)
+);
 
-INSERT INTO `minfin`.`user_role` (`name`) VALUES ('admin');
-INSERT INTO `minfin`.`user_role` (`name`) VALUES ('cashier');
-INSERT INTO `minfin`.`user_role` (`name`) VALUES ('uber_admin');
+INSERT INTO `minfin`.`user_role` (`name`)
+VALUES ('admin');
+INSERT INTO `minfin`.`user_role` (`name`)
+VALUES ('cashier');
+INSERT INTO `minfin`.`user_role` (`name`)
+VALUES ('uber_admin');
 
 DROP TABLE `minfin`.`user`;
-CREATE TABLE `minfin`.`user` (
-                                 `id` INT NOT NULL AUTO_INCREMENT,
-                                 `login` VARCHAR(45) NOT NULL,
-                                 `pass` VARCHAR(45) NOT NULL,
-                                 `role` INT NOT NULL,
-                                 PRIMARY KEY (`id`),
-                                 UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-                                 UNIQUE INDEX `login_UNIQUE` (`login` ASC));
+CREATE TABLE `minfin`.`user`
+(
+    `id`    INT         NOT NULL AUTO_INCREMENT,
+    `login` VARCHAR(45) NOT NULL,
+    `pass`  VARCHAR(45) NOT NULL,
+    `role`  INT         NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+    UNIQUE INDEX `login_UNIQUE` (`login` ASC)
+);
 
-INSERT INTO `minfin`.`user` (`login`, `pass`, `role`) VALUES ('misha', '1111', '1');
-INSERT INTO `minfin`.`user` (`login`, `pass`, `role`) VALUES ('vovik', '1111', '2');
-INSERT INTO `minfin`.`user` (`login`, `pass`, `role`) VALUES ('luchyk', '1111', '3');
+INSERT INTO `minfin`.`user` (`login`, `pass`, `role`)
+VALUES ('misha', '1111', '1');
+INSERT INTO `minfin`.`user` (`login`, `pass`, `role`)
+VALUES ('vovik', '1111', '2');
+INSERT INTO `minfin`.`user` (`login`, `pass`, `role`)
+VALUES ('luchyk', '1111', '3');
 
 DROP TABLE if exists `minfin`.`uber_driver`;
 CREATE TABLE `minfin`.`uber_driver`
 (
-    `driverUUID` VARCHAR(36) NOT NULL,
-    `driverType` VARCHAR(127) NOT NULL DEFAULT 'usual40',
-    `name` VARCHAR(255) NOT NULL);
+    `id`         INT          NOT NULL AUTO_INCREMENT,
+    `driverUUID` VARCHAR(36)  NOT NULL,
+    `driverType` VARCHAR(127) NOT NULL,
+    `name`       VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`id`)
+);
 INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
 VALUES ('252ccf66-ff11-468d-8488-3d4e046be9c0', 'usual_35_500_1000', 'Юрій_Горбатий');
 INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
@@ -141,3 +155,74 @@ INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
 VALUES ('2a180965-5af6-41ea-bfd6-c59cb99e4268', 'partner', 'Михайло_Мікусь');
 INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
 VALUES ('24de51c0-4e0e-4d3a-9e8a-40b2ae946936', 'owner_5', 'Богдан_Мікусь');
+
+
+
+DROP TABLE if exists `minfin`.`uber_payment_record_row`;
+CREATE TABLE `minfin`.`uber_payment_record_row`
+(
+    `driverId`     INT         NOT NULL,
+    `id`           INT         NOT NULL AUTO_INCREMENT,
+    `fileRowIndex` INT         NOT NULL,
+    `tripUUID`     VARCHAR(36) NOT NULL,
+    `amount`       DOUBLE      NOT NULL,
+    `timestamp`    DATETIME    NOT NULL,
+    `creation`     DATETIME    NOT NULL,
+    `itemType`     INT         NOT NULL,
+    `description`  INT         NOT NULL,
+    `disclaimer`   VARCHAR(255),
+    `weekHash`     INT         NOT NULL,
+    `hash`         INT         NOT NULL,
+    PRIMARY KEY (`id`)
+);
+
+DROP TABLE if exists `minfin`.`uber_item_type`;
+CREATE TABLE `minfin`.`uber_item_type`
+(
+    `id`   INT         NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(36) NOT NULL,
+    PRIMARY KEY (`id`)
+);
+INSERT INTO `minfin`.`uber_item_type` (`name`)
+VALUES ('trip');
+INSERT INTO `minfin`.`uber_item_type` (`name`)
+VALUES ('cash_collected');
+INSERT INTO `minfin`.`uber_item_type` (`name`)
+VALUES ('tip');
+INSERT INTO `minfin`.`uber_item_type` (`name`)
+VALUES ('payouts');
+INSERT INTO `minfin`.`uber_item_type` (`name`)
+VALUES ('promotion');
+
+DROP TABLE if exists `minfin`.`uber_description`;
+CREATE TABLE `minfin`.`uber_description`
+(
+    `id`   INT         NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(36) NOT NULL,
+    PRIMARY KEY (`id`)
+);
+INSERT INTO `minfin`.`uber_description` (`name`)
+VALUES ('Готівка отримана');
+
+
+DROP TABLE if exists `minfin`.`uber_sms_code`;
+CREATE TABLE `minfin`.`uber_sms_code`
+(
+    `id`      INT        NOT NULL AUTO_INCREMENT,
+    `code`    VARCHAR(4) NOT NULL,
+    `created` DATETIME   NOT NULL,
+    `used`    BOOLEAN    NOT NULL,
+    PRIMARY KEY (`id`)
+);
+
+DROP TABLE if exists `minfin`.`uber_update_request`;
+CREATE TABLE `minfin`.`uber_update_request`
+(
+    `id`      INT      NOT NULL AUTO_INCREMENT,
+    `created` DATETIME NOT NULL,
+    `started` BOOLEAN  NOT NULL,
+    `updated` DATETIME NULL,
+    PRIMARY KEY (`id`)
+);
+
+

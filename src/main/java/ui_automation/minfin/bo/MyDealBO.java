@@ -1,9 +1,9 @@
 package ui_automation.minfin.bo;
 
 import com.codeborne.selenide.SelenideElement;
-import orm.entity.currency.Currency;
-import orm.entity.deal.Deal;
-import orm.entity.deal.DealDAO;
+import orm.entity.minfin.currency.Currency;
+import orm.entity.minfin.deal.Deal;
+import orm.entity.minfin.deal.DealDAO;
 import server.client.viber.ViberMinfinRestClient;
 import ui_automation.minfin.Bank;
 
@@ -13,8 +13,8 @@ import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static orm.entity.currency.CurrencyDAO.UAH_CURRENCY;
-import static orm.entity.currency.CurrencyDAO.USD_CURRENCY;
+import static orm.entity.minfin.currency.CurrencyDAO.UAH_CURRENCY;
+import static orm.entity.minfin.currency.CurrencyDAO.USD_CURRENCY;
 import static ui_automation.minfin.Bank.LOCAL_DELTA_TIME_MS;
 
 public class MyDealBO extends BaseMinfinBO {

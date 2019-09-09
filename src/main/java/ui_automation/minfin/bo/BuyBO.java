@@ -1,6 +1,6 @@
 package ui_automation.minfin.bo;
 
-import static orm.entity.currency.CurrencyDAO.UAH_CURRENCY;
+import static orm.entity.minfin.currency.CurrencyDAO.UAH_CURRENCY;
 
 public class BuyBO extends MyDealBO {
     private final static String url = "/currency/auction/usd/buy/lvov";

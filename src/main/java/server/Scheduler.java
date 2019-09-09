@@ -5,7 +5,7 @@ import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.concurrent.ConcurrentTaskScheduler;
 import org.springframework.stereotype.Component;
 import ui_automation.minfin.Trader;
-import ui_automation.uber.Uber;
+import ui_automation.uber.UberWeeklyReportWorker;
 import util.ApplicationPropertyUtil;
 
 import javax.annotation.PostConstruct;
@@ -27,7 +27,7 @@ public class Scheduler {
         }
 
         if (UBER_MODE) {
-            schedulerUber.scheduleAtFixedRate(Uber::stat, TIME_DELTA);
+            schedulerUber.scheduleAtFixedRate(UberWeeklyReportWorker::stat, TIME_DELTA);
             LOGGER.info("UBER_MODE scheduled");
         }
 

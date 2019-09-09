@@ -1,11 +1,11 @@
 package ui_automation.minfin;
 
 import com.codeborne.selenide.Selenide;
-import orm.entity.buy_price.BuyPrice;
-import orm.entity.buy_price.BuyPriceDAO;
-import orm.entity.deal.Deal;
-import orm.entity.sell_price.SellPrice;
-import orm.entity.sell_price.SellPriceDAO;
+import orm.entity.minfin.buy_price.BuyPrice;
+import orm.entity.minfin.buy_price.BuyPriceDAO;
+import orm.entity.minfin.deal.Deal;
+import orm.entity.minfin.sell_price.SellPrice;
+import orm.entity.minfin.sell_price.SellPriceDAO;
 import server.dashboard.service.TradeStatusHelper;
 import ui_automation.minfin.bo.BuyBO;
 import ui_automation.minfin.bo.LoginBO;

@@ -6,7 +6,10 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
 
 import javax.persistence.Table;
-import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.sql.Timestamp;
@@ -29,14 +32,14 @@ public abstract class GenericAbstractDAO<E> {
         beginTransaction();
         getSession().update(entity);
         commitTransaction();
-        System.out.println("update " + entity);
+        LOGGER.info("update " + entity);
     }
 
     public Serializable save(E entity) {
         beginTransaction();
         Serializable saveResult = getSession().save(entity);
         commitTransaction();
-        System.out.println("save " + entity);
+        LOGGER.info("save " + entity);
         return saveResult;
     }
 
@@ -45,7 +48,7 @@ public abstract class GenericAbstractDAO<E> {
         for (int i = 0; i < entityList.size(); i++) {
             getSession().saveOrUpdate(entityList.get(i));
             if (i % STATEMENT_BATCH_SIZE == 0) {
-                System.out.println(new Date() + " " + getCatalogName() + "." + getTableName() + " add " + i + " records");
+                LOGGER.info(new Date() + " " + getCatalogName() + "." + getTableName() + " add " + i + " records");
                 getSession().flush();
                 getSession().clear();
             }
@@ -170,7 +173,7 @@ public abstract class GenericAbstractDAO<E> {
 
     private E findWhere(BiFunction<CriteriaBuilder, Root<E>, Predicate> where, String message) {
         List<E> res = findAllWhere(where);
-        if (res == null || res.isEmpty()) {
+        if (res.isEmpty()) {
             System.out.println("can't find any " + getTableName() + " where '" + message + "'");
             return null;
         }
@@ -206,6 +209,31 @@ public abstract class GenericAbstractDAO<E> {
     public <T> List<T> findAllInTimeRange(String fieldNameToReturn, Class<T> fieldType, String timeField, Date startDate, Date endDate) {
         return findAllWhere(whereTimeInRange(timeField, startDate, endDate), fieldNameToReturn, fieldType);
     }
+
+    public E findLatest(String fieldName) {
+        List<E> res = new ArrayList<>();
+        beginTransaction();
+
+        CriteriaBuilder cb = getSession().getCriteriaBuilder();
+
+        CriteriaQuery<E> q = cb.createQuery(entityClass);
+        Root<E> root = q.from(entityClass);
+        q.select(root);
+        q.orderBy(cb.desc(root.get(fieldName)));
+        try {
+            res = getSession().createQuery(q).getResultList();
+        } catch (Exception ignored) {
+        }
+        commitTransaction();
+
+        if (res.size() == 0) {
+            LOGGER.warn("can't find latest object in "+getTableName()+" by Date field " + fieldName);
+            return null;
+        }
+        getSession().refresh(res.get(0));
+        return res.get(0);
+    }
+
 
     public List<E> findAllInTimeRange(String timeField, Date startDate, Date endDate) {
         return findAllWhere(whereTimeInRange(timeField, startDate, endDate));
@@ -290,4 +318,5 @@ public abstract class GenericAbstractDAO<E> {
         commitTransaction();
         System.out.println("deleteById[" + id + "] " + getTableName());
     }
+
 }

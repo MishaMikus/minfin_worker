@@ -1,8 +1,8 @@
 package server.dashboard.service;
 
 import org.springframework.stereotype.Service;
-import orm.entity.deal.Deal;
-import orm.entity.deal.DealDAO;
+import orm.entity.minfin.deal.Deal;
+import orm.entity.minfin.deal.DealDAO;
 import server.dashboard.view.DealView;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import static orm.entity.currency.CurrencyDAO.USD_CURRENCY;
+import static orm.entity.minfin.currency.CurrencyDAO.USD_CURRENCY;
 
 @Service
 public

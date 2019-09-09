@@ -1,7 +1,7 @@
 package ui_automation.minfin.bo;
 
 import static com.codeborne.selenide.Selenide.$;
-import static orm.entity.currency.CurrencyDAO.USD_CURRENCY;
+import static orm.entity.minfin.currency.CurrencyDAO.USD_CURRENCY;
 
 public class SellBO extends MyDealBO {
     private final static String url = "/currency/auction/usd/sell/lvov";

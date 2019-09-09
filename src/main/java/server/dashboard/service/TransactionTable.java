@@ -1,10 +1,10 @@
 package server.dashboard.service;
 
 import org.springframework.stereotype.Service;
-import orm.entity.transaction.Transaction;
-import orm.entity.transaction.TransactionDAO;
-import orm.entity.transaction.TransactionType;
-import orm.entity.transaction.TransactionTypeDAO;
+import orm.entity.minfin.transaction.Transaction;
+import orm.entity.minfin.transaction.TransactionDAO;
+import orm.entity.minfin.transaction.TransactionType;
+import orm.entity.minfin.transaction.TransactionTypeDAO;
 import server.dashboard.view.TransactionView;
 
 import java.util.ArrayList;
