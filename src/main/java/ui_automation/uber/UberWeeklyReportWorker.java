@@ -42,7 +42,7 @@ public class UberWeeklyReportWorker {
 //    }
 
     private static void runWorker() {
-        Long pingTime=1000L;
+        Long pingTime=10000L;
         new UberLoginBO()
                 .loginIfNotAuthorized(ApplicationPropertyUtil.applicationPropertyGet("uber.login")
                         , ApplicationPropertyUtil.applicationPropertyGet("uber.password"))

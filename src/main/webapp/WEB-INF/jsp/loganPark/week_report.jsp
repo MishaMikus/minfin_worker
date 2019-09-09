@@ -7,9 +7,12 @@
 </head>
 <body>
 
-<form method="post" action="/updateWeekReportRequest">
-    UPDATE REPORT
-    <input type="submit">
+<form id="updateWeekReportRequestForm" method="post" action="/updateWeekReportRequest">
+    <%--@elvariable id="latestUpdateDate" type="java.util.Date"--%>
+    <%--@elvariable id="latestUpdateDuration" type="java.lang.Long"--%>
+    <button class="btn btn-success" type="submit" form="updateWeekReportRequestForm" value="Submit">
+        UPDATE [${latestUpdateDate}] [${latestUpdateDuration/1000} s]
+    </button>
 </form>
 
 <%--@elvariable id="weekHashLabel" type="java.lang.Integer"--%>

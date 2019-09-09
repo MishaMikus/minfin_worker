@@ -31,7 +31,7 @@ public class WeeklyReportController extends BaseController {
     private void waitForReportDone() {
         long timeout=10*60*1000L;
         long start=new Date().getTime();
-        long pingTime=1000L;
+        long pingTime=10000L;
         while (updateInProgress()&&((new Date().getTime()-start)<timeout)){
             LOGGER.info("WAIT FOR REPORT PROCESSING");
             try {
@@ -52,6 +52,13 @@ public class WeeklyReportController extends BaseController {
     public ModelAndView weeklyReport() {
         ModelAndView modelAndView=new ModelAndView("loganPark/week_report");
         AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper =new AutomaticallyWeeklyReportHelper();
+
+        UberUpdateWeekReportRequest uberUpdateWeekReportRequest=UberUpdateWeekReportRequestDAO.getInstance().latest();
+        modelAndView.addObject("latestUpdateDate", uberUpdateWeekReportRequest.getUpdated());
+        Long duration=uberUpdateWeekReportRequest.getUpdated()==null
+                ?new Date().getTime()-uberUpdateWeekReportRequest.getCreated().getTime()
+                :uberUpdateWeekReportRequest.getUpdated().getTime()-uberUpdateWeekReportRequest.getCreated().getTime();
+        modelAndView.addObject("latestUpdateDuration", duration);
         modelAndView.addObject("weekHashLabel", automaticallyWeeklyReportHelper.getCurrentWeekHash());
         modelAndView.addObject("paymentTable", automaticallyWeeklyReportHelper.makeMap());
         modelAndView.addObject("ownerTable", automaticallyWeeklyReportHelper.makeOwnerMap());
