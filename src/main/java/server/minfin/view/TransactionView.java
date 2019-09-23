@@ -1,4 +1,4 @@
-package server.dashboard.view;
+package server.minfin.view;
 
 public class TransactionView {
     private String date;

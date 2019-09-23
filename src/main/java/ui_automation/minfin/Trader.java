@@ -6,7 +6,7 @@ import orm.entity.minfin.buy_price.BuyPriceDAO;
 import orm.entity.minfin.deal.Deal;
 import orm.entity.minfin.sell_price.SellPrice;
 import orm.entity.minfin.sell_price.SellPriceDAO;
-import server.dashboard.service.TradeStatusHelper;
+import server.minfin.service.TradeStatusHelper;
 import ui_automation.minfin.bo.BuyBO;
 import ui_automation.minfin.bo.LoginBO;
 import ui_automation.minfin.bo.MyDealBO;

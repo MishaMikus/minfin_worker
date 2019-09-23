@@ -2,16 +2,16 @@ package ui_automation.uber.bo;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import parser.IOUtils;
 import server.logan_park.service.PaymentRecorder;
 import ui_automation.bo.BaseBO;
+import util.IOUtils;
 
 import java.io.File;
 import java.util.Date;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.driver;
-import static parser.IOUtils.FS;
+import static util.IOUtils.FS;
 
 public class UberBO extends BaseBO {
     private static final String DOWNLOAD_FOLDER = System.getProperty("user.home") + FS + "Downloads";

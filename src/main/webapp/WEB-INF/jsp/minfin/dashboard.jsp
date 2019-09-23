@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:useBean id="transactionTable" scope="session" type="java.util.List<server.dashboard.view.TransactionView>"/>
-<jsp:useBean id="lastTransactionView" scope="session" type="server.dashboard.view.TransactionView"/>
-<jsp:useBean id="tradeStatus" scope="session" type="server.dashboard.view.TradeStatusView"/>
+<jsp:useBean id="transactionTable" scope="session" type="java.util.List<server.minfin.view.TransactionView>"/>
+<jsp:useBean id="lastTransactionView" scope="session" type="server.minfin.view.TransactionView"/>
+<jsp:useBean id="tradeStatus" scope="session" type="server.minfin.view.TradeStatusView"/>
 <jsp:useBean id="price_buy" scope="session" type="java.lang.String"/>
 <jsp:useBean id="price_sell" scope="session" type="java.lang.String"/>
 <jsp:useBean id="price_sell_date" scope="session" type="java.lang.String"/>

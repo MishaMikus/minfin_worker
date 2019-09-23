@@ -4,7 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import orm.entity.minfin.currency.Currency;
 import orm.entity.minfin.deal.Deal;
 import orm.entity.minfin.deal.DealDAO;
-import server.client.viber.ViberMinfinRestClient;
+import client.viber.ViberMinfinRestClient;
 import ui_automation.minfin.Bank;
 
 import java.util.ArrayList;

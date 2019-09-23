@@ -1,9 +1,9 @@
-package server.dashboard.service;
+package server.minfin.service;
 
 import org.springframework.stereotype.Service;
 import orm.entity.minfin.deal.Deal;
 import orm.entity.minfin.deal.DealDAO;
-import server.dashboard.view.DealView;
+import server.minfin.view.DealView;
 
 import java.util.ArrayList;
 import java.util.Collections;

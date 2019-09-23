@@ -1,4 +1,4 @@
-package server.dashboard;
+package server.minfin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,10 +8,10 @@ import orm.entity.minfin.buy_price.BuyPriceDAO;
 import orm.entity.minfin.sell_price.SellPrice;
 import orm.entity.minfin.sell_price.SellPriceDAO;
 import server.BaseController;
-import server.dashboard.service.DealTable;
-import server.dashboard.service.TradeStatusHelper;
-import server.dashboard.service.TransactionTable;
-import server.dashboard.view.TransactionView;
+import server.minfin.service.DealTable;
+import server.minfin.service.TradeStatusHelper;
+import server.minfin.service.TransactionTable;
+import server.minfin.view.TransactionView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -49,7 +49,7 @@ public class Dashboard extends BaseController {
         System.out.println(price_sell);
         System.out.println(price_buy);
 
-        return "redirect:/dashboard";
+        return "redirect:/minfin/dashboard";
     }
 
     @RequestMapping(value = "/add")
@@ -58,16 +58,16 @@ public class Dashboard extends BaseController {
                 request.getParameter("course"),
                 request.getParameter("uah_action"),
                 request.getParameter("usd_action"));
-        return "redirect:/dashboard";
+        return "redirect:/minfin/dashboard";
     }
 
     @RequestMapping(value = "/trade")
     public String getTrade() {
         tradeStatusHelper.pushTradeButton();
-        return "redirect:/dashboard";
+        return "redirect:/minfin/dashboard";
     }
 
-    @RequestMapping(value = {"/dashboard", "/"})
+    @RequestMapping(value = {"/minfin/dashboard"})
     public String getDashboard(HttpServletRequest request) {
         makeTransactionTableContent(request);
         request.getSession(true).setAttribute("dealTable", dealTable.dealTable());
@@ -77,7 +77,7 @@ public class Dashboard extends BaseController {
 
         request.getSession(true).setAttribute("price_sell_date", tradeStatusHelper.priceSellDate() + "");
         request.getSession(true).setAttribute("price_buy_date", tradeStatusHelper.priceBuyDate() + "");
-        return "dashboard";
+        return "minfin/dashboard";
     }
 
     private void makeTransactionTableContent(HttpServletRequest request) {

@@ -225,4 +225,12 @@ CREATE TABLE `minfin`.`uber_update_request`
     PRIMARY KEY (`id`)
 );
 
-
+DROP TABLE if exists `minfin`.`uber_captcha`;
+CREATE TABLE `minfin`.`uber_captcha`
+(
+    `id`      INT      NOT NULL AUTO_INCREMENT,
+    `created` DATETIME NOT NULL,
+    `fileId` VARCHAR(100) NULL,
+    `answer` VARCHAR(32) NULL,
+    PRIMARY KEY (`id`)
+);
