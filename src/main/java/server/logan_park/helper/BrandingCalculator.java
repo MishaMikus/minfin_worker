@@ -11,7 +11,11 @@ public class BrandingCalculator {
 
     private final static Logger LOGGER = Logger.getLogger(BrandingCalculator.class);
 
-    public static void main(String[] args) {
+//    public static void main(String[] args) {
+//        calculate();
+//    }
+
+    private static void calculate() {
         List<VehiclePerformance> vehiclePerformanceList = new ArrayList<>();
         int i = 1;
         while (new File("F:/vehicle_performance" + i + ".csv").exists()) {
@@ -30,7 +34,6 @@ public class BrandingCalculator {
         );
         System.out.println(res);
     }
-
 
 
     private static Collection<VehiclePerformance> parseFile(File file) {

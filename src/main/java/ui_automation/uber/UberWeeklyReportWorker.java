@@ -15,9 +15,9 @@ import static util.ApplicationPropertyUtil.getBoolean;
 public class UberWeeklyReportWorker {
     private static final Logger LOGGER = Logger.getLogger(UberWeeklyReportWorker.class);
 
-    public static void main(String[] args) {
-        runWorker();
-    }
+//    public static void main(String[] args) {
+//        runWorker();
+//    }
 
     public static void stat() {
 
