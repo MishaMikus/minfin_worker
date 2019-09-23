@@ -30,7 +30,7 @@ public abstract class CommonWeeklyReportHelper{
     public static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     private final Logger LOGGER = Logger.getLogger(this.getClass());
 
-    private static final int WORKOUT_HOUR_DIFF = 6;
+    private static final int WORKOUT_HOUR_DIFF = 5;
 
     public CommonWeeklyReportHelper() {
         primaryParsedData = parsePrimaryData();
