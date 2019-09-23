@@ -139,8 +139,9 @@ public abstract class CommonWeeklyReportHelper{
         //"ac67df0b-abbb-4d15-876d-6cc76f95b7c3","","Юрий","Сосинский","18.0","2019-08-16T14:19:45+03:00","promotion","Промокод","Компенсація сервісного збору Убер"
         Map<String, PaymentDriverRecord> map = new HashMap<>();
         Map<String, Map<Date, PaymentRecordRawRow>> driverMap = getPrimaryParsedData();
+        List<UberDriver> driverList= UberDriverDAO.getInstance().getDriverList();
         for (String driver : driverMap.keySet()) {
-            UberDriver currentDriver = driverByName(driver);
+            UberDriver currentDriver = driverByName(driver,driverList);
             if (currentDriver != null && !currentDriver.getDriverType().startsWith("owner")) {
                 map.putIfAbsent(driver, new PaymentDriverRecord());
                 List<List<Date>> dateRange = calculateDateRange(driverMap.get(driver));
@@ -463,9 +464,9 @@ public abstract class CommonWeeklyReportHelper{
 
     public Map<String, PaymentOwnerRecord> makeOwnerMap() {
         Map<String, PaymentOwnerRecord> map = new HashMap<>();
-
+        List<UberDriver> driverList= UberDriverDAO.getInstance().getDriverList();
         for (String driver : primaryParsedData.keySet()) {
-            UberDriver currentDriver = driverByName(driver);
+            UberDriver currentDriver = driverByName(driver, driverList);
             if (currentDriver != null && currentDriver.getDriverType().startsWith("owner")) {
                 map.putIfAbsent(driver, new PaymentOwnerRecord());
                 Map<Date, PaymentRecordRawRow> rangeMap = getRangeMap(primaryParsedData.get(driver));
@@ -530,8 +531,8 @@ public abstract class CommonWeeklyReportHelper{
                 + collectAmount(rangeMap.values(), "promotion");
     }
 
-    private UberDriver driverByName(String driver) {
-        for (UberDriver uberDriver : UberDriverDAO.getInstance().getDriverList()) {
+    private UberDriver driverByName(String driver, List<UberDriver> driverList) {
+        for (UberDriver uberDriver : driverList) {
             if (uberDriver.getName().equals(driver)) {
                 return uberDriver;
             }
@@ -577,10 +578,11 @@ public abstract class CommonWeeklyReportHelper{
     }
 
     private Double makeGeneralPartnerSummaryCash() {
+        List<UberDriver> driverList= UberDriverDAO.getInstance().getDriverList();
         Double amount = 0d;
         for (Map<Date, PaymentRecordRawRow> datedMap : primaryParsedData.values()) {
             for (PaymentRecordRawRow paymentRecordRawRow : datedMap.values()) {
-                UberDriver currentDriver = driverByName(paymentRecordRawRow.driverName());
+                UberDriver currentDriver = driverByName(paymentRecordRawRow.driverName(), driverList);
                 if (currentDriver != null && !currentDriver.getDriverType().equals("partner")) {
                     if (paymentRecordRawRow.getItemType().equals("cash_collected")) {
                         amount += paymentRecordRawRow.getAmount();
@@ -593,9 +595,10 @@ public abstract class CommonWeeklyReportHelper{
 
     private Double makeGeneralPartnerSummaryNonCash() {
         Double amount = 0d;
+        List<UberDriver> driverList= UberDriverDAO.getInstance().getDriverList();
         for (Map<Date, PaymentRecordRawRow> datedMap : primaryParsedData.values()) {
             for (PaymentRecordRawRow paymentRecordRawRow : datedMap.values()) {
-                UberDriver currentDriver = driverByName(paymentRecordRawRow.driverName());
+                UberDriver currentDriver = driverByName(paymentRecordRawRow.driverName(), driverList);
                 if (currentDriver != null && !currentDriver.getDriverType().equals("partner")) {
                     if (!paymentRecordRawRow.getItemType().equals("cash_collected")) {
                         amount += paymentRecordRawRow.getAmount();
