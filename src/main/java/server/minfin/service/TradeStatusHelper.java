@@ -1,5 +1,6 @@
 package server.minfin.service;
 
+import client.viber.ViberMinfinRestClient;
 import org.springframework.stereotype.Service;
 import orm.entity.minfin.buy_price.BuyPrice;
 import orm.entity.minfin.buy_price.BuyPriceDAO;
@@ -7,7 +8,6 @@ import orm.entity.minfin.sell_price.SellPrice;
 import orm.entity.minfin.sell_price.SellPriceDAO;
 import orm.entity.minfin.trade.TradeStatus;
 import orm.entity.minfin.trade.TradeStatusDAO;
-import client.viber.ViberMinfinRestClient;
 import server.minfin.view.TradeStatusView;
 import ui_automation.minfin.Bank;
 
