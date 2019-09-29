@@ -1,7 +1,11 @@
 package server.logan_park.helper;
 
-import server.logan_park.service.*;
-import java.util.*;
+import server.logan_park.helper.model.DriverRateScreen;
+import server.logan_park.service.PaymentRecordRawRow;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ManuallyWeeklyReportHelper extends CommonWeeklyReportHelper{
     public ManuallyWeeklyReportHelper(String content) {
@@ -27,5 +31,9 @@ public class ManuallyWeeklyReportHelper extends CommonWeeklyReportHelper{
         return getPrimaryParsedData();
     }
 
+    public  Map<String, DriverRateScreen> driverRateScreen() {
+        //TODO
+        return new HashMap<>();
+    }
 }
 

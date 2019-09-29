@@ -23,7 +23,7 @@ public class LoganParkController extends BaseController {
             request.getSession(true).setAttribute("paymentTable", new HashMap<>());
             request.getSession(true).setAttribute("ownerTable", new HashMap<>());
             request.getSession(true).setAttribute("generalPartnerSummary", new GeneralPartnerSummary());
-
+            request.getSession(true).setAttribute("driverRateScreen", new HashMap<>());
         }
         return "loganPark/logan_park";
     }
@@ -41,6 +41,7 @@ public class LoganParkController extends BaseController {
         request.getSession(true).setAttribute("paymentTable", manuallyWeeklyReportHelper.makeMap());
         request.getSession(true).setAttribute("ownerTable", manuallyWeeklyReportHelper.makeOwnerMap());
         request.getSession(true).setAttribute("generalPartnerSummary", manuallyWeeklyReportHelper.makeGeneralPartnerSummary());
+        request.getSession(true).setAttribute("driverRateScreen", manuallyWeeklyReportHelper.driverRateScreen());
         return "redirect:" + "/logan_park";
     }
 }

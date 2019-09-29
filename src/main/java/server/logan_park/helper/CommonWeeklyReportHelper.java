@@ -20,6 +20,8 @@ import java.util.*;
 
 public abstract class CommonWeeklyReportHelper{
 
+    private static final Integer WEEK_EARN_LIMIT = 9000;
+
     abstract Map<String, Map<Date, PaymentRecordRawRow>> parsePrimaryData();
     String content;
     private static final SimpleDateFormat SDF_DAY = new SimpleDateFormat("dd.MM");
@@ -222,7 +224,7 @@ public abstract class CommonWeeklyReportHelper{
             } else {
                 //40% calculation for others drivers
                 Integer amount = Integer.valueOf(entry.getValue().getSummary().getAmount());
-                if (amount >= 10000) {
+                if (amount >= WEEK_EARN_LIMIT) {
                     Integer salary = Long.valueOf(Math.round(Integer.parseInt(entry.getValue().getSummary().getAmount()) * 0.4d)).intValue();
                     entry.getValue().getSummary().setSalary(salary + "");
                     Integer salaryWithTips = salary + Long.valueOf(Integer.parseInt(entry.getValue().getSummary().getTips())).intValue();
