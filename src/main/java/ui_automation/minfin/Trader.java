@@ -41,7 +41,8 @@ public class Trader {
     public static void trade() {
         Selenide.close();
         tradeAction();
-        refreshPrice();
+        //TODO
+        //refreshPrice();
     }
 
     private static void refreshPrice() {
