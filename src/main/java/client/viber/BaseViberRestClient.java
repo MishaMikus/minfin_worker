@@ -9,14 +9,14 @@ import java.util.Random;
 import static util.ApplicationPropertyUtil.applicationPropertyGet;
 
 public class BaseViberRestClient {
-    public static void main(String[] args) {
-        String content="";
-
-        while(content.length()<7000){
-            content+="("+randomSmile()+")";
-        }
-        System.out.println(content);
-    }
+//    public static void main(String[] args) {
+//        String content="";
+//
+//        while(content.length()<7000){
+//            content+="("+randomSmile()+")";
+//        }
+//        System.out.println(content);
+//    }
 
     private static String randomSmile() {
         return SMILE_COLLECTION[RANDOM.nextInt(SMILE_COLLECTION.length-1)];
