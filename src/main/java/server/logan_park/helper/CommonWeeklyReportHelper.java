@@ -20,7 +20,7 @@ import java.util.*;
 
 public abstract class CommonWeeklyReportHelper{
 
-    private static final Integer WEEK_EARN_LIMIT = 9000;
+    private static final Integer WEEK_EARN_LIMIT = 8982;
 
     abstract Map<String, Map<Date, PaymentRecordRawRow>> parsePrimaryData();
     String content;

@@ -11,9 +11,9 @@ public class BrandingCalculator {
 
     private final static Logger LOGGER = Logger.getLogger(BrandingCalculator.class);
 
-//    public static void main(String[] args) {
-//        calculate();
-//    }
+    public static void main(String[] args) {
+        calculate();
+    }
 
     private static void calculate() {
         List<VehiclePerformance> vehiclePerformanceList = new ArrayList<>();
