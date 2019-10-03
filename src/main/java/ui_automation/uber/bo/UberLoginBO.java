@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import orm.entity.uber.uber_captcha.UberCaptcha;
 import orm.entity.uber.uber_captcha.UberCaptchaDAO;
 import client.viber.ViberUberRestClient;
-import ui_automation.bo.BaseBO;
+import ui_automation.BaseBO;
 import util.IOUtils;
 
 import java.io.File;

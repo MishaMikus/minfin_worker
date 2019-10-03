@@ -1,4 +1,4 @@
-package ui_automation.bo;
+package ui_automation;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
@@ -15,34 +15,34 @@ public class BaseBO {
     private final static Logger LOGGER = Logger.getLogger(BaseBO.class);
     private static final Long TIMEOUT_MS = 10 * 60 * 1000L;
     private static final Long DOWNLOAD_BUTTON_APPEAR_ITERATION_TIME_MS = 5 * 1000L;
+
     static {
         timeout = 10000;
         browser = "chrome";
         savePageSource = true;
-        if (getBoolean("remote",false)) {
+        if (getBoolean("remote", false)) {
             remote = " http://localhost:4444/wd/hub";
-            headless = getBoolean("headless",true);
-            System.out.println("remote : " + remote);
-            System.out.println("headless : " + headless);
+            headless = getBoolean("headless", true);
+
+            LOGGER.info("remote : " + remote);
+            LOGGER.info("headless : " + headless);
         }
     }
 
 
     protected void goToPath(String path) {
         //GOTO PAGE : https://minfin.com.ua/login
-        System.out.println("GOTO PAGE : " + baseUrl + path);
+        LOGGER.info("GOTO PAGE : " + baseUrl + path);
         open(path);
     }
 
     protected String executeJavaScriptAction(String actionName, String script) {
         try {
-
-
-            System.out.println(actionName + " : " + script);
+            LOGGER.info(actionName + " : " + script);
             return executeJavaScript(script);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("FAIL executeJavaScriptAction : " + actionName + " : " + script);
+            LOGGER.info("FAIL executeJavaScriptAction : " + actionName + " : " + script);
             return null;
         }
     }
@@ -50,12 +50,13 @@ public class BaseBO {
     protected void acceptAlert() {
         try {
             Alert alert = getWebDriver().switchTo().alert();
-            System.out.println("ACCEPT DIALOG : accept");
+            LOGGER.info("ACCEPT DIALOG : accept");
             alert.accept();
         } catch (Exception e) {
-            System.out.println("NO ANY ACCEPT DIALOG");
+            LOGGER.info("NO ANY ACCEPT DIALOG");
         }
     }
+
     protected void waitingForDownloadButtonAppear() {
         Long startMs = new Date().getTime();
         while (!$(By.linkText("Download CSV")).isDisplayed() && timeout(startMs, TIMEOUT_MS)) {
@@ -76,5 +77,30 @@ public class BaseBO {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    protected void clickById(String id) {
+        $(By.id(id)).click();
+        LOGGER.info("clickById : " + id);
+    }
+
+    protected void inputById(String id, String text) {
+        $(By.id(id)).setValue(text);
+        LOGGER.info("inputById : " + id + " text : " + text);
+    }
+
+    protected void clickByClassName(String className) {
+        $(By.className(className)).click();
+        LOGGER.info("clickByClassName : " + className);
+    }
+
+    protected void clickByPartialText(String text) {
+        $(By.partialLinkText(text)).click();
+        LOGGER.info("clickByPartialText : " + text);
+    }
+
+    private void setValueByClassName(String className, String value) {
+        $(By.className(className)).setValue(value);
+        LOGGER.info("setValueByClassName : " + className + " value : " + value);
     }
 }
