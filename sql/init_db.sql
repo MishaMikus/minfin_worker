@@ -228,9 +228,25 @@ CREATE TABLE `minfin`.`uber_update_request`
 DROP TABLE if exists `minfin`.`uber_captcha`;
 CREATE TABLE `minfin`.`uber_captcha`
 (
-    `id`      INT      NOT NULL AUTO_INCREMENT,
-    `created` DATETIME NOT NULL,
-    `fileId` VARCHAR(100) NULL,
-    `answer` VARCHAR(32) NULL,
+    `id`      INT          NOT NULL AUTO_INCREMENT,
+    `created` DATETIME     NOT NULL,
+    `fileId`  VARCHAR(100) NULL,
+    `answer`  VARCHAR(32)  NULL,
     PRIMARY KEY (`id`)
+);
+
+DROP TABLE if exists `minfin`.`uber_okko_filling`;
+CREATE TABLE `minfin`.`uber_okko_filling`
+(
+    `date`              DATETIME     NOT NULL,
+    `card`              VARCHAR(16)  NULL,
+    `amount`            DOUBLE       NULL,
+    `discount`          DOUBLE       NULL,
+    `amountAndDiscount` DOUBLE       NULL,
+    `sapCode`           VARCHAR(16)  NULL,
+    `shop`              VARCHAR(100) NULL,
+    `car`              VARCHAR(100) NULL,
+    `address`           VARCHAR(200) NULL,
+    `itemAmount`        DOUBLE       NULL,
+    `price`        DOUBLE       NULL
 );

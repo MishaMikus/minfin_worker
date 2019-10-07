@@ -1,27 +1,73 @@
-package ui_automation.okko;
+package orm.entity.uber.uber_okko_filling;
 
-import org.openqa.selenium.By;
-
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(schema = "minfin", name = "uber_okko_filling")
 public class FillingRecord {
+    @Id
+    @Column
     //Дата:	2019-10-02 08:37:29
     private Date date;
-
+    @Column
     //Номер картки:	7825390000344935
     private String card;
+    @Column
     //Сума:	262.33
     private Double amount;
+    @Column
     //Сума знижки:	17.95
     private Double discount;
+    @Column
     //Сума зi знижкою:	280.28
     private Double amountAndDiscount;
+    @Column
     //Код контракту SAP:	24ПК-8276/19
     private String sapCode;
+    @Column
     //Назва АЗС:	АЗС 011 Львів ОККО-Рітейл
     private String shop;
+    @Column
     //Адрес АЗС:	Львівська, Львів, Дж.Вашингтона, 12
     private String address;
+    @Column
+    private Double  itemAmount;
+    @Column
+    private Double  price;
+    @Column
+    private String  car;
+
+    public String getCar() {
+        return car;
+    }
+
+    public void setCar(String car) {
+        this.car = car;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Double getItemAmount() {
+        return itemAmount;
+    }
+
+    public void setItemAmount(Double itemAmount) {
+        this.itemAmount = itemAmount;
+    }
+
+    public FillingRecord() {
+    }
+
+    public FillingRecord(Date date) {
+        this.date = date;
+    }
 
     public Date getDate() {
         return date;
@@ -95,9 +141,11 @@ public class FillingRecord {
                 ", amount=" + amount +
                 ", discount=" + discount +
                 ", amountAndDiscount=" + amountAndDiscount +
-                ", sapCode=" + sapCode +
+                ", sapCode='" + sapCode + '\'' +
                 ", shop='" + shop + '\'' +
                 ", address='" + address + '\'' +
+                ", itemAmount=" + itemAmount +
+                ", price=" + price +
                 '}';
     }
 }
