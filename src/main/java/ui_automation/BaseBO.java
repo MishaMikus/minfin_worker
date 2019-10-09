@@ -94,6 +94,11 @@ public class BaseBO {
         LOGGER.info("clickByClassName : " + className);
     }
 
+    protected void clickByType(String type) {
+        $(By.xpath("//*[@type='" + type + "']")).click();
+        LOGGER.info("clickByType : " + type);
+    }
+
     protected void clickByPartialText(String text) {
         $(By.partialLinkText(text)).click();
         LOGGER.info("clickByPartialText : " + text);
