@@ -3,7 +3,7 @@ package ui_automation.uber.bo;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import server.logan_park.service.PaymentRecorder;
-import ui_automation.bo.BaseBO;
+import ui_automation.BaseBO;
 import util.IOUtils;
 
 import java.io.File;
