@@ -1,6 +1,7 @@
 package server;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -29,9 +30,13 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 public class SpringBootApplication extends SpringBootServletInitializer {
 
+    @Value("${server.tomcat.additional-tld-skip-patterns}")
+    private static String prop ;
+
     private final Logger LOGGER = Logger.getLogger(SpringBootApplication.class);
 
     public static void main(String[] args) {
+        prop = "*mchange-commons-java*.jar";
         new SpringApplication(SpringBootApplication.class).run(args);
     }
 
