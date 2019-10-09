@@ -4,9 +4,9 @@ import util.ApplicationPropertyUtil;
 
 public class BoltWorker {
 
-    public static void main(String[] args) {
-        runWorker();
-    }
+//    public static void main(String[] args) {
+//        runWorker();
+//    }
 
     public static void runWorker() {
         String login = ApplicationPropertyUtil.applicationPropertyGet("bolt.login");
