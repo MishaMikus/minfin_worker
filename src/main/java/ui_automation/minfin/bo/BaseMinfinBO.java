@@ -1,6 +1,6 @@
 package ui_automation.minfin.bo;
 
-import ui_automation.BaseBO;
+import ui_automation.bo.BaseBO;
 
 import static com.codeborne.selenide.Configuration.*;
 import static com.codeborne.selenide.Selenide.$$;

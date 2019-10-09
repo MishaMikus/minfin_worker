@@ -20,7 +20,8 @@ public class UberCaptcha {
     @Column
     private String answer;
 
-
+    @Column
+    private String realPath;
 
     @Override
     public String toString() {
@@ -29,7 +30,16 @@ public class UberCaptcha {
                 ", created=" + created +
                 ", fileId='" + fileId + '\'' +
                 ", answer='" + answer + '\'' +
+                ", realPath='" + realPath + '\'' +
                 '}';
+    }
+
+    public String getRealPath() {
+        return realPath;
+    }
+
+    public void setRealPath(String realPath) {
+        this.realPath = realPath;
     }
 
     public Integer getId() {

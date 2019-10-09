@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import orm.entity.uber.uber_captcha.UberCaptcha;
 import orm.entity.uber.uber_captcha.UberCaptchaDAO;
 import client.viber.ViberUberRestClient;
-import ui_automation.BaseBO;
+import ui_automation.bo.BaseBO;
 import util.IOUtils;
 
 import java.io.File;
@@ -85,6 +85,7 @@ public class UberLoginBO extends BaseBO {
         UberCaptcha uberCaptcha=new UberCaptcha();
         uberCaptcha.setCreated(new Date());
         uberCaptcha.setFileId(fileId);
+        uberCaptcha.setRealPath(screenshotFile.getAbsolutePath());
         UberCaptchaDAO.getInstance().save(uberCaptcha);
 
         //send viber message to operator with solving url
