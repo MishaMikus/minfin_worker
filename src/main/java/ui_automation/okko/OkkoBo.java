@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
 
 public class OkkoBo extends BaseOkkoBO {
@@ -37,6 +36,7 @@ public class OkkoBo extends BaseOkkoBO {
                 if (duplicated) return res;
             }
         }
+        close();
         return res;
     }
 
