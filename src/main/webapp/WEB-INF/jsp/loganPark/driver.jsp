@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<jsp:useBean id="driverTable" scope="session" type="java.util.List<orm.entity.uber.driver.UberDriver>"/>
 <html>
 <head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styles.css">
@@ -9,31 +9,29 @@
 <div class="topnav">
     <a href="/logan_park">Ручний тижневий звіт</a>
     <a href="/logan_park/weekly_report">Автоматичний тижневий звіт</a>
-    <a class="active" href="/logan_park/filling_report">Паливний звіт</a>
-    <a href="/driver">Водії</a>
+    <a href="/logan_park/filling_report">Паливний звіт</a>
+    <a class="active" href="/driver">Водії</a>
     <a href="/one_time_sms_code">СМС</a>
     <a href="/uber_captcha">Капча</a>
 </div>
-<%--@elvariable id="fillingTable" type="java.util.List<java.lang.FillingRecord>"--%>
-<table class="table-all-borders">
+<table border="1">
     <tbody>
     <tr>
-        <th>дата</th>
-        <th>картка</th>
-        <th>автомобіль</th>
-        <th>літрів</th>
+        <th>id</th>
+        <th>driverUUID</th>
+        <th>driverType</th>
+        <th>name</th>
     </tr>
-
-    <c:forEach items="${fillingTable}" var="fillingView">
+    <c:forEach items="${driverTable}" var="driver">
         <tr>
-            <td>${fillingView.date}</td>
-            <td>${fillingView.card}</td>
-            <td>${fillingView.car}</td>
-            <td>${fillingView.itemAmount}</td>
+
+            <td>${driver.id}</td>
+            <td>${driver.driverUUID}</td>
+            <td>${driver.driverType}</td>
+            <td>${driver.name}</td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
-<br>
 </body>
 </html>
