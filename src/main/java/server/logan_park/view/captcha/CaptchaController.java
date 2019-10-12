@@ -1,13 +1,11 @@
 package server.logan_park.view.captcha;
 
-import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,14 +14,13 @@ import orm.entity.uber.uber_captcha.UberCaptchaDAO;
 import server.BaseController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 import static util.IOUtils.FS;
 
 @Controller
 public class CaptchaController extends BaseController {
-    public static final String PATH = "/uber_captcha";
+    public static final String PATH = "/logan_park/uber_captcha";
     private final Logger LOGGER = Logger.getLogger(this.getClass());
 
     //IMAGE link

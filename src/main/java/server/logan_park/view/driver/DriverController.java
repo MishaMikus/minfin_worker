@@ -14,12 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class DriverController extends BaseController {
-    public static final String PATH = "/driver";
     private final Logger LOGGER = Logger.getLogger(this.getClass());
 
-    @RequestMapping(method = RequestMethod.GET, value = PATH)
+    @RequestMapping(method = RequestMethod.GET, value = "/logan_park/driver")
     public String initForm(HttpServletRequest request) {
         request.getSession(true).setAttribute("driverTable", UberDriverDAO.getInstance().findAll());
-        return "loganPark" + PATH;
+        return "loganPark/driver";
     }
 }

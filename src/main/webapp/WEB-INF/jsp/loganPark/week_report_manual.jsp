@@ -14,14 +14,14 @@
 </head>
 <body>
 <div class="topnav">
-    <a class="active" href="/logan_park">Ручний тижневий звіт</a>
-    <a href="/logan_park/weekly_report">Автоматичний тижневий звіт</a>
+    <a class="active" href="/logan_park/week_report_manual">Ручний тижневий звіт</a>
+    <a href="/logan_park/weekly_report">Тижневий звіт</a>
     <a href="/logan_park/filling_report">Паливний звіт</a>
-    <a href="/driver">Водії</a>
-    <a href="/one_time_sms_code">СМС</a>
-    <a href="/uber_captcha">Капча</a>
+    <a href="/logan_park/driver">Водії</a>
+    <a href="/logan_park/one_time_sms_code">СМС</a>
+    <a href="/logan_park/uber_captcha">Капча</a>
 </div>
-<form method="post" action="logan_park/upload_payment_csv" enctype="multipart/form-data">
+<form method="post" action="/logan_park/upload_payment_csv" enctype="multipart/form-data">
     <input type="file" name="payment_file">
     <input type="submit">
 </form>

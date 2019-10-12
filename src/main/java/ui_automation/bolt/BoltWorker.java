@@ -2,6 +2,9 @@ package ui_automation.bolt;
 
 import util.ApplicationPropertyUtil;
 
+import java.io.File;
+import java.util.Map;
+
 import static com.codeborne.selenide.Selenide.close;
 
 public class BoltWorker {
@@ -14,7 +17,9 @@ public class BoltWorker {
         String login = ApplicationPropertyUtil.applicationPropertyGet("bolt.login");
         String pass = ApplicationPropertyUtil.applicationPropertyGet("bolt.pass");
         new BoltLogonBo().login(login, pass);
+        Map<String, File> map = new DayReportBO().downloadAllCSV();
         close();
+        new RecordHelper().recordDayReportToDB(map);
         System.exit(0);
     }
 }

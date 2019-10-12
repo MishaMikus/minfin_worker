@@ -14,7 +14,7 @@ import static com.codeborne.selenide.WebDriverRunner.driver;
 import static util.IOUtils.FS;
 
 public class UberBO extends BaseBO {
-    private static final String DOWNLOAD_FOLDER = System.getProperty("user.home") + FS + "Downloads";
+    public static final String DOWNLOAD_FOLDER = System.getProperty("user.home") + FS + "Downloads";
 
     private final static Logger LOGGER = Logger.getLogger(UberBO.class);
 

@@ -15,16 +15,15 @@ import javax.validation.Valid;
 
 @Controller
 public class OneTimeSMSReceiverController extends BaseController {
-    public static final String PATH="/one_time_sms_code";
     private final Logger LOGGER = Logger.getLogger(this.getClass());
-    @RequestMapping(method = RequestMethod.GET,value = PATH)
+    @RequestMapping(method = RequestMethod.GET,value = "/logan_park/one_time_sms_code")
     public ModelAndView initForm() {
-        ModelAndView modelAndView=new ModelAndView("loganPark"+PATH);
+        ModelAndView modelAndView=new ModelAndView("loganPark/one_time_sms_code");
         modelAndView.addObject("smsReceiver",new SMSReceiverFormModel());
         return modelAndView;
     }
 
-    @RequestMapping(method = RequestMethod.POST,value = PATH)
+    @RequestMapping(method = RequestMethod.POST,value = "/logan_park/one_time_sms_code")
     public ModelAndView submit(@Valid @ModelAttribute("smsReceiver") SMSReceiverFormModel smsReceiver, BindingResult result) {
         if (result.hasErrors()) {
             LOGGER.warn(result);

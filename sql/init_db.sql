@@ -228,11 +228,11 @@ CREATE TABLE `minfin`.`uber_update_request`
 DROP TABLE if exists `minfin`.`uber_captcha`;
 CREATE TABLE `minfin`.`uber_captcha`
 (
-    `id`      INT          NOT NULL AUTO_INCREMENT,
-    `created` DATETIME     NOT NULL,
-    `fileId`  VARCHAR(100) NULL,
-    `answer`  VARCHAR(32)  NULL,
-    `realPath`  VARCHAR(200) NULL,
+    `id`       INT          NOT NULL AUTO_INCREMENT,
+    `created`  DATETIME     NOT NULL,
+    `fileId`   VARCHAR(100) NULL,
+    `answer`   VARCHAR(32)  NULL,
+    `realPath` VARCHAR(200) NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -246,8 +246,48 @@ CREATE TABLE `minfin`.`uber_okko_filling`
     `amountAndDiscount` DOUBLE       NULL,
     `sapCode`           VARCHAR(16)  NULL,
     `shop`              VARCHAR(100) NULL,
-    `car`              VARCHAR(100) NULL,
+    `car`               VARCHAR(100) NULL,
     `address`           VARCHAR(200) NULL,
     `itemAmount`        DOUBLE       NULL,
-    `price`        DOUBLE       NULL
+    `price`             DOUBLE       NULL
+);
+
+# "Водій", "Всі водії",
+# "Телефон водія", "",
+
+# "Період", "День 2019-10-11",
+
+# "Загальний тариф", "3332.00",
+
+# "Плата за скасування","0.00",
+
+# "Збір за бронювання (платіж)","0.00",
+# "Збір за бронювання (відрахування)","0.00",
+# "Додаткові збори","0.00",
+# "Комісія Bolt","-399.84",
+# "Готівкові поїздки (отримано водієм)","-1899.00",
+# "Компенсована сума знижки Bolt за готівкові поїздки ","332.00",
+# "Водійський бонус","0.00",
+# "Компенсації","0.00",
+# "Тижневий баланс", "1033.16"
+
+
+DROP TABLE if exists `minfin`.`bolt_payment_record_day`;
+CREATE TABLE `minfin`.`bolt_payment_record_day`
+(
+    `creation`               DATETIME     NOT NULL,
+    `driverName`             VARCHAR(100) NOT NULL,
+    `timestamp`              DATETIME     NOT NULL,
+    `amount`                 DOUBLE       NOT NULL,
+    `reject_amount`          DOUBLE       NOT NULL,
+    `booking_payment_amount` DOUBLE       NOT NULL,
+    `booking_payment_minus`  DOUBLE       NOT NULL,
+    `additional_payment`     DOUBLE       NOT NULL,
+    `bolt_commission`        DOUBLE       NOT NULL,
+    `cash`                   DOUBLE       NOT NULL,
+    `cash_turn`              DOUBLE       NOT NULL,
+    `bonus`                  DOUBLE       NOT NULL,
+    `compensation`           DOUBLE       NOT NULL,
+    `week_balance`           DOUBLE       NOT NULL,
+    PRIMARY KEY (`driverName`, `timestamp`)
 );

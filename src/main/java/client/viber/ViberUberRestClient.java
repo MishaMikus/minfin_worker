@@ -31,7 +31,7 @@ public class ViberUberRestClient extends BaseViberRestClient{
     private String sendNeedSMSCodeRequestBody(String receiver) {
         ViberMessage viberMessage = new ViberMessage();
         viberMessage.setReceiver(receiver);
-        String url="http://"+getMyIP()+":8080"+ OneTimeSMSReceiverController.PATH;
+        String url="http://"+getMyIP()+":8080/logan_park/one_time_sms_code";
         viberMessage.setText("Need SMS Code\n"+url);
         return new JSONObject(viberMessage).toString();
     }

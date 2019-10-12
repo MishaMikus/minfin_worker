@@ -16,7 +16,7 @@ import java.util.HashMap;
 @Controller
 public class LoganParkController extends BaseController {
 
-    @RequestMapping(value = "/logan_park")
+    @RequestMapping(value = "/logan_park/week_report_manual")
     public String getLoganPark(HttpServletRequest request) {
         if (request.getSession(true).getAttribute("paymentTable") == null) {
             request.getSession(true).setAttribute("fileName", "");
@@ -25,7 +25,7 @@ public class LoganParkController extends BaseController {
             request.getSession(true).setAttribute("generalPartnerSummary", new GeneralPartnerSummary());
             request.getSession(true).setAttribute("driverRateScreen", new HashMap<>());
         }
-        return "loganPark/logan_park";
+        return "loganPark/week_report_manual";
     }
 
     @RequestMapping(value = "/logan_park/upload_payment_csv")
@@ -42,6 +42,6 @@ public class LoganParkController extends BaseController {
         request.getSession(true).setAttribute("ownerTable", manuallyWeeklyReportHelper.makeOwnerMap());
         request.getSession(true).setAttribute("generalPartnerSummary", manuallyWeeklyReportHelper.makeGeneralPartnerSummary());
         request.getSession(true).setAttribute("driverRateScreen", manuallyWeeklyReportHelper.driverRateScreen());
-        return "redirect:" + "/logan_park";
+        return "redirect:" + "/logan_park/week_report_manual";
     }
 }
