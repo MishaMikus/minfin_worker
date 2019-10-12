@@ -9,9 +9,9 @@ import java.util.List;
 
 public class OkkoWorker {
 
-//    public static void main(String[] args) {
-//        runWorker();
-//    }
+    public static void main(String[] args) {
+        runWorker();
+    }
 
     public static void runWorker() {
         String login = ApplicationPropertyUtil.applicationPropertyGet("okko.login");
