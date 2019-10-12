@@ -2,7 +2,6 @@ package ui_automation.bolt;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import ui_automation.uber.bo.UberBO;
 
 import java.io.File;
 import java.util.*;
@@ -16,7 +15,7 @@ public class DayReportBO extends BaseBoltBO {
     private final static Logger LOGGER = Logger.getLogger(DayReportBO.class);
 
     public Map<String, File> downloadAllCSV() {
-        $(By.linkText("ŸÓ‰ÂÌÌ≥ Á‚≥ÚË")).click();
+        $(By.linkText("–©–æ–¥–µ–Ω–Ω—ñ –∑–≤—ñ—Ç–∏")).click();
         //company/26068/reports/daily/07.10.2019
         List<String> hrefList = new ArrayList<>();
         $$(By.xpath("//a[text()='CSV']")).forEach(e -> hrefList.add(e.getAttribute("href")));
@@ -33,7 +32,7 @@ public class DayReportBO extends BaseBoltBO {
         long start = new Date().getTime();
         long pingTime = 1000L;
         long timeout = 10 * pingTime;
-        File file = new File(DOWNLOAD_FOLDER + FS + "ŸÓ‰ÂÌÌËÈ Á‚≥Ú Bolt ñ " + date + " ñ Lviv Fleet 02_28 park Mikus.csv");
+        File file = new File(DOWNLOAD_FOLDER + FS + "–©–æ–¥–µ–Ω–Ω–∏–π –∑–≤—ñ—Ç Bolt ‚Äì " + date + " ‚Äì Lviv Fleet 02_28 park Mikus.csv");
         while (!file.exists() && new Date().getTime() - start < timeout) {
             try {
                 Thread.sleep(pingTime);
