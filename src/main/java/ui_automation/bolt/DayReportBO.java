@@ -15,7 +15,7 @@ public class DayReportBO extends BaseBoltBO {
     private final static Logger LOGGER = Logger.getLogger(DayReportBO.class);
 
     public Map<String, File> downloadAllCSV() {
-        $(By.xpath("//*[text()='Щоденні звіти' or text()='Weekly Reports'")).click();
+        $(By.xpath("//*[text()='Щоденні звіти' or text()='Weekly Reports']")).click();
         //company/26068/reports/daily/07.10.2019
         List<String> hrefList = new ArrayList<>();
         $$(By.xpath("//a[text()='CSV']")).forEach(e -> hrefList.add(e.getAttribute("href")));
