@@ -3,6 +3,7 @@ package server.logan_park.service;
 import org.apache.log4j.Logger;
 import orm.entity.uber.description.UberDescription;
 import orm.entity.uber.description.UberDescriptionDAO;
+import orm.entity.uber.driver.UberDriver;
 import orm.entity.uber.driver.UberDriverDAO;
 import orm.entity.uber.item_type.UberItemTypeDAO;
 import orm.entity.uber.payment_record_row.UberPaymentRecordRow;
@@ -41,6 +42,8 @@ public class PaymentRecorder {
 //        new PaymentRecorder(IOUtils.readTextFromFile(PAYMENT_DATA_FILE)).recordToBD();
 //    }
 
+    List<UberDriver> driverList = UberDriverDAO.getInstance().findAll();
+
     public void recordToBD() {
         LOGGER.info("primaryParsedData.size() : " + primaryParsedData.size());
         List<UberPaymentRecordRow> tobeRecorded = new ArrayList<>();
@@ -48,8 +51,8 @@ public class PaymentRecorder {
             Integer weekHash = primaryParsedData.get(0).hashCode();
             UberPaymentRecordRow oldRecord = UberPaymentRecordRowDAO.getInstance().findLatest();
             List<UberPaymentRecordRow> oldRecordList =
-                    oldRecord==null?new ArrayList<>()
-                            :UberPaymentRecordRowDAO.getInstance().findAllWhereEqual("weekHash", oldRecord.getWeekHash());
+                    oldRecord == null ? new ArrayList<>()
+                            : UberPaymentRecordRowDAO.getInstance().findAllWhereEqual("weekHash", oldRecord.getWeekHash());
             LOGGER.info("OLD_RECORD=" + oldRecord);
             for (PaymentRecordRawRow paymentRecordRawRow : primaryParsedData) {
                 UberPaymentRecordRow uberPaymentRecordRow = new UberPaymentRecordRow();
@@ -64,7 +67,8 @@ public class PaymentRecorder {
                 uberPaymentRecordRow.setDescription(uberDescription == null ? makeNewDescription(paymentRecordRawRow.getDescription()) : uberDescription.getId());
 
                 uberPaymentRecordRow.setDisclaimer(paymentRecordRawRow.getDisclaimer());
-                uberPaymentRecordRow.setDriverId(UberDriverDAO.getInstance().driverByUUID(paymentRecordRawRow.getDriverUUID()).getId());
+                Integer id = driverList.stream().filter(d -> d.getDriverUUID().equals(paymentRecordRawRow.getDriverUUID())).findAny().get().getId();
+                uberPaymentRecordRow.setDriverId(id);
                 uberPaymentRecordRow.setFileRowIndex(primaryParsedData.indexOf(paymentRecordRawRow));
                 uberPaymentRecordRow.setItemType(UberItemTypeDAO.getInstance()
                         .getItemTypeByName(paymentRecordRawRow.getItemType()).getId());
@@ -74,9 +78,9 @@ public class PaymentRecorder {
                 if (oldRecord == null || !oldRecord.getWeekHash().equals(uberPaymentRecordRow.getWeekHash())) {
                     tobeRecorded.add(uberPaymentRecordRow);
                 } else {
-                    if (oldRecordList.stream().filter(r->r.getHash()
+                    if (oldRecordList.stream().filter(r -> r.getHash()
                             .equals(uberPaymentRecordRow.getHash()))
-                            .findAny().orElse(null)==null) {
+                            .findAny().orElse(null) == null) {
                         tobeRecorded.add(uberPaymentRecordRow);
                     }
                 }

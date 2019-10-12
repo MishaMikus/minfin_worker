@@ -21,7 +21,7 @@ import java.util.*;
 public abstract class CommonWeeklyReportHelper{
 
     private static final Integer WEEK_EARN_LIMIT = 9000;
-
+    List<UberDriver> driverList= UberDriverDAO.getInstance().getDriverList();
     abstract Map<String, Map<Date, PaymentRecordRawRow>> parsePrimaryData();
     String content;
     private static final SimpleDateFormat SDF_DAY = new SimpleDateFormat("dd.MM");
@@ -141,7 +141,6 @@ public abstract class CommonWeeklyReportHelper{
         //"ac67df0b-abbb-4d15-876d-6cc76f95b7c3","","Юрий","Сосинский","18.0","2019-08-16T14:19:45+03:00","promotion","Промокод","Компенсація сервісного збору Убер"
         Map<String, PaymentDriverRecord> map = new HashMap<>();
         Map<String, Map<Date, PaymentRecordRawRow>> driverMap = getPrimaryParsedData();
-        List<UberDriver> driverList= UberDriverDAO.getInstance().getDriverList();
         for (String driver : driverMap.keySet()) {
             UberDriver currentDriver = driverByName(driver,driverList);
             if (currentDriver != null && !currentDriver.getDriverType().startsWith("owner")) {
@@ -466,7 +465,6 @@ public abstract class CommonWeeklyReportHelper{
 
     public Map<String, PaymentOwnerRecord> makeOwnerMap() {
         Map<String, PaymentOwnerRecord> map = new HashMap<>();
-        List<UberDriver> driverList= UberDriverDAO.getInstance().getDriverList();
         for (String driver : primaryParsedData.keySet()) {
             UberDriver currentDriver = driverByName(driver, driverList);
             if (currentDriver != null && currentDriver.getDriverType().startsWith("owner")) {
@@ -580,7 +578,6 @@ public abstract class CommonWeeklyReportHelper{
     }
 
     private Double makeGeneralPartnerSummaryCash() {
-        List<UberDriver> driverList= UberDriverDAO.getInstance().getDriverList();
         Double amount = 0d;
         for (Map<Date, PaymentRecordRawRow> datedMap : primaryParsedData.values()) {
             for (PaymentRecordRawRow paymentRecordRawRow : datedMap.values()) {
@@ -597,7 +594,6 @@ public abstract class CommonWeeklyReportHelper{
 
     private Double makeGeneralPartnerSummaryNonCash() {
         Double amount = 0d;
-        List<UberDriver> driverList= UberDriverDAO.getInstance().getDriverList();
         for (Map<Date, PaymentRecordRawRow> datedMap : primaryParsedData.values()) {
             for (PaymentRecordRawRow paymentRecordRawRow : datedMap.values()) {
                 UberDriver currentDriver = driverByName(paymentRecordRawRow.driverName(), driverList);

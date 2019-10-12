@@ -17,14 +17,18 @@ import util.RegExpUtil;
 import java.util.Date;
 import java.util.List;
 
+import static com.codeborne.selenide.Selenide.close;
 import static util.ApplicationPropertyUtil.applicationPropertyGet;
 import static util.ApplicationPropertyUtil.applicationPropertyGetInteger;
 
-public class Trader {
+public class MinfinWorker {
     private static final String ADDRESS = applicationPropertyGet("minfin.address");
     private static final Integer DEAL_PRICE_HISTORY_DEEP = applicationPropertyGetInteger("minfin.history.deal.deep");
     private static final String PRICE_REGEX = "<span class=\"au-deal-currency\">([\\d]+,[\\d]+)";
 
+    public static void main(String[] args) {
+        trade();
+    }
 
     public static void check() {
         if (login()) {
@@ -43,6 +47,8 @@ public class Trader {
         tradeAction();
         //TODO
         //refreshPrice();
+        close();
+        System.exit(0);
     }
 
     private static void refreshPrice() {
@@ -69,7 +75,7 @@ public class Trader {
         for (String price : priceList) {
             Double value = parseDouble(price);
             if (similar(value, priceList)) {
-               // System.out.println("getAverageFirst10Prices : " + price);
+                // System.out.println("getAverageFirst10Prices : " + price);
                 average += value;
                 count++;
             }
@@ -82,18 +88,18 @@ public class Trader {
     }
 
     private static boolean similar(Double value, List<String> listContainingMe) {
-        Double sum=0d;
+        Double sum = 0d;
         for (String currentValue : listContainingMe) {
-            sum +=parseDouble(currentValue);
+            sum += parseDouble(currentValue);
         }
-        sum-=value;
-        double average=sum/(listContainingMe.size()-1);
-        double delta=average-value;
-        double deltaPercentage=delta/average*100;
+        sum -= value;
+        double average = sum / (listContainingMe.size() - 1);
+        double delta = average - value;
+        double deltaPercentage = delta / average * 100;
 
         //if more 1% delta then fuck the value;
-        boolean res=deltaPercentage>-1d&&deltaPercentage<1d;
-       // System.out.println("[value : "+value + "] [similar : "+res+"] [average : "+average+"] [delta : "+delta+"] [deltaPercentage : "+deltaPercentage+"]");
+        boolean res = deltaPercentage > -1d && deltaPercentage < 1d;
+        // System.out.println("[value : "+value + "] [similar : "+res+"] [average : "+average+"] [delta : "+delta+"] [deltaPercentage : "+deltaPercentage+"]");
         return res;
     }
 

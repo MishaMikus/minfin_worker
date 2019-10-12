@@ -7,6 +7,8 @@ import util.ApplicationPropertyUtil;
 import java.util.Date;
 import java.util.List;
 
+import static com.codeborne.selenide.Selenide.close;
+
 public class OkkoWorker {
 
     public static void main(String[] args) {
@@ -20,6 +22,8 @@ public class OkkoWorker {
         FillingRecord latestDBRecord = getLatestFillingRecord();
         List<FillingRecord> allRecords = new OkkoBo().getAllLatestFillings(latestDBRecord);
         FillingRecordDAO.getInstance().saveBatch(allRecords);
+        close();
+        System.exit(0);
     }
 
     private static FillingRecord getLatestFillingRecord() {

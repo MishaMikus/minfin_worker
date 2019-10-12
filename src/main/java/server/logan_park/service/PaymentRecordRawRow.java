@@ -12,6 +12,7 @@ import server.logan_park.helper.ManuallyWeeklyReportHelper;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class PaymentRecordRawRow {
@@ -26,20 +27,22 @@ public class PaymentRecordRawRow {
     private String disclaimer;
     private Integer weekHash;//first record hash
 
-    public static PaymentRecordRawRow makeMeFromDBRow(UberPaymentRecordRow row) {
-        UberDriver uberDriver= UberDriverDAO.getInstance().driverById(row.getDriverId());
-        UberItemType uberItemType= UberItemTypeDAO.getInstance().itemById(row.getItemType());
-        UberDescription uberDescription= UberDescriptionDAO.getInstance().descriptionById(row.getDescription());
-        PaymentRecordRawRow paymentRecordRawRow =new PaymentRecordRawRow();
-        paymentRecordRawRow.setAmount(row.getAmount());
-        paymentRecordRawRow.setDescription(uberDescription.getName());
-        paymentRecordRawRow.setDisclaimer(row.getDisclaimer());
-        paymentRecordRawRow.setDriverUUID(uberDriver.getDriverUUID());
-        paymentRecordRawRow.setFirstName(uberDriver.getName().split("_")[0]);
-        paymentRecordRawRow.setLastName(uberDriver.getName().split("_")[1]);
-        paymentRecordRawRow.setItemType(uberItemType.getName());
-        paymentRecordRawRow.setTimestamp(row.getTimestamp());
-        paymentRecordRawRow.setTripUUID(row.getTripUUID());
+    public static PaymentRecordRawRow makeMeFromDBRow(UberPaymentRecordRow row, List<UberDriver> driverList) {
+        UberDriver uberDriver = driverList.stream().filter(d -> d.getId().equals(row.getDriverId())).findAny().orElse(null);
+        PaymentRecordRawRow paymentRecordRawRow = new PaymentRecordRawRow();
+        if (uberDriver != null) {
+            UberItemType uberItemType = UberItemTypeDAO.getInstance().itemById(row.getItemType());
+            UberDescription uberDescription = UberDescriptionDAO.getInstance().descriptionById(row.getDescription());
+            paymentRecordRawRow.setAmount(row.getAmount());
+            paymentRecordRawRow.setDescription(uberDescription.getName());
+            paymentRecordRawRow.setDisclaimer(row.getDisclaimer());
+            paymentRecordRawRow.setDriverUUID(uberDriver.getDriverUUID());
+            paymentRecordRawRow.setFirstName(uberDriver.getName().split("_")[0]);
+            paymentRecordRawRow.setLastName(uberDriver.getName().split("_")[1]);
+            paymentRecordRawRow.setItemType(uberItemType.getName());
+            paymentRecordRawRow.setTimestamp(row.getTimestamp());
+            paymentRecordRawRow.setTripUUID(row.getTripUUID());
+        }
         return paymentRecordRawRow;
     }
 
@@ -80,7 +83,7 @@ public class PaymentRecordRawRow {
         //driverUUID	tripUUID	firstName	lastName	amount	timestamp	itemType	description	disclaimer
         //2a180965-5af6-41ea-bfd6-c59cb99e4268		Михайло	Мікусь	-32641.2	2019-08-26T04:00:19+03:00	payouts	Виплати
         //198ed624-f207-4229-96ad-7ab9d1e320db	b860be38-f63d-4a8a-a9c8-78bc79487634	Андрій	Павлеса	45.80	2019-08-26T07:35:54+03:00	trip	UberX
-       // LOGGER.info("row[" + i + "]:" + (i) + " " + row);
+        // LOGGER.info("row[" + i + "]:" + (i) + " " + row);
         row = row.replaceAll("\"", "");
         String[] rowArray = row.split(",");
 
@@ -91,10 +94,10 @@ public class PaymentRecordRawRow {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        PaymentRecordRawRow paymentRecordRawRow =new PaymentRecordRawRow();
+        PaymentRecordRawRow paymentRecordRawRow = new PaymentRecordRawRow();
         paymentRecordRawRow.setAmount(Double.parseDouble(rowArray[4]));
-        paymentRecordRawRow.setDescription(rowArray.length<=7?"":rowArray[7]);
-        paymentRecordRawRow.setDisclaimer(rowArray.length<=8?"":rowArray[8]);
+        paymentRecordRawRow.setDescription(rowArray.length <= 7 ? "" : rowArray[7]);
+        paymentRecordRawRow.setDisclaimer(rowArray.length <= 8 ? "" : rowArray[8]);
         paymentRecordRawRow.setDriverUUID(rowArray[0]);
         paymentRecordRawRow.setFirstName(rowArray[2]);
         paymentRecordRawRow.setLastName(rowArray[3]);
@@ -178,7 +181,7 @@ public class PaymentRecordRawRow {
     }
 
     public String driverName() {
-        return firstName+"_"+lastName;
+        return firstName + "_" + lastName;
     }
 
     @Override

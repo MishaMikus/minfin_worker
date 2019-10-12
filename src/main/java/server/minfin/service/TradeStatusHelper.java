@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 import static ui_automation.minfin.Bank.LOCAL_DELTA_TIME_MS;
-import static ui_automation.minfin.Trader.deleteDeal;
+import static ui_automation.minfin.MinfinWorker.deleteDeal;
 
 @Service
 public class TradeStatusHelper {
