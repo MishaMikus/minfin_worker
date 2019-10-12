@@ -52,6 +52,8 @@ public class UberLoginBO extends BaseBO {
     }
 
     private void checkNotRobot() {
+        try{
+        if ($(By.xpath("//*[text()='Enter your password']")).text().equals("Enter your password")) return;}catch (Exception e){}
         int i = 0;
         WebDriver wd = switchToFrame(waitForRecaptchaFrameAppear("role", "presentation"));
 
@@ -60,7 +62,7 @@ public class UberLoginBO extends BaseBO {
 
         wd.findElement(By.id("recaptcha-anchor")).click();
         LOGGER.info("click I IM NOT A ROBOT");
-        wd = switchToFrame(waitForRecaptchaFrameAppear("style","width: 400px; height: 580px;"));
+        wd = switchToFrame(waitForRecaptchaFrameAppear("style", "width: 400px; height: 580px;"));
         new WebDriverWait(wd, 10, 500)
                 .until(w -> w.findElement(By.tagName("table")).getText().isEmpty());
 
@@ -70,48 +72,48 @@ public class UberLoginBO extends BaseBO {
             int w = we.getRect().width;
             int x = we.getRect().x;
             int y = we.getRect().y;
-            LOGGER.info("cell : "+i++ + " : " + "[h:" + h + "][w:" + w + "][x:" + x + "][y:" + y + "]");
+            LOGGER.info("cell : " + i++ + " : " + "[h:" + h + "][w:" + w + "][x:" + x + "][y:" + y + "]");
         }
 
 
-
         //upload screen to some file repo (localhost)
-        String fileId=UUID.randomUUID().toString();
-        File screenshotFile=new File("captcha"+FS+fileId+".jpg");
-        takeSnapShot(wd,screenshotFile.getAbsolutePath());
+        String fileId = UUID.randomUUID().toString();
+        File screenshotFile = new File("captcha" + FS + fileId + ".jpg");
+        takeSnapShot(wd, screenshotFile.getAbsolutePath());
         LOGGER.info("WAIT OPERATOR");
 
         //save image file name to db record
-        UberCaptcha uberCaptcha=new UberCaptcha();
+        UberCaptcha uberCaptcha = new UberCaptcha();
         uberCaptcha.setCreated(new Date());
         uberCaptcha.setFileId(fileId);
         uberCaptcha.setRealPath(screenshotFile.getAbsolutePath());
         UberCaptchaDAO.getInstance().save(uberCaptcha);
 
         //send viber message to operator with solving url
-        ViberUberRestClient.getInstance().sendCaptcha("http://"+getMyIP()+getMyPort()+"/uber_captcha/"+fileId);
+        ViberUberRestClient.getInstance().sendCaptcha("http://" + getMyIP() + getMyPort() + "/uber_captcha/" + fileId);
 
         //TODO
         //click link for solving captcha
-            //link redirect to page where one image (screenshot) and one input field for solving
-            //update captcha solving order
+        //link redirect to page where one image (screenshot) and one input field for solving
+        //update captcha solving order
         //wait for captcha solving record solved
         //click solving
     }
 
-    public static void takeSnapShot(WebDriver webdriver,String fileWithPath){
-        TakesScreenshot scrShot =((TakesScreenshot)webdriver);
-        File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
-        File DestFile=new File(fileWithPath);
+    public static void takeSnapShot(WebDriver webdriver, String fileWithPath) {
+        TakesScreenshot scrShot = ((TakesScreenshot) webdriver);
+        File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
+        File DestFile = new File(fileWithPath);
         try {
             FileUtils.copyFile(SrcFile, DestFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     private String waitForRecaptchaFrameAppear(String attribute, String value) {
-        Map<String,String> map=new HashMap<>();
-        map.put(attribute,value);
+        Map<String, String> map = new HashMap<>();
+        map.put(attribute, value);
         return waitForRecaptchaFrameAppear(map);
     }
 
@@ -140,13 +142,13 @@ public class UberLoginBO extends BaseBO {
 
             for (WebElement iframe : iframeList) {
                 LOGGER.info("FRAME");
-                LOGGER.info("iframe.title : "+getAttribute(iframe,"title"));
-                LOGGER.info("iframe.src : "+getAttribute(iframe,"src"));
-                LOGGER.info("iframe.name : "+getAttribute(iframe,"name"));
-                LOGGER.info("iframe.frameborder : "+getAttribute(iframe,"frameborder"));
-                LOGGER.info("iframe.scrolling : "+getAttribute(iframe,"scrolling"));
-                LOGGER.info("iframe.sandbox : "+getAttribute(iframe,"sandbox"));
-                LOGGER.info("iframe.style : "+getAttribute(iframe,"style"));
+                LOGGER.info("iframe.title : " + getAttribute(iframe, "title"));
+                LOGGER.info("iframe.src : " + getAttribute(iframe, "src"));
+                LOGGER.info("iframe.name : " + getAttribute(iframe, "name"));
+                LOGGER.info("iframe.frameborder : " + getAttribute(iframe, "frameborder"));
+                LOGGER.info("iframe.scrolling : " + getAttribute(iframe, "scrolling"));
+                LOGGER.info("iframe.sandbox : " + getAttribute(iframe, "sandbox"));
+                LOGGER.info("iframe.style : " + getAttribute(iframe, "style"));
                 boolean allMatched = true;
                 for (Map.Entry<String, String> entry : attributePattern.entrySet()) {
                     allMatched &= iframe.getAttribute(entry.getKey()) != null &&
@@ -171,11 +173,10 @@ public class UberLoginBO extends BaseBO {
     }
 
     private String getAttribute(WebElement iframe, String attribute) {
-        try
-        {
+        try {
             return iframe.getAttribute(attribute);
-        }catch (Exception e){
-            LOGGER.warn("attribute '"+attribute+"' not found");
+        } catch (Exception e) {
+            LOGGER.warn("attribute '" + attribute + "' not found");
             return null;
         }
     }
@@ -269,19 +270,6 @@ public class UberLoginBO extends BaseBO {
         return cookie;
     }
 
-
-    private void saveCookie() {
-        Set<Cookie> cookieset = driver().getWebDriver().manage().getCookies();
-        String[] cookieString = new String[1];
-        cookieString[0] = "";
-        cookieset.forEach(c -> cookieString[0] += c.toString() + "\n");
-        IOUtils.saveTextToFile(COOKIE_FILE, cookieString[0]);
-    }
-
-    public UberLoginBO clearCookie() {
-        driver().getWebDriver().manage().deleteAllCookies();
-        return this;
-    }
 
     public UberLoginBO loginIfNotAuthorized(String login, String pass) {
         if (!authorized()) return login(login, pass);

@@ -31,7 +31,7 @@ public class Scheduler {
         }
 
         if (UBER_MODE) {
-            schedulerUber.scheduleAtFixedRate(UberWeeklyReportWorker::stat, TIME_DELTA);
+            schedulerUber.scheduleAtFixedRate(UberWeeklyReportWorker::runWorker, TIME_DELTA);
             LOGGER.info("UBER_MODE scheduled");
         }
 
