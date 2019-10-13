@@ -25,8 +25,8 @@ public class BaseBO {
         browser = "chrome";
         savePageSource = true;
 
-        Configuration.fileDownload = PROXY;
-        Configuration.proxyEnabled = true;
+//        Configuration.fileDownload = PROXY;
+//        Configuration.proxyEnabled = true;
 
 
         if (getBoolean("remote", false)) {
