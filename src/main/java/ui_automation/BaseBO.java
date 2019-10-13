@@ -1,14 +1,18 @@
 package ui_automation;
 
+import com.codeborne.selenide.Configuration;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 
+import java.io.File;
 import java.util.Date;
 
 import static com.codeborne.selenide.Configuration.*;
+import static com.codeborne.selenide.FileDownloadMode.PROXY;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.source;
 import static util.ApplicationPropertyUtil.getBoolean;
 
 public class BaseBO {
@@ -20,13 +24,18 @@ public class BaseBO {
         timeout = 10000;
         browser = "chrome";
         savePageSource = true;
+
+        Configuration.fileDownload = PROXY;
+        Configuration.proxyEnabled = true;
+
+
         if (getBoolean("remote", false)) {
             remote = " http://localhost:4444/wd/hub";
             headless = getBoolean("headless", true);
 
             LOGGER.info("remote : " + remote);
             LOGGER.info("headless : " + headless);
-        }
+         }
     }
 
 

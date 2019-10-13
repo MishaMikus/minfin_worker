@@ -1,5 +1,6 @@
 package ui_automation.bolt;
 
+import com.codeborne.selenide.Configuration;
 import util.ApplicationPropertyUtil;
 
 import java.io.File;
