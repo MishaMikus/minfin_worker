@@ -27,7 +27,7 @@ public class WeeklyReportGeneralHelper {
         //Calculate BOLT amount
         WeeklyReportBolt weeklyReportBolt = WeeklyReportBoltHelper.makeReport();
         weeklyReportBolt.getDriverStatList().forEach(d -> {
-            if (!d.getDriverName().equals("Михайло_Мікусь")) {
+            if (!d.getDriverName().equals("РњРёС…Р°Р№Р»Рѕ_РњС–РєСѓСЃСЊ")) {
                 DriverStatGeneral driverStatGeneral = new DriverStatGeneral();
                 driverStatGeneral.getBoltStat().setAmount(d.getAmount());
                 driverStatGeneral.getBoltStat().setCash(d.getCash());
@@ -43,7 +43,7 @@ public class WeeklyReportGeneralHelper {
         final Integer[] uberBranding = {0};
         Map<String, PaymentDriverRecord> paymentTable = automaticallyWeeklyReportHelper.makeMap();
         paymentTable.forEach((driverName, paymentDriverRecord) -> {
-            if (!driverName.equals("Михайло_Мікусь")) {
+            if (!driverName.equals("РњРёС…Р°Р№Р»Рѕ_РњС–РєСѓСЃСЊ")) {
                 DriverStatGeneral existingDriverStatGeneral = weeklyReportGeneral.getDriverStatList()
                         .stream().filter(d -> d.getDriverName().equals(driverName)).findAny().orElse(null);
                 if (existingDriverStatGeneral == null) {
@@ -70,7 +70,7 @@ public class WeeklyReportGeneralHelper {
             Integer cash = d.getBoltStat().getCash() + d.getUberStat().getCash();
             d.getSum().setAmount(amount);
             d.getSum().setCash(cash);
-            if (d.getDriverName().equals("Юрій_Горбатий")) {
+            if (d.getDriverName().equals("Р®СЂС–Р№_Р“РѕСЂР±Р°С‚РёР№")) {
                 d.getUberStat().setSalary((int) round(d.getUberStat().getAmount() * 0.35));
                 d.getBoltStat().setSalary((int) round(d.getBoltStat().getAmount() * 0.35));
                 if (amount < WEEK_EARN_LIMIT_GORBATY_1) {
