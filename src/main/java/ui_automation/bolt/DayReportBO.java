@@ -15,7 +15,7 @@ public class DayReportBO extends BaseBoltBO {
     private final static Logger LOGGER = Logger.getLogger(DayReportBO.class);
 
     public Map<String, File> downloadAllCSV() {
-        $(By.xpath("//*[text()='Щоденні звіти' or text()='Daily Reports']")).click();
+        $(By.xpath("//*[text()='Daily Reports']")).click();
         //company/26068/reports/daily/07.10.2019
         List<String> hrefList = new ArrayList<>();
         $$(By.xpath("//a[text()='CSV']")).forEach(e -> hrefList.add(e.getAttribute("href")));
@@ -32,7 +32,7 @@ public class DayReportBO extends BaseBoltBO {
         long start = new Date().getTime();
         long pingTime = 1000L;
         long timeout = 10 * pingTime;
-        File file = new File(DOWNLOAD_FOLDER + FS + "Щоденний звіт Bolt – " + date + " – Lviv Fleet 02_28 park Mikus.csv");
+        File file = new File(DOWNLOAD_FOLDER + FS + "Bolt Daily Report - "+date+" - Lviv Fleet 02_28 park Mikus.csv");
         while (!file.exists() && new Date().getTime() - start < timeout) {
             try {
                 Thread.sleep(pingTime);
