@@ -1,20 +1,144 @@
 package server.logan_park.helper.model;
 
 public class SummaryPaymentDriverRecord {
-    private String rate;
-    private String count;
-    private String amount;
-    private String cash;
-    private String salary;
-    private String change;
-    private String tips;
-    private String promotion;
-    private String duration;
-    private String uahPerHour;
-    private String uahPerTrip;
-    private String salaryWithTips;
-    private String changeWithoutTips;
+    private Integer rate;
+    private Integer count;
+    private Integer amount;
+    private Integer cash;
+    private Integer salary;
+    private Integer change;
+    private Integer tips;
+    private Integer promotion;
+    private Double duration;
+    private Double uahPerHour;
+    private Double uahPerTrip;
+    private Integer salaryWithTips;
+    private Integer changeWithoutTips;
     private String formula;
+
+    @Override
+    public String toString() {
+        return "SummaryPaymentDriverRecord{" +
+                "rate=" + rate +
+                ", count=" + count +
+                ", amount=" + amount +
+                ", cash=" + cash +
+                ", salary=" + salary +
+                ", change=" + change +
+                ", tips=" + tips +
+                ", promotion=" + promotion +
+                ", duration=" + duration +
+                ", uahPerHour=" + uahPerHour +
+                ", uahPerTrip=" + uahPerTrip +
+                ", salaryWithTips=" + salaryWithTips +
+                ", changeWithoutTips=" + changeWithoutTips +
+                ", formula='" + formula + '\'' +
+                '}';
+    }
+
+    public Integer getRate() {
+        return rate;
+    }
+
+    public void setRate(Integer rate) {
+        this.rate = rate;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public Integer getCash() {
+        return cash;
+    }
+
+    public void setCash(Integer cash) {
+        this.cash = cash;
+    }
+
+    public Integer getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Integer salary) {
+        this.salary = salary;
+    }
+
+    public Integer getChange() {
+        return change;
+    }
+
+    public void setChange(Integer change) {
+        this.change = change;
+    }
+
+    public Integer getTips() {
+        return tips;
+    }
+
+    public void setTips(Integer tips) {
+        this.tips = tips;
+    }
+
+    public Integer getPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(Integer promotion) {
+        this.promotion = promotion;
+    }
+
+    public Double getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Double duration) {
+        this.duration = duration;
+    }
+
+    public Double getUahPerHour() {
+        return uahPerHour;
+    }
+
+    public void setUahPerHour(Double uahPerHour) {
+        this.uahPerHour = uahPerHour;
+    }
+
+    public Double getUahPerTrip() {
+        return uahPerTrip;
+    }
+
+    public void setUahPerTrip(Double uahPerTrip) {
+        this.uahPerTrip = uahPerTrip;
+    }
+
+    public Integer getSalaryWithTips() {
+        return salaryWithTips;
+    }
+
+    public void setSalaryWithTips(Integer salaryWithTips) {
+        this.salaryWithTips = salaryWithTips;
+    }
+
+    public Integer getChangeWithoutTips() {
+        return changeWithoutTips;
+    }
+
+    public void setChangeWithoutTips(Integer changeWithoutTips) {
+        this.changeWithoutTips = changeWithoutTips;
+    }
 
     public String getFormula() {
         return formula;
@@ -22,129 +146,5 @@ public class SummaryPaymentDriverRecord {
 
     public void setFormula(String formula) {
         this.formula = formula;
-    }
-
-    public String getChangeWithoutTips() {
-        return changeWithoutTips;
-    }
-
-    public void setChangeWithoutTips(String changeWithoutTips) {
-        this.changeWithoutTips = changeWithoutTips;
-    }
-
-    public String getRate() {
-        return rate;
-    }
-
-    public void setRate(String rate) {
-        this.rate = rate;
-    }
-
-    public String getUahPerHour() {
-        return uahPerHour;
-    }
-
-    public void setUahPerHour(String uahPerHour) {
-        this.uahPerHour = uahPerHour;
-    }
-
-    public String getUahPerTrip() {
-        return uahPerTrip;
-    }
-
-    public void setUahPerTrip(String uahPerTrip) {
-        this.uahPerTrip = uahPerTrip;
-    }
-
-    public String getSalaryWithTips() {
-        return salaryWithTips;
-    }
-
-    public void setSalaryWithTips(String salaryWithTips) {
-        this.salaryWithTips = salaryWithTips;
-    }
-
-    public String getCount() {
-        return count;
-    }
-
-    public void setCount(String count) {
-        this.count = count;
-    }
-
-    public String getAmount() {
-        return amount;
-    }
-
-    public void setAmount(String amount) {
-        this.amount = amount;
-    }
-
-    public String getCash() {
-        return cash;
-    }
-
-    public void setCash(String cash) {
-        this.cash = cash;
-    }
-
-    public String getSalary() {
-        return salary;
-    }
-
-    public void setSalary(String salary) {
-        this.salary = salary;
-    }
-
-    public String getChange() {
-        return change;
-    }
-
-    public void setChange(String change) {
-        this.change = change;
-    }
-
-    public String getTips() {
-        return tips;
-    }
-
-    public void setTips(String tips) {
-        this.tips = tips;
-    }
-
-    public String getPromotion() {
-        return promotion;
-    }
-
-    public void setPromotion(String promotion) {
-        this.promotion = promotion;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
-    @Override
-    public String toString() {
-        return "SummaryPaymentDriverRecord{" +
-                "rate='" + rate + '\'' +
-                ", count='" + count + '\'' +
-                ", amount='" + amount + '\'' +
-                ", cash='" + cash + '\'' +
-                ", salary='" + salary + '\'' +
-                ", change='" + change + '\'' +
-                ", tips='" + tips + '\'' +
-                ", promotion='" + promotion + '\'' +
-                ", duration='" + duration + '\'' +
-                ", uahPerHour='" + uahPerHour + '\'' +
-                ", uahPerTrip='" + uahPerTrip + '\'' +
-                ", salaryWithTips='" + salaryWithTips + '\'' +
-                ", changeWithoutTips='" + changeWithoutTips + '\'' +
-                ", formula='" + formula + '\'' +
-                '}';
     }
 }

@@ -5,11 +5,9 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
 import orm.HibernateUtil;
 
+import javax.persistence.Query;
 import javax.persistence.Table;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.sql.Timestamp;
@@ -43,6 +41,19 @@ public abstract class GenericAbstractDAO<E> {
         closeSession();
         LOGGER.info("save " + entity);
         return saveResult;
+    }
+
+    public void deleteAllWhere(String fieldName, Object value) {
+        beginTransaction();
+        BiFunction<CriteriaBuilder, Root<E>, Predicate> where = whereEqual(fieldName, value);
+        CriteriaBuilder builder = getSession().getCriteriaBuilder();
+        CriteriaDelete<E> delete = builder.createCriteriaDelete(entityClass);
+        Root<E> root = delete.from(entityClass);
+        delete.where(where.apply(builder, root));
+        getSession().createQuery(delete).executeUpdate();
+        commitTransaction();
+        closeSession();
+        LOGGER.info("deleteAllWhere(" + fieldName + " == " + value + ")");
     }
 
     public void saveBatch(List<E> entityList) {

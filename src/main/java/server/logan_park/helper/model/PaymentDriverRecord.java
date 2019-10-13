@@ -1,6 +1,6 @@
 package server.logan_park.helper.model;
 
-import server.logan_park.view.week_report_manual_downloader.PaymentView;
+import server.logan_park.view.weekly_report_manual_uber.PaymentView;
 
 import java.util.List;
 

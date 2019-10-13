@@ -47,8 +47,9 @@ public class PaymentRecorder {
     public void recordToBD() {
         LOGGER.info("primaryParsedData.size() : " + primaryParsedData.size());
         List<UberPaymentRecordRow> tobeRecorded = new ArrayList<>();
+        Integer weekHash = null;
         if (primaryParsedData.size() > 0) {
-            Integer weekHash = primaryParsedData.get(0).hashCode();
+            weekHash = primaryParsedData.get(0).hashCode();
             UberPaymentRecordRow oldRecord = UberPaymentRecordRowDAO.getInstance().findLatest();
             List<UberPaymentRecordRow> oldRecordList =
                     oldRecord == null ? new ArrayList<>()
@@ -87,6 +88,9 @@ public class PaymentRecorder {
             }
         }
         LOGGER.info("tobeRecorded.size() : " + tobeRecorded.size());
+        if (weekHash != null) {
+            UberPaymentRecordRowDAO.getInstance().deleteAllWhere("weekHash", weekHash);
+        }
         UberPaymentRecordRowDAO.getInstance().saveBatch(tobeRecorded);
         LOGGER.info("RECORDING DONE");
     }

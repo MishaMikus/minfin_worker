@@ -1,69 +1,109 @@
-package server.logan_park.view.week_report_manual_downloader;
+package server.logan_park.view.weekly_report_manual_uber;
 
 import java.util.List;
 
 public class OwnerPaymentView {
-    private String taxPercentage;
-    private String amountMinusCommission;
-    private String commission;
-    private String nonCash;
-    private String withdraw;
+    private Double taxPercentage;
+    private Integer amountMinusCommission;
+    private Integer commission;
+    private Integer nonCash;
+    private Integer withdraw;
 
-    private String count;
-    private String amount;
-    private String cash;
+    private Integer count;
+    private Integer amount;
+    private Integer cash;
 
-    private String tips;
-    private String promotion;
+    private Integer tips;
+    private Integer promotion;
 
     private String dateRangeName;
     private String tripListId;
     private List<TripView> tripList;
 
-    public OwnerPaymentView(String count, String amount, String cash) {
+    public OwnerPaymentView(Integer count, Integer amount, Integer cash) {
         this.count = count;
         this.amount = amount;
         this.cash = cash;
     }
 
-    public String getTaxPercentage() {
+    public Double getTaxPercentage() {
         return taxPercentage;
     }
 
-    public void setTaxPercentage(String taxPercentage) {
+    public void setTaxPercentage(Double taxPercentage) {
         this.taxPercentage = taxPercentage;
     }
 
-    public String getAmountMinusCommission() {
+    public Integer getAmountMinusCommission() {
         return amountMinusCommission;
     }
 
-    public void setAmountMinusCommission(String amountMinusCommission) {
+    public void setAmountMinusCommission(Integer amountMinusCommission) {
         this.amountMinusCommission = amountMinusCommission;
     }
 
-    public String getCommission() {
+    public Integer getCommission() {
         return commission;
     }
 
-    public void setCommission(String commission) {
+    public void setCommission(Integer commission) {
         this.commission = commission;
     }
 
-    public String getNonCash() {
+    public Integer getNonCash() {
         return nonCash;
     }
 
-    public void setNonCash(String nonCash) {
+    public void setNonCash(Integer nonCash) {
         this.nonCash = nonCash;
     }
 
-    public String getWithdraw() {
+    public Integer getWithdraw() {
         return withdraw;
     }
 
-    public void setWithdraw(String withdraw) {
+    public void setWithdraw(Integer withdraw) {
         this.withdraw = withdraw;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public Integer getCash() {
+        return cash;
+    }
+
+    public void setCash(Integer cash) {
+        this.cash = cash;
+    }
+
+    public Integer getTips() {
+        return tips;
+    }
+
+    public void setTips(Integer tips) {
+        this.tips = tips;
+    }
+
+    public Integer getPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(Integer promotion) {
+        this.promotion = promotion;
     }
 
     public String getDateRangeName() {
@@ -72,47 +112,6 @@ public class OwnerPaymentView {
 
     public void setDateRangeName(String dateRangeName) {
         this.dateRangeName = dateRangeName;
-    }
-
-    public String getCount() {
-        return count;
-    }
-
-    public void setCount(String count) {
-        this.count = count;
-    }
-
-    public String getAmount() {
-        return amount;
-    }
-
-    public void setAmount(String amount) {
-        this.amount = amount;
-    }
-
-    public String getCash() {
-        return cash;
-    }
-
-    public void setCash(String cash) {
-        this.cash = cash;
-    }
-
-
-    public String getTips() {
-        return tips;
-    }
-
-    public void setTips(String tips) {
-        this.tips = tips;
-    }
-
-    public String getPromotion() {
-        return promotion;
-    }
-
-    public void setPromotion(String promotion) {
-        this.promotion = promotion;
     }
 
     public String getTripListId() {

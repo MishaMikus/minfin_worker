@@ -1,4 +1,4 @@
-package server.logan_park.view.week_report_manual_downloader;
+package server.logan_park.view.weekly_report_manual_uber;
 
 import server.logan_park.helper.model.GeneralPartnerSummary;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,7 @@ import java.util.HashMap;
 @Controller
 public class LoganParkController extends BaseController {
 
-    @RequestMapping(value = "/logan_park/week_report_manual")
+    @RequestMapping(value = "/logan_park/week_report_manual_uber")
     public String getLoganPark(HttpServletRequest request) {
         if (request.getSession(true).getAttribute("paymentTable") == null) {
             request.getSession(true).setAttribute("fileName", "");
@@ -25,7 +25,7 @@ public class LoganParkController extends BaseController {
             request.getSession(true).setAttribute("generalPartnerSummary", new GeneralPartnerSummary());
             request.getSession(true).setAttribute("driverRateScreen", new HashMap<>());
         }
-        return "loganPark/week_report_manual";
+        return "loganPark/week_report_manual_uber";
     }
 
     @RequestMapping(value = "/logan_park/upload_payment_csv")
@@ -42,6 +42,6 @@ public class LoganParkController extends BaseController {
         request.getSession(true).setAttribute("ownerTable", manuallyWeeklyReportHelper.makeOwnerMap());
         request.getSession(true).setAttribute("generalPartnerSummary", manuallyWeeklyReportHelper.makeGeneralPartnerSummary());
         request.getSession(true).setAttribute("driverRateScreen", manuallyWeeklyReportHelper.driverRateScreen());
-        return "redirect:" + "/logan_park/week_report_manual";
+        return "redirect:" + "/logan_park/week_report_manual_uber";
     }
 }

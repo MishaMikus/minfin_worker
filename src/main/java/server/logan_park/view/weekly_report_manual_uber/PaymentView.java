@@ -1,4 +1,4 @@
-package server.logan_park.view.week_report_manual_downloader;
+package server.logan_park.view.weekly_report_manual_uber;
 
 import java.util.List;
 

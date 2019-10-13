@@ -6,14 +6,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styles.css">
 </head>
 <body>
-<div class="topnav">
-    <a href="/logan_park/week_report_manual">Ручний тижневий звіт</a>
-    <a class="active" href="/logan_park/weekly_report">Тижневий звіт</a>
-    <a href="/logan_park/filling_report">Паливний звіт</a>
-    <a href="/logan_park/driver">Водії</a>
-    <a href="/logan_park/one_time_sms_code">СМС</a>
-    <a href="/logan_park/uber_captcha">Капча</a>
-</div>
+<jsp:include page="menu.jsp" />
 <%--@elvariable id="weekHashLabel" type="java.lang.Integer"--%>
 weekHashLabel : ${weekHashLabel}
 <br>

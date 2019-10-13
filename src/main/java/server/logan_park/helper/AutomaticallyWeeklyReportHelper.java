@@ -14,13 +14,6 @@ public class AutomaticallyWeeklyReportHelper extends CommonWeeklyReportHelper {
         super();
     }
 
-//    public static void main(String[] args) {
-//        AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper=new AutomaticallyWeeklyReportHelper();
-//        System.out.println(automaticallyWeeklyReportHelper.makeMap());
-//        System.out.println(automaticallyWeeklyReportHelper.makeOwnerMap());
-//        System.out.println(automaticallyWeeklyReportHelper.makeGeneralPartnerSummary());
-//    }
-
     Map<String, Map<Date, PaymentRecordRawRow>> parsePrimaryData() {
         Integer weekHash = getLatestHash();
         LOGGER.info("find all records for weekHash : " + weekHash);
@@ -33,7 +26,7 @@ public class AutomaticallyWeeklyReportHelper extends CommonWeeklyReportHelper {
             PaymentRecordRawRow paymentRecordRawRow = PaymentRecordRawRow.makeMeFromDBRow(row,driverList);
             driverMap.putIfAbsent(paymentRecordRawRow.driverName(), new HashMap<>());
             driverMap.get(paymentRecordRawRow.driverName()).put(
-                    new Date(paymentRecordRawRow.getTimestamp().getTime() + i),
+                    new Date(paymentRecordRawRow.getTimestamp().getTime() + i++),
                     paymentRecordRawRow);
         }
         primaryParsedData = driverMap;

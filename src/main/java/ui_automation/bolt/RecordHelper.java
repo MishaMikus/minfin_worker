@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class RecordHelper {
-    private static final SimpleDateFormat SDF = new SimpleDateFormat("dd.MM.yyyy");
+    public static final SimpleDateFormat SDF = new SimpleDateFormat("dd.MM.yyyy");
     private final static Logger LOGGER = Logger.getLogger(RecordHelper.class);
 
     public List<BoltPaymentRecordDay> recordDayReportToDB(String date, String content) {

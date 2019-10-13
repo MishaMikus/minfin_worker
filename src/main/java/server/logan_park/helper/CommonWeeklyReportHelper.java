@@ -10,19 +10,22 @@ import server.logan_park.helper.model.PaymentDriverRecord;
 import server.logan_park.helper.model.PaymentOwnerRecord;
 import server.logan_park.helper.model.SummaryPaymentDriverRecord;
 import server.logan_park.service.*;
-import server.logan_park.view.week_report_manual_downloader.OwnerPaymentView;
-import server.logan_park.view.week_report_manual_downloader.PaymentView;
-import server.logan_park.view.week_report_manual_downloader.TripView;
+import server.logan_park.view.weekly_report_manual_uber.OwnerPaymentView;
+import server.logan_park.view.weekly_report_manual_uber.PaymentView;
+import server.logan_park.view.weekly_report_manual_uber.TripView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public abstract class CommonWeeklyReportHelper{
+public abstract class CommonWeeklyReportHelper {
+    public static final Integer WEEK_EARN_LIMIT = 9000;
+    public static final Integer WEEK_EARN_LIMIT_GORBATY_1 = 10000;
+    public static final Integer WEEK_EARN_LIMIT_GORBATY_2 = 12000;
+    List<UberDriver> driverList = UberDriverDAO.getInstance().getDriverList();
 
-    private static final Integer WEEK_EARN_LIMIT = 9000;
-    List<UberDriver> driverList= UberDriverDAO.getInstance().getDriverList();
     abstract Map<String, Map<Date, PaymentRecordRawRow>> parsePrimaryData();
+
     String content;
     private static final SimpleDateFormat SDF_DAY = new SimpleDateFormat("dd.MM");
     private static final SimpleDateFormat SDF_DAY_YEAR = new SimpleDateFormat("dd.MM.yyyy");
@@ -88,8 +91,8 @@ public abstract class CommonWeeklyReportHelper{
 
     private String dayLabel(Date start, Date end) {
         if (start.getTime() / 1000 / 60 / 60 / 24 != end.getTime() / 1000 / 60 / 60 / 24) {
-            return "РЅС–С‡ Р· " + SDF_DAY.format(start) + " РїРѕ " + SDF_DAY.format(end);
-        } else return "РґРµРЅСЊ " + SDF_DAY_YEAR.format(start);
+            return "ніч з " + SDF_DAY.format(start) + " по " + SDF_DAY.format(end);
+        } else return "день " + SDF_DAY_YEAR.format(start);
     }
 
     private Map<Date, PaymentRecordRawRow> getRangeMap(Date start, Date end, Map<Date, PaymentRecordRawRow> dateListMap) {
@@ -138,11 +141,11 @@ public abstract class CommonWeeklyReportHelper{
 
     public Map<String, PaymentDriverRecord> makeMap() {
 
-        //"ac67df0b-abbb-4d15-876d-6cc76f95b7c3","","Р®СЂРёР№","РЎРѕСЃРёРЅСЃРєРёР№","18.0","2019-08-16T14:19:45+03:00","promotion","РџСЂРѕРјРѕРєРѕРґ","РљРѕРјРїРµРЅСЃР°С†С–СЏ СЃРµСЂРІС–СЃРЅРѕРіРѕ Р·Р±РѕСЂСѓ РЈР±РµСЂ"
+        //"ac67df0b-abbb-4d15-876d-6cc76f95b7c3","","Юрий","Сосинский","18.0","2019-08-16T14:19:45+03:00","promotion","Промокод","Компенсація сервісного збору Убер"
         Map<String, PaymentDriverRecord> map = new HashMap<>();
         Map<String, Map<Date, PaymentRecordRawRow>> driverMap = getPrimaryParsedData();
         for (String driver : driverMap.keySet()) {
-            UberDriver currentDriver = driverByName(driver,driverList);
+            UberDriver currentDriver = driverByName(driver, driverList);
             if (currentDriver != null && !currentDriver.getDriverType().startsWith("owner")) {
                 map.putIfAbsent(driver, new PaymentDriverRecord());
                 List<List<Date>> dateRange = calculateDateRange(driverMap.get(driver));
@@ -182,7 +185,7 @@ public abstract class CommonWeeklyReportHelper{
         }
         map = makeRateAndSortByRate(map);
         map = recalculateWithMotivation(map);
-        paymentDriverRecordMap=map;
+        paymentDriverRecordMap = map;
         return map;
     }
 
@@ -190,31 +193,31 @@ public abstract class CommonWeeklyReportHelper{
 
 //old iurij formula
         for (Map.Entry<String, PaymentDriverRecord> entry : map.entrySet()) {
-            if (entry.getKey().equals("Р®СЂС–Р№_Р“РѕСЂР±Р°С‚РёР№")) {
+            if (entry.getKey().equals("Юрій_Горбатий")) {
                 Integer amount = Integer.valueOf(entry.getValue().getSummary().getAmount());
-                if (amount >= 10000 && amount < 12000) {
-                    Integer salary = Integer.parseInt(entry.getValue().getSummary().getSalary()) + 500;
-                    entry.getValue().getSummary().setSalary((salary) + "");
-                    Integer change = Integer.valueOf(entry.getValue().getSummary().getChange());
-                    entry.getValue().getSummary().setChange((change - 500) + "");
-                    Integer changeWithoutTips = Integer.valueOf(entry.getValue().getSummary().getChangeWithoutTips());
-                    entry.getValue().getSummary().setChangeWithoutTips((changeWithoutTips - 500) + "");
+                if (amount >= WEEK_EARN_LIMIT_GORBATY_1 && amount < WEEK_EARN_LIMIT_GORBATY_2) {
+                    Integer salary = entry.getValue().getSummary().getSalary() + 500;
+                    entry.getValue().getSummary().setSalary(salary);
+                    Integer change = entry.getValue().getSummary().getChange();
+                    entry.getValue().getSummary().setChange(change - 500);
+                    Integer changeWithoutTips = entry.getValue().getSummary().getChangeWithoutTips();
+                    entry.getValue().getSummary().setChangeWithoutTips(changeWithoutTips - 500);
                     entry.getValue().getSummary().setFormula("35% + 500/10k");
 
-                    Integer salaryWithTips = salary + Long.valueOf(Integer.parseInt(entry.getValue().getSummary().getTips())).intValue();
-                    entry.getValue().getSummary().setSalaryWithTips((salaryWithTips) + "");
+                    Integer salaryWithTips = salary + entry.getValue().getSummary().getTips();
+                    entry.getValue().getSummary().setSalaryWithTips(salaryWithTips);
                 } else {
-                    if (amount >= 12000) {
-                        Integer salary = Integer.parseInt(entry.getValue().getSummary().getSalary()) + 1000;
-                        entry.getValue().getSummary().setSalary((salary) + "");
-                        Integer change = Integer.valueOf(entry.getValue().getSummary().getChange());
-                        entry.getValue().getSummary().setChange((change - 1000) + "");
-                        Integer changeWithoutTips = Integer.valueOf(entry.getValue().getSummary().getChangeWithoutTips());
-                        entry.getValue().getSummary().setChangeWithoutTips((changeWithoutTips - 1000) + "");
+                    if (amount >= WEEK_EARN_LIMIT_GORBATY_2) {
+                        Integer salary = entry.getValue().getSummary().getSalary() + 1000;
+                        entry.getValue().getSummary().setSalary(salary);
+                        Integer change = entry.getValue().getSummary().getChange();
+                        entry.getValue().getSummary().setChange(change - 1000);
+                        Integer changeWithoutTips = entry.getValue().getSummary().getChangeWithoutTips();
+                        entry.getValue().getSummary().setChangeWithoutTips(changeWithoutTips - 1000);
                         entry.getValue().getSummary().setFormula("35% + 1000/12k");
 
-                        Integer salaryWithTips = salary + Long.valueOf(Integer.parseInt(entry.getValue().getSummary().getTips())).intValue();
-                        entry.getValue().getSummary().setSalaryWithTips((salaryWithTips) + "");
+                        Integer salaryWithTips = salary + entry.getValue().getSummary().getTips();
+                        entry.getValue().getSummary().setSalaryWithTips(salaryWithTips);
 
                     } else {
                         entry.getValue().getSummary().setFormula("35%");
@@ -224,15 +227,15 @@ public abstract class CommonWeeklyReportHelper{
                 //40% calculation for others drivers
                 Integer amount = Integer.valueOf(entry.getValue().getSummary().getAmount());
                 if (amount >= WEEK_EARN_LIMIT) {
-                    Integer salary = Long.valueOf(Math.round(Integer.parseInt(entry.getValue().getSummary().getAmount()) * 0.4d)).intValue();
-                    entry.getValue().getSummary().setSalary(salary + "");
-                    Integer salaryWithTips = salary + Long.valueOf(Integer.parseInt(entry.getValue().getSummary().getTips())).intValue();
-                    entry.getValue().getSummary().setSalaryWithTips((salaryWithTips) + "");
+                    Integer salary = Long.valueOf(Math.round(entry.getValue().getSummary().getAmount() * 0.4d)).intValue();
+                    entry.getValue().getSummary().setSalary(salary);
+                    Integer salaryWithTips = salary + entry.getValue().getSummary().getTips();
+                    entry.getValue().getSummary().setSalaryWithTips(salaryWithTips);
 
-                    Integer change = Integer.parseInt(entry.getValue().getSummary().getCash()) - salary;
-                    entry.getValue().getSummary().setChange(change + "");
-                    Integer changeWithoutTips = change - Integer.parseInt(entry.getValue().getSummary().getTips());
-                    entry.getValue().getSummary().setChangeWithoutTips(changeWithoutTips + "");
+                    Integer change = entry.getValue().getSummary().getCash() - salary;
+                    entry.getValue().getSummary().setChange(change);
+                    Integer changeWithoutTips = change - entry.getValue().getSummary().getTips();
+                    entry.getValue().getSummary().setChangeWithoutTips(changeWithoutTips);
 
                     entry.getValue().getSummary().setFormula("40%");
                     entry.getValue().setRecordList(recalculate40(entry.getValue().getRecordList()));
@@ -259,12 +262,12 @@ public abstract class CommonWeeklyReportHelper{
     private Map<String, PaymentDriverRecord> makeRateAndSortByRate(Map<String, PaymentDriverRecord> map) {
         TreeMap<Double, PaymentDriverRecord> sortMap = new TreeMap<>();
         for (PaymentDriverRecord paymentDriverRecord : map.values()) {
-            sortMap.put(-Double.parseDouble(paymentDriverRecord.getSummary().getUahPerHour()), paymentDriverRecord);
+            sortMap.put(-paymentDriverRecord.getSummary().getUahPerHour(), paymentDriverRecord);
         }
 
         List<PaymentDriverRecord> list = new ArrayList<>(sortMap.values());
         for (PaymentDriverRecord paymentDriverRecord : new ArrayList<>(sortMap.values())) {
-            paymentDriverRecord.getSummary().setRate(list.indexOf(paymentDriverRecord) + "");
+            paymentDriverRecord.getSummary().setRate(list.indexOf(paymentDriverRecord));
         }
 
         Map<String, PaymentDriverRecord> linkedHashMap = new LinkedHashMap<>();
@@ -297,32 +300,32 @@ public abstract class CommonWeeklyReportHelper{
             duration += Double.parseDouble(paymentView.getDuration());
         }
 
-        summaryPaymentDriverRecord.setCount(count + "");
-        summaryPaymentDriverRecord.setAmount(amount + "");
-        summaryPaymentDriverRecord.setCash(cash + "");
+        summaryPaymentDriverRecord.setCount(count);
+        summaryPaymentDriverRecord.setAmount(amount);
+        summaryPaymentDriverRecord.setCash(cash);
 
-        summaryPaymentDriverRecord.setTips(tips + "");
-        summaryPaymentDriverRecord.setPromotion(promotion + "");
+        summaryPaymentDriverRecord.setTips(tips);
+        summaryPaymentDriverRecord.setPromotion(promotion);
         if (duration > 0) {
-            summaryPaymentDriverRecord.setDuration(Math.round(duration * 100) / 100.0 + "");
-            summaryPaymentDriverRecord.setUahPerHour(Math.round(amount / duration * 100) / 100.0 + "");
+            summaryPaymentDriverRecord.setDuration(Math.round(duration * 100) / 100.0);
+            summaryPaymentDriverRecord.setUahPerHour(Math.round(amount / duration * 100) / 100.0);
         } else {
 
-            summaryPaymentDriverRecord.setDuration("0");
-            summaryPaymentDriverRecord.setUahPerHour("0");
+            summaryPaymentDriverRecord.setDuration(0.0);
+            summaryPaymentDriverRecord.setUahPerHour(0.0);
         }
         if (count > 0) {
-            summaryPaymentDriverRecord.setUahPerTrip(Math.round(amount / (double) count * 100) / 100.0 + "");
+            summaryPaymentDriverRecord.setUahPerTrip(Math.round(amount / (double) count * 100) / 100.0);
         } else {
 
-            summaryPaymentDriverRecord.setUahPerTrip("0");
+            summaryPaymentDriverRecord.setUahPerTrip(0.0);
 
         }
 
-        summaryPaymentDriverRecord.setSalary(salary + "");
-        summaryPaymentDriverRecord.setSalaryWithTips((salary + tips) + "");
-        summaryPaymentDriverRecord.setChange(change + "");
-        summaryPaymentDriverRecord.setChangeWithoutTips((change - tips) + "");
+        summaryPaymentDriverRecord.setSalary(salary);
+        summaryPaymentDriverRecord.setSalaryWithTips(salary + tips);
+        summaryPaymentDriverRecord.setChange(change);
+        summaryPaymentDriverRecord.setChangeWithoutTips(change - tips);
         return summaryPaymentDriverRecord;
     }
 
@@ -454,12 +457,11 @@ public abstract class CommonWeeklyReportHelper{
     Map<String, Map<Date, PaymentRecordRawRow>> primaryParsedData;
 
 
-
     Integer getLatestHash() {
-        UberPaymentRecordRow uberPaymentRecordRow= UberPaymentRecordRowDAO.getInstance().findLatest();
-        LOGGER.info("LatestUberPaymentRecordRow : "+uberPaymentRecordRow);
-        Integer hash=uberPaymentRecordRow==null?null:uberPaymentRecordRow.getWeekHash();
-        LOGGER.info("hash : "+hash);
+        UberPaymentRecordRow uberPaymentRecordRow = UberPaymentRecordRowDAO.getInstance().findLatest();
+        LOGGER.info("LatestUberPaymentRecordRow : " + uberPaymentRecordRow);
+        Integer hash = uberPaymentRecordRow == null ? null : uberPaymentRecordRow.getWeekHash();
+        LOGGER.info("hash : " + hash);
         return hash;
     }
 
@@ -475,10 +477,10 @@ public abstract class CommonWeeklyReportHelper{
                 map.get(driver).setDriverName(driver);
 
                 Long cash = getCash(rangeMap);
-                // РіРѕС‚С–РІРєР°
+                // готівка
 
                 Long amount = getAmountForOwner(rangeMap);
-                // РґРѕС…С–Рґ
+                // дохід
 
                 Integer count = getTripCount(rangeMap);
 
@@ -486,42 +488,42 @@ public abstract class CommonWeeklyReportHelper{
 
                 Long promotion = getPromotion(rangeMap);
 
-                OwnerPaymentView ownerPaymentView = new OwnerPaymentView(count + "", amount + "", cash + "");
-                ownerPaymentView.setTips(tips + "");
-                ownerPaymentView.setPromotion(promotion + "");
+                OwnerPaymentView ownerPaymentView = new OwnerPaymentView(count , amount.intValue() , cash.intValue() );
+                ownerPaymentView.setTips(tips.intValue());
+                ownerPaymentView.setPromotion(promotion.intValue());
 
                 ownerPaymentView.setTripListId("tripListId_" + UUID.randomUUID().toString());
                 ownerPaymentView.setTripList(makeTripList(rangeMap));
 
 
                 Integer taxPercentage = Integer.parseInt(currentDriver.getDriverType().split("_")[1]);
-                ownerPaymentView.setTaxPercentage(taxPercentage + "");
-                //РІС–РґСЃРѕС‚РѕРє РєРѕРјС–СЃС–С—
+                ownerPaymentView.setTaxPercentage(taxPercentage.doubleValue());
+                //відсоток комісії
 
                 String dateRangeName = SDF_DAY_YEAR.format(start) + "-" + SDF_DAY_YEAR.format(end);
                 ownerPaymentView.setDateRangeName(dateRangeName + "");
-                //РґР°С‚Р°
+                //дата
 
                 Long amountMinusCommission = Math.round(amount * ((100 - taxPercentage) / 100d));
-                ownerPaymentView.setAmountMinusCommission(amountMinusCommission + "");
-                // С‡РёСЃС‚РёР№ РґРѕС…С–Рґ (Р±РµР· РєРѕРјС–СЃС–С—)
+                ownerPaymentView.setAmountMinusCommission(amountMinusCommission.intValue());
+                // чистий дохід (без комісії)
 
                 Long commission = Math.round(amount * ((taxPercentage) / 100d));
-                ownerPaymentView.setCommission(commission + "");
-                // РєРѕРјС–СЃС–СЏ
+                ownerPaymentView.setCommission(commission.intValue());
+                // комісія
 
                 Long nonCash = amount - cash;
-                ownerPaymentView.setNonCash(nonCash + "");
-                // Р±РµР·РіРѕС‚С–РІРєР°
+                ownerPaymentView.setNonCash(nonCash.intValue());
+                // безготівка
 
                 Long withdraw = nonCash - commission;
-                ownerPaymentView.setWithdraw(withdraw + "");
-                // РЅР° РІРёРІРµРґРµРЅРЅСЏ
+                ownerPaymentView.setWithdraw(withdraw.intValue());
+                // на виведення
 
                 map.get(driver).setOwnerPaymentViews(ownerPaymentView);
             }
         }
-        paymentOwnerRecordMap=map;
+        paymentOwnerRecordMap = map;
         return map;
     }
 
@@ -559,20 +561,20 @@ public abstract class CommonWeeklyReportHelper{
     }
 
     private double collectAllWithdraws() {
-        double res=0d;
-        if(paymentDriverRecordMap==null){
+        double res = 0d;
+        if (paymentDriverRecordMap == null) {
             makeMap();
         }
-        for(PaymentDriverRecord paymentDriverRecord:paymentDriverRecordMap.values()){
-            res+=Double.parseDouble(paymentDriverRecord.getSummary().getSalaryWithTips());
+        for (PaymentDriverRecord paymentDriverRecord : paymentDriverRecordMap.values()) {
+            res += paymentDriverRecord.getSummary().getSalaryWithTips();
         }
 
-        if(paymentOwnerRecordMap==null){
+        if (paymentOwnerRecordMap == null) {
             makeOwnerMap();
         }
-        for(PaymentOwnerRecord paymentOwnerRecord:paymentOwnerRecordMap.values()){
-            res+=Double.parseDouble(paymentOwnerRecord.getOwnerPaymentViews().getWithdraw());
-            res+=Double.parseDouble(paymentOwnerRecord.getOwnerPaymentViews().getCash());
+        for (PaymentOwnerRecord paymentOwnerRecord : paymentOwnerRecordMap.values()) {
+            res += paymentOwnerRecord.getOwnerPaymentViews().getWithdraw();
+            res += paymentOwnerRecord.getOwnerPaymentViews().getCash();
         }
         return res;
     }
@@ -613,7 +615,7 @@ public abstract class CommonWeeklyReportHelper{
     }
 
     public Integer getCurrentWeekHash() {
-        Integer res=getLatestHash();
-        return res==null?0:res;
+        Integer res = getLatestHash();
+        return res == null ? 0 : res;
     }
 }

@@ -1,6 +1,6 @@
 package ui_automation.bolt;
 
-import com.codeborne.selenide.Configuration;
+import orm.entity.bolt.BoltPaymentRecordDayDAO;
 import util.ApplicationPropertyUtil;
 
 import java.io.File;
@@ -18,7 +18,7 @@ public class BoltWorker {
         String login = ApplicationPropertyUtil.applicationPropertyGet("bolt.login");
         String pass = ApplicationPropertyUtil.applicationPropertyGet("bolt.pass");
         new BoltLogonBo().login(login, pass);
-        Map<String, File> map = new DayReportBO().downloadAllCSV();
+        Map<String, File> map = new DayReportBO().downloadAllNewCSV(BoltPaymentRecordDayDAO.getInstance().latestDate());
         close();
         new RecordHelper().recordDayReportToDB(map);
         System.exit(0);

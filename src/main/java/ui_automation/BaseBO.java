@@ -1,18 +1,14 @@
 package ui_automation;
 
-import com.codeborne.selenide.Configuration;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 
-import java.io.File;
 import java.util.Date;
 
 import static com.codeborne.selenide.Configuration.*;
-import static com.codeborne.selenide.FileDownloadMode.PROXY;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static com.codeborne.selenide.WebDriverRunner.source;
 import static util.ApplicationPropertyUtil.getBoolean;
 
 public class BaseBO {
@@ -35,7 +31,7 @@ public class BaseBO {
 
             LOGGER.info("remote : " + remote);
             LOGGER.info("headless : " + headless);
-         }
+        }
     }
 
 
@@ -116,5 +112,10 @@ public class BaseBO {
     private void setValueByClassName(String className, String value) {
         $(By.className(className)).setValue(value);
         LOGGER.info("setValueByClassName : " + className + " value : " + value);
+    }
+
+    protected void clickByXpath(String xpath) {
+        $(By.xpath(xpath)).click();
+        LOGGER.info("clickByXpath "+xpath);
     }
 }

@@ -1,4 +1,4 @@
-package server.logan_park.view.weekly_report;
+package server.logan_park.view.weekly_report_uber;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,7 @@ import server.logan_park.helper.AutomaticallyWeeklyReportHelper;
 import java.util.Date;
 
 @Controller
-public class WeeklyReportController extends BaseController {
+public class WeeklyReportUberController extends BaseController {
     private final Logger LOGGER = Logger.getLogger(this.getClass());
 
     @RequestMapping(method = RequestMethod.POST,value = "/updateWeekReportRequest")
@@ -25,7 +25,7 @@ public class WeeklyReportController extends BaseController {
             uberUpdateWeekReportRequest.setId((Integer) UberUpdateWeekReportRequestDAO.getInstance().save(uberUpdateWeekReportRequest));
         }
         waitForReportDone();
-        return new ModelAndView("redirect:/logan_park/weekly_report");
+        return new ModelAndView("redirect:/logan_park/weekly_report_uber");
     }
 
     private void waitForReportDone() {
@@ -48,25 +48,10 @@ public class WeeklyReportController extends BaseController {
         return res;
     }
 
-    @RequestMapping(method = RequestMethod.GET,value = "/logan_park/weekly_report")
+    @RequestMapping(method = RequestMethod.GET,value = "/logan_park/weekly_report_uber")
     public ModelAndView weeklyReport() {
-        ModelAndView modelAndView=new ModelAndView("loganPark/week_report");
+        ModelAndView modelAndView=new ModelAndView("loganPark/week_report_uber");
         AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper =new AutomaticallyWeeklyReportHelper();
-
-        UberUpdateWeekReportRequest uberUpdateWeekReportRequest=UberUpdateWeekReportRequestDAO.getInstance().latest();
-
-        Long duration=uberUpdateWeekReportRequest.getUpdated()==null
-                ?new Date().getTime()-uberUpdateWeekReportRequest.getCreated().getTime()
-                :uberUpdateWeekReportRequest.getUpdated().getTime()-uberUpdateWeekReportRequest.getCreated().getTime();
-
-
-        String latestUpdateDateLabel=uberUpdateWeekReportRequest.getUpdated()==null?"inProgress":
-                uberUpdateWeekReportRequest.getUpdated()+"";
-        String status=uberUpdateWeekReportRequest.getUpdated()==null?"inProgress":"old";
-
-        modelAndView.addObject("latestUpdateDate", latestUpdateDateLabel);
-        modelAndView.addObject("updateStatus", status);
-        modelAndView.addObject("latestUpdateDuration", duration);
         modelAndView.addObject("weekHashLabel", automaticallyWeeklyReportHelper.getCurrentWeekHash());
         modelAndView.addObject("paymentTable", automaticallyWeeklyReportHelper.makeMap());
         modelAndView.addObject("ownerTable", automaticallyWeeklyReportHelper.makeOwnerMap());
