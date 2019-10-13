@@ -91,8 +91,8 @@ public abstract class CommonWeeklyReportHelper {
 
     private String dayLabel(Date start, Date end) {
         if (start.getTime() / 1000 / 60 / 60 / 24 != end.getTime() / 1000 / 60 / 60 / 24) {
-            return "ніч з " + SDF_DAY.format(start) + " по " + SDF_DAY.format(end);
-        } else return "день " + SDF_DAY_YEAR.format(start);
+            return "РЅС–С‡ Р· " + SDF_DAY.format(start) + " РїРѕ " + SDF_DAY.format(end);
+        } else return "РґРµРЅСЊ " + SDF_DAY_YEAR.format(start);
     }
 
     private Map<Date, PaymentRecordRawRow> getRangeMap(Date start, Date end, Map<Date, PaymentRecordRawRow> dateListMap) {
@@ -141,7 +141,7 @@ public abstract class CommonWeeklyReportHelper {
 
     public Map<String, PaymentDriverRecord> makeMap() {
 
-        //"ac67df0b-abbb-4d15-876d-6cc76f95b7c3","","Юрий","Сосинский","18.0","2019-08-16T14:19:45+03:00","promotion","Промокод","Компенсація сервісного збору Убер"
+        //"ac67df0b-abbb-4d15-876d-6cc76f95b7c3","","Р®СЂРёР№","РЎРѕСЃРёРЅСЃРєРёР№","18.0","2019-08-16T14:19:45+03:00","promotion","РџСЂРѕРјРѕРєРѕРґ","РљРѕРјРїРµРЅСЃР°С†С–СЏ СЃРµСЂРІС–СЃРЅРѕРіРѕ Р·Р±РѕСЂСѓ РЈР±РµСЂ"
         Map<String, PaymentDriverRecord> map = new HashMap<>();
         Map<String, Map<Date, PaymentRecordRawRow>> driverMap = getPrimaryParsedData();
         for (String driver : driverMap.keySet()) {
@@ -193,7 +193,7 @@ public abstract class CommonWeeklyReportHelper {
 
 //old iurij formula
         for (Map.Entry<String, PaymentDriverRecord> entry : map.entrySet()) {
-            if (entry.getKey().equals("Юрій_Горбатий")) {
+            if (entry.getKey().equals("Р®СЂС–Р№_Р“РѕСЂР±Р°С‚РёР№")) {
                 Integer amount = Integer.valueOf(entry.getValue().getSummary().getAmount());
                 if (amount >= WEEK_EARN_LIMIT_GORBATY_1 && amount < WEEK_EARN_LIMIT_GORBATY_2) {
                     Integer salary = entry.getValue().getSummary().getSalary() + 500;
@@ -477,10 +477,10 @@ public abstract class CommonWeeklyReportHelper {
                 map.get(driver).setDriverName(driver);
 
                 Long cash = getCash(rangeMap);
-                // готівка
+                // РіРѕС‚С–РІРєР°
 
                 Long amount = getAmountForOwner(rangeMap);
-                // дохід
+                // РґРѕС…С–Рґ
 
                 Integer count = getTripCount(rangeMap);
 
@@ -498,27 +498,27 @@ public abstract class CommonWeeklyReportHelper {
 
                 Integer taxPercentage = Integer.parseInt(currentDriver.getDriverType().split("_")[1]);
                 ownerPaymentView.setTaxPercentage(taxPercentage.doubleValue());
-                //відсоток комісії
+                //РІС–РґСЃРѕС‚РѕРє РєРѕРјС–СЃС–С—
 
                 String dateRangeName = SDF_DAY_YEAR.format(start) + "-" + SDF_DAY_YEAR.format(end);
                 ownerPaymentView.setDateRangeName(dateRangeName + "");
-                //дата
+                //РґР°С‚Р°
 
                 Long amountMinusCommission = Math.round(amount * ((100 - taxPercentage) / 100d));
                 ownerPaymentView.setAmountMinusCommission(amountMinusCommission.intValue());
-                // чистий дохід (без комісії)
+                // С‡РёСЃС‚РёР№ РґРѕС…С–Рґ (Р±РµР· РєРѕРјС–СЃС–С—)
 
                 Long commission = Math.round(amount * ((taxPercentage) / 100d));
                 ownerPaymentView.setCommission(commission.intValue());
-                // комісія
+                // РєРѕРјС–СЃС–СЏ
 
                 Long nonCash = amount - cash;
                 ownerPaymentView.setNonCash(nonCash.intValue());
-                // безготівка
+                // Р±РµР·РіРѕС‚С–РІРєР°
 
                 Long withdraw = nonCash - commission;
                 ownerPaymentView.setWithdraw(withdraw.intValue());
-                // на виведення
+                // РЅР° РІРёРІРµРґРµРЅРЅСЏ
 
                 map.get(driver).setOwnerPaymentViews(ownerPaymentView);
             }
