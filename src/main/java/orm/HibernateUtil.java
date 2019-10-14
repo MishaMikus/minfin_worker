@@ -24,8 +24,16 @@ public class HibernateUtil {
             try {
                 Properties prop = new Properties();
                 prop.setProperty(Environment.DRIVER, com.mysql.cj.jdbc.Driver.class.getCanonicalName());
-                prop.setProperty(Environment.URL, "jdbc:mysql://" + applicationProperty().get("sql.host") + ":3306" +
-                        "/minfin?useSSL=false&characterEncoding=UTF-8&serverTimezone=EEST");
+                prop.setProperty(Environment.URL, "jdbc:mysql://" +
+                        applicationProperty().get("sql.host") + "" +
+                        ":3306" +
+                        "/minfin?" +
+                        "useSSL=false" +
+                        "&characterEncoding=UTF-8" +
+                        "&useUnicode=true" +
+                        "&useJDBCCompliantTimezoneShift=true" +
+                        "&useLegacyDatetimeCode=false"+
+                        "&serverTimezone=EEST");
                 prop.setProperty(Environment.USER, applicationProperty().get("sql.user").toString());
                 prop.setProperty(Environment.PASS, applicationProperty().get("sql.pass").toString());
                 prop.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQL5Dialect.class.getCanonicalName());
