@@ -30,7 +30,7 @@ public class WeeklyReportGeneralHelper {
 
     public static WeeklyReportGeneral makeReport() {
         WeeklyReportBolt weeklyReportBolt = WeeklyReportBoltHelper.makeReport(new Date());
-        AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper = new AutomaticallyWeeklyReportHelper();
+        AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper = new AutomaticallyWeeklyReportHelper(new Date());
         return makeReport(weeklyReportBolt, automaticallyWeeklyReportHelper);
     }
 
@@ -44,19 +44,7 @@ public class WeeklyReportGeneralHelper {
         WeeklyReportGeneral weeklyReportGeneral = new WeeklyReportGeneral();
 
         //Week links
-        final int[] i = {1};
-        WeekRangeDAO.getInstance().findAll().stream()
-                .sorted(Comparator.comparing(WeekRange::getStart))
-                .collect(Collectors.toList()).forEach(w -> {
-            WeekLink weekLink = new WeekLink();
-            String start = server.logan_park.view.weekly_report_general.DateValidator.SDF.format(w.getStart());
-            String end = server.logan_park.view.weekly_report_general.DateValidator.SDF.format(w.getEnd());
-            weekLink.setLabel(start + "-" + end);
-            weekLink.setHref(start);
-            weekLink.setId(i[0]++);
-            weeklyReportGeneral.getWeekLinksList().add(weekLink);
-
-        });
+        weeklyReportGeneral.setWeekLinksList(new WeekLinksHelper().linkList());
 
         //BOLT
         weeklyReportBolt.getDriverStatList().forEach(d -> {

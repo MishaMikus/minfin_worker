@@ -7,13 +7,13 @@
 </head>
 <body>
 <jsp:include page="menu.jsp" />
-<%--@elvariable id="weekHashLabel" type="java.lang.Integer"--%>
-weekHashLabel : ${weekHashLabel}
-<br>
+Історія<br>
+<c:forEach items="${automaticallyWeeklyUberReport.weekLinksList}" var="weekLink">
+    тиджень ${weekLink.id} : <a href="/logan_park/weekly_report_uber/${weekLink.href}">${weekLink.label}</a>
+    <br>
+</c:forEach>
 
-<%--@elvariable id="paymentTable" type="java.util.HashMap<java.lang.String,server.logan_park.helper.model.PaymentDriverRecord>"--%>
-<%--<c:if test="${!empty sessionScope.paymentTable}">--%>
-<c:forEach items="${paymentTable}" var="entry">
+<c:forEach items="${automaticallyWeeklyUberReport.paymentTable}" var="entry">
     <table class="table-all-borders">
         <tbody>
         <tr>
@@ -97,11 +97,8 @@ weekHashLabel : ${weekHashLabel}
     </table>
     <br>
 </c:forEach>
-<%--</c:if>--%>
 
-<%--@elvariable id="ownerTable" type="java.util.HashMap<java.lang.String,server.logan_park.helper.model.PaymentOwnerRecord>"--%>
-<%--<c:if test="${!empty sessionScope.ownerTable}">--%>
-<c:forEach items="${ownerTable}" var="entry">
+<c:forEach items="${automaticallyWeeklyUberReport.ownerTable}" var="entry">
     <table class="table-all-borders">
         <tbody>
         <tr>
@@ -158,10 +155,6 @@ weekHashLabel : ${weekHashLabel}
     </table>
     <br>
 </c:forEach>
-<%--</c:if>--%>
-
-<%--@elvariable id="generalPartnerSummary" type="server.logan_park.helper.model.GeneralPartnerSummary"--%>
-<%--<c:if test="${!empty sessionScope.generalPartnerSummary.profit}">--%>
 
 <table class="table-all-borders">
     <tbody>
@@ -175,12 +168,12 @@ weekHashLabel : ${weekHashLabel}
     </tr>
     <tr>
 
-        <td>${generalPartnerSummary.profit}</td>
-        <td>${generalPartnerSummary.cash}</td>
-        <td>${generalPartnerSummary.transfer}</td>
-        <td>${generalPartnerSummary.tax}</td>
-        <td>${generalPartnerSummary.withdraw}</td>
-        <td>${generalPartnerSummary.realProfit}</td>
+        <td>${automaticallyWeeklyUberReport.generalPartnerSummary.profit}</td>
+        <td>${automaticallyWeeklyUberReport.generalPartnerSummary.cash}</td>
+        <td>${automaticallyWeeklyUberReport.generalPartnerSummary.transfer}</td>
+        <td>${automaticallyWeeklyUberReport.generalPartnerSummary.tax}</td>
+        <td>${automaticallyWeeklyUberReport.generalPartnerSummary.withdraw}</td>
+        <td>${automaticallyWeeklyUberReport.generalPartnerSummary.realProfit}</td>
     </tr>
     </tbody>
 </table>

@@ -6,18 +6,19 @@ import orm.entity.logan_park.week_range.WeekRangeDAO;
 import orm.entity.uber.payment_record_row.UberPaymentRecordRow;
 import orm.entity.uber.payment_record_row.UberPaymentRecordRowDAO;
 import server.logan_park.service.PaymentRecordRawRow;
+import server.logan_park.view.weekly_report_general.WeekLinksHelper;
+import server.logan_park.view.weekly_report_uber.model.AutomaticallyWeeklyUberReport;
 
 import java.util.*;
 
 public class AutomaticallyWeeklyReportHelper extends CommonWeeklyReportHelper {
     private final static Logger LOGGER = Logger.getLogger(AutomaticallyWeeklyReportHelper.class);
 
+    public AutomaticallyWeeklyReportHelper(String content, Date weekFlag) {
+        super(content, weekFlag);
+    }
     public AutomaticallyWeeklyReportHelper(Date weekFlag) {
         super(weekFlag);
-    }
-
-    public AutomaticallyWeeklyReportHelper() {
-        super(new Date());
     }
 
     Map<String, Map<Date, PaymentRecordRawRow>> parsePrimaryData(Date weekFlag) {
@@ -42,4 +43,12 @@ public class AutomaticallyWeeklyReportHelper extends CommonWeeklyReportHelper {
         return getPrimaryParsedData();
     }
 
+    public AutomaticallyWeeklyUberReport makeReport() {
+        AutomaticallyWeeklyUberReport automaticallyWeeklyUberReport = new AutomaticallyWeeklyUberReport();
+        automaticallyWeeklyUberReport.setWeekLinksList(new WeekLinksHelper().linkList());
+        automaticallyWeeklyUberReport.setPaymentTable(makeMap());
+        automaticallyWeeklyUberReport.setOwnerTable(makeOwnerMap());
+        automaticallyWeeklyUberReport.setGeneralPartnerSummary(makeGeneralPartnerSummary());
+        return automaticallyWeeklyUberReport;
+    }
 }
