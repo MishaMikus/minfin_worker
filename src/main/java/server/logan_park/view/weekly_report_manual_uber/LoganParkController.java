@@ -37,7 +37,9 @@ public class LoganParkController extends BaseController {
             e.printStackTrace();
         }
         request.getSession(true).setAttribute("fileName", file.getOriginalFilename());
+
         ManuallyWeeklyReportHelper manuallyWeeklyReportHelper =new ManuallyWeeklyReportHelper(content);
+
         request.getSession(true).setAttribute("paymentTable", manuallyWeeklyReportHelper.makeMap());
         request.getSession(true).setAttribute("ownerTable", manuallyWeeklyReportHelper.makeOwnerMap());
         request.getSession(true).setAttribute("generalPartnerSummary", manuallyWeeklyReportHelper.makeGeneralPartnerSummary());

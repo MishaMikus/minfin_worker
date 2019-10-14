@@ -3,8 +3,8 @@ package server.logan_park.service;
 import org.apache.log4j.Logger;
 import orm.entity.uber.description.UberDescription;
 import orm.entity.uber.description.UberDescriptionDAO;
-import orm.entity.uber.driver.UberDriver;
-import orm.entity.uber.driver.UberDriverDAO;
+import orm.entity.logan_park.driver.UberDriver;
+import orm.entity.logan_park.driver.UberDriverDAO;
 import orm.entity.uber.item_type.UberItemTypeDAO;
 import orm.entity.uber.payment_record_row.UberPaymentRecordRow;
 import orm.entity.uber.payment_record_row.UberPaymentRecordRowDAO;
@@ -42,7 +42,7 @@ public class PaymentRecorder {
 //        new PaymentRecorder(IOUtils.readTextFromFile(PAYMENT_DATA_FILE)).recordToBD();
 //    }
 
-    List<UberDriver> driverList = UberDriverDAO.getInstance().findAll();
+    private List<UberDriver> driverList = UberDriverDAO.getInstance().findAll();
 
     public void recordToBD() {
         LOGGER.info("primaryParsedData.size() : " + primaryParsedData.size());
@@ -88,9 +88,11 @@ public class PaymentRecorder {
             }
         }
         LOGGER.info("tobeRecorded.size() : " + tobeRecorded.size());
-        if (weekHash != null) {
-            UberPaymentRecordRowDAO.getInstance().deleteAllWhere("weekHash", weekHash);
-        }
+
+//        if (weekHash != null) {
+//            UberPaymentRecordRowDAO.getInstance().deleteAllWhere("weekHash", weekHash);
+//        }
+
         UberPaymentRecordRowDAO.getInstance().saveBatch(tobeRecorded);
         LOGGER.info("RECORDING DONE");
     }

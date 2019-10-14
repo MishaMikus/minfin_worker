@@ -252,26 +252,6 @@ CREATE TABLE `minfin`.`uber_okko_filling`
     `price`             DOUBLE       NULL
 );
 
-# "Водій", "Всі водії",
-# "Телефон водія", "",
-
-# "Період", "День 2019-10-11",
-
-# "Загальний тариф", "3332.00",
-
-# "Плата за скасування","0.00",
-
-# "Збір за бронювання (платіж)","0.00",
-# "Збір за бронювання (відрахування)","0.00",
-# "Додаткові збори","0.00",
-# "Комісія Bolt","-399.84",
-# "Готівкові поїздки (отримано водієм)","-1899.00",
-# "Компенсована сума знижки Bolt за готівкові поїздки ","332.00",
-# "Водійський бонус","0.00",
-# "Компенсації","0.00",
-# "Тижневий баланс", "1033.16"
-
-
 DROP TABLE if exists `minfin`.`bolt_payment_record_day`;
 CREATE TABLE `minfin`.`bolt_payment_record_day`
 (
@@ -290,4 +270,13 @@ CREATE TABLE `minfin`.`bolt_payment_record_day`
     `compensation`           DOUBLE       NOT NULL,
     `week_balance`           DOUBLE       NOT NULL,
     PRIMARY KEY (`driverName`, `timestamp`)
+);
+
+DROP TABLE if exists `minfin`.`week_range`;
+CREATE TABLE `minfin`.`week_range`
+(
+    `id`    INT      NOT NULL AUTO_INCREMENT,
+    `start` DATETIME NOT NULL,
+    `end`   DATETIME NOT NULL,
+    PRIMARY KEY (`id`)
 );

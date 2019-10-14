@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:useBean id="driverTable" scope="session" type="java.util.List<orm.entity.uber.driver.UberDriver>"/>
+<jsp:useBean id="driverTable" scope="session" type="java.util.List<orm.entity.logan_park.driver.UberDriver>"/>
 <html>
 <head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styles.css">

@@ -21,11 +21,21 @@ public class WeeklyReportGeneralHelper {
     public static void main(String[] args) {
         makeReport();
     }
-    public static WeeklyReportGeneral makeReport() {
-        WeeklyReportGeneral weeklyReportGeneral = new WeeklyReportGeneral();
 
-        //Calculate BOLT amount
+    public static WeeklyReportGeneral makeReport() {
         WeeklyReportBolt weeklyReportBolt = WeeklyReportBoltHelper.makeReport();
+        AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper = new AutomaticallyWeeklyReportHelper();
+        return makeReport(weeklyReportBolt, automaticallyWeeklyReportHelper);
+    }
+
+    public static WeeklyReportGeneral makeReport(String date) {
+        WeeklyReportBolt weeklyReportBolt = WeeklyReportBoltHelper.makeReport();
+        AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper = new AutomaticallyWeeklyReportHelper();
+        return makeReport(weeklyReportBolt, automaticallyWeeklyReportHelper);
+    }
+
+    private static WeeklyReportGeneral makeReport(WeeklyReportBolt weeklyReportBolt, AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper) {
+        WeeklyReportGeneral weeklyReportGeneral = new WeeklyReportGeneral();
         weeklyReportBolt.getDriverStatList().forEach(d -> {
             if (!d.getDriverName().equals("Михайло_Мікусь")) {
                 DriverStatGeneral driverStatGeneral = new DriverStatGeneral();
@@ -36,8 +46,6 @@ public class WeeklyReportGeneralHelper {
             }
         });
 
-        //UBER driver map
-        AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper = new AutomaticallyWeeklyReportHelper();
 
         //Calculate UBER amount
         final Integer[] uberBranding = {0};
@@ -132,8 +140,8 @@ public class WeeklyReportGeneralHelper {
         weeklyReportGeneral.getCompanyAccountStat().setTax((int) round(noCash * 0.05));
 
         int driverSalary = weeklyReportGeneral.getDriverStatList().stream().mapToInt(d -> d.getSum().getSalary()).sum();
-        int ownerWithdrad = weeklyReportGeneral.getDriverOwnerStatList().stream().mapToInt(DriverOwnerStat::getWithdraw).sum();
-        int profit = weeklyReportGeneral.getCompanyAccountStat().getGeneralAmount() - driverSalary - ownerWithdrad;
+        int ownerWithdraw = weeklyReportGeneral.getDriverOwnerStatList().stream().mapToInt(DriverOwnerStat::getWithdraw).sum();
+        int profit = weeklyReportGeneral.getCompanyAccountStat().getGeneralAmount() - driverSalary - ownerWithdraw - ownerCash;
 
         weeklyReportGeneral.getCompanyAccountStat().setGeneralProfit(profit - weeklyReportGeneral.getCompanyAccountStat().getTax());
 

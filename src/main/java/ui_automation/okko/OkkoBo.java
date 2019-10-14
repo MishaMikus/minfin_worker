@@ -1,7 +1,7 @@
 package ui_automation.okko;
 
 import org.openqa.selenium.By;
-import orm.entity.uber.uber_okko_filling.FillingRecord;
+import orm.entity.okko.uber_okko_filling.FillingRecord;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

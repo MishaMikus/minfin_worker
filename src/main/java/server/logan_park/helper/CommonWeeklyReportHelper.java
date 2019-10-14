@@ -1,8 +1,8 @@
 package server.logan_park.helper;
 
 import org.apache.log4j.Logger;
-import orm.entity.uber.driver.UberDriver;
-import orm.entity.uber.driver.UberDriverDAO;
+import orm.entity.logan_park.driver.UberDriver;
+import orm.entity.logan_park.driver.UberDriverDAO;
 import orm.entity.uber.payment_record_row.UberPaymentRecordRow;
 import orm.entity.uber.payment_record_row.UberPaymentRecordRowDAO;
 import server.logan_park.helper.model.GeneralPartnerSummary;

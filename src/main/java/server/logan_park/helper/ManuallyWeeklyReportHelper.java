@@ -22,9 +22,6 @@ public class ManuallyWeeklyReportHelper extends CommonWeeklyReportHelper{
             } else {
                 PaymentRecordRawRow paymentRecordRawRow = PaymentRecordRawRow.makeMeFromStringRow(row, i++);
                 driverMap.putIfAbsent(paymentRecordRawRow.driverName(), new HashMap<>());
-                if(paymentRecordRawRow.driverName().equals("Юрий_Сосинский")){
-                    System.out.println(paymentRecordRawRow);
-                }
                 driverMap.get(paymentRecordRawRow.driverName()).put(
                         new Date(paymentRecordRawRow.getTimestamp().getTime() + i++),
                         paymentRecordRawRow);

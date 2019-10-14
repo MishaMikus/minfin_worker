@@ -2,12 +2,9 @@ package server.logan_park.view.driver;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import orm.entity.uber.driver.UberDriverDAO;
-import orm.entity.uber.uber_captcha.UberCaptcha;
-import orm.entity.uber.uber_captcha.UberCaptchaDAO;
+import orm.entity.logan_park.driver.UberDriverDAO;
 import server.BaseController;
 
 import javax.servlet.http.HttpServletRequest;

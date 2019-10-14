@@ -1,4 +1,4 @@
-package orm.entity.uber.driver;
+package orm.entity.logan_park.driver;
 
 import javax.persistence.*;
 

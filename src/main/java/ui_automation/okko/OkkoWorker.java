@@ -1,7 +1,7 @@
 package ui_automation.okko;
 
-import orm.entity.uber.uber_okko_filling.FillingRecord;
-import orm.entity.uber.uber_okko_filling.FillingRecordDAO;
+import orm.entity.okko.uber_okko_filling.FillingRecord;
+import orm.entity.okko.uber_okko_filling.FillingRecordDAO;
 import util.ApplicationPropertyUtil;
 
 import java.util.Date;

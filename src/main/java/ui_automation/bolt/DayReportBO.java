@@ -42,8 +42,8 @@ public class DayReportBO extends BaseBoltBO {
     private File newDownloadFile(String date) {
         long start = new Date().getTime();
         long pingTime = 1000L;
-        long timeout = 10 * pingTime;
-        File file = new File(DOWNLOAD_FOLDER + FS + "Bolt Daily Report - " + date + " - Lviv Fleet 02_28 park Mikus.csv");
+        long timeout = 5 * pingTime;
+        File file = new File(DOWNLOAD_FOLDER + FS + "/Щоденний звіт Bolt – " + date + " – Lviv Fleet 02_28 park Mikus.csv");
         while (!file.exists() && new Date().getTime() - start < timeout) {
             try {
                 Thread.sleep(pingTime);
@@ -51,7 +51,11 @@ public class DayReportBO extends BaseBoltBO {
                 e.printStackTrace();
             }
         }
-        LOGGER.info("file : " + file.getAbsolutePath() + " " + (file.exists() ? "EXISTS" : "NOT EXISTS"));
-        return file;
+        if (file.exists()) {
+            LOGGER.info("file : " + file.getAbsolutePath() + " " + (file.exists() ? "EXISTS" : "NOT EXISTS"));
+            return file;
+        } else
+            return new File(DOWNLOAD_FOLDER + FS + "Bolt Daily Report - " + date + " - Lviv Fleet 02_28 park Mikus.csv");
+
     }
 }

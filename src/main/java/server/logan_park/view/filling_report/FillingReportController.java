@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import orm.entity.uber.uber_okko_filling.FillingRecordDAO;
+import orm.entity.okko.uber_okko_filling.FillingRecordDAO;
 import server.BaseController;
 
 @Controller

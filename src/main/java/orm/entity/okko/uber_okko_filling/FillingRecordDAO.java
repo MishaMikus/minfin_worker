@@ -1,4 +1,4 @@
-package orm.entity.uber.uber_okko_filling;
+package orm.entity.okko.uber_okko_filling;
 
 import org.apache.log4j.Logger;
 import orm.entity.GenericAbstractDAO;
