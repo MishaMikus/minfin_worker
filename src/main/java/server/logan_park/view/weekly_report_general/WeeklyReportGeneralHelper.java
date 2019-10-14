@@ -1,6 +1,8 @@
 package server.logan_park.view.weekly_report_general;
 
 import org.apache.log4j.Logger;
+import orm.entity.logan_park.week_range.WeekRange;
+import orm.entity.logan_park.week_range.WeekRangeDAO;
 import server.logan_park.helper.AutomaticallyWeeklyReportHelper;
 import server.logan_park.helper.model.PaymentDriverRecord;
 import server.logan_park.helper.model.PaymentOwnerRecord;
@@ -8,9 +10,13 @@ import server.logan_park.view.weekly_report_bolt.WeeklyReportBoltHelper;
 import server.logan_park.view.weekly_report_bolt.model.WeeklyReportBolt;
 import server.logan_park.view.weekly_report_general.model.DriverOwnerStat;
 import server.logan_park.view.weekly_report_general.model.DriverStatGeneral;
+import server.logan_park.view.weekly_report_general.model.WeekLink;
 import server.logan_park.view.weekly_report_general.model.WeeklyReportGeneral;
 
+import java.util.Comparator;
+import java.util.Date;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static java.lang.Math.round;
 import static server.logan_park.helper.CommonWeeklyReportHelper.*;
@@ -23,19 +29,36 @@ public class WeeklyReportGeneralHelper {
     }
 
     public static WeeklyReportGeneral makeReport() {
-        WeeklyReportBolt weeklyReportBolt = WeeklyReportBoltHelper.makeReport();
+        WeeklyReportBolt weeklyReportBolt = WeeklyReportBoltHelper.makeReport(new Date());
         AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper = new AutomaticallyWeeklyReportHelper();
         return makeReport(weeklyReportBolt, automaticallyWeeklyReportHelper);
     }
 
-    public static WeeklyReportGeneral makeReport(String date) {
-        WeeklyReportBolt weeklyReportBolt = WeeklyReportBoltHelper.makeReport();
-        AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper = new AutomaticallyWeeklyReportHelper();
+    public static WeeklyReportGeneral makeReport(Date date) {
+        WeeklyReportBolt weeklyReportBolt = WeeklyReportBoltHelper.makeReport(date);
+        AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper = new AutomaticallyWeeklyReportHelper(date);
         return makeReport(weeklyReportBolt, automaticallyWeeklyReportHelper);
     }
 
     private static WeeklyReportGeneral makeReport(WeeklyReportBolt weeklyReportBolt, AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper) {
         WeeklyReportGeneral weeklyReportGeneral = new WeeklyReportGeneral();
+
+        //Week links
+        final int[] i = {1};
+        WeekRangeDAO.getInstance().findAll().stream()
+                .sorted(Comparator.comparing(WeekRange::getStart))
+                .collect(Collectors.toList()).forEach(w -> {
+            WeekLink weekLink = new WeekLink();
+            String start = server.logan_park.view.weekly_report_general.DateValidator.SDF.format(w.getStart());
+            String end = server.logan_park.view.weekly_report_general.DateValidator.SDF.format(w.getEnd());
+            weekLink.setLabel(start + "-" + end);
+            weekLink.setHref(start);
+            weekLink.setId(i[0]++);
+            weeklyReportGeneral.getWeekLinksList().add(weekLink);
+
+        });
+
+        //BOLT
         weeklyReportBolt.getDriverStatList().forEach(d -> {
             if (!d.getDriverName().equals("Михайло_Мікусь")) {
                 DriverStatGeneral driverStatGeneral = new DriverStatGeneral();

@@ -7,8 +7,8 @@ import util.ApplicationPropertyUtil;
 
 import static com.codeborne.selenide.Selenide.close;
 
-public class UberWorker {
-    private static final Logger LOGGER = Logger.getLogger(UberWorker.class);
+public class UberWorkerLoadHistory {
+    private static final Logger LOGGER = Logger.getLogger(UberWorkerLoadHistory.class);
     public static void main(String[] args) {
         runWorker();
     }
@@ -18,7 +18,7 @@ public class UberWorker {
                 .loginIfNotAuthorized(ApplicationPropertyUtil.applicationPropertyGet("uber.login")
                         , ApplicationPropertyUtil.applicationPropertyGet("uber.password"))
                 .setSMSCodeIfNeed();
-        new UberBO().recordPayment();
+        new UberBO().recordPaymentWithOneWeekHistory();
         close();
         System.exit(0);
     }

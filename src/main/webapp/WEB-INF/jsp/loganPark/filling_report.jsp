@@ -7,22 +7,25 @@
 </head>
 <body>
 <jsp:include page="menu.jsp" />
-<%--@elvariable id="fillingTable" type="java.util.List<java.lang.FillingRecord>"--%>
 <table class="table-all-borders">
     <tbody>
     <tr>
         <th>дата</th>
-        <th>картка</th>
         <th>автомобіль</th>
         <th>літрів</th>
+        <th>ціна</th>
+        <th>ціна/л</th>
+        <th>адреса</th>
     </tr>
 
     <c:forEach items="${fillingTable}" var="fillingView">
         <tr>
             <td>${fillingView.date}</td>
-            <td>${fillingView.card}</td>
             <td>${fillingView.car}</td>
             <td>${fillingView.itemAmount}</td>
+            <td>${fillingView.amount}</td>
+            <td>${fillingView.price}</td>
+            <td>${fillingView.address}</td>
         </tr>
     </c:forEach>
     </tbody>

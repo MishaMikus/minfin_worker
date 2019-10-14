@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WeeklyReportGeneral {
+    private List<WeekLink> weekLinksList = new ArrayList<>();
     private List<DriverStatGeneral> driverStatList = new ArrayList<>();
     private List<DriverOwnerStat> driverOwnerStatList = new ArrayList<>();
     private CompanyAccountStat companyAccountStat=new CompanyAccountStat();
@@ -15,6 +16,14 @@ public class WeeklyReportGeneral {
                 ", driverOwnerStatList=" + driverOwnerStatList +
                 ", companyAccountStat=" + companyAccountStat +
                 '}';
+    }
+
+    public List<WeekLink> getWeekLinksList() {
+        return weekLinksList;
+    }
+
+    public void setWeekLinksList(List<WeekLink> weekLinksList) {
+        this.weekLinksList = weekLinksList;
     }
 
     public List<DriverStatGeneral> getDriverStatList() {

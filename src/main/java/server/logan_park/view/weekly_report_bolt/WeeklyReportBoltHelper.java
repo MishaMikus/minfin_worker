@@ -3,14 +3,11 @@ package server.logan_park.view.weekly_report_bolt;
 import org.apache.log4j.Logger;
 import orm.entity.bolt.BoltPaymentRecordDay;
 import orm.entity.bolt.BoltPaymentRecordDayDAO;
+import orm.entity.logan_park.week_range.WeekRangeDAO;
 import server.logan_park.view.weekly_report_bolt.model.DriverStat;
 import server.logan_park.view.weekly_report_bolt.model.WeeklyReportBolt;
 import server.logan_park.view.weekly_report_bolt.model.Workout;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.temporal.TemporalAdjusters;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -21,9 +18,10 @@ public class WeeklyReportBoltHelper {
 
     private final static Logger LOGGER = Logger.getLogger(WeeklyReportBoltHelper.class);
 
-    public static WeeklyReportBolt makeReport() {
+    public static WeeklyReportBolt makeReport(Date weekFlag) {
+
         WeeklyReportBolt weeklyReportBolt = new WeeklyReportBolt();
-        Date previousMonday = prevMonday();
+        Date previousMonday = WeekRangeDAO.getInstance().findOrCreateWeek(weekFlag).getStart();
         List<BoltPaymentRecordDay> list = BoltPaymentRecordDayDAO.getInstance().findAllByCurrentWeek(previousMonday);
         Map<String, DriverStat> tmpMap = new HashMap<>();
 
@@ -52,7 +50,7 @@ public class WeeklyReportBoltHelper {
             }
             generalAmount += amount;
             entry.getValue().setAmount(amount);
-            entry.getValue().setCash(cash );
+            entry.getValue().setCash(cash);
             entry.getValue().setSalary(salary);
             entry.getValue().setChange(change);
             entry.getValue().setWorkoutCount(workoutCount);
@@ -66,7 +64,7 @@ public class WeeklyReportBoltHelper {
         //clear zero day
         weeklyReportBolt.getDriverStatList().forEach(w ->
                 w.setWorkoutList(w.getWorkoutList()
-                        .stream().filter(ww -> ww.getAmount()!=0)
+                        .stream().filter(ww -> ww.getAmount() != 0)
                         .collect(Collectors.toList())));
 
         //add Company summary
@@ -79,23 +77,13 @@ public class WeeklyReportBoltHelper {
 
     private static Workout makeWorkout(BoltPaymentRecordDay boltPaymentRecordDay) {
         Workout workout = new Workout();
-        int clearAmount=(boltPaymentRecordDay.getAmount().intValue() + boltPaymentRecordDay.getBolt_commission().intValue());
-        workout.setAmount(clearAmount );//without commission
+        int clearAmount = (boltPaymentRecordDay.getAmount().intValue() + boltPaymentRecordDay.getBolt_commission().intValue());
+        workout.setAmount(clearAmount);//without commission
         workout.setCash(-boltPaymentRecordDay.getCash().intValue());
         workout.setName(SDF.format(boltPaymentRecordDay.getTimestamp()));
         long salary = round(clearAmount * 0.35);
         workout.setSalary((int) salary);
         workout.setChange((int) ((-boltPaymentRecordDay.getCash().longValue() - salary)));
         return workout;
-    }
-
-    public static Date prevMonday() {
-        LocalDate localDate = LocalDate.now().with(TemporalAdjusters.previous(DayOfWeek.MONDAY));
-        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        long millisInDay = 24 * 60 * 60 * 1000L;
-        if (date.getTime() / millisInDay == new Date().getTime() / millisInDay) {
-            date = new Date(date.getTime() - millisInDay * 7);
-        }
-        return date;
     }
 }

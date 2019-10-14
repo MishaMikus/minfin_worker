@@ -9,10 +9,10 @@ import java.util.Map;
 
 public class ManuallyWeeklyReportHelper extends CommonWeeklyReportHelper{
     public ManuallyWeeklyReportHelper(String content) {
-        super(content);
+        super(content,new Date());
     }
 
-    Map<String, Map<Date, PaymentRecordRawRow>> parsePrimaryData() {
+    Map<String, Map<Date, PaymentRecordRawRow>> parsePrimaryData(Date weekFlag) {
         Map<String, Map<Date, PaymentRecordRawRow>> driverMap = new HashMap<>();
         boolean firstRow = true;
         int i = 0;

@@ -3,6 +3,7 @@ package ui_automation.bolt;
 import org.apache.log4j.Logger;
 import orm.entity.bolt.BoltPaymentRecordDay;
 import orm.entity.bolt.BoltPaymentRecordDayDAO;
+import orm.entity.logan_park.week_range.WeekRangeDAO;
 import util.IOUtils;
 
 import java.io.File;
@@ -17,6 +18,7 @@ public class RecordHelper {
     public List<BoltPaymentRecordDay> recordDayReportToDB(String date, String content) {
         List<String> rowArrayList = new ArrayList<>(Arrays.asList(content.split("\r\n")));
         LOGGER.info("try parse file " + date);
+        Integer weekId = new WeekRangeDAO().findOrCreateWeek(parseDate(date)).getId();
         int lastRowIndex = rowArrayList.indexOf(",,,,,,,,,,,,,");
         lastRowIndex = lastRowIndex == -1 ? rowArrayList.size() - 1 : lastRowIndex;
 
@@ -25,7 +27,6 @@ public class RecordHelper {
         for (String row : rowArrayList) {
             System.out.println("parse ROW : " + row);
             String[] cellArray = row.replaceAll("\"", "").split(",");
-            BoltPaymentRecordDay boltPaymentRecordDay = new BoltPaymentRecordDay();
             //"Водій","Телефон водія","Період","Загальний тариф","Плата за скасування","Збір за бронювання (платіж)","Збір за бронювання (відрахування)","Додаткові збори","Комісія Bolt","Готівкові поїздки (отримано водієм)","Компенсована сума знижки Bolt за готівкові поїздки ","Водійський бонус","Компенсації","Тижневий баланс"
             //"Юрій Горбатий","+380961066201","День 2019-10-05","268.00","0.00","0.00","0.00","0.00","-32.16","-172.00","30.00","0.00","0.00","63.84"
 
@@ -43,8 +44,10 @@ public class RecordHelper {
                     Double.parseDouble(cellArray[10]),
                     Double.parseDouble(cellArray[11]),
                     Double.parseDouble(cellArray[12]),
-                    Double.parseDouble(cellArray[13])
+                    Double.parseDouble(cellArray[13]),
+                    weekId
             ));
+
         }
         return boltPaymentRecordDayList;
     }

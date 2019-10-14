@@ -24,7 +24,7 @@ public abstract class CommonWeeklyReportHelper {
     public static final Integer WEEK_EARN_LIMIT_GORBATY_2 = 12000;
     List<UberDriver> driverList = UberDriverDAO.getInstance().getDriverList();
 
-    abstract Map<String, Map<Date, PaymentRecordRawRow>> parsePrimaryData();
+    abstract Map<String, Map<Date, PaymentRecordRawRow>> parsePrimaryData(Date weekFlag);
 
     String content;
     private static final SimpleDateFormat SDF_DAY = new SimpleDateFormat("dd.MM");
@@ -37,13 +37,13 @@ public abstract class CommonWeeklyReportHelper {
 
     private static final int WORKOUT_HOUR_DIFF = 5;
 
-    public CommonWeeklyReportHelper() {
-        primaryParsedData = parsePrimaryData();
+    public CommonWeeklyReportHelper(Date weekFlag) {
+        primaryParsedData = parsePrimaryData(weekFlag);
     }
 
-    public CommonWeeklyReportHelper(String content) {
+    public CommonWeeklyReportHelper(String content, Date weekFlag) {
         this.content = content;
-        primaryParsedData = parsePrimaryData();
+        primaryParsedData = parsePrimaryData(weekFlag);
     }
 
     public Map<String, Map<Date, PaymentRecordRawRow>> getPrimaryParsedData() {
@@ -457,14 +457,6 @@ public abstract class CommonWeeklyReportHelper {
     Map<String, Map<Date, PaymentRecordRawRow>> primaryParsedData;
 
 
-    Integer getLatestHash() {
-        UberPaymentRecordRow uberPaymentRecordRow = UberPaymentRecordRowDAO.getInstance().findLatest();
-        LOGGER.info("LatestUberPaymentRecordRow : " + uberPaymentRecordRow);
-        Integer hash = uberPaymentRecordRow == null ? null : uberPaymentRecordRow.getWeekHash();
-        LOGGER.info("hash : " + hash);
-        return hash;
-    }
-
     public Map<String, PaymentOwnerRecord> makeOwnerMap() {
         Map<String, PaymentOwnerRecord> map = new HashMap<>();
         for (String driver : primaryParsedData.keySet()) {
@@ -488,7 +480,7 @@ public abstract class CommonWeeklyReportHelper {
 
                 Long promotion = getPromotion(rangeMap);
 
-                OwnerPaymentView ownerPaymentView = new OwnerPaymentView(count , amount.intValue() , cash.intValue() );
+                OwnerPaymentView ownerPaymentView = new OwnerPaymentView(count, amount.intValue(), cash.intValue());
                 ownerPaymentView.setTips(tips.intValue());
                 ownerPaymentView.setPromotion(promotion.intValue());
 
@@ -614,8 +606,4 @@ public abstract class CommonWeeklyReportHelper {
         return amount;
     }
 
-    public Integer getCurrentWeekHash() {
-        Integer res = getLatestHash();
-        return res == null ? 0 : res;
-    }
 }

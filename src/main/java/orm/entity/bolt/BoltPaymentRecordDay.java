@@ -15,7 +15,6 @@ public class BoltPaymentRecordDay {
     @Column
     private Date timestamp;
 
-
     private Date creation;
     private Double amount;
     private Double reject_amount;
@@ -28,11 +27,15 @@ public class BoltPaymentRecordDay {
     private Double bonus;
     private Double compensation;
     private Double week_balance;
+    private Integer week_id;
 
     public BoltPaymentRecordDay() {
     }
 
-    public BoltPaymentRecordDay(Date creation, String driverName, Date timestamp, Double amount, Double reject_amount, Double booking_payment_amount, Double booking_payment_minus, Double additional_payment, Double bolt_commission, Double cash, Double cash_turn, Double bonus, Double compensation, Double week_balance) {
+    public BoltPaymentRecordDay(Date creation, String driverName, Date timestamp, Double amount,
+                                Double reject_amount, Double booking_payment_amount, Double booking_payment_minus,
+                                Double additional_payment, Double bolt_commission, Double cash,
+                                Double cash_turn, Double bonus, Double compensation, Double week_balance, Integer week_id) {
         this.creation = creation;
         this.driverName = driverName;
         this.timestamp = timestamp;
@@ -47,6 +50,15 @@ public class BoltPaymentRecordDay {
         this.bonus = bonus;
         this.compensation = compensation;
         this.week_balance = week_balance;
+        this.week_id = week_id;
+    }
+
+    public Integer getWeek_id() {
+        return week_id;
+    }
+
+    public void setWeek_id(Integer week_id) {
+        this.week_id = week_id;
     }
 
     public Date getCreation() {

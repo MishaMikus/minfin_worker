@@ -8,14 +8,17 @@ import org.springframework.web.servlet.ModelAndView;
 import orm.entity.okko.uber_okko_filling.FillingRecordDAO;
 import server.BaseController;
 
+import java.util.stream.Collectors;
+
 @Controller
 public class FillingReportController extends BaseController {
     private final Logger LOGGER = Logger.getLogger(this.getClass());
 
-    @RequestMapping(method = RequestMethod.GET,value = "/logan_park/filling_report")
+    @RequestMapping(method = RequestMethod.GET, value = "/logan_park/filling_report")
     public ModelAndView weeklyReport() {
-        ModelAndView modelAndView=new ModelAndView("loganPark/filling_report");
-        modelAndView.addObject("fillingTable", FillingRecordDAO.getInstance().findAll());
+        ModelAndView modelAndView = new ModelAndView("loganPark/filling_report");
+        modelAndView.addObject("fillingTable", FillingRecordDAO.getInstance().findAll()
+                .stream().sorted((o1, o2) -> o2.getDate().compareTo(o1.getDate())).collect(Collectors.toList()));
         return modelAndView;
     }
 }

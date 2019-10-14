@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(schema = "minfin", name = "buy_price")
+@Table(schema = "minfin", name = "week_range")
 public class WeekRange {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,7 +12,7 @@ public class WeekRange {
     private Integer id;
 
     @Column
-    private Double start;
+    private Date start;
 
     @Column
     private Date end;
@@ -34,11 +34,11 @@ public class WeekRange {
         this.id = id;
     }
 
-    public Double getStart() {
+    public Date getStart() {
         return start;
     }
 
-    public void setStart(Double start) {
+    public void setStart(Date start) {
         this.start = start;
     }
 

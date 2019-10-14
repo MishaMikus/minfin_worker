@@ -27,13 +27,11 @@ public class UberBO extends BaseBO {
 
     public void recordPayment() {
         deletePaymentFile();
-        //wait for first default page loaded
-        //goToPath("p3/payments/statements");//start page
         goToPath("/p3/fleet-manager/payments");
         waitingForDownloadButtonAppear();
         clickDownload();
         waitingForFileDownload();
-        recordPaymentFile();
+        recordPaymentFile(new Date());
         deletePaymentFile();
     }
 
@@ -44,24 +42,17 @@ public class UberBO extends BaseBO {
     }
 
     private void deletePaymentFile() {
-        //  Long startMs = new Date().getTime();
         if (PAYMENT_DATA_FILE.exists()) {
             LOGGER.info("TRY DELETE " + PAYMENT_DATA_FILE.getAbsolutePath());
-            //IOUtils.deleteFile(PAYMENT_DATA_FILE.getAbsolutePath());
             if (PAYMENT_DATA_FILE.delete()) {
                 LOGGER.info("FILE deleted " + !PAYMENT_DATA_FILE.exists());
             }
         }
-//        while (PAYMENT_DATA_FILE.exists() && timeout(startMs, TIMEOUT_MS)) {
-//            LOGGER.info("WAITING for file deleting");
-//            threadSleep(DOWNLOAD_FILE_DISAPPEAR_ITERATION_TIME_MS);
-//        }
-//        LOGGER.info("FILE deleted " + !PAYMENT_DATA_FILE.exists());
     }
 
-    private void recordPaymentFile() {
+    private void recordPaymentFile(Date weekFlag) {
         String content = IOUtils.readTextFromFile(PAYMENT_DATA_FILE);
-        new PaymentRecorder(content).recordToBD();
+        new PaymentRecorder(content).recordToBD(weekFlag);
         LOGGER.info("FILE RECORDING DONE");
     }
 
@@ -73,6 +64,18 @@ public class UberBO extends BaseBO {
         }
         threadSleep(FILE_DOWNLOAD_WAITING_MS);
         LOGGER.info("FILE EXISTS : " + PAYMENT_DATA_FILE.exists());
+    }
+
+
+
+    private void clickPreviousWeekButton() {
+        By by=By.xpath("//img[contains(@class,'earnings-left-arrow')][@data-reactid]");
+        if ($(by).isDisplayed()) {
+            $(by).click();
+            LOGGER.info("CLICK PREVIOUS WEEK");
+        } else {
+            LOGGER.warn("CLICK PREVIOUS WEEK FAILURE");
+        }
     }
 
     private void clickDownload() {
@@ -90,4 +93,22 @@ public class UberBO extends BaseBO {
         LOGGER.info("refreshPage PAYMENT");
     }
 
+    public void recordPaymentWithOneWeekHistory() {
+        Date today=new Date();
+        Date todayLastWeek=new Date(today.getTime()-7*24*60*60*1000L);
+        deletePaymentFile();
+        goToPath("/p3/fleet-manager/payments");
+        waitingForDownloadButtonAppear();
+        clickDownload();
+        waitingForFileDownload();
+        recordPaymentFile(today);
+        deletePaymentFile();
+
+        clickPreviousWeekButton();
+        waitingForDownloadButtonAppear();
+        clickDownload();
+        waitingForFileDownload();
+        recordPaymentFile(todayLastWeek);
+        deletePaymentFile();
+    }
 }

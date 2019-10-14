@@ -1,6 +1,7 @@
 package server.logan_park.service;
 
 import org.apache.log4j.Logger;
+import orm.entity.logan_park.week_range.WeekRangeDAO;
 import orm.entity.uber.description.UberDescription;
 import orm.entity.uber.description.UberDescriptionDAO;
 import orm.entity.logan_park.driver.UberDriver;
@@ -38,63 +39,59 @@ public class PaymentRecorder {
         }
     }
 
-//    public static void main(String[] args) {
-//        new PaymentRecorder(IOUtils.readTextFromFile(PAYMENT_DATA_FILE)).recordToBD();
-//    }
-
     private List<UberDriver> driverList = UberDriverDAO.getInstance().findAll();
 
-    public void recordToBD() {
+    public void recordToBD(Date weekFlag) {
         LOGGER.info("primaryParsedData.size() : " + primaryParsedData.size());
+        Integer week_id = WeekRangeDAO.getInstance().findOrCreateWeek(weekFlag).getId();
         List<UberPaymentRecordRow> tobeRecorded = new ArrayList<>();
-        Integer weekHash = null;
         if (primaryParsedData.size() > 0) {
-            weekHash = primaryParsedData.get(0).hashCode();
             UberPaymentRecordRow oldRecord = UberPaymentRecordRowDAO.getInstance().findLatest();
-            List<UberPaymentRecordRow> oldRecordList =
-                    oldRecord == null ? new ArrayList<>()
-                            : UberPaymentRecordRowDAO.getInstance().findAllWhereEqual("weekHash", oldRecord.getWeekHash());
             LOGGER.info("OLD_RECORD=" + oldRecord);
             for (PaymentRecordRawRow paymentRecordRawRow : primaryParsedData) {
                 UberPaymentRecordRow uberPaymentRecordRow = new UberPaymentRecordRow();
                 uberPaymentRecordRow.setAmount(paymentRecordRawRow.getAmount());
-                uberPaymentRecordRow.setHash(paymentRecordRawRow.hashCode());
                 uberPaymentRecordRow.setCreation(new Date());
 
-                uberPaymentRecordRow.setWeekHash(weekHash);
+                uberPaymentRecordRow.setWeek_id(week_id);
 
                 UberDescription uberDescription = UberDescriptionDAO.getInstance()
                         .getDescriptionByName(paymentRecordRawRow.getDescription());
                 uberPaymentRecordRow.setDescription(uberDescription == null ? makeNewDescription(paymentRecordRawRow.getDescription()) : uberDescription.getId());
 
                 uberPaymentRecordRow.setDisclaimer(paymentRecordRawRow.getDisclaimer());
-                Integer id = driverList.stream().filter(d -> d.getDriverUUID().equals(paymentRecordRawRow.getDriverUUID())).findAny().get().getId();
+
+                Integer id = findDriverId(paymentRecordRawRow);
+
                 uberPaymentRecordRow.setDriverId(id);
                 uberPaymentRecordRow.setFileRowIndex(primaryParsedData.indexOf(paymentRecordRawRow));
                 uberPaymentRecordRow.setItemType(UberItemTypeDAO.getInstance()
                         .getItemTypeByName(paymentRecordRawRow.getItemType()).getId());
                 uberPaymentRecordRow.setTimestamp(paymentRecordRawRow.getTimestamp());
                 uberPaymentRecordRow.setTripUUID(paymentRecordRawRow.getTripUUID());
-
-                if (oldRecord == null || !oldRecord.getWeekHash().equals(uberPaymentRecordRow.getWeekHash())) {
-                    tobeRecorded.add(uberPaymentRecordRow);
-                } else {
-                    if (oldRecordList.stream().filter(r -> r.getHash()
-                            .equals(uberPaymentRecordRow.getHash()))
-                            .findAny().orElse(null) == null) {
-                        tobeRecorded.add(uberPaymentRecordRow);
-                    }
-                }
+                tobeRecorded.add(uberPaymentRecordRow);
             }
         }
         LOGGER.info("tobeRecorded.size() : " + tobeRecorded.size());
 
-//        if (weekHash != null) {
-//            UberPaymentRecordRowDAO.getInstance().deleteAllWhere("weekHash", weekHash);
-//        }
-
         UberPaymentRecordRowDAO.getInstance().saveBatch(tobeRecorded);
         LOGGER.info("RECORDING DONE");
+    }
+
+    private Integer findDriverId(PaymentRecordRawRow paymentRecordRawRow) {
+        UberDriver driver = driverList.stream().filter(d -> d.getDriverUUID().equals(paymentRecordRawRow.getDriverUUID())).findAny().orElse(null);
+        //add default new driver
+        if (driver == null) {
+            driver = new UberDriver();
+            driver.setDriverType("usual40");
+            driver.setDriverUUID(paymentRecordRawRow.getDriverUUID());
+            driver.setName(paymentRecordRawRow.driverName());
+            Integer id = (Integer) UberDriverDAO.getInstance().save(driver);
+            driver.setId(id);
+            LOGGER.info("cant find driver, create default : " + driver);
+            driverList = UberDriverDAO.getInstance().findAll();
+        }
+        return driver.getId();
     }
 
     private Integer makeNewDescription(String description) {

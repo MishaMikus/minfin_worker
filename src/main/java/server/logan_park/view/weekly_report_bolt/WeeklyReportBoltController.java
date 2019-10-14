@@ -6,11 +6,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import server.BaseController;
 
+import java.util.Date;
+
 @Controller
 public class WeeklyReportBoltController extends BaseController {
     @RequestMapping(method = RequestMethod.GET, value = "/logan_park/weekly_report_bolt")
     public ModelAndView weeklyReportBolt() {
         return new ModelAndView("loganPark/weekly_report_bolt")
-                .addObject("weeklyReportBolt", WeeklyReportBoltHelper.makeReport());
+                .addObject("weeklyReportBolt", WeeklyReportBoltHelper.makeReport(new Date()));
     }
 }

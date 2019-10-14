@@ -161,19 +161,18 @@ VALUES ('24de51c0-4e0e-4d3a-9e8a-40b2ae946936', 'owner_5', 'Богдан_Мік�
 DROP TABLE if exists `minfin`.`uber_payment_record_row`;
 CREATE TABLE `minfin`.`uber_payment_record_row`
 (
-    `driverId`     INT         NOT NULL,
-    `id`           INT         NOT NULL AUTO_INCREMENT,
-    `fileRowIndex` INT         NOT NULL,
     `tripUUID`     VARCHAR(36) NOT NULL,
     `amount`       DOUBLE      NOT NULL,
     `timestamp`    DATETIME    NOT NULL,
+
+    `driverId`     INT         NOT NULL,
+    `fileRowIndex` INT         NOT NULL,
     `creation`     DATETIME    NOT NULL,
     `itemType`     INT         NOT NULL,
     `description`  INT         NOT NULL,
     `disclaimer`   VARCHAR(255),
-    `weekHash`     INT         NOT NULL,
-    `hash`         INT         NOT NULL,
-    PRIMARY KEY (`id`)
+    `week_id`      INTEGER     NOT NULL,
+    PRIMARY KEY (`tripUUID`, `amount`, `timestamp`, `disclaimer`)
 );
 
 DROP TABLE if exists `minfin`.`uber_item_type`;
@@ -269,6 +268,7 @@ CREATE TABLE `minfin`.`bolt_payment_record_day`
     `bonus`                  DOUBLE       NOT NULL,
     `compensation`           DOUBLE       NOT NULL,
     `week_balance`           DOUBLE       NOT NULL,
+    `week_id`                INTEGER      NOT NULL,
     PRIMARY KEY (`driverName`, `timestamp`)
 );
 
@@ -280,3 +280,6 @@ CREATE TABLE `minfin`.`week_range`
     `end`   DATETIME NOT NULL,
     PRIMARY KEY (`id`)
 );
+ALTER TABLE `minfin`.`week_range`
+    ADD UNIQUE INDEX `start_UNIQUE` (`start` ASC),
+    ADD UNIQUE INDEX `end_UNIQUE` (`end` ASC);

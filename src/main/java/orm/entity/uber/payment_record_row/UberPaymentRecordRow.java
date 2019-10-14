@@ -1,45 +1,37 @@
 package orm.entity.uber.payment_record_row;
 
+import orm.entity.bolt.BoltPaymentRecordDayPK;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(schema = "minfin", name = "uber_payment_record_row")
+@IdClass(UberPaymentRecordRowPK.class)
 public class UberPaymentRecordRow {
     @Id
     @Column
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private String tripUUID;
+    @Id
+    @Column
+    private Double amount;
+    @Id
+    @Column
+    private Date timestamp;
+
     private Integer fileRowIndex;
     private Integer driverId;
-    private String tripUUID;
-    private Double amount;
-    private Date timestamp;
     private Date creation;
     private Integer itemType;
     private Integer description;
+    @Id
+    @Column
     private String disclaimer;
-    private Integer weekHash;
-    private Integer hash;
+    private Integer week_id;
 
     public UberPaymentRecordRow() {
     }
 
-    public Integer getHash() {
-        return hash;
-    }
-
-    public void setHash(Integer hash) {
-        this.hash = hash;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getFileRowIndex() {
         return fileRowIndex;
@@ -113,19 +105,20 @@ public class UberPaymentRecordRow {
         this.disclaimer = disclaimer;
     }
 
-    public Integer getWeekHash() {
-        return weekHash;
+    public Integer getWeek_id() {
+        return week_id;
     }
 
-    public void setWeekHash(Integer weekHash) {
-        this.weekHash = weekHash;
+    public void setWeek_id(Integer week_id) {
+        this.week_id = week_id;
     }
+
+
 
     @Override
     public String toString() {
         return "UberPaymentRecordRow{" +
-                "id=" + id +
-                ", fileRowIndex=" + fileRowIndex +
+                "fileRowIndex=" + fileRowIndex +
                 ", driverId=" + driverId +
                 ", tripUUID='" + tripUUID + '\'' +
                 ", amount=" + amount +
@@ -134,8 +127,7 @@ public class UberPaymentRecordRow {
                 ", itemType=" + itemType +
                 ", description=" + description +
                 ", disclaimer='" + disclaimer + '\'' +
-                ", weekHash=" + weekHash +
-                ", hash=" + hash +
+                ", week_id=" + week_id +
                 '}';
     }
 }

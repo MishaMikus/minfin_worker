@@ -9,6 +9,11 @@
 <jsp:include page="menu.jsp"/>
 <%--@elvariable id="weeklyReport" type="server.logan_park.view.weekly_report_general.model.WeeklyReportGeneral"--%>
 <br>
+Історія<br>
+<c:forEach items="${weeklyReport.weekLinksList}" var="weekLink">
+    тиджень ${weekLink.id} : <a href="/logan_park/weekly_report_general/${weekLink.href}">${weekLink.label}</a>
+    <br>
+</c:forEach>
 Водії на автомобілях компанії
 <c:forEach items="${weeklyReport.driverStatList}" var="driverStat">
     <table border="1">

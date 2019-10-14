@@ -16,7 +16,6 @@ public class WeeklyReportUberController extends BaseController {
     public ModelAndView weeklyReport() {
         ModelAndView modelAndView=new ModelAndView("loganPark/week_report_uber");
         AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper =new AutomaticallyWeeklyReportHelper();
-        modelAndView.addObject("weekHashLabel", automaticallyWeeklyReportHelper.getCurrentWeekHash());
         modelAndView.addObject("paymentTable", automaticallyWeeklyReportHelper.makeMap());
         modelAndView.addObject("ownerTable", automaticallyWeeklyReportHelper.makeOwnerMap());
         modelAndView.addObject("generalPartnerSummary", automaticallyWeeklyReportHelper.makeGeneralPartnerSummary());
