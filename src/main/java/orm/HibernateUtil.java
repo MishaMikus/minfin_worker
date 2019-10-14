@@ -33,7 +33,7 @@ public class HibernateUtil {
                         "&useUnicode=true" +
                         "&useJDBCCompliantTimezoneShift=true" +
                         "&useLegacyDatetimeCode=false"+
-                        "&serverTimezone=EEST");
+                        "&serverTimezone=Europe/Kiev");
                 prop.setProperty(Environment.USER, applicationProperty().get("sql.user").toString());
                 prop.setProperty(Environment.PASS, applicationProperty().get("sql.pass").toString());
                 prop.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQL5Dialect.class.getCanonicalName());
