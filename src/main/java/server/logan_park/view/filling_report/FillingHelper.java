@@ -31,6 +31,16 @@ public class FillingHelper {
             fillingTable.getFillingRecordMap().get(day).add(fillingRecord);
             fillingTable.getFillingInfo().getCarDistributedMap().putIfAbsent(fillingRecord.getCar(), new FillingValue());
 
+
+            fillingTable.getFillingInfo().getWeekFilling().setAmount(round100(
+                    fillingRecord.getAmount()+
+                            fillingTable.getFillingInfo().getWeekFilling().getAmount()));
+
+            fillingTable.getFillingInfo().getWeekFilling().setCount(round100(
+                    fillingRecord.getItemAmount()+
+                            fillingTable.getFillingInfo().getWeekFilling().getCount()));
+
+
             Double amount = fillingTable.getFillingInfo().getCarDistributedMap()
                     .get(fillingRecord.getCar()).getAmount() +
                     fillingRecord.getAmount();
@@ -43,11 +53,7 @@ public class FillingHelper {
 
             fillingTable.getFillingInfo().getCarDistributedMap().put(fillingRecord.getCar(), new FillingValue(amount,count));
 
-            fillingTable.getFillingInfo().getWeekFilling().setAmount(round100(amount+
-                    fillingTable.getFillingInfo().getWeekFilling().getAmount()));
 
-            fillingTable.getFillingInfo().getWeekFilling().setCount(round100(count+
-                    fillingTable.getFillingInfo().getWeekFilling().getCount()));
         }
 
         return fillingTable;
