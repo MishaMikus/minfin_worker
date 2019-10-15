@@ -9,9 +9,6 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class UberWorker {
     private static final Logger LOGGER = Logger.getLogger(UberWorker.class);
-    public static void main(String[] args) {
-        runWorker();
-    }
 
     private static void runWorker() {
         new UberLoginBO()

@@ -6,12 +6,14 @@ import server.logan_park.view.weekly_report_general.model.WeekLink;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class WeekLinksHelper {
+
     public List<WeekLink> linkList() {
-        List<WeekLink> res=new ArrayList<>();
+        List<WeekLink> res = new ArrayList<>();
         final int[] i = {1};
         WeekRangeDAO.getInstance().findAll().stream()
                 .sorted(Comparator.comparing(WeekRange::getStart))
@@ -25,5 +27,9 @@ public class WeekLinksHelper {
             res.add(weekLink);
         });
         return res;
+    }
+
+    public WeekRange findRangeByDate(Date weekFlag) {
+        return WeekRangeDAO.getInstance().findOrCreateWeek(weekFlag);
     }
 }

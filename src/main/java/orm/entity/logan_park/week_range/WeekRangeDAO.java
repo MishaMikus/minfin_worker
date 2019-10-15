@@ -30,8 +30,10 @@ public class WeekRangeDAO extends GenericAbstractDAO<WeekRange> {
     private long msInDay = 24L * 60L * 60L * 1000L;
 
     public WeekRange findOrCreateWeek(Date date) {
+        date = roundToMidnight(date);
+        Date finalDate = date;
         WeekRange weekRange = findAll().stream().filter(r ->
-                r.getStart().getTime() <= date.getTime() && r.getEnd().getTime() >= date.getTime()
+                r.getStart().getTime() <= finalDate.getTime() && r.getEnd().getTime() >= finalDate.getTime()
         ).findAny().orElse(null);
         LOGGER.info(date + " -> " + weekRange);
         if (weekRange == null) {

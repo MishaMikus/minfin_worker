@@ -248,7 +248,8 @@ CREATE TABLE `minfin`.`uber_okko_filling`
     `car`               VARCHAR(100) NULL,
     `address`           VARCHAR(200) NULL,
     `itemAmount`        DOUBLE       NULL,
-    `price`             DOUBLE       NULL
+    `price`             DOUBLE       NULL,
+    `week_id`                INTEGER      NOT NULL
 );
 
 DROP TABLE if exists `minfin`.`bolt_payment_record_day`;

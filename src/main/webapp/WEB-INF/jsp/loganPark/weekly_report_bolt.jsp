@@ -7,10 +7,15 @@
 </head>
 <body>
 <jsp:include page="menu.jsp"/>
-<%--@elvariable id="weeklyReportBolt" type="server.logan_park.view.weekly_report_bolt.model.WeeklyReportBolt"--%>
+
+Історія<br>
+<c:forEach items="${weeklyReportBolt.weekLinksList}" var="weekLink">
+    тиджень ${weekLink.id} : <a href="/logan_park/weekly_report_bolt/${weekLink.href}">${weekLink.label}</a>
+    <br>
+</c:forEach>
 
 <c:forEach items="${weeklyReportBolt.driverStatList}" var="driverStat">
-    <table border="1">
+    <table class="table-all-borders">
         <tbody>
         <tr>
             <th colspan=2>${driverStat.driverName}</th>
@@ -46,7 +51,7 @@
     <br>
 </c:forEach>
 
-<table border="1">
+<table class="table-all-borders">
     <tbody>
     <tr>
         <th>Загалький вал компанії</th>

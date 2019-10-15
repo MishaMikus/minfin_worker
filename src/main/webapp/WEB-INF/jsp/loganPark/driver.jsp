@@ -7,7 +7,7 @@
 </head>
 <body>
 <jsp:include page="menu.jsp" />
-<table border="1">
+<table class="table-all-borders">
     <tbody>
     <tr>
         <th>id</th>

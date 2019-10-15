@@ -22,7 +22,7 @@
     ${fileName}
     <br>
     <c:forEach items="${paymentTable}" var="entry">
-        <table border="1">
+        <table class="table-all-borders">
             <tbody>
             <tr>
                 <th colspan=10>${entry.key}</th>

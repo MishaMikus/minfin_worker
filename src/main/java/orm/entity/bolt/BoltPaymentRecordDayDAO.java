@@ -25,4 +25,8 @@ public class BoltPaymentRecordDayDAO extends GenericAbstractDAO<BoltPaymentRecor
     public List<BoltPaymentRecordDay> findAllByCurrentWeek(Date previousMonday) {
         return findAllInTimeRange("timestamp", previousMonday, new Date());
     }
+
+    public List<BoltPaymentRecordDay> findAllByWeekRangeId(Integer week_id) {
+        return findAllWhereEqual("week_id", week_id);
+    }
 }

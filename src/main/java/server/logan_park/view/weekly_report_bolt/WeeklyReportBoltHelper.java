@@ -3,10 +3,12 @@ package server.logan_park.view.weekly_report_bolt;
 import org.apache.log4j.Logger;
 import orm.entity.bolt.BoltPaymentRecordDay;
 import orm.entity.bolt.BoltPaymentRecordDayDAO;
+import orm.entity.logan_park.week_range.WeekRange;
 import orm.entity.logan_park.week_range.WeekRangeDAO;
 import server.logan_park.view.weekly_report_bolt.model.DriverStat;
 import server.logan_park.view.weekly_report_bolt.model.WeeklyReportBolt;
 import server.logan_park.view.weekly_report_bolt.model.Workout;
+import server.logan_park.view.weekly_report_general.WeekLinksHelper;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -19,10 +21,12 @@ public class WeeklyReportBoltHelper {
     private final static Logger LOGGER = Logger.getLogger(WeeklyReportBoltHelper.class);
 
     public static WeeklyReportBolt makeReport(Date weekFlag) {
-
         WeeklyReportBolt weeklyReportBolt = new WeeklyReportBolt();
-        Date previousMonday = WeekRangeDAO.getInstance().findOrCreateWeek(weekFlag).getStart();
-        List<BoltPaymentRecordDay> list = BoltPaymentRecordDayDAO.getInstance().findAllByCurrentWeek(previousMonday);
+        //Week links
+        weeklyReportBolt.setWeekLinksList(new WeekLinksHelper().linkList());
+
+        WeekRange weekRange = WeekRangeDAO.getInstance().findOrCreateWeek(weekFlag);
+        List<BoltPaymentRecordDay> list = BoltPaymentRecordDayDAO.getInstance().findAllByWeekRangeId(weekRange.getId());
         Map<String, DriverStat> tmpMap = new HashMap<>();
 
         //firstRun (separate driver)
@@ -77,7 +81,8 @@ public class WeeklyReportBoltHelper {
 
     private static Workout makeWorkout(BoltPaymentRecordDay boltPaymentRecordDay) {
         Workout workout = new Workout();
-        int clearAmount = (boltPaymentRecordDay.getAmount().intValue() + boltPaymentRecordDay.getBolt_commission().intValue());
+        int clearAmount = (int) round((boltPaymentRecordDay.getAmount() + boltPaymentRecordDay.getBolt_commission()+boltPaymentRecordDay.getBonus()));
+
         workout.setAmount(clearAmount);//without commission
         workout.setCash(-boltPaymentRecordDay.getCash().intValue());
         workout.setName(SDF.format(boltPaymentRecordDay.getTimestamp()));

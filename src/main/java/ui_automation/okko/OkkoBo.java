@@ -1,6 +1,7 @@
 package ui_automation.okko;
 
 import org.openqa.selenium.By;
+import orm.entity.logan_park.week_range.WeekRangeDAO;
 import orm.entity.okko.uber_okko_filling.FillingRecord;
 
 import java.text.ParseException;
@@ -29,6 +30,7 @@ public class OkkoBo extends BaseOkkoBO {
                 $(currentPageLinkLocator).click();
                 FillingRecord parsedFilling = parseFilling(fillingLinkText);
                 if (latestDBRecord.getDate().getTime() < parsedFilling.getDate().getTime()) {
+                    parsedFilling.setWeek_id(WeekRangeDAO.getInstance().findOrCreateWeek(parsedFilling.getDate()).getId());
                     res.add(parsedFilling);
                 } else {
                     duplicated = true;

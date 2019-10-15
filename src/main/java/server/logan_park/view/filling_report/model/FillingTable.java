@@ -1,0 +1,39 @@
+package server.logan_park.view.filling_report.model;
+
+import orm.entity.okko.uber_okko_filling.FillingRecord;
+import server.logan_park.view.weekly_report_general.model.WeekLink;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class FillingTable {
+    private List<WeekLink> weekLinksList = new ArrayList<>();
+    private Map<String, List<FillingRecord>> fillingRecordMap = new HashMap<>();
+    private FillingInfo fillingInfo=new FillingInfo();
+
+    public List<WeekLink> getWeekLinksList() {
+        return weekLinksList;
+    }
+
+    public void setWeekLinksList(List<WeekLink> weekLinksList) {
+        this.weekLinksList = weekLinksList;
+    }
+
+    public Map<String, List<FillingRecord>> getFillingRecordMap() {
+        return fillingRecordMap;
+    }
+
+    public void setFillingRecordMap(Map<String, List<FillingRecord>> fillingRecordMap) {
+        this.fillingRecordMap = fillingRecordMap;
+    }
+
+    public FillingInfo getFillingInfo() {
+        return fillingInfo;
+    }
+
+    public void setFillingInfo(FillingInfo fillingInfo) {
+        this.fillingInfo = fillingInfo;
+    }
+}

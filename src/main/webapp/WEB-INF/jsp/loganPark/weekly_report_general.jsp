@@ -7,7 +7,6 @@
 </head>
 <body>
 <jsp:include page="menu.jsp"/>
-<%--@elvariable id="weeklyReport" type="server.logan_park.view.weekly_report_general.model.WeeklyReportGeneral"--%>
 <br>
 Історія<br>
 <c:forEach items="${weeklyReport.weekLinksList}" var="weekLink">
@@ -16,7 +15,7 @@
 </c:forEach>
 Водії на автомобілях компанії
 <c:forEach items="${weeklyReport.driverStatList}" var="driverStat">
-    <table border="1">
+    <table class="table-all-borders">
         <tbody>
         <tr>
             <th colspan=2>${driverStat.driverName}</th>
@@ -58,7 +57,7 @@
 
 <br>
 Водії на своїх автомобілях
-<table border="1">
+<table class="table-all-borders">
     <tbody>
     <tr>
         <th>Водій</th>
@@ -81,7 +80,7 @@
 
 <br>
 Загальна статистика компанії
-<table border="1">
+<table class="table-all-borders">
     <tbody>
     <tr>
         <th>Загалький вал компанії</th>

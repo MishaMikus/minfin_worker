@@ -1,7 +1,10 @@
 package orm.entity.okko.uber_okko_filling;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static java.lang.StrictMath.round;
 
 @Entity
 @Table(schema = "minfin", name = "uber_okko_filling")
@@ -32,11 +35,22 @@ public class FillingRecord {
     //Адрес АЗС:	Львівська, Львів, Дж.Вашингтона, 12
     private String address;
     @Column
-    private Double  itemAmount;
+    private Double itemAmount;
     @Column
-    private Double  price;
+    private Double price;
     @Column
-    private String  car;
+    private String car;
+
+    @Column
+    private Integer week_id;
+
+    public Integer getWeek_id() {
+        return week_id;
+    }
+
+    public void setWeek_id(Integer week_id) {
+        this.week_id = week_id;
+    }
 
     public String getCar() {
         return car;
@@ -49,6 +63,7 @@ public class FillingRecord {
     public Double getPrice() {
         return price;
     }
+
 
     public void setPrice(Double price) {
         this.price = price;
@@ -147,5 +162,15 @@ public class FillingRecord {
                 ", itemAmount=" + itemAmount +
                 ", price=" + price +
                 '}';
+    }
+
+    public String getRealPrice() {
+        return round(amount / itemAmount * 100) / 100d + "";
+    }
+
+    static final SimpleDateFormat TIME_SDF = new SimpleDateFormat("hh:mm:ss");
+
+    public String getTime() {
+        return TIME_SDF.format(date);
     }
 }

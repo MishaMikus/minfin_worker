@@ -12,9 +12,6 @@ public class UberWorkerLoadFromLocalFile {
 
     private static final Logger LOGGER = Logger.getLogger(UberWorkerLoadFromLocalFile.class);
 
-    public static void main(String[] args) {
-        new UberWorkerLoadFromLocalFile().recordPaymentFile();
-    }
 
     private void recordPaymentFile() {
         for (File file : new File("F:/").listFiles()) {
