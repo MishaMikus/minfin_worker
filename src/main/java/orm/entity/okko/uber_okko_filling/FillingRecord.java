@@ -168,7 +168,7 @@ public class FillingRecord {
         return round(amount / itemAmount * 100) / 100d + "";
     }
 
-    static final SimpleDateFormat TIME_SDF = new SimpleDateFormat("hh:mm:ss");
+    private static final SimpleDateFormat TIME_SDF = new SimpleDateFormat("HH:mm:ss");
 
     public String getTime() {
         return TIME_SDF.format(date);
