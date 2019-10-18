@@ -18,6 +18,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import static java.lang.Math.round;
+
 public abstract class CommonWeeklyReportHelper {
     public static final Integer WEEK_EARN_LIMIT = 9000;
     public static final Integer WEEK_EARN_LIMIT_GORBATY_1 = 10000;
@@ -160,7 +162,11 @@ public abstract class CommonWeeklyReportHelper {
                         Long tips = getTips(rangeMap);
                         Long amount = getAmount(rangeMap);
                         Long promotion = getPromotion(rangeMap);
+
                         Long salary = Math.round(amount.doubleValue() * 0.35);
+                        if (driver.equals("Олег_Тархов")) {
+                            salary = Math.round(amount.doubleValue() * 0.6);
+                        }
                         PaymentView paymentView = new PaymentView(workoutName, count + "", amount + "", cash + "", salary + "", (cash - salary) + "");
                         paymentView.setTips(tips + "");
                         paymentView.setPromotion(promotion + "");
@@ -224,10 +230,13 @@ public abstract class CommonWeeklyReportHelper {
                     }
                 }
             } else {
-                //40% calculation for others drivers
+                //40 or 60 % calculation for others drivers
                 Integer amount = Integer.valueOf(entry.getValue().getSummary().getAmount());
                 if (amount >= WEEK_EARN_LIMIT) {
                     Integer salary = Long.valueOf(Math.round(entry.getValue().getSummary().getAmount() * 0.4d)).intValue();
+                    if (entry.getKey().equals("Олег_Тархов")) {
+                        salary = Long.valueOf(Math.round(entry.getValue().getSummary().getAmount() * 0.65d)).intValue();
+                    }
                     entry.getValue().getSummary().setSalary(salary);
                     Integer salaryWithTips = salary + entry.getValue().getSummary().getTips();
                     entry.getValue().getSummary().setSalaryWithTips(salaryWithTips);
@@ -238,20 +247,35 @@ public abstract class CommonWeeklyReportHelper {
                     entry.getValue().getSummary().setChangeWithoutTips(changeWithoutTips);
 
                     entry.getValue().getSummary().setFormula("40%");
+                    if (entry.getKey().equals("Олег_Тархов")) {
+                        entry.getValue().getSummary().setFormula("65%");
+                    }
                     entry.getValue().setRecordList(recalculate40(entry.getValue().getRecordList()));
+                    if (entry.getKey().equals("Олег_Тархов")) {
+                        entry.getValue().setRecordList(recalculate60(entry.getValue().getRecordList()));
+                    }
                 } else {
                     entry.getValue().getSummary().setFormula("35%");
+                    if (entry.getKey().equals("Олег_Тархов")) {
+                        entry.getValue().getSummary().setFormula("60%");
+                    }
                 }
             }
-
-
         }
         return map;
     }
 
     private List<PaymentView> recalculate40(List<PaymentView> recordList) {
+        return recalculate(40, recordList);
+    }
+
+    private List<PaymentView> recalculate60(List<PaymentView> recordList) {
+        return recalculate(60, recordList);
+    }
+
+    private List<PaymentView> recalculate(int percentage, List<PaymentView> recordList) {
         for (PaymentView paymentView : recordList) {
-            Integer salary = Math.toIntExact(Math.round(Integer.parseInt(paymentView.getAmount()) * 0.4d));
+            Integer salary = Math.toIntExact(Math.round(Integer.parseInt(paymentView.getAmount()) * (percentage / 100.0)));
             Integer cash = Integer.parseInt(paymentView.getCash());
             paymentView.setSalary(salary + "");
             paymentView.setChange((cash - salary) + "");

@@ -20,7 +20,7 @@ public class WeeklyReportBoltController extends BaseController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/logan_park/weekly_report_bolt/{date}")
     public ModelAndView weeklyReportByDate(@PathVariable String date) {
-        if (!new DateValidator().validateDate(date)) {
+        if (!new DateValidator().isValidDate(date)) {
             return new ModelAndView("loganPark/weekly_report_bolt")
                     .addObject("weeklyReportBolt", WeeklyReportBoltHelper.makeReport(new Date()));
         }

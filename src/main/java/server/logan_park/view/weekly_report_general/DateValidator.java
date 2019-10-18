@@ -11,7 +11,7 @@ public class DateValidator {
     private final static Logger LOGGER = Logger.getLogger(DateValidator.class);
     public static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy.MM.dd");
 
-    public boolean validateDate(String stringDate) {
+    public boolean isValidDate(String stringDate) {
         //valid : 2019.10.14
         try {
             Date date = SDF.parse(stringDate);

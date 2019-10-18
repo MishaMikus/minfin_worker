@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import server.BaseController;
-import server.logan_park.view.weekly_report_bolt.WeeklyReportBoltHelper;
 import server.logan_park.view.weekly_report_general.DateValidator;
 
 import java.util.Date;
@@ -24,7 +23,7 @@ public class FillingReportController extends BaseController {
     }
     @RequestMapping(method = RequestMethod.GET, value = "/logan_park/filling_report/{date}")
     public ModelAndView weeklyReportByDate(@PathVariable String date) {
-        if (!new DateValidator().validateDate(date)) {
+        if (!new DateValidator().isValidDate(date)) {
             return new ModelAndView("loganPark/filling_report")
                     .addObject("fillingTable", new FillingHelper().makeReport(new Date()));
         }

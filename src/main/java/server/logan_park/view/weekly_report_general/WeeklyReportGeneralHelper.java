@@ -106,14 +106,16 @@ public class WeeklyReportGeneralHelper {
                 d.getSum().setChange(cash - d.getSum().getSalary());
             } else {
                 if (amount < WEEK_EARN_LIMIT) {
-                    d.setPlan("35%");
-                    d.getUberStat().setSalary((int) round(d.getUberStat().getAmount() * 0.35));
-                    d.getBoltStat().setSalary((int) round(d.getBoltStat().getAmount() * 0.35));
+                    setSalary(d, 35);
+                    if (d.getDriverName().equals("Олег_Тархов")) {
+                        setSalary(d, 60);
+                    }
 
                 } else {
-                    d.setPlan("40%");
-                    d.getUberStat().setSalary((int) round(d.getUberStat().getAmount() * 0.4));
-                    d.getBoltStat().setSalary((int) round(d.getBoltStat().getAmount() * 0.4));
+                    setSalary(d, 40);
+                    if (d.getDriverName().equals("Олег_Тархов")) {
+                        setSalary(d, 65);
+                    }
                 }
                 d.getSum().setSalary(d.getBoltStat().getSalary() + d.getUberStat().getSalary() + d.getUberStat().getTips());
                 d.getSum().setChange(cash - d.getSum().getSalary());
@@ -159,6 +161,12 @@ public class WeeklyReportGeneralHelper {
         weeklyReportGeneral.getCompanyAccountStat().setClearDriverOwnerProfit((int) round(ownerCash * 0.05));
 
         return weeklyReportGeneral;
+    }
+
+    private static void setSalary(DriverStatGeneral d, int percentage) {
+        d.setPlan(percentage + "%");
+        d.getUberStat().setSalary((int) round(d.getUberStat().getAmount() * (percentage / 100.0)));
+        d.getBoltStat().setSalary((int) round(d.getBoltStat().getAmount() * (percentage / 100.0)));
     }
 
 }

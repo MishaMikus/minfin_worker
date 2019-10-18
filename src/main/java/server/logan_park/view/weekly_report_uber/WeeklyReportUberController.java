@@ -25,13 +25,10 @@ public class WeeklyReportUberController extends BaseController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/logan_park/weekly_report_uber/{date}")
     public ModelAndView weeklyReportByDate(@PathVariable String date) {
-        if (!new DateValidator().validateDate(date)) {
-            new ModelAndView("loganPark/week_report_uber")
-                    .addObject("automaticallyWeeklyUberReport", new AutomaticallyWeeklyReportHelper(new Date()).makeReport());
-        }
+        Date validDate = new DateValidator().isValidDate(date) ? new DateValidator().parseDate(date) : new Date();
         return new ModelAndView("loganPark/week_report_uber")
-                .addObject("automaticallyWeeklyUberReport", new AutomaticallyWeeklyReportHelper(new DateValidator().parseDate(date))
-                        .makeReport());
+                .addObject("automaticallyWeeklyUberReport",
+                        new AutomaticallyWeeklyReportHelper(validDate).makeReport());
 
     }
 }
