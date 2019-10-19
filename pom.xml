@@ -172,6 +172,16 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>upg_worker</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>ui_automation.upg.UpgWorker</mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
                         <id>okko_worker</id>
                         <goals>
                             <goal>java</goal>
