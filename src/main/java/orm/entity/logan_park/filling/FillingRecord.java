@@ -50,7 +50,7 @@ public class FillingRecord {
     @Column
     private String id;
     @Column
-    private String km;
+    private Integer km;
 
     public String getId() {
         return id;
@@ -180,6 +180,14 @@ public class FillingRecord {
 
     public String getAddress() {
         return address;
+    }
+
+    public Integer getKm() {
+        return km;
+    }
+
+    public void setKm(Integer km) {
+        this.km = km;
     }
 
     public void setAddress(String address) {

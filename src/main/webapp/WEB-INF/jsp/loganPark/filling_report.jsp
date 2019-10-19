@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
 
 <html>
 <head>
@@ -19,7 +19,9 @@
 <table class="table-all-borders">
     <tbody>
     <tr>
-        <th colspan=2>РАЗОМ ${fillingTable.fillingInfo.weekFilling.amount} грн (${fillingTable.fillingInfo.weekFilling.count} л)</th>
+        <th colspan=2>РАЗОМ ${fillingTable.fillingInfo.weekFilling.amount} грн
+            (${fillingTable.fillingInfo.weekFilling.count} л)
+        </th>
     </tr>
     <tr>
         <th>автомобіль</th>
@@ -43,7 +45,7 @@
     <c:forEach items="${fillingTable.fillingRecordMap}" var="entry">
         <tr>
             <th colspan=8>
-                ${entry.key.label}
+                    ${entry.key.label}
             </th>
         </tr>
         <tr>
@@ -68,6 +70,15 @@
                 <td>${fillingView.shop}</td>
                 <td>${fillingView.address}</td>
                 <td>${fillingView.km}</td>
+                <td>
+                    <form action="${pageContext.request.contextPath}/logan_park/save_km" method="post" enctype="application/x-www-form-urlencoded">
+                        <label>
+                            <input type="text" name="km" value="${fillingView.km}">
+                        </label>
+                        <input type="hidden" name="date" value=${fillingView.date.time}>
+                        <input type="submit" value="Save">
+                    </form>
+                </td>
             </tr>
         </c:forEach>
     </c:forEach>
