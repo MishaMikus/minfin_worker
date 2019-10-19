@@ -251,7 +251,8 @@ CREATE TABLE `minfin`.`uber_filling`
     `itemAmount`        DOUBLE       NULL,
     `price`             DOUBLE       NULL,
     `week_id`           INTEGER      NOT NULL,
-    `id`           INTEGER      NOT NULL,
+    `id`                INTEGER      NOT NULL,
+    `km`                INTEGER      NULL,
     PRIMARY KEY (`date`)
 );
 

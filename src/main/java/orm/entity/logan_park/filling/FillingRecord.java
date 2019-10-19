@@ -49,6 +49,8 @@ public class FillingRecord {
 
     @Column
     private String id;
+    @Column
+    private String km;
 
     public String getId() {
         return id;
@@ -77,6 +79,8 @@ public class FillingRecord {
                 ", id='" + id + '\'' +
                 '}';
     }
+
+
 
     public Integer getWeek_id() {
         return week_id;

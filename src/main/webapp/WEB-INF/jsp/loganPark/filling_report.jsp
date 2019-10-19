@@ -55,6 +55,7 @@
             <th>мережа</th>
             <th>магазин</th>
             <th>адреса</th>
+            <th>кілометраж</th>
         </tr>
         <c:forEach items="${entry.value}" var="fillingView">
             <tr>
@@ -66,6 +67,7 @@
                 <td>${fillingView.station}</td>
                 <td>${fillingView.shop}</td>
                 <td>${fillingView.address}</td>
+                <td>${fillingView.km}</td>
             </tr>
         </c:forEach>
     </c:forEach>
