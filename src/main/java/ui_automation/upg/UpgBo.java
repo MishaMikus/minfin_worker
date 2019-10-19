@@ -8,6 +8,7 @@ import orm.entity.logan_park.vehicle.Vehicle;
 import orm.entity.logan_park.vehicle.VehicleDAO;
 import orm.entity.logan_park.week_range.WeekRangeDAO;
 import orm.entity.logan_park.filling.FillingRecord;
+import util.NumberHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -65,7 +66,7 @@ public class UpgBo extends BaseUpgBO {
         fillingRecord.setItemAmount(Double.parseDouble(itemAmountString));
         fillingRecord.setPrice(Double.parseDouble(priceString));
 
-        fillingRecord.setAmount(fillingRecord.getItemAmount() * fillingRecord.getPrice());
+        fillingRecord.setAmount(NumberHelper.round(fillingRecord.getItemAmount() * fillingRecord.getPrice()));
         fillingRecord.setCar(findOutCarIdentity(fillingRecord.getCard()));
         fillingRecord.setStation("upg");
         return fillingRecord;
