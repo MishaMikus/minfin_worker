@@ -1,17 +1,14 @@
 package server.logan_park.view.filling_report.model;
 
-import orm.entity.okko.uber_okko_filling.FillingRecord;
+import orm.entity.logan_park.filling.FillingRecord;
 import server.logan_park.view.weekly_report_general.model.WeekLink;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FillingTable {
     private List<WeekLink> weekLinksList = new ArrayList<>();
-    private Map<String, List<FillingRecord>> fillingRecordMap = new HashMap<>();
-    private FillingInfo fillingInfo=new FillingInfo();
+    private Map<DateLabel, List<FillingRecord>> fillingRecordMap = new TreeMap<>();
+    private FillingInfo fillingInfo = new FillingInfo();
 
     public List<WeekLink> getWeekLinksList() {
         return weekLinksList;
@@ -21,11 +18,11 @@ public class FillingTable {
         this.weekLinksList = weekLinksList;
     }
 
-    public Map<String, List<FillingRecord>> getFillingRecordMap() {
+    public Map<DateLabel, List<FillingRecord>> getFillingRecordMap() {
         return fillingRecordMap;
     }
 
-    public void setFillingRecordMap(Map<String, List<FillingRecord>> fillingRecordMap) {
+    public void setFillingRecordMap(Map<DateLabel, List<FillingRecord>> fillingRecordMap) {
         this.fillingRecordMap = fillingRecordMap;
     }
 

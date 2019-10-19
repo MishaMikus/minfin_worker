@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
 
 <html>
 <head>
@@ -41,7 +42,9 @@
     <tbody>
     <c:forEach items="${fillingTable.fillingRecordMap}" var="entry">
         <tr>
-            <th colspan=8>${entry.key}</th>
+            <th colspan=8>
+                ${entry.key.label}
+            </th>
         </tr>
         <tr>
             <th>час</th>
@@ -49,8 +52,8 @@
             <th>літрів</th>
             <th>ціна</th>
             <th>ціна/л</th>
-            <th>ціна без знижки</th>
-            <th>ціна/л без знижки</th>
+            <th>мережа</th>
+            <th>магазин</th>
             <th>адреса</th>
         </tr>
         <c:forEach items="${entry.value}" var="fillingView">
@@ -60,8 +63,8 @@
                 <td>${fillingView.itemAmount}</td>
                 <td>${fillingView.amount}</td>
                 <td>${fillingView.realPrice}</td>
-                <td>${fillingView.amountAndDiscount}</td>
-                <td>${fillingView.price}</td>
+                <td>${fillingView.station}</td>
+                <td>${fillingView.shop}</td>
                 <td>${fillingView.address}</td>
             </tr>
         </c:forEach>

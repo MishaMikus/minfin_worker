@@ -1,10 +1,14 @@
-package orm.entity.okko.uber_okko_filling;
+package orm.entity.logan_park.filling;
 
 import org.apache.log4j.Logger;
 import orm.entity.GenericAbstractDAO;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class FillingRecordDAO extends GenericAbstractDAO<FillingRecord> {
     private final static Logger LOGGER = Logger.getLogger(FillingRecordDAO.class);
+
     public FillingRecordDAO() {
         super(FillingRecord.class);
     }
@@ -16,9 +20,11 @@ public class FillingRecordDAO extends GenericAbstractDAO<FillingRecord> {
     }
 
 
-    public FillingRecord latest() {
-        FillingRecord uberUpdateWeekReportRequest=findLatest("date");
-        LOGGER.info("latest : "+uberUpdateWeekReportRequest);
-        return uberUpdateWeekReportRequest;
+    public FillingRecord latest(String station) {
+        Map<String, Object> whereEqualMap = new HashMap<>();
+        whereEqualMap.put("station", station);
+        FillingRecord fillingRecord = findLatestWhere("date", whereEqualMap);
+        LOGGER.info("latest : " + fillingRecord);
+        return fillingRecord;
     }
 }

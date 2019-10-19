@@ -1,6 +1,6 @@
 package ui_automation.okko;
 
-public class OkkoLogonBo extends BaseOkkoBO {
+public class OkkoLoginBo extends BaseOkkoBO {
     public void login(String login, String pass) {
         goToPath("/");
         //userForm:realUsername

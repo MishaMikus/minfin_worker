@@ -11,9 +11,7 @@ import javax.persistence.criteria.*;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.function.BiFunction;
 
 import static orm.HibernateUtil.*;
@@ -231,7 +229,7 @@ public abstract class GenericAbstractDAO<E> {
         return findAllWhere(whereTimeInRange(timeField, startDate, endDate), fieldNameToReturn, fieldType);
     }
 
-    public E findLatest(String fieldName) {
+    public E findLatestWhere(String fieldName, Map<String, Object> whereEqualMap) {
         List<E> res = new ArrayList<>();
         beginTransaction();
 
@@ -240,6 +238,10 @@ public abstract class GenericAbstractDAO<E> {
         CriteriaQuery<E> q = cb.createQuery(entityClass);
         Root<E> root = q.from(entityClass);
         q.select(root);
+        for (Map.Entry<String, Object> entry : whereEqualMap.entrySet()) {
+            q = q.where(cb.equal(root.get(entry.getKey()), entry.getValue()));
+        }
+
         q.orderBy(cb.desc(root.get(fieldName)));
         try {
             res = getSession().createQuery(q).getResultList();
@@ -255,7 +257,9 @@ public abstract class GenericAbstractDAO<E> {
         closeSession();
         return res.get(0);
     }
-
+    public E findLatest(String fieldName) {
+        return (findLatestWhere(fieldName,new HashMap<>()));
+    }
 
     public List<E> findAllInTimeRange(String timeField, Date startDate, Date endDate) {
         return findAllWhere(whereTimeInRange(timeField, startDate, endDate));

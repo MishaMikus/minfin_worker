@@ -1,7 +1,7 @@
 package ui_automation.okko;
 
-import orm.entity.okko.uber_okko_filling.FillingRecord;
-import orm.entity.okko.uber_okko_filling.FillingRecordDAO;
+import orm.entity.logan_park.filling.FillingRecord;
+import orm.entity.logan_park.filling.FillingRecordDAO;
 import util.ApplicationPropertyUtil;
 
 import java.util.Date;
@@ -18,7 +18,7 @@ public class OkkoWorker {
     public static void runWorker() {
         String login = ApplicationPropertyUtil.applicationPropertyGet("okko.login");
         String pass = ApplicationPropertyUtil.applicationPropertyGet("okko.pass");
-        new OkkoLogonBo().login(login, pass);
+        new OkkoLoginBo().login(login, pass);
         FillingRecord latestDBRecord = getLatestFillingRecord();
         List<FillingRecord> allRecords = new OkkoBo().getAllLatestFillings(latestDBRecord);
         FillingRecordDAO.getInstance().saveBatch(allRecords);
@@ -27,7 +27,7 @@ public class OkkoWorker {
     }
 
     private static FillingRecord getLatestFillingRecord() {
-        FillingRecord fillingRecordLatest = FillingRecordDAO.getInstance().latest();
+        FillingRecord fillingRecordLatest = FillingRecordDAO.getInstance().latest("okko");
         return fillingRecordLatest == null ? new FillingRecord(new Date(0)) : fillingRecordLatest;
     }
 }

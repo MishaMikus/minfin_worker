@@ -1,10 +1,12 @@
 package server.logan_park.view.filling_report;
 
-import orm.entity.okko.uber_okko_filling.FillingRecord;
-import orm.entity.okko.uber_okko_filling.FillingRecordDAO;
+import orm.entity.logan_park.filling.FillingRecord;
+import orm.entity.logan_park.filling.FillingRecordDAO;
+import server.logan_park.view.filling_report.model.DateLabel;
 import server.logan_park.view.filling_report.model.FillingTable;
 import server.logan_park.view.filling_report.model.FillingValue;
 import server.logan_park.view.weekly_report_general.WeekLinksHelper;
+import util.DateHelper;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +14,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static java.lang.Math.round;
-import static server.logan_park.view.weekly_report_general.DateValidator.SDF;
 
 public class FillingHelper {
     private WeekLinksHelper weekLinksHelper = new WeekLinksHelper();
@@ -26,9 +27,9 @@ public class FillingHelper {
                 .findAllWhereEqual("week_id", week_id)
                 .stream().sorted((o1, o2) -> o2.getDate().compareTo(o1.getDate())).collect(Collectors.toList());
         for (FillingRecord fillingRecord : fillingRecordList) {
-            String day = SDF.format(fillingRecord.getDate());
-            fillingTable.getFillingRecordMap().putIfAbsent(day, new ArrayList<>());
-            fillingTable.getFillingRecordMap().get(day).add(fillingRecord);
+            DateLabel dayDateLabel= new DateLabel(DateHelper.getDayDate(fillingRecord.getDate()));
+            fillingTable.getFillingRecordMap().putIfAbsent(dayDateLabel, new ArrayList<>());
+            fillingTable.getFillingRecordMap().get(dayDateLabel).add(fillingRecord);
             fillingTable.getFillingInfo().getCarDistributedMap().putIfAbsent(fillingRecord.getCar(), new FillingValue());
 
 

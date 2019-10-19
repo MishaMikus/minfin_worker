@@ -235,11 +235,12 @@ CREATE TABLE `minfin`.`uber_captcha`
     PRIMARY KEY (`id`)
 );
 
-DROP TABLE if exists `minfin`.`uber_okko_filling`;
-CREATE TABLE `minfin`.`uber_okko_filling`
+DROP TABLE if exists `minfin`.`uber_filling`;
+CREATE TABLE `minfin`.`uber_filling`
 (
     `date`              DATETIME     NOT NULL,
     `card`              VARCHAR(16)  NULL,
+    `station`           VARCHAR(16)  NULL,
     `amount`            DOUBLE       NULL,
     `discount`          DOUBLE       NULL,
     `amountAndDiscount` DOUBLE       NULL,
@@ -249,7 +250,9 @@ CREATE TABLE `minfin`.`uber_okko_filling`
     `address`           VARCHAR(200) NULL,
     `itemAmount`        DOUBLE       NULL,
     `price`             DOUBLE       NULL,
-    `week_id`                INTEGER      NOT NULL
+    `week_id`           INTEGER      NOT NULL,
+    `id`           INTEGER      NOT NULL,
+    PRIMARY KEY (`date`)
 );
 
 DROP TABLE if exists `minfin`.`bolt_payment_record_day`;
@@ -284,3 +287,21 @@ CREATE TABLE `minfin`.`week_range`
 ALTER TABLE `minfin`.`week_range`
     ADD UNIQUE INDEX `start_UNIQUE` (`start` ASC),
     ADD UNIQUE INDEX `end_UNIQUE` (`end` ASC);
+
+DROP TABLE if exists `minfin`.`uber_vehicle`;
+CREATE TABLE `minfin`.`uber_vehicle`
+(
+    `id`    INT         NOT NULL AUTO_INCREMENT,
+    `name`  VARCHAR(45) NULL,
+    `plate` VARCHAR(45) NULL,
+    PRIMARY KEY (`id`)
+);
+
+DROP TABLE if exists `minfin`.`uber_filling_card`;
+CREATE TABLE `minfin`.`uber_filling_card`
+(
+    `id`         INT         NOT NULL,
+    `station`    VARCHAR(45) NOT NULL,
+    `vehicle_id` INT         NULL,
+    PRIMARY KEY (`id`, `station`)
+);

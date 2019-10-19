@@ -2,7 +2,7 @@ package ui_automation.okko;
 
 import org.openqa.selenium.By;
 import orm.entity.logan_park.week_range.WeekRangeDAO;
-import orm.entity.okko.uber_okko_filling.FillingRecord;
+import orm.entity.logan_park.filling.FillingRecord;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

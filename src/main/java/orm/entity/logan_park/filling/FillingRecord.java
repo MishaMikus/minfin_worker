@@ -1,4 +1,4 @@
-package orm.entity.okko.uber_okko_filling;
+package orm.entity.logan_park.filling;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
@@ -7,7 +7,7 @@ import java.util.Date;
 import static java.lang.StrictMath.round;
 
 @Entity
-@Table(schema = "minfin", name = "uber_okko_filling")
+@Table(schema = "minfin", name = "uber_filling")
 public class FillingRecord {
     @Id
     @Column
@@ -16,6 +16,9 @@ public class FillingRecord {
     @Column
     //Номер картки:	7825390000344935
     private String card;
+    @Column
+    //Номер картки:	7825390000344935
+    private String station;
     @Column
     //Сума:	262.33
     private Double amount;
@@ -43,6 +46,37 @@ public class FillingRecord {
 
     @Column
     private Integer week_id;
+
+    @Column
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "FillingRecord{" +
+                "date=" + date +
+                ", card='" + card + '\'' +
+                ", station='" + station + '\'' +
+                ", amount=" + amount +
+                ", discount=" + discount +
+                ", amountAndDiscount=" + amountAndDiscount +
+                ", sapCode='" + sapCode + '\'' +
+                ", shop='" + shop + '\'' +
+                ", address='" + address + '\'' +
+                ", itemAmount=" + itemAmount +
+                ", price=" + price +
+                ", car='" + car + '\'' +
+                ", week_id=" + week_id +
+                ", id='" + id + '\'' +
+                '}';
+    }
 
     public Integer getWeek_id() {
         return week_id;
@@ -148,20 +182,12 @@ public class FillingRecord {
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return "FillingRecord{" +
-                "date=" + date +
-                ", card='" + card + '\'' +
-                ", amount=" + amount +
-                ", discount=" + discount +
-                ", amountAndDiscount=" + amountAndDiscount +
-                ", sapCode='" + sapCode + '\'' +
-                ", shop='" + shop + '\'' +
-                ", address='" + address + '\'' +
-                ", itemAmount=" + itemAmount +
-                ", price=" + price +
-                '}';
+    public String getStation() {
+        return station;
+    }
+
+    public void setStation(String station) {
+        this.station = station;
     }
 
     public String getRealPrice() {
@@ -173,4 +199,6 @@ public class FillingRecord {
     public String getTime() {
         return TIME_SDF.format(date);
     }
+
+
 }
