@@ -70,6 +70,13 @@ public class FillingHelper {
 
     public void addKm(KmRequest kmRequest) {
         FillingRecord fillingRecord= FillingRecordDAO.getInstance().findWhereEqual("date",new Date(kmRequest.getDate()));
-        LOGGER.info(fillingRecord);
+        LOGGER.info("try update KM for "+fillingRecord);
+        if(fillingRecord!=null){
+        fillingRecord.setKm(kmRequest.getKm());
+        FillingRecordDAO.getInstance().update(fillingRecord);}
+        else{
+            LOGGER.warn("can't find filling record for "+new Date(kmRequest.getDate()));
+        }
+
     }
 }

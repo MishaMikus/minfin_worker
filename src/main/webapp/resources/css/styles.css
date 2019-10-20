@@ -68,3 +68,16 @@ body {
     background-color: #4CAF50;
     color: white;
 }
+
+
+.km-input{
+    color: black;
+    width: 50%;
+}
+
+[data-status="false"]{
+    background-color: darksalmon;
+}
+[data-status="true"]{
+    background-color: darkseagreen;
+}

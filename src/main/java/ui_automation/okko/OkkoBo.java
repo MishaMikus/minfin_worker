@@ -93,6 +93,7 @@ public class OkkoBo extends BaseOkkoBO {
 
         fillingRecord.setCar(car(fillingRecord.getCard()));
         //←
+        fillingRecord.setStation("okko");
         driver().getWebDriver().navigate().back();
         return fillingRecord;
     }

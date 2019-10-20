@@ -4,10 +4,10 @@ import org.apache.log4j.Logger;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 import server.BaseController;
 import server.logan_park.view.filling_report.model.KmRequest;
 import server.logan_park.view.weekly_report_general.DateValidator;
@@ -21,9 +21,8 @@ public class FillingReportController extends BaseController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/logan_park/filling_report")
     public ModelAndView weeklyReport() {
-        ModelAndView modelAndView = new ModelAndView("loganPark/filling_report");
-        modelAndView.addObject("fillingTable", new FillingHelper().makeReport(new Date()));
-        return modelAndView;
+        return new ModelAndView("loganPark/filling_report")
+                .addObject("fillingTable", new FillingHelper().makeReport(new Date()));
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/logan_park/filling_report/{date}")
@@ -40,7 +39,7 @@ public class FillingReportController extends BaseController {
     public ModelAndView postKm(@Valid KmRequest kmRequest) {
         LOGGER.info("TRY to add "+kmRequest);
         new FillingHelper().addKm(kmRequest);
-        return new ModelAndView("loganPark/filling_report");
+        return new ModelAndView(new RedirectView("/logan_park/filling_report", true));
     }
 
 }

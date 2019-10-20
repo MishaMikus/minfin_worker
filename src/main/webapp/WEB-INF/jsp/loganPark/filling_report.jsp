@@ -69,12 +69,9 @@
                 <td>${fillingView.station}</td>
                 <td>${fillingView.shop}</td>
                 <td>${fillingView.address}</td>
-                <td>${fillingView.km}</td>
                 <td>
                     <form action="${pageContext.request.contextPath}/logan_park/save_km" method="post" enctype="application/x-www-form-urlencoded">
-                        <label>
-                            <input type="text" name="km" value="${fillingView.km}">
-                        </label>
+                            <input class="km-input" type="text" name="km" value="${fillingView.km}" data-status="${fillingView.km!=null}">
                         <input type="hidden" name="date" value=${fillingView.date.time}>
                         <input type="submit" value="Save">
                     </form>
