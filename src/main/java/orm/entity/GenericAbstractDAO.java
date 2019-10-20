@@ -5,7 +5,6 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
 import orm.HibernateUtil;
 
-import javax.persistence.Query;
 import javax.persistence.Table;
 import javax.persistence.criteria.*;
 import java.io.Serializable;
@@ -15,6 +14,7 @@ import java.util.*;
 import java.util.function.BiFunction;
 
 import static orm.HibernateUtil.*;
+import static orm.HibernateUtil.getSession;
 
 public abstract class GenericAbstractDAO<E> {
     private final Logger LOGGER = Logger.getLogger(this.getClass());
@@ -27,6 +27,7 @@ public abstract class GenericAbstractDAO<E> {
     public void update(E entity) {
         beginTransaction();
         getSession().update(entity);
+        getSession().flush();
         commitTransaction();
         closeSession();
         LOGGER.info("update " + entity);

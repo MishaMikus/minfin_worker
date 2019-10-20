@@ -8,6 +8,7 @@ import server.logan_park.view.filling_report.model.FillingTable;
 import server.logan_park.view.filling_report.model.FillingValue;
 import server.logan_park.view.filling_report.model.KmRequest;
 import server.logan_park.view.weekly_report_general.WeekLinksHelper;
+import ui_automation.common.FuelHelper;
 import util.DateHelper;
 import util.NumberHelper;
 
@@ -15,8 +16,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static java.lang.Math.round;
 
 public class FillingHelper {
 
@@ -39,11 +38,11 @@ public class FillingHelper {
             fillingTable.getFillingInfo().getCarDistributedMap().putIfAbsent(fillingRecord.getCar(), new FillingValue());
 
 
-            fillingTable.getFillingInfo().getWeekFilling().setAmount(NumberHelper.round(
+            fillingTable.getFillingInfo().getWeekFilling().setAmount(NumberHelper.round100(
                     fillingRecord.getAmount()+
                             fillingTable.getFillingInfo().getWeekFilling().getAmount()));
 
-            fillingTable.getFillingInfo().getWeekFilling().setCount(NumberHelper.round(
+            fillingTable.getFillingInfo().getWeekFilling().setCount(NumberHelper.round100(
                     fillingRecord.getItemAmount()+
                             fillingTable.getFillingInfo().getWeekFilling().getCount()));
 
@@ -51,16 +50,16 @@ public class FillingHelper {
             Double amount = fillingTable.getFillingInfo().getCarDistributedMap()
                     .get(fillingRecord.getCar()).getAmount() +
                     fillingRecord.getAmount();
-            amount =NumberHelper.round(amount);
+            amount =NumberHelper.round100(amount);
 
             Double count = fillingTable.getFillingInfo().getCarDistributedMap()
                     .get(fillingRecord.getCar()).getCount() +
                     fillingRecord.getItemAmount();
-            count = NumberHelper.round(count);
+            count = NumberHelper.round100(count);
 
             fillingTable.getFillingInfo().getCarDistributedMap().put(fillingRecord.getCar(), new FillingValue(amount,count));
 
-
+            FuelHelper.getInstance().calculateFuelCost(fillingTable);
         }
 
         return fillingTable;

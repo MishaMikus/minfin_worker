@@ -24,17 +24,32 @@
             (${fillingTable.fillingInfo.weekFilling.count} л)
         </th>
     </tr>
-    <tr>
-        <th>автомобіль</th>
-        <th>грн</th>
-        <th>л</th>
-    </tr>
     <c:forEach items="${fillingTable.fillingInfo.carDistributedMap}" var="entry">
         <tr>
-            <td>${entry.key}</td>
-            <td>${entry.value.amount}</td>
-            <td>${entry.value.count}</td>
+            <td colspan="5"></td>
         </tr>
+        <tr>
+            <th>${entry.key}</th>
+            <th>${entry.value.amount} грн</th>
+            <th>${entry.value.count} л</th>
+        </tr>
+
+        <tr>
+            <th>початок</th>
+            <th>кінець</th>
+            <th>пробіг км</th>
+            <th>витрати л</th>
+            <th>розхід л/(100 км)</th>
+        </tr>
+        <c:forEach items="${entry.value.fuelCostsList}" var="fuelCosts">
+            <tr>
+                <td>${fuelCosts.dateLabelStart.label}</td>
+                <td>${fuelCosts.dateLabelEnd.label}</td>
+                <td>${fuelCosts.distance}</td>
+                <td>${fuelCosts.gasAmount}</td>
+                <td>${fuelCosts.cost}</td>
+            </tr>
+        </c:forEach>
     </c:forEach>
     </tbody>
 </table>

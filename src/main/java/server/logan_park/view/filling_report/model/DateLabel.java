@@ -1,17 +1,38 @@
 package server.logan_park.view.filling_report.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-import static ui_automation.bolt.RecordHelper.SDF;
-
 public class DateLabel implements Comparable {
+    public static final SimpleDateFormat SDF_DD_MM_YYYY = new SimpleDateFormat("dd.MM.yyyy");
+    public static final SimpleDateFormat SDF_DD_MM_YYYY_HH_MM_SS = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+    public static final SimpleDateFormat HH_MM_SS = new SimpleDateFormat(" HH:mm:ss");
     private Date date;
-    private String label;
+    private SimpleDateFormat sdf = SDF_DD_MM_YYYY;
 
     public DateLabel(Date dayDate) {
         date = dayDate;
-        label = SDF.format(dayDate);
+    }
+
+    public SimpleDateFormat getSdf() {
+        return sdf;
+    }
+
+    public void setSdf(SimpleDateFormat sdf) {
+        this.sdf = sdf;
+    }
+
+    public DateLabel(Date date, SimpleDateFormat sdf) {
+        this.date = date;
+        this.sdf = sdf;
+    }
+
+    public DateLabel() {
+    }
+
+    public DateLabel(SimpleDateFormat sdf) {
+        this.sdf = sdf;
     }
 
     @Override
@@ -20,12 +41,12 @@ public class DateLabel implements Comparable {
         if (o == null || getClass() != o.getClass()) return false;
         DateLabel dateLabel = (DateLabel) o;
         return Objects.equals(date, dateLabel.date) &&
-                Objects.equals(label, dateLabel.label);
+                Objects.equals(getLabel(), dateLabel.getLabel());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, label);
+        return Objects.hash(date, getLabel());
     }
 
     @Override
@@ -42,10 +63,6 @@ public class DateLabel implements Comparable {
     }
 
     public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
+        return sdf.format(date);
     }
 }

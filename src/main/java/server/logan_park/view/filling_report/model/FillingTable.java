@@ -33,4 +33,13 @@ public class FillingTable {
     public void setFillingInfo(FillingInfo fillingInfo) {
         this.fillingInfo = fillingInfo;
     }
+
+    @Override
+    public String toString() {
+        return "FillingTable{" +
+                "weekLinksList=" + weekLinksList +
+                ", fillingRecordMap=" + fillingRecordMap +
+                ", fillingInfo=" + fillingInfo +
+                '}';
+    }
 }

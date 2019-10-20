@@ -2,12 +2,9 @@ package ui_automation.upg;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import orm.entity.logan_park.card.FillingCard;
-import orm.entity.logan_park.card.FillingCardDAO;
-import orm.entity.logan_park.vehicle.Vehicle;
-import orm.entity.logan_park.vehicle.VehicleDAO;
 import orm.entity.logan_park.week_range.WeekRangeDAO;
 import orm.entity.logan_park.filling.FillingRecord;
+import ui_automation.common.FuelHelper;
 import util.NumberHelper;
 
 import java.text.ParseException;
@@ -21,7 +18,7 @@ public class UpgBo extends BaseUpgBO {
     //17.10.2019 19:09:54
     private static final SimpleDateFormat SDF = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 
-    public List<FillingRecord> getAllLatestFillings() {
+    public List<FillingRecord> getAllLatestFillings(FillingRecord latestFillingRecord) {
         goToPath("/ua/owner/account/list");
 
         List<FillingRecord> res = new ArrayList<>();
@@ -33,17 +30,21 @@ public class UpgBo extends BaseUpgBO {
             LOGGER.info("Read transactions : " + key + " -> " + value);
             String cid = value.split("cid=")[1];
             goToPath("/ua/owner/account/list?cid=" + cid);
-            res.addAll(parseTransactions());
+            res.addAll(parseTransactions(latestFillingRecord));
         });
         res.forEach(LOGGER::info);
         close();
         return res;
     }
 
-    private List<FillingRecord> parseTransactions() {
+    private List<FillingRecord> parseTransactions(FillingRecord latestFillingRecord) {
         List<FillingRecord> res = new ArrayList<>();
         $$(By.xpath("//*[@class='ui-corner-bottom ui-content']")).forEach(e -> {
-            res.add(parseFillingPopup(e.innerHtml()));
+            FillingRecord fillingRecord = parseFillingPopup(e.innerHtml());
+            if (fillingRecord.getDate().getTime() > latestFillingRecord.getDate().getTime()) {
+                res.add(fillingRecord);
+                //TODO viber notification
+            }
         });
         return res;
     }
@@ -66,32 +67,10 @@ public class UpgBo extends BaseUpgBO {
         fillingRecord.setItemAmount(Double.parseDouble(itemAmountString));
         fillingRecord.setPrice(Double.parseDouble(priceString));
 
-        fillingRecord.setAmount(NumberHelper.round(fillingRecord.getItemAmount() * fillingRecord.getPrice()));
-        fillingRecord.setCar(findOutCarIdentity(fillingRecord.getCard()));
+        fillingRecord.setAmount(NumberHelper.round100(fillingRecord.getItemAmount() * fillingRecord.getPrice()));
+        fillingRecord.setCar(FuelHelper.getInstance().findOutCarIdentity(fillingRecord.getCard()));
         fillingRecord.setStation("upg");
         return fillingRecord;
-    }
-
-    private List<FillingCard> fillingCardList = FillingCardDAO.getInstance().findAll();
-    private List<Vehicle> vehicleList = VehicleDAO.getInstance().findAll();
-
-    private String findOutCarIdentity(String card) {
-
-        FillingCard fillingCard = fillingCardList.stream().filter(f -> f.getId().equals(card)).findAny().orElse(null);
-        if (fillingCard == null) {
-            LOGGER.warn("find new card : " + card + " UPG");
-            fillingCard.setId(card);
-            fillingCard.setStation("upg");
-            FillingCardDAO.getInstance().save(fillingCard);
-        }
-
-        Vehicle vehicle = vehicleList.stream().filter(v -> v.getId().equals(fillingCard.getVehicle_id())).findAny().orElse(null);
-        if (vehicle == null) {
-            LOGGER.warn("unassigned card detected");
-            return "UNKNOWN_CAR";
-        } else {
-            return vehicle.getName() + "_" + vehicle.getPlate();
-        }
     }
 
     private Date parseDate(String dateString) {
