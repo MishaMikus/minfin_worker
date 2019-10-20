@@ -1,5 +1,7 @@
 package server.logan_park.view.filling_report.model;
 
+import java.util.Objects;
+
 import static server.logan_park.view.filling_report.model.DateLabel.SDF_DD_MM_YYYY_HH_MM_SS;
 
 public class FuelCosts {
@@ -68,5 +70,23 @@ public class FuelCosts {
 
     public void setCost(Double cost) {
         this.cost = cost;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FuelCosts fuelCosts = (FuelCosts) o;
+        return Objects.equals(car, fuelCosts.car) &&
+                Objects.equals(dateLabelStart, fuelCosts.dateLabelStart) &&
+                Objects.equals(dateLabelEnd, fuelCosts.dateLabelEnd) &&
+                Objects.equals(distance, fuelCosts.distance) &&
+                Objects.equals(gasAmount, fuelCosts.gasAmount) &&
+                Objects.equals(cost, fuelCosts.cost);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(car, dateLabelStart, dateLabelEnd, distance, gasAmount, cost);
     }
 }

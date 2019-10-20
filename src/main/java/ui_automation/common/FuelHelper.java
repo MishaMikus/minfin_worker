@@ -49,7 +49,8 @@ public class FuelHelper {
 
     public void calculateFuelCost(FillingTable fillingTable) {
         for (Map.Entry<String, FillingValue> entry : fillingTable.getFillingInfo().getCarDistributedMap().entrySet()) {
-            entry.getValue().getFuelCostsList().addAll(calculateCostList(entry.getKey(), fillingTable.getFillingRecordMap()));
+            System.out.println(entry.getKey());
+            entry.getValue().setFuelCostsList(calculateCostList(entry.getKey(), fillingTable.getFillingRecordMap()));
         }
     }
 
@@ -63,7 +64,6 @@ public class FuelHelper {
                 }
             }
         }
-        carFillingRecordList= carFillingRecordList.stream().distinct().collect(Collectors.toList());
         carFillingRecordList.sort(Comparator.comparing(FillingRecord::getDate));
         Collections.reverse(carFillingRecordList);
         for (int i = 0; i < carFillingRecordList.size() - 1; i++) {
@@ -87,6 +87,9 @@ public class FuelHelper {
                 }
             }
         }
+        fuelCostsList = fuelCostsList.stream().distinct().collect(Collectors.toList());
+        fuelCostsList.sort(Comparator.comparing(o -> o.getDateLabelStart().getDate()));
+        Collections.reverse(fuelCostsList);
         return fuelCostsList;
     }
 }

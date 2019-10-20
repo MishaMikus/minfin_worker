@@ -3,6 +3,7 @@ package orm.entity.logan_park.filling;
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 import static java.lang.StrictMath.round;
 
@@ -212,5 +213,32 @@ public class FillingRecord {
         return TIME_SDF.format(date);
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FillingRecord that = (FillingRecord) o;
+        return Objects.equals(date, that.date) &&
+                Objects.equals(card, that.card) &&
+                Objects.equals(station, that.station) &&
+                Objects.equals(amount, that.amount) &&
+                Objects.equals(discount, that.discount) &&
+                Objects.equals(amountAndDiscount, that.amountAndDiscount) &&
+                Objects.equals(sapCode, that.sapCode) &&
+                Objects.equals(shop, that.shop) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(itemAmount, that.itemAmount) &&
+                Objects.equals(price, that.price) &&
+                Objects.equals(car, that.car) &&
+                Objects.equals(week_id, that.week_id) &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(km, that.km);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(date, card, station, amount, discount, amountAndDiscount, sapCode, shop, address, itemAmount, price, car, week_id, id, km);
+    }
 
 }

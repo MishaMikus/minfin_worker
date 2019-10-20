@@ -25,7 +25,7 @@ public class UpgWorker {
         System.exit(0);
     }
     private static FillingRecord getLatestFillingRecord() {
-        FillingRecord fillingRecordLatest = FillingRecordDAO.getInstance().latest("okko");
+        FillingRecord fillingRecordLatest = FillingRecordDAO.getInstance().latest("upg");
         return fillingRecordLatest == null ? new FillingRecord(new Date(0)) : fillingRecordLatest;
     }
 }
