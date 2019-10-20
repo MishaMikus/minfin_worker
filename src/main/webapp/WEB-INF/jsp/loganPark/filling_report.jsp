@@ -9,6 +9,7 @@
 <body>
 <jsp:include page="menu.jsp"/>
 Історія<br>
+<jsp:useBean id="fillingTable" scope="request" type="server.logan_park.view.filling_report.model.FillingTable"/>
 <c:forEach items="${fillingTable.weekLinksList}" var="weekLink">
     тиджень ${weekLink.id} : <a href="/logan_park/filling_report/${weekLink.href}">${weekLink.label}</a>
     <br>
@@ -70,10 +71,20 @@
                 <td>${fillingView.shop}</td>
                 <td>${fillingView.address}</td>
                 <td>
-                    <form action="${pageContext.request.contextPath}/logan_park/save_km" method="post" enctype="application/x-www-form-urlencoded">
-                            <input class="km-input" type="text" name="km" value="${fillingView.km}" data-status="${fillingView.km!=null}">
+                    <form
+                            action="${pageContext.request.contextPath}/logan_park/save_km"
+                            method="post"
+                            enctype="application/x-www-form-urlencoded"
+                            id="form${fillingView.date.time}">
+                        <label>
+                            <input class="km-input"
+                                   type="text"
+                                   name="km"
+                                   value="${fillingView.km}"
+                                   data-status="${fillingView.km!=null}"
+                                   onchange="$('#form${fillingView.date.time}').submit()">
+                        </label>
                         <input type="hidden" name="date" value=${fillingView.date.time}>
-                        <input type="submit" value="Save">
                     </form>
                 </td>
             </tr>

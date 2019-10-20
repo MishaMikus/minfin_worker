@@ -2,12 +2,12 @@
 <div class="topnav" id="topnav">
     <a href="/logan_park/weekly_report_general">Тижневий звіт</a>
     <a href="/logan_park/weekly_report_uber">Тижневий звіт UBER</a>
-    <a href="/logan_park/weekly_report_bolt">Тижневий звіт BOLT</a>
-    <a href="/logan_park/week_report_manual_uber">Ручний тижневий звіт UBER</a>
-    <a href="/logan_park/filling_report">Паливний звіт</a>
-    <a href="/logan_park/driver">Водії</a>
-    <a href="/logan_park/one_time_sms_code">СМС</a>
-    <a href="/logan_park/uber_captcha">Капча</a>
+    <a href="${pageContext.request.contextPath}/logan_park/weekly_report_bolt">Тижневий звіт BOLT</a>
+    <a href="${pageContext.request.contextPath}/logan_park/week_report_manual_uber">Ручний тижневий звіт UBER</a>
+    <a href="${pageContext.request.contextPath}/logan_park/filling_report">Паливний звіт</a>
+    <a href="${pageContext.request.contextPath}/logan_park/driver">Водії</a>
+    <a href="${pageContext.request.contextPath}/logan_park/one_time_sms_code">СМС</a>
+    <a href="${pageContext.request.contextPath}/logan_park/uber_captcha">Капча</a>
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
