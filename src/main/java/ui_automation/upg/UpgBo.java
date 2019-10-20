@@ -41,8 +41,6 @@ public class UpgBo extends BaseUpgBO {
         List<FillingRecord> res = new ArrayList<>();
         $$(By.xpath("//*[@class='ui-corner-bottom ui-content']")).forEach(e -> {
             FillingRecord fillingRecord = parseFillingPopup(e.innerHtml());
-            System.out.println("fillingRecord.getDate() : "+fillingRecord.getDate());
-            System.out.println("latestFillingRecord.getDate() : "+latestFillingRecord.getDate());
             if (fillingRecord.getDate().getTime() > latestFillingRecord.getDate().getTime()) {
                 res.add(fillingRecord);
                 //TODO viber notification

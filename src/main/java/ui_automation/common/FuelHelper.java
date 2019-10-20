@@ -49,7 +49,6 @@ public class FuelHelper {
 
     public void calculateFuelCost(FillingTable fillingTable) {
         for (Map.Entry<String, FillingValue> entry : fillingTable.getFillingInfo().getCarDistributedMap().entrySet()) {
-            System.out.println(entry.getKey());
             entry.getValue().setFuelCostsList(calculateCostList(entry.getKey(), fillingTable.getFillingRecordMap()));
         }
     }
@@ -75,7 +74,7 @@ public class FuelHelper {
                 int km = fillingRecordEnd.getKm() - fillingRecordStart.getKm();
                 Double l = fillingRecordEnd.getItemAmount();
                 if (km != 0) {
-                    double costs = (l * 100.0 / km);
+                    double costs = (l * 100.0) / ((double)km);
                     FuelCosts fuelCosts = new FuelCosts();
                     fuelCosts.setCar(car);
                     fuelCosts.setCost(NumberHelper.round100(costs));
