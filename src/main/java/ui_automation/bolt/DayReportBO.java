@@ -1,6 +1,5 @@
 package ui_automation.bolt;
 
-import com.fasterxml.jackson.databind.util.StdDateFormat;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 

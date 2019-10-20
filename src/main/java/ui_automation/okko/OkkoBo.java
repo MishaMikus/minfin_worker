@@ -107,7 +107,7 @@ public class OkkoBo extends BaseOkkoBO {
             case "7825390000344932":
                 return "LOGAN_BC2646HX";
             case "7825390000344933":
-                return "LODAN_RED_BC5278IA";
+                return "LOGAN_RED_BC5278IA";
             case "7825390000344934":
                 return "LANCER_BC7356EE";
             case "7825390000344935":

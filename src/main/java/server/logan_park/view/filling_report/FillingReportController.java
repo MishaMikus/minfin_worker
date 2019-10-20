@@ -38,7 +38,8 @@ public class FillingReportController extends BaseController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/logan_park/save_km")
     public ModelAndView postKm(@Valid KmRequest kmRequest) {
-        System.out.println(kmRequest);
+        LOGGER.info("TRY to add "+kmRequest);
+        new FillingHelper().addKm(kmRequest);
         return new ModelAndView("loganPark/filling_report");
     }
 
