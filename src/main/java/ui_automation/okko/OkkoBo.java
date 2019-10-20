@@ -66,6 +66,7 @@ public class OkkoBo extends BaseOkkoBO {
         fillingRecord.setPrice(Double.parseDouble($(By.xpath("//td[contains(@id,'transactionDetail:transGoods:')][3]")).text()));
         fillingRecord.setItemAmount(Double.parseDouble($(By.xpath("//td[contains(@id,'transactionDetail:transGoods:')][2]")).text()));
         fillingRecord.setCar(FuelHelper.getInstance().findOutCarIdentity(fillingRecord.getCard()));
+        fillingRecord.setStation("okko");
         driver().getWebDriver().navigate().back();
         return fillingRecord;
     }
