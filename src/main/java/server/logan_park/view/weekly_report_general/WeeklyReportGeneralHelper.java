@@ -1,8 +1,6 @@
 package server.logan_park.view.weekly_report_general;
 
 import org.apache.log4j.Logger;
-import orm.entity.logan_park.week_range.WeekRange;
-import orm.entity.logan_park.week_range.WeekRangeDAO;
 import server.logan_park.helper.AutomaticallyWeeklyReportHelper;
 import server.logan_park.helper.model.PaymentDriverRecord;
 import server.logan_park.helper.model.PaymentOwnerRecord;
@@ -10,7 +8,6 @@ import server.logan_park.view.weekly_report_bolt.WeeklyReportBoltHelper;
 import server.logan_park.view.weekly_report_bolt.model.WeeklyReportBolt;
 import server.logan_park.view.weekly_report_general.model.DriverOwnerStat;
 import server.logan_park.view.weekly_report_general.model.DriverStatGeneral;
-import server.logan_park.view.weekly_report_general.model.WeekLink;
 import server.logan_park.view.weekly_report_general.model.WeeklyReportGeneral;
 
 import java.util.Comparator;

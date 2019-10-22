@@ -111,8 +111,12 @@ public abstract class GenericAbstractDAO<E> {
     }
 
     public void closeSession() {
-        getSession().close();
-        HibernateUtil.session = null;
+        try {
+            getSession().close();
+            HibernateUtil.session = null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void truncateTable() {
@@ -307,7 +311,11 @@ public abstract class GenericAbstractDAO<E> {
     }
 
     private void commitTransaction() {
-        getSession().getTransaction().commit();
+        try {
+            getSession().getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void beginTransaction() {

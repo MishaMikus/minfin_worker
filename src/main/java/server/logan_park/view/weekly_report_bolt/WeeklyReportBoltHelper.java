@@ -81,7 +81,6 @@ public class WeeklyReportBoltHelper {
         //add Company summary
         weeklyReportBolt.setGeneralAmount(generalAmount);
         weeklyReportBolt.setGeneralProfit(generalProfit);
-        LOGGER.info(weeklyReportBolt);
         return weeklyReportBolt;
     }
 
