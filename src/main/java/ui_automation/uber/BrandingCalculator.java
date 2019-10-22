@@ -1,4 +1,4 @@
-package server.logan_park.helper;
+package ui_automation.uber;
 
 import org.apache.log4j.Logger;
 import server.logan_park.helper.model.VehiclePerformance;
@@ -7,20 +7,26 @@ import util.IOUtils;
 import java.io.File;
 import java.util.*;
 
+import static ui_automation.uber.bo.UberBO.DOWNLOAD_FOLDER;
+import static util.IOUtils.FS;
+
 public class BrandingCalculator {
 
     private final static Logger LOGGER = Logger.getLogger(BrandingCalculator.class);
 
-//    public static void main(String[] args) {
-//        calculate();
-//    }
+    public static void main(String[] args) {
+        calculate();
+    }
 
     private static void calculate() {
         List<VehiclePerformance> vehiclePerformanceList = new ArrayList<>();
         int i = 1;
-        while (new File("F:/vehicle_performance" + i + ".csv").exists()) {
-            File file = new File("F:/vehicle_performance" + i + ".csv");
-            vehiclePerformanceList.addAll(parseFile(file));
+        String path=DOWNLOAD_FOLDER+FS+"vehicle_performance" + i + ".csv";
+        while (new File(path).exists()) {
+            path=DOWNLOAD_FOLDER+FS+"vehicle_performance" + i + ".csv";
+            File file = new File(path);
+            try{
+            vehiclePerformanceList.addAll(parseFile(file));}catch (Exception e){}
             i++;
             LOGGER.info("parse : " + file.getAbsolutePath());
         }

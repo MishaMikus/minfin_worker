@@ -74,7 +74,7 @@ public class FuelHelper {
                 int km = fillingRecordEnd.getKm() - fillingRecordStart.getKm();
                 Double l = fillingRecordEnd.getItemAmount();
                 if (km != 0) {
-                    double costs = (l * 100.0 / km);
+                    double costs = (l * 100.0) / ((double)km);
                     FuelCosts fuelCosts = new FuelCosts();
                     fuelCosts.setCar(car);
                     fuelCosts.setCost(NumberHelper.round100(costs));
