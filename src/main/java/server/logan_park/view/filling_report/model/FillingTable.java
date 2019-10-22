@@ -6,9 +6,27 @@ import server.logan_park.view.weekly_report_general.model.WeekLink;
 import java.util.*;
 
 public class FillingTable {
+    private Double okkoLeftover;
+    private Double upgLeftover;
     private List<WeekLink> weekLinksList = new ArrayList<>();
     private Map<DateLabel, List<FillingRecord>> fillingRecordMap = new TreeMap<>();
     private FillingInfo fillingInfo = new FillingInfo();
+
+    public Double getOkkoLeftover() {
+        return okkoLeftover;
+    }
+
+    public void setOkkoLeftover(Double okkoLeftover) {
+        this.okkoLeftover = okkoLeftover;
+    }
+
+    public Double getUpgLeftover() {
+        return upgLeftover;
+    }
+
+    public void setUpgLeftover(Double upgLeftover) {
+        this.upgLeftover = upgLeftover;
+    }
 
     public List<WeekLink> getWeekLinksList() {
         return weekLinksList;

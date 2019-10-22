@@ -2,6 +2,8 @@ package ui_automation.okko;
 
 import orm.entity.logan_park.filling.FillingRecord;
 import orm.entity.logan_park.filling.FillingRecordDAO;
+import orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftoverDAO;
+import ui_automation.upg.UpgBo;
 import util.ApplicationPropertyUtil;
 
 import java.util.Date;
@@ -20,7 +22,9 @@ public class OkkoWorker {
         String pass = ApplicationPropertyUtil.applicationPropertyGet("okko.pass");
         new OkkoLoginBo().login(login, pass);
         FillingRecord latestDBRecord = getLatestFillingRecord();
-        List<FillingRecord> allRecords = new OkkoBo().getAllLatestFillings(latestDBRecord);
+        OkkoBo okkoBo = new OkkoBo();
+        FuelAccountLeftoverDAO.getInstance().save(okkoBo.findLeftover());
+        List<FillingRecord> allRecords = okkoBo.getAllLatestFillings(latestDBRecord);
         FillingRecordDAO.getInstance().saveBatch(allRecords);
         close();
         System.exit(0);

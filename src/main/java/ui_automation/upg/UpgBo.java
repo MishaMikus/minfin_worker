@@ -2,6 +2,7 @@ package ui_automation.upg;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover;
 import orm.entity.logan_park.week_range.WeekRangeDAO;
 import orm.entity.logan_park.filling.FillingRecord;
 import ui_automation.common.FuelHelper;
@@ -84,5 +85,14 @@ public class UpgBo extends BaseUpgBO {
 
     private String bound(String content, String from, String to) {
         return content.split(from)[1].split(to)[0];
+    }
+
+    public FuelAccountLeftover findLeftover() {
+        FuelAccountLeftover fuelAccountLeftover = new FuelAccountLeftover();
+        fuelAccountLeftover.setDate(new Date());
+        fuelAccountLeftover.setStation("upg");
+        goToPath("/ua/owner");
+        fuelAccountLeftover.setValue(Double.parseDouble($(By.xpath("//*[@class='v-middle'][text()='БАЛАНС']/../../../../div[@class='grid_3'][4]")).text()));
+        return fuelAccountLeftover;
     }
 }

@@ -2,6 +2,7 @@ package ui_automation.okko;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover;
 import orm.entity.logan_park.week_range.WeekRangeDAO;
 import orm.entity.logan_park.filling.FillingRecord;
 import ui_automation.common.FuelHelper;
@@ -10,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -136,5 +138,13 @@ public class OkkoBo extends BaseOkkoBO {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public FuelAccountLeftover findLeftover() {
+        FuelAccountLeftover fuelAccountLeftover = new FuelAccountLeftover();
+        fuelAccountLeftover.setDate(new Date());
+        fuelAccountLeftover.setStation("okko");
+        fuelAccountLeftover.setValue(Double.parseDouble($(By.xpath("//tr[@class='accounts']/td[4]")).text().split(" ")[0]));
+        return fuelAccountLeftover;
     }
 }

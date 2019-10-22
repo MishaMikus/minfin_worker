@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
 
 public class FuelHelper {
     private final static Logger LOGGER = Logger.getLogger(FuelHelper.class);
-    private List<FillingCard> fillingCardList = FillingCardDAO.getInstance().findAll();
-    private List<Vehicle> vehicleList = VehicleDAO.getInstance().findAll();
+    private final static List<FillingCard> fillingCardList = FillingCardDAO.getInstance().findAll();
+    private final static List<Vehicle> vehicleList = VehicleDAO.getInstance().findAll();
 
     private static final FuelHelper INSTANCE = new FuelHelper();
 
@@ -47,15 +47,35 @@ public class FuelHelper {
         }
     }
 
-    public void calculateFuelCost(FillingTable fillingTable) {
+    public void calculateFuelCost(FillingTable fillingTable, List<FillingRecord> previousWeekFillingRecordList) {
+        LOGGER.info("Calculate fuel cost");
         for (Map.Entry<String, FillingValue> entry : fillingTable.getFillingInfo().getCarDistributedMap().entrySet()) {
-            entry.getValue().setFuelCostsList(calculateCostList(entry.getKey(), fillingTable.getFillingRecordMap()));
+            entry.getValue().setFuelCostsList(calculateCostList(entry.getKey(),
+                    fillingTable.getFillingRecordMap(),
+                    findAllLatestFillingForPreviousWeek(previousWeekFillingRecordList, entry.getKey())));
         }
+
     }
 
-    private List<FuelCosts> calculateCostList(String car, Map<DateLabel, List<FillingRecord>> fillingRecordMap) {
+    private List<FillingRecord> findAllLatestFillingForPreviousWeek(List<FillingRecord> previousWeekFillingRecordList, String car) {
+        Map<String, FillingRecord> result = new HashMap<>();
+        previousWeekFillingRecordList.forEach(f -> {
+            if (f.getCar().equals(car)) {
+                result.putIfAbsent(f.getCard(), f);
+                FillingRecord old = result.get(f.getCard());
+                if (old.getDate().getTime() < f.getDate().getTime()) {
+                    result.put(f.getCard(), f);
+                }
+            }
+        });
+        System.out.println(result.values());
+        return new ArrayList<>(result.values());
+    }
+
+
+    private List<FuelCosts> calculateCostList(String car, Map<DateLabel, List<FillingRecord>> fillingRecordMap, List<FillingRecord> latestFillingList) {
         List<FuelCosts> fuelCostsList = new ArrayList<>();
-        List<FillingRecord> carFillingRecordList = new ArrayList<>();
+        List<FillingRecord> carFillingRecordList = new ArrayList<>(latestFillingList);
         for (Map.Entry<DateLabel, List<FillingRecord>> entry : fillingRecordMap.entrySet()) {
             for (FillingRecord fillingRecord : entry.getValue()) {
                 if (fillingRecord.getCar().equals(car)) {
@@ -63,6 +83,7 @@ public class FuelHelper {
                 }
             }
         }
+
         carFillingRecordList.sort(Comparator.comparing(FillingRecord::getDate));
         Collections.reverse(carFillingRecordList);
         for (int i = 0; i < carFillingRecordList.size() - 1; i++) {
@@ -74,7 +95,7 @@ public class FuelHelper {
                 int km = fillingRecordEnd.getKm() - fillingRecordStart.getKm();
                 Double l = fillingRecordEnd.getItemAmount();
                 if (km != 0) {
-                    double costs = (l * 100.0) / ((double)km);
+                    double costs = (l * 100.0) / ((double) km);
                     FuelCosts fuelCosts = new FuelCosts();
                     fuelCosts.setCar(car);
                     fuelCosts.setCost(NumberHelper.round100(costs));

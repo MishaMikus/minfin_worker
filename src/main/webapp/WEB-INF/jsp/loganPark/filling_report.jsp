@@ -8,15 +8,26 @@
 </head>
 <body>
 <jsp:include page="menu.jsp"/>
-Історія<br>
 <jsp:useBean id="fillingTable" scope="request" type="server.logan_park.view.filling_report.model.FillingTable"/>
+Історія<br>
 <c:forEach items="${fillingTable.weekLinksList}" var="weekLink">
     тиджень ${weekLink.id} : <a href="/logan_park/filling_report/${weekLink.href}">${weekLink.label}</a>
     <br>
 </c:forEach>
-<br>
-Тижнева статистика
-<br>
+
+Залишки<br>
+<table class="table-all-borders">
+    <tbody>
+    <tr>
+        <th>OKKO</th>
+        <th>${fillingTable.okkoLeftover} грн</th>
+        <th>UPG</th>
+        <th>${fillingTable.upgLeftover} грн</th>
+    </tr>
+    </tbody>
+</table>
+
+Тижнева статистика<br>
 <table class="table-all-borders">
     <tbody>
     <tr>

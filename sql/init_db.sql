@@ -306,3 +306,12 @@ CREATE TABLE `minfin`.`uber_filling_card`
     `vehicle_id` INT         NULL,
     PRIMARY KEY (`id`, `station`)
 );
+
+DROP TABLE if exists `minfin`.`fuel_account_leftover`;
+CREATE TABLE `minfin`.`fuel_account_leftover`
+(
+    `date`    DATETIME    NOT NULL,
+    `station` VARCHAR(45) NOT NULL,
+    `value`   DOUBLE      NOT NULL,
+    PRIMARY KEY (`date`)
+);
