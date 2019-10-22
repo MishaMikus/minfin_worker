@@ -258,8 +258,9 @@ public abstract class GenericAbstractDAO<E> {
         closeSession();
         return res.get(0);
     }
+
     public E findLatest(String fieldName) {
-        return (findLatestWhere(fieldName,new HashMap<>()));
+        return (findLatestWhere(fieldName, new HashMap<>()));
     }
 
     public List<E> findAllInTimeRange(String timeField, Date startDate, Date endDate) {
@@ -310,7 +311,24 @@ public abstract class GenericAbstractDAO<E> {
     }
 
     private void beginTransaction() {
-        getSession().beginTransaction();
+        long start = new Date().getTime();
+        long ping = 1000L;
+        long timeout = 10000L;
+        while ((new Date().getTime() - start < timeout)) {
+            try {
+                getSession().beginTransaction();
+                return;
+            } catch (Exception e) {
+                commitTransaction();
+                closeSession();
+            }
+            try {
+                Thread.sleep(ping);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            LOGGER.info("WAIT FOR success transaction");
+        }
     }
 
     private BiFunction<CriteriaBuilder, Root<E>, Predicate> whereEqual(String name, Object value) {

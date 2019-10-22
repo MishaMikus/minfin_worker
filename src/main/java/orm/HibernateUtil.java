@@ -22,45 +22,10 @@ public class HibernateUtil {
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
-                Properties prop = new Properties();
-                prop.setProperty(Environment.DRIVER, com.mysql.cj.jdbc.Driver.class.getCanonicalName());
-                prop.setProperty(Environment.URL, "jdbc:mysql://" +
-                        applicationProperty().get("sql.host") + "" +
-                        ":3306" +
-                        "/minfin?" +
-                        "useSSL=false" +
-                        "&characterEncoding=UTF-8" +
-                        "&useUnicode=true" +
-                        "&useJDBCCompliantTimezoneShift=true" +
-                        "&useLegacyDatetimeCode=false"+
-                        "&serverTimezone=Europe/Kiev");
-                prop.setProperty(Environment.USER, applicationProperty().get("sql.user").toString());
-                prop.setProperty(Environment.PASS, applicationProperty().get("sql.pass").toString());
-                prop.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQL5Dialect.class.getCanonicalName());
-                prop.setProperty(Environment.USE_NEW_ID_GENERATOR_MAPPINGS, String.valueOf(false));
-                prop.setProperty(Environment.STATEMENT_BATCH_SIZE, STATEMENT_BATCH_SIZE + "");
-
-                prop.setProperty("hibernate.connection.charSet", "UTF-8");
-                prop.setProperty("hibernate.connection.characterEncoding", "UTF-8");
-                prop.setProperty("hibernate.connection.useUnicode", "true");
-
-                prop.setProperty(Environment.POOL_SIZE, 1000 + "");
-
-//                prop.setProperty(Environment.C3P0_MIN_SIZE, 5 + "");
-//                prop.setProperty(Environment.C3P0_MAX_SIZE, 500 + "");
-//                prop.setProperty(Environment.C3P0_TIMEOUT, 1000+"" );
-//                prop.setProperty(Environment.C3P0_MAX_STATEMENTS, 100 + "");
-//                prop.setProperty(Environment.C3P0_IDLE_TEST_PERIOD, 3000 + "");
-
-                // prop.setProperty(Environment.SHOW_SQL, String.valueOf(true));
-                // prop.setProperty(Environment.FORMAT_SQL, String.valueOf(true));
-
-                prop.setProperty(Environment.GLOBALLY_QUOTED_IDENTIFIERS, String.valueOf(true));
-
                 ClassPathScanningCandidateComponentProvider scanner = new ClassPathScanningCandidateComponentProvider(false);
                 scanner.addIncludeFilter(new AnnotationTypeFilter(Entity.class));
                 scanner.addIncludeFilter(new AnnotationTypeFilter(Embeddable.class));
-                Configuration configuration = new Configuration().addProperties(prop);
+                Configuration configuration = new Configuration().addProperties(initProperty());
                 for (BeanDefinition bd : scanner.findCandidateComponents("orm.entity")) {
                     try {
                         configuration.addAnnotatedClass(Class.forName(bd.getBeanClassName()));
@@ -74,6 +39,36 @@ public class HibernateUtil {
             }
         }
         return sessionFactory;
+    }
+
+    private static Properties initProperty() {
+        Properties prop = new Properties();
+        prop.setProperty(Environment.DRIVER, com.mysql.cj.jdbc.Driver.class.getCanonicalName());
+        prop.setProperty(Environment.URL, "jdbc:mysql://" +
+                applicationProperty().get("sql.host") + "" +
+                ":3306" +
+                "/minfin?" +
+                "useSSL=false" +
+                "&characterEncoding=UTF-8" +
+                "&useUnicode=true" +
+                "&charSet=UTF-8" +
+                "&useJDBCCompliantTimezoneShift=true" +
+                "&useLegacyDatetimeCode=false" +
+                "&serverTimezone=Europe/Kiev");
+        prop.setProperty(Environment.USER, applicationProperty().get("sql.user").toString());
+        prop.setProperty(Environment.PASS, applicationProperty().get("sql.pass").toString());
+        prop.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQL5Dialect.class.getCanonicalName());
+        prop.setProperty(Environment.USE_NEW_ID_GENERATOR_MAPPINGS, String.valueOf(false));
+        prop.setProperty(Environment.STATEMENT_BATCH_SIZE, STATEMENT_BATCH_SIZE + "");
+
+//                prop.setProperty("hibernate.connection.charSet", "UTF-8");
+//                prop.setProperty("hibernate.connection.characterEncoding", "UTF-8");
+//                prop.setProperty("hibernate.connection.useUnicode", "true");
+
+        prop.setProperty(Environment.POOL_SIZE, 1000 + "");
+
+        prop.setProperty(Environment.GLOBALLY_QUOTED_IDENTIFIERS, String.valueOf(true));
+        return prop;
     }
 
     public static Session getSession() {

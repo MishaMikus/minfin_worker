@@ -49,7 +49,6 @@ public class FuelHelper {
 
     public void calculateFuelCost(FillingTable fillingTable) {
         for (Map.Entry<String, FillingValue> entry : fillingTable.getFillingInfo().getCarDistributedMap().entrySet()) {
-            System.out.println(entry.getKey());
             entry.getValue().setFuelCostsList(calculateCostList(entry.getKey(), fillingTable.getFillingRecordMap()));
         }
     }
