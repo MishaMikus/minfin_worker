@@ -19,6 +19,7 @@ import java.util.*;
 
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.WebDriverRunner.driver;
 import static util.IOUtils.FS;
 import static util.SystemUtil.getMyIP;
@@ -52,8 +53,10 @@ public class UberLoginBO extends BaseBO {
     }
 
     private void checkNotRobot() {
-        try{
-        if ($(By.xpath("//*[text()='Enter your password']")).text().equals("Enter your password")) return;}catch (Exception e){}
+        if ($$(By.xpath("//*[text()='Enter your password']")).size()>0)
+            if($(By.xpath("//*[text()='Enter your password']"))
+                .text().equals("Enter your password")) {return;}
+
         int i = 0;
         WebDriver wd = switchToFrame(waitForRecaptchaFrameAppear("role", "presentation"));
 
