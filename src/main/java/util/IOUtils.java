@@ -64,6 +64,7 @@ public class IOUtils {
         if (offset < bytes.length) {
             LOGGER.warn("Could not completely read file " + file.getName());
         }
+        LOGGER.info("file size : "+bytes.length +" b");
         return bytes;
     }
 

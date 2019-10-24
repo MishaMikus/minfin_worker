@@ -134,6 +134,7 @@ public class UberLoginBO extends BaseBO {
             LOGGER.info("check if captcha solved in DB");
             UberCaptcha uberCaptcha = UberCaptchaDAO.getInstance().findById(id);
             if (uberCaptcha.getAnswer() != null) {
+                LOGGER.info("captcha solved : "+uberCaptcha.getAnswer());
                 return uberCaptcha.getAnswer();
             }
         }

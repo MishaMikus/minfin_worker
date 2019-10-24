@@ -231,7 +231,7 @@ CREATE TABLE `minfin`.`uber_captcha`
     `created`  DATETIME     NOT NULL,
     `fileId`   VARCHAR(100) NULL,
     `answer`   VARCHAR(32)  NULL,
-    `image`   BLOB  NULL,
+    `image`   LONGBLOB  NULL,
     PRIMARY KEY (`id`)
 );
 

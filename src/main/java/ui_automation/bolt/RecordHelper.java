@@ -22,9 +22,11 @@ public class RecordHelper {
         int lastRowIndex = rowArrayList.indexOf(",,,,,,,,,,,,,");
         lastRowIndex = lastRowIndex == -1 ? rowArrayList.size() - 1 : lastRowIndex;
 
-        rowArrayList = rowArrayList.subList(2, lastRowIndex);
+        List<String>  dayRowArrayList = rowArrayList.subList(2, lastRowIndex);
+        List<String>  tripRowArrayList = rowArrayList.subList(lastRowIndex,rowArrayList.size());
+        tripRowArrayList.forEach(System.out::println);
         List<BoltPaymentRecordDay> boltPaymentRecordDayList = new ArrayList<>();
-        for (String row : rowArrayList) {
+        for (String row : dayRowArrayList) {
             System.out.println("parse ROW : " + row);
             String[] cellArray = row.replaceAll("\"", "").split(",");
             //"Водій","Телефон водія","Період","Загальний тариф","Плата за скасування","Збір за бронювання (платіж)","Збір за бронювання (відрахування)","Додаткові збори","Комісія Bolt","Готівкові поїздки (отримано водієм)","Компенсована сума знижки Bolt за готівкові поїздки ","Водійський бонус","Компенсації","Тижневий баланс"
@@ -65,7 +67,8 @@ public class RecordHelper {
     public void recordDayReportToDB(Map<String, File> downloadAllCSV) {
         List<BoltPaymentRecordDay> res = new ArrayList<>();
         for (Map.Entry<String, File> entry : downloadAllCSV.entrySet()) {
-            res.addAll(recordDayReportToDB(entry.getKey(), IOUtils.readTextFromFile(entry.getValue())));
+            res.addAll(recordDayReportToDB(entry.getKey(), Objects.requireNonNull(IOUtils.readTextFromFile(entry.getValue()))));
+            entry.getValue().deleteOnExit();
         }
         BoltPaymentRecordDayDAO.getInstance().saveBatch(res);
     }
