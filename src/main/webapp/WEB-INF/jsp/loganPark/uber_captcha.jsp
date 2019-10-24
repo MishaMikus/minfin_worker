@@ -8,6 +8,6 @@
 </head>
 <body>
 <jsp:include page="menu.jsp" />
-<img src="uber_captcha/img/${id}" alt="captcha">
+<img src="/logan_park/uber_captcha/img/${id}" alt="captcha">
 </body>
 </html>
