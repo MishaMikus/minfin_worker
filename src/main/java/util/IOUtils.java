@@ -1,19 +1,71 @@
 package util;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apache.log4j.Logger;
+import ui_automation.uber.UberWorkerLoadHistory;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class IOUtils {
     public static final String FS = File.separator;
+    private static final Logger LOGGER = Logger.getLogger(UberWorkerLoadHistory.class);
+
+    public static byte[] getBytesFromFile(File file) {
+        // Get the size of the file
+        long length = file.length();
+
+        // You cannot create an array using a long type.
+        // It needs to be an int type.
+        // Before converting to an int type, check
+        // to ensure that file is not larger than Integer.MAX_VALUE.
+        if (length > Integer.MAX_VALUE) {
+            // File is too large
+            LOGGER.warn("File is too large!");
+        }
+
+        // Create the byte array to hold the data
+        byte[] bytes = new byte[(int) length];
+
+        // Read in the bytes
+        int offset = 0;
+        int numRead = 0;
+
+        InputStream is = null;
+        try {
+            is = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            while (true) {
+                try {
+                    if (!(offset < bytes.length
+                            && (numRead = Objects.requireNonNull(is).read(bytes, offset, bytes.length - offset)) >= 0))
+                        break;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                offset += numRead;
+            }
+        } finally {
+            try {
+                Objects.requireNonNull(is).close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // Ensure all the bytes have been read in
+        if (offset < bytes.length) {
+            LOGGER.warn("Could not completely read file " + file.getName());
+        }
+        return bytes;
+    }
 
     public static String readTextFromResources(String fileName) {
         ClassLoader classLoader = IOUtils.class.getClassLoader();
@@ -25,7 +77,7 @@ public class IOUtils {
         try {
             return new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
         } catch (Exception e) {
-            System.out.println("can't read file '" + file.getAbsolutePath() + "'");
+            LOGGER.warn("can't read file '" + file.getAbsolutePath() + "'");
             e.printStackTrace();
         }
         return null;
@@ -35,7 +87,7 @@ public class IOUtils {
         try {
             return Files.readAllBytes(file.toPath());
         } catch (Exception e) {
-            System.out.println("can't read file '" + file.getAbsolutePath() + "'");
+            LOGGER.warn("can't read file '" + file.getAbsolutePath() + "'");
             e.printStackTrace();
         }
         return null;
@@ -50,19 +102,19 @@ public class IOUtils {
                 propertiesMap.put(propertyName, properties.get(propertyName).toString());
             }
         } else {
-            System.out.println("property file '" + file.getAbsolutePath() + "' not found");
+            LOGGER.warn("property file '" + file.getAbsolutePath() + "' not found");
         }
         return propertiesMap;
     }
 
     public static void copyDir(File srcFolder, File destFolder) throws IOException {
         if (!srcFolder.exists()) {
-            System.out.println("Directory '" + srcFolder.getAbsolutePath() + "' does not exist.");
+            LOGGER.warn("Directory '" + srcFolder.getAbsolutePath() + "' does not exist.");
             return;
         } else {
             copyFolder(srcFolder, destFolder);
         }
-        System.out.println("COPY '" + srcFolder.getAbsolutePath() + "' to '" + destFolder.getAbsolutePath() + "' DONE");
+        LOGGER.info("COPY '" + srcFolder.getAbsolutePath() + "' to '" + destFolder.getAbsolutePath() + "' DONE");
     }
 
     private static void copyFolder(File src, File dest) throws IOException {

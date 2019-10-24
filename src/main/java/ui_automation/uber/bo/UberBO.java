@@ -2,6 +2,8 @@ package ui_automation.uber.bo;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import orm.entity.logan_park.week_range.WeekRangeDAO;
+import orm.entity.uber.payment_record_row.UberPaymentRecordRowDAO;
 import server.logan_park.service.PaymentRecorder;
 import ui_automation.BaseBO;
 import util.IOUtils;
@@ -67,9 +69,8 @@ public class UberBO extends BaseBO {
     }
 
 
-
     private void clickPreviousWeekButton() {
-        By by=By.xpath("//img[contains(@class,'earnings-left-arrow')][@data-reactid]");
+        By by = By.xpath("//img[contains(@class,'earnings-left-arrow')][@data-reactid]");
         if ($(by).isDisplayed()) {
             $(by).click();
             LOGGER.info("CLICK PREVIOUS WEEK");
@@ -94,8 +95,8 @@ public class UberBO extends BaseBO {
     }
 
     public void recordPaymentWithOneWeekHistory() {
-        Date today=new Date();
-        Date todayLastWeek=new Date(today.getTime()-7*24*60*60*1000L);
+        Date today = new Date();
+        Date todayLastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000L);
         deletePaymentFile();
         goToPath("/p3/fleet-manager/payments");
         waitingForDownloadButtonAppear();
@@ -103,12 +104,18 @@ public class UberBO extends BaseBO {
         waitingForFileDownload();
         recordPaymentFile(today);
         deletePaymentFile();
+        if (needPreviousWeekData()) {
+            clickPreviousWeekButton();
+            waitingForDownloadButtonAppear();
+            clickDownload();
+            waitingForFileDownload();
+            recordPaymentFile(todayLastWeek);
+            deletePaymentFile();
+        }
+    }
 
-        clickPreviousWeekButton();
-        waitingForDownloadButtonAppear();
-        clickDownload();
-        waitingForFileDownload();
-        recordPaymentFile(todayLastWeek);
-        deletePaymentFile();
+    private boolean needPreviousWeekData() {
+        return !UberPaymentRecordRowDAO.getInstance().findLatest().getWeek_id()
+                .equals(WeekRangeDAO.getInstance().findOrCreateWeek(new Date()).getId());
     }
 }

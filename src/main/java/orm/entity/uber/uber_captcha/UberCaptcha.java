@@ -1,6 +1,7 @@
 package orm.entity.uber.uber_captcha;
 
 import javax.persistence.*;
+import java.util.Base64;
 import java.util.Date;
 
 @Entity
@@ -21,7 +22,7 @@ public class UberCaptcha {
     private String answer;
 
     @Column
-    private String realPath;
+    private byte[] image;
 
     @Override
     public String toString() {
@@ -30,16 +31,15 @@ public class UberCaptcha {
                 ", created=" + created +
                 ", fileId='" + fileId + '\'' +
                 ", answer='" + answer + '\'' +
-                ", realPath='" + realPath + '\'' +
                 '}';
     }
 
-    public String getRealPath() {
-        return realPath;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setRealPath(String realPath) {
-        this.realPath = realPath;
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public Integer getId() {
@@ -72,5 +72,9 @@ public class UberCaptcha {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public String captchaAsBase64() {
+        return new String(Base64.getEncoder().encode(image));
     }
 }
