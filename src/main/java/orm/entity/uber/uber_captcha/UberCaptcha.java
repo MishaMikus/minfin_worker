@@ -16,6 +16,9 @@ public class UberCaptcha {
     private Date created;
 
     @Column
+    private Integer size;
+
+    @Column
     private String fileId;
 
     @Column
@@ -29,9 +32,18 @@ public class UberCaptcha {
         return "UberCaptcha{" +
                 "id=" + id +
                 ", created=" + created +
+                ", size=" + size +
                 ", fileId='" + fileId + '\'' +
                 ", answer='" + answer + '\'' +
                 '}';
+    }
+
+    public Integer getSize() {
+        return size;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
     }
 
     public byte[] getImage() {

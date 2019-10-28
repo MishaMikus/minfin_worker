@@ -21,22 +21,15 @@ public class BaseBO {
         browser = "chrome";
         savePageSource = true;
 
-//        Configuration.fileDownload = PROXY;
-//        Configuration.proxyEnabled = true;
-
-
         if (getBoolean("remote", false)) {
             remote = " http://localhost:4444/wd/hub";
-            headless = getBoolean("headless", true);
-
             LOGGER.info("remote : " + remote);
-            LOGGER.info("headless : " + headless);
         }
+        headless = getBoolean("headless", true);
     }
 
 
     protected void goToPath(String path) {
-        //GOTO PAGE : https://minfin.com.ua/login
         LOGGER.info("GOTO PAGE : " + baseUrl + path);
         open(path);
     }
@@ -116,6 +109,6 @@ public class BaseBO {
 
     protected void clickByXpath(String xpath) {
         $(By.xpath(xpath)).click();
-        LOGGER.info("clickByXpath "+xpath);
+        LOGGER.info("clickByXpath " + xpath);
     }
 }

@@ -21,8 +21,8 @@ import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.WebDriverRunner.driver;
-import static util.IOUtils.FS;
-import static util.IOUtils.getBytesFromFile;
+import static com.codeborne.selenide.WebDriverRunner.source;
+import static util.IOUtils.*;
 import static util.SystemUtil.getMyIP;
 import static util.SystemUtil.getMyPort;
 
@@ -55,51 +55,84 @@ public class UberLoginBO extends BaseBO {
 
     private void checkNotRobot() {
         if (!waitForPasswordInputAppear()) {
-
-            int i = 0;
-            WebDriver wd = switchToFrame(waitForRecaptchaFrameAppear("role", "presentation"));
-
-            new WebDriverWait(wd, 10, 500)
-                    .until(w -> w.findElement(By.id("recaptcha-anchor")).isDisplayed());
-
-            wd.findElement(By.id("recaptcha-anchor")).click();
-            LOGGER.info("click I IM NOT A ROBOT");
-            wd = switchToFrame(waitForRecaptchaFrameAppear("style", "width: 400px; height: 580px;"));
-            new WebDriverWait(wd, 10, 500)
-                    .until(w -> w.findElement(By.tagName("table")).getText().isEmpty());
-
-            LOGGER.info("BEGIN SOLVE CAPTCHA");
-            for (WebElement we : wd.findElement(By.tagName("table")).findElements(By.tagName("td"))) {
-                int h = we.getRect().height;
-                int w = we.getRect().width;
-                int x = we.getRect().x;
-                int y = we.getRect().y;
-                LOGGER.info("cell : " + i++ + " : " + "[h:" + h + "][w:" + w + "][x:" + x + "][y:" + y + "]");
-            }
-
-
-            //upload screen to some file repo (localhost)
-            String fileId = UUID.randomUUID().toString();
-            File screenshotFile = new File("captcha" + FS + fileId + ".jpg");
-            takeSnapShot(wd, screenshotFile.getAbsolutePath());
-            LOGGER.info("WAIT OPERATOR");
-
-            //save image file name to db record
-            UberCaptcha uberCaptcha = new UberCaptcha();
-            uberCaptcha.setCreated(new Date());
-            uberCaptcha.setFileId(fileId);
-            uberCaptcha.setImage(getBytesFromFile(screenshotFile));
-            uberCaptcha.setId((Integer) UberCaptchaDAO.getInstance().save(uberCaptcha));
-
-            //send viber message to operator with solving url
-            ViberUberRestClient.getInstance().sendCaptcha("http://" + getMyIP() + getMyPort() + "/uber_captcha/" + uberCaptcha.getId());
-
-            //wait for captcha solving record solved
+            clickIAmNotARobot();
+            WebDriver wd = findCaptcha();
+            int captchaSize = findCaptchaPlateSize(wd);
+            File screenshotFile = saveScreenShot(wd);
+            UberCaptcha uberCaptcha = saveCaptchaToDB(captchaSize, screenshotFile);
+            pushViberMessage(uberCaptcha);
             String solve = waitForCaptchaSolved(uberCaptcha.getId());
-
+            solveCaptcha(wd, solve);
             //click solving
             //TODO
         }
+    }
+
+    private void solveCaptcha(WebDriver wd, String solve) {
+        for (String plateNumber : solve.split("_")) {
+            wd.findElement(By.tagName("table")).findElements(By.tagName("td"))
+                    .get(Integer.parseInt(plateNumber)).click();
+            LOGGER.info("click " + plateNumber + " plate");
+        }
+        try {
+            Thread.sleep(10 * 1000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        saveScreenShot(wd);
+    }
+
+    private void pushViberMessage(UberCaptcha uberCaptcha) {
+        ViberUberRestClient.getInstance().sendCaptcha("http://" + getMyIP() + getMyPort() + "/logan_park/uber_captcha/" + uberCaptcha.getId());
+    }
+
+    private UberCaptcha saveCaptchaToDB(int captchaSize, File screenshotFile) {
+        UberCaptcha uberCaptcha = new UberCaptcha();
+        uberCaptcha.setCreated(new Date());
+        uberCaptcha.setSize(captchaSize);
+        uberCaptcha.setFileId(screenshotFile.getName().split("\\.")[0]);
+        uberCaptcha.setImage(getBytesFromFile(screenshotFile));
+        uberCaptcha.setId((Integer) UberCaptchaDAO.getInstance().save(uberCaptcha));
+        return uberCaptcha;
+    }
+
+    private File saveScreenShot(WebDriver wd) {
+        String fileId = UUID.randomUUID().toString();
+        File screenshotFile = new File("captcha" + FS + fileId + ".jpg");
+        takeSnapShot(wd, screenshotFile.getAbsolutePath());
+        LOGGER.info("SAVE SCREENSHOT");
+        return screenshotFile;
+    }
+
+    private int findCaptchaPlateSize(WebDriver wd) {
+        LOGGER.info("BEGIN SOLVE CAPTCHA");
+        int i = 0;
+        for (WebElement we : wd.findElement(By.tagName("table")).findElements(By.tagName("td"))) {
+            int h = we.getRect().height;
+            int w = we.getRect().width;
+            int x = we.getRect().x;
+            int y = we.getRect().y;
+            LOGGER.info("cell : " + i++ + " : " + "[h:" + h + "][w:" + w + "][x:" + x + "][y:" + y + "]");
+        }
+        return i;
+    }
+
+    private WebDriver findCaptcha() {
+        WebDriver wd = switchToFrame(waitForRecaptchaFrameAppear("style", "width: 400px; height: 580px;"));
+        new WebDriverWait(wd, 10, 500)
+                .until(w -> w.findElement(By.tagName("table")).getText().isEmpty());
+        return wd;
+    }
+
+    private WebDriver clickIAmNotARobot() {
+        WebDriver wd = switchToFrame(waitForRecaptchaFrameAppear("role", "presentation"));
+
+        new WebDriverWait(wd, 10, 500)
+                .until(w -> w.findElement(By.id("recaptcha-anchor")).isDisplayed());
+
+        wd.findElement(By.id("recaptcha-anchor")).click();
+        LOGGER.info("click I IM NOT A ROBOT");
+        return wd;
     }
 
     private boolean waitForPasswordInputAppear() {
@@ -134,7 +167,7 @@ public class UberLoginBO extends BaseBO {
             LOGGER.info("check if captcha solved in DB");
             UberCaptcha uberCaptcha = UberCaptchaDAO.getInstance().findById(id);
             if (uberCaptcha.getAnswer() != null) {
-                LOGGER.info("captcha solved : "+uberCaptcha.getAnswer());
+                LOGGER.info("captcha solved : " + uberCaptcha.getAnswer());
                 return uberCaptcha.getAnswer();
             }
         }
