@@ -86,7 +86,7 @@ public class WeeklyReportGeneralHelper {
             Integer cash = d.getBoltStat().getCash() + d.getUberStat().getCash();
             d.getSum().setAmount(amount);
             d.getSum().setCash(cash);
-            if (d.getDriverName().equals("Юрій_Горбатий")) {
+            if (d.getDriverName().equals("Юрій_Горбатий_старий")) {
                 d.getUberStat().setSalary((int) round(d.getUberStat().getAmount() * 0.35));
                 d.getBoltStat().setSalary((int) round(d.getBoltStat().getAmount() * 0.35));
                 if (amount < WEEK_EARN_LIMIT_GORBATY_1) {

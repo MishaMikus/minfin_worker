@@ -104,14 +104,14 @@ public class UberBO extends BaseBO {
         waitingForFileDownload();
         recordPaymentFile(today);
         deletePaymentFile();
-        if (needPreviousWeekData()) {
+        //if (needPreviousWeekData()) {
             clickPreviousWeekButton();
             waitingForDownloadButtonAppear();
             clickDownload();
             waitingForFileDownload();
             recordPaymentFile(todayLastWeek);
             deletePaymentFile();
-        }
+        //}
     }
 
     private boolean needPreviousWeekData() {

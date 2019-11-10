@@ -199,7 +199,7 @@ public abstract class CommonWeeklyReportHelper {
 
 //old iurij formula
         for (Map.Entry<String, PaymentDriverRecord> entry : map.entrySet()) {
-            if (entry.getKey().equals("Юрій_Горбатий")) {
+            if (entry.getKey().equals("Юрій_Горбатий_старий")) {
                 Integer amount = Integer.valueOf(entry.getValue().getSummary().getAmount());
                 if (amount >= WEEK_EARN_LIMIT_GORBATY_1 && amount < WEEK_EARN_LIMIT_GORBATY_2) {
                     Integer salary = entry.getValue().getSummary().getSalary() + 500;
