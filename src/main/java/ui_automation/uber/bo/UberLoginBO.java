@@ -43,7 +43,8 @@ public class UberLoginBO extends BaseBO {
         LOGGER.info("input login");
         $(By.tagName("button")).click();
         LOGGER.info("click next button");
-        checkNotRobot();
+        NotRobotResult result=checkNotRobot();
+        if(result.equals(NotRobotResult.AUTHORIZED)) return this;
         $(By.id("password")).setValue(password);
         LOGGER.info("input password");
         $(By.tagName("button")).click();
@@ -53,7 +54,7 @@ public class UberLoginBO extends BaseBO {
         return this;
     }
 
-    private void checkNotRobot() {
+    private NotRobotResult checkNotRobot() {
         if (!waitForPasswordInputAppear()) {
             clickIAmNotARobot();
             WebDriver wd = findCaptcha();
@@ -61,14 +62,19 @@ public class UberLoginBO extends BaseBO {
             File screenshotFile = saveScreenShot(wd);
             UberCaptcha uberCaptcha = saveCaptchaToDB(captchaSize, screenshotFile);
             pushViberMessage(uberCaptcha);
-            String solve = waitForCaptchaSolved(uberCaptcha.getId());
-            solveCaptcha(wd, solve);
+            NotRobotResult solve= waitForCaptchaSolved(uberCaptcha.getId());
+            if(authorized()){
+                LOGGER.info("user already authorized");
+                return NotRobotResult.AUTHORIZED;
+            }
+            return solveCaptcha(wd, solve.getSolve());
             //click solving
             //TODO
         }
+        return NotRobotResult.FAIL;
     }
 
-    private void solveCaptcha(WebDriver wd, String solve) {
+    private NotRobotResult solveCaptcha(WebDriver wd, String solve) {
         for (String plateNumber : solve.split("_")) {
             wd.findElement(By.tagName("table")).findElements(By.tagName("td"))
                     .get(Integer.parseInt(plateNumber)).click();
@@ -80,6 +86,8 @@ public class UberLoginBO extends BaseBO {
             e.printStackTrace();
         }
         saveScreenShot(wd);
+        //TODO
+        return NotRobotResult.SUCCESS;
     }
 
     private void pushViberMessage(UberCaptcha uberCaptcha) {
@@ -154,7 +162,7 @@ public class UberLoginBO extends BaseBO {
         return false;
     }
 
-    private String waitForCaptchaSolved(Integer id) {
+    private NotRobotResult waitForCaptchaSolved(Integer id) {
         long start = new Date().getTime();
         long pingTime = 10000;
         long timeout = 100000;
@@ -166,12 +174,26 @@ public class UberLoginBO extends BaseBO {
             }
             LOGGER.info("check if captcha solved in DB");
             UberCaptcha uberCaptcha = UberCaptchaDAO.getInstance().findById(id);
+            if(authorized()){
+                LOGGER.info("USER input captcha manually");;
+                return null;
+            }
+            if(needPasswordInput()){
+                LOGGER.info("need password input");
+                return NotRobotResult.PASSWORD_NEED;
+            }
             if (uberCaptcha.getAnswer() != null) {
                 LOGGER.info("captcha solved : " + uberCaptcha.getAnswer());
-                return uberCaptcha.getAnswer();
+                NotRobotResult notRobotResult=NotRobotResult.CAPTCHA_SOLVED;
+                notRobotResult.setSolve(uberCaptcha.getAnswer());
+                return notRobotResult;
             }
         }
         return null;
+    }
+
+    private boolean needPasswordInput() {
+        return $(By.id("password")).isDisplayed();
     }
 
     public static void takeSnapShot(WebDriver webdriver, String fileWithPath) {
