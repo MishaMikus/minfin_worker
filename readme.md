@@ -12,3 +12,124 @@ copy /b all1.ts+all2.ts+all3.ts all.ts
 
 #concatanate file range to one media file
 ffmpeg -i all.ts -acodec copy -vcodec copy all.mp4
+
+#CREATE DROPLET
+GOTO https://cloud.digitalocean.com
+create droplet
+reseive CRED to mail
+	Droplet Name: ubuntu-s-1vcpu-3gb-fra1-01
+	IP Address: 46.101.184.197
+	Username: root
+	Password: 3b44d721d5b54d8560af723f66
+Login first time and change the password to new (aa898648d10f903956b256f6ca)
+
+#DOCKER AT CI MACHINE
+snap install docker
+
+#CLEAN docker (IF NEED)
+docker rm -f $(docker ps -a -q) && docker rmi -f $(docker images -q)
+
+#JENKINS AT CI MACHINE
+docker run --restart always --name=jenkins -u root -d -p 8081:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_data -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean
+docker exec -it jenkins /bin/bash
+cd var && cd jenkins_home && cd secrets && cat initialAdminPassword
+cat /var/jenkins_home/secrets/initialAdminPassword
+	fbbe761e034b4b509af8878a5009a0a6
+to exit: type 'exit'
+GOTO http://46.101.184.197:8081 and put this password
+Create admin user and install suggestion plugins
+Install Locale Plugin (and change UI language to EN)
+
+#install chrome for auto UI web scenario execution
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo deb http://dl.google.com/linux/chrome/deb/ stable main > /etc/apt/sources.list.d/google.list'
+sudo apt-get update
+sudo apt-get install -y xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic xvfb x11-apps imagemagick firefox google-chrome-stable
+cd /tmp
+##GOTO https://sites.google.com/a/chromium.org/chromedriver/ and get latest version
+wget https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
+apt-get install unzip -y
+unzip chromedriver_linux64.zip
+sudo apt install xvfb -y
+/usr/bin/Xvfb :99 -ac -screen 0 1024x768x8 & export DISPLAY=:99
+
+#init and config selenoid
+bash <(curl -s https://aerokube.com/cm/bash) 
+./cm selenoid start --vnc
+
+#SQL AT CI MACHINE
+docker run --restart always --name=mysql_db --env="MYSQL_ROOT_PASSWORD=xwHelpEvgLpoEcHa" -d -p 3306:3306 mysql/mysql-server
+docker exec -it mysql_db /bin/bash
+mysql -u root -p
+>>>>>pass : xwHelpEvgLpoEcHa
+mysql> CREATE USER 'root'@'%' IDENTIFIED BY 'xwHelpEvgLpoEcHa';
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+mysql> ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'xwHelpEvgLpoEcHa';
+exit
+exit
+
+#setup firewall for MySQL
+sudo ufw allow 3306/tcp && sudo service ufw restart
+
+#install java
+apt install openjdk-8-jre-headless -y
+sudo apt install default-jdk -y
+
+#install maven 
+apt install maven -y
+
+#init JENKINS_SALVE
+	IP Address: 46.101.184.197
+	Username: root
+	Password: aa898648d10f903956b256f6ca
+
+#init JENKINS_JOB
+repo: https://github.com/MishaMikus/minfin_worker
+cred: MY_GIT_HUB_CRED
+SHELL:
+file="src/main/resources/application.properties"
+
+if [ -f $file ] ; then
+    rm $file
+fi
+
+cat <<EOT >> $file
+sql.host=46.101.184.197
+sql.user=root
+sql.pass=xwHelpEvgLpoEcHa
+
+remote=false
+headless=false
+time.delta.hours=3
+deal.life.lime.minutes=30
+viber.receiver.list=w6eHgSPOEgmDWF+LHbKfCg==
+viber.token=49ede17d8067d51b-d7158ec52351c82d-b6c36f3fef30b321
+server.port=8080
+
+trading_mode=false
+okko_mode=false
+bolt_mode=false
+uber_mode=true
+
+minfin.history.deal.deep=10
+
+okko.login=10616265
+okko.pass=vM-ucL5:E-jEpfb
+
+upg.login=mikus
+upg.pass=vM-ucL5:E-jEpfb
+
+bolt.login=logan.park.lviv@gmail.com
+bolt.pass=qwsdf@#123era
+
+minfin.user=tradingLviv
+minfin.pass=dbb906
+
+uber.login=logan.park.lviv@gmail.com
+uber.password=qwsdf@#123era
+EOT
+
+SHELL:
+mvn clean install spring-boot:run
+
+

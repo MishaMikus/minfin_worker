@@ -8,6 +8,7 @@
     <a href="${pageContext.request.contextPath}/logan_park/driver">Водії</a>
     <a href="${pageContext.request.contextPath}/logan_park/one_time_sms_code">СМС</a>
     <a href="${pageContext.request.contextPath}/logan_park/uber_captcha">Капча</a>
+    <a href="${pageContext.request.contextPath}/logan_park/vehicle">Автомобілі</a>
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>

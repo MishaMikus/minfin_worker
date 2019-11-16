@@ -103,7 +103,7 @@
                             enctype="application/x-www-form-urlencoded"
                             id="form${fillingView.date.time}">
                         <label>
-                            <input class="km-input"
+                            <input class="semafor-input"
                                    type="text"
                                    name="km"
                                    value="${fillingView.km}"

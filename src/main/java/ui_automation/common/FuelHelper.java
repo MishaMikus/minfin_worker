@@ -26,15 +26,17 @@ public class FuelHelper {
         return INSTANCE;
     }
 
-    public String findOutCarIdentity(String card) {
+    public String findOutCarIdentity(String card, String station) {
 
         FillingCard fillingCard = fillingCardList.stream().filter(f -> f.getId().equals(card)).findAny().orElse(null);
         if (fillingCard == null) {
-            LOGGER.warn("find new card : " + card + " UPG");
+            LOGGER.warn("find new card : " + card + " "+station);
             fillingCard = new FillingCard();
             fillingCard.setId(card);
-            fillingCard.setStation("upg");
+            fillingCard.setStation(station);
+            LOGGER.info("try to save "+fillingCard);
             FillingCardDAO.getInstance().save(fillingCard);
+            fillingCardList.add(fillingCard);
         }
 
         FillingCard finalFillingCard = fillingCard;

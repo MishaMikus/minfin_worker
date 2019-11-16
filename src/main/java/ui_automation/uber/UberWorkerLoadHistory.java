@@ -22,6 +22,4 @@ public class UberWorkerLoadHistory {
         close();
         System.exit(0);
     }
-
-
 }

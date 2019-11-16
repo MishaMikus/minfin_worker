@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
 import orm.HibernateUtil;
+import orm.entity.logan_park.card.FillingCard;
 
 import javax.persistence.Table;
 import javax.persistence.criteria.*;
@@ -376,4 +377,11 @@ public abstract class GenericAbstractDAO<E> {
         LOGGER.info("deleteById[" + id + "] " + getTableName());
     }
 
+    public void saveOrUpdate(E entity) {
+        beginTransaction();
+         getSession().saveOrUpdate(entity);
+        commitTransaction();
+        closeSession();
+        LOGGER.info("saveOrUpdate " + entity);
+    }
 }
