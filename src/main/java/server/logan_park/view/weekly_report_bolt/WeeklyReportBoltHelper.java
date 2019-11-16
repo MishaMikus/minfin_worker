@@ -14,7 +14,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.lang.Math.round;
-import static ui_automation.bolt.RecordHelper.SDF;
+import static ui_automation.bolt.RecordHelper.SDF_DATE;
 
 public class WeeklyReportBoltHelper {
 
@@ -91,7 +91,7 @@ public class WeeklyReportBoltHelper {
 
         workout.setAmount(clearAmount);//without commission
         workout.setCash(-boltPaymentRecordDay.getCash().intValue());
-        workout.setName(SDF.format(boltPaymentRecordDay.getTimestamp()));
+        workout.setName(SDF_DATE.format(boltPaymentRecordDay.getTimestamp()));
         long salary = round(clearAmount * 0.35);
         if(boltPaymentRecordDay.getDriverName().equals("Олег_Тархов")){
             salary = round(clearAmount * 0.6);

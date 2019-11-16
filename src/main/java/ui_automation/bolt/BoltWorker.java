@@ -18,9 +18,16 @@ public class BoltWorker {
         String login = ApplicationPropertyUtil.applicationPropertyGet("bolt.login");
         String pass = ApplicationPropertyUtil.applicationPropertyGet("bolt.pass");
         new BoltLogonBo().login(login, pass);
-        Map<String, File> map = new DayReportBO().downloadAllNewCSV(BoltPaymentRecordDayDAO.getInstance().latestDate());
+        DayReportBO dayReportBO=new DayReportBO();
+        Map<String, File> dayMap = dayReportBO.downloadAllNewCSV(BoltPaymentRecordDayDAO.getInstance().latestDate());
+        File monthTripCsv=dayReportBO.downloadMonthTripCsv();
+        String pageSource=dayReportBO.monthTripPageSource();
         close();
-        new RecordHelper().recordDayReportToDB(map);
+        RecordHelper recordHelper=new RecordHelper();
+        recordHelper.recordDayReportToDB(dayMap);
+        recordHelper.recordMonthTripToDB(monthTripCsv);
+        recordHelper.recordMonthTripPDFMapping(pageSource);
+
         System.exit(0);
     }
 }

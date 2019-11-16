@@ -9,7 +9,8 @@ import java.util.*;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static ui_automation.bolt.RecordHelper.SDF;
+import static com.codeborne.selenide.WebDriverRunner.driver;
+import static ui_automation.bolt.RecordHelper.SDF_DATE;
 import static ui_automation.uber.bo.UberBO.DOWNLOAD_FOLDER;
 import static util.IOUtils.FS;
 
@@ -26,9 +27,9 @@ public class DayReportBO extends BaseBoltBO {
             String date = href.split("/")[7];
             Date currentDate = null;
             try {
-                currentDate = SDF.parse(date);
+                currentDate = SDF_DATE.parse(date);
             } catch (ParseException e) {
-                LOGGER.info("invalid href date for pattern : " + SDF + " for date : " + date + "\n" + e.getMessage());
+                LOGGER.info("invalid href date for pattern : " + SDF_DATE + " for date : " + date + "\n" + e.getMessage());
             }
             if (latestDate == null || (currentDate != null && currentDate.getTime() > latestDate.getTime())) {
                 $(By.xpath("//*[text()='" + date + "']/following-sibling::td//a")).click();
@@ -56,5 +57,32 @@ public class DayReportBO extends BaseBoltBO {
         } else
             return new File(DOWNLOAD_FOLDER + FS + "Bolt Daily Report - " + date + " - Lviv Fleet 02_28 park Mikus.csv");
 
+    }
+
+    public File downloadMonthTripCsv() {
+        try {
+            Thread.sleep(1000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String month = monthTripPageSource()
+                .split("data-test-select-picker")[2]
+                .split(">")[1]
+                .split("<")[0]
+                .trim()
+                .split(" ")[0];
+        $(By.xpath("//a[text()=\"Завантажити CSV-файл\"]")).click();
+        LOGGER.info("month : " + month);
+        return new File(DOWNLOAD_FOLDER + FS + "Bolt - Рахунки пасажирів - " + month + " 2019.csv");
+    }
+
+    public String monthTripPageSource() {
+        $(By.xpath("//*[contains(@href,\"/invoices/rider-invoices\")]")).click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return driver().getWebDriver().getPageSource();
     }
 }
