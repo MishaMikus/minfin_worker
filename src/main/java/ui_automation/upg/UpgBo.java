@@ -71,6 +71,11 @@ public class UpgBo extends BaseUpgBO {
         fillingRecord.setAmount(NumberHelper.round100(fillingRecord.getItemAmount() * fillingRecord.getPrice()));
         fillingRecord.setCar(FuelHelper.getInstance().findOutCarIdentity(fillingRecord.getCard()));
         fillingRecord.setStation("upg");
+        if(fillingRecord.getItemAmount()>80){
+            System.err.println("parsing ERROR");
+            System.out.println(content);
+            System.exit(1);
+        }
         return fillingRecord;
     }
 
