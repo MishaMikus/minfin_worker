@@ -29,7 +29,7 @@ public class OkkoBo extends BaseOkkoBO {
             By currentPageLinkLocator = By.xpath("//table[contains(@id,'UserForm:transTable:')]//tr/td[text()=" + pageIndex + "]");
             $(currentPageLinkLocator).click();
             List<String> allFillingLinksText = parseAllFillingLinksText();
-            System.out.println("PAGE " + (Integer.parseInt(pageIndex)));
+            LOGGER.info("PAGE " + (Integer.parseInt(pageIndex)));
             for (String fillingLinkText : allFillingLinksText) {
                 $(currentPageLinkLocator).click();
                 FillingRecord parsedFilling = parseFilling(fillingLinkText);
@@ -67,9 +67,11 @@ public class OkkoBo extends BaseOkkoBO {
         fillingRecord.setAddress(valueList.get(7));
         fillingRecord.setPrice(Double.parseDouble($(By.xpath("//td[contains(@id,'transactionDetail:transGoods:')][3]")).text()));
         fillingRecord.setItemAmount(Double.parseDouble($(By.xpath("//td[contains(@id,'transactionDetail:transGoods:')][2]")).text()));
-        fillingRecord.setCar(FuelHelper.getInstance().findOutCarIdentity(fillingRecord.getCard(),"okko"));
+        fillingRecord.setCar(FuelHelper.getInstance().findOutCarIdentity(fillingRecord.getCard(), "okko"));
+        fillingRecord.setId(fillingRecord.getDate().getTime() + "");
         fillingRecord.setStation("okko");
         driver().getWebDriver().navigate().back();
+        LOGGER.info("fillingRecord: " + fillingRecord);
         return fillingRecord;
     }
 

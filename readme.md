@@ -132,7 +132,9 @@ EOT
 SHELL:
 mvn clean install spring-boot:run
 
-
+# jenkins sheduler for station job
+At every 5th minute.
+CRON : */5 * * * *
 # minfin_worker
 start webapp
 
