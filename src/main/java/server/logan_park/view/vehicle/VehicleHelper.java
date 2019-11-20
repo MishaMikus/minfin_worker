@@ -11,7 +11,20 @@ import java.util.List;
 public class VehicleHelper {
     public static List<VehicleView> allVehicleList() {
         List<VehicleView> res = makeView(VehicleDAO.getInstance().findAll());
+        List<FillingCard> cardList = FillingCardDAO.getInstance().findAll();
+        res.forEach(r -> {
+            r.setOkkoCard(findCard(cardList, "okko", r));
+            r.setUpgCard(findCard(cardList, "upg", r));
+        });
         return res;
+    }
+
+    private static String findCard(List<FillingCard> cardList, String station, VehicleView r) {
+        return cardList.stream()
+                .filter(c -> null != c.getVehicle_id()
+                        && c.getStation().equals(station)
+                        && c.getVehicle_id().equals(r.getId())
+                ).findAny().orElse(new FillingCard()).getId();
     }
 
     private static List<VehicleView> makeView(List<Vehicle> allVehicleList) {

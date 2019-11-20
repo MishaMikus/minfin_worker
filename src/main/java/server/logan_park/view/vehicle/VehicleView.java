@@ -6,11 +6,16 @@ public class VehicleView extends Vehicle {
     private String upgCard;
     private String okkoCard;
 
+    public VehicleView() {
+    }
+
     public VehicleView(Vehicle vehicle) {
         super();
-        setName(vehicle.getName());
-        setPlate(vehicle.getPlate());
-        setId(vehicle.getId());
+        if (vehicle != null) {
+            setName(vehicle.getName());
+            setPlate(vehicle.getPlate());
+            setId(vehicle.getId());
+        }
     }
 
     public String getUpgCard() {
