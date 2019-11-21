@@ -1,0 +1,108 @@
+2019-11-21 11:17:54 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : https://fleets.bolt.eu/login
+2019-11-21 11:17:56 [main] INFO  WebDriverManager.detectDriverVersionFromBrowser:575 - Using chromedriver 71.0.3578.137 (since Google Chrome 71 is installed in your machine)
+2019-11-21 11:17:56 [main] INFO  WebDriverManager.exportDriver:1050 - Exporting webdriver.chrome.driver as C:\Users\mykhailo.mikus\.m2\repository\webdriver\chromedriver\win32\71.0.3578.137\chromedriver.exe
+2019-11-21 11:18:01 [main] INFO  BaseBO.inputById:87 - inputById : username text : logan.park.lviv@gmail.com
+2019-11-21 11:18:01 [main] INFO  BaseBO.inputById:87 - inputById : password text : qwsdf@#123era
+2019-11-21 11:18:01 [main] INFO  BaseBO.clickByType:97 - clickByType : submit
+2019-11-21 11:18:02 [main] INFO  Version.logVersion:46 - HHH000412: Hibernate Core {5.4.3.Final}
+2019-11-21 11:18:02 [main] INFO  Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2019-11-21 11:18:02 [main] WARN  pooling.configure:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-11-21 11:18:02 [main] INFO  pooling.buildCreator:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://46.101.184.197:3306/minfin?useSSL=false&characterEncoding=UTF-8&useUnicode=true&charSet=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Kiev]
+2019-11-21 11:18:02 [main] INFO  pooling.buildCreator:121 - HHH10001001: Connection properties: {password=xwHelpEvgLpoEcHa, user=root}
+2019-11-21 11:18:02 [main] INFO  pooling.buildCreator:129 - HHH10001003: Autocommit mode: false
+2019-11-21 11:18:02 [main] INFO  DriverManagerConnectionProviderImpl.<init>:239 - HHH000115: Hibernate connection pool size: 1000 (min=1)
+2019-11-21 11:18:03 [main] INFO  Dialect.<init>:158 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-21 11:18:05 [main] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
+2019-11-21 11:18:05 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : https://partners.uber.com/
+2019-11-21 11:18:07 [main] INFO  JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-11-21 11:18:07 [main] INFO  WebDriverManager.detectDriverVersionFromBrowser:575 - Using chromedriver 71.0.3578.137 (since Google Chrome 71 is installed in your machine)
+2019-11-21 11:18:07 [main] INFO  WebDriverManager.exportDriver:1050 - Exporting webdriver.chrome.driver as C:\Users\mykhailo.mikus\.m2\repository\webdriver\chromedriver\win32\71.0.3578.137\chromedriver.exe
+2019-11-21 11:18:10 [main] INFO  DayReportBO.newDownloadFile:55 - file : C:\Users\mykhailo.mikus\Downloads\Щоденний звіт Bolt – 20.11.2019 – Lviv Fleet 02_28 park Mikus.csv EXISTS
+2019-11-21 11:18:13 [main] INFO  UberLoginBO.login:43 - input login
+2019-11-21 11:18:13 [main] INFO  UberLoginBO.login:45 - click next button
+2019-11-21 11:18:15 [main] INFO  DayReportBO.downloadMonthTripCsv:75 - month : Листопад
+2019-11-21 11:18:15 [main] INFO  UberLoginBO.login:49 - input password
+2019-11-21 11:18:15 [main] INFO  UberLoginBO.login:51 - click login
+2019-11-21 11:18:15 [main] INFO  BaseBO.waitingForDownloadButtonAppear:61 - WAITING FOR DOWNLOAD BUTTON APPEAR
+2019-11-21 11:18:15 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
+2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:22 - try parse file 20.11.2019
+2019-11-21 11:18:17 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
+2019-11-21 11:18:17 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=15, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0}
+2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Андрій Головацький","+380633227550","День 2019-11-20","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00"
+2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Андрій Торпило","+380682297678","День 2019-11-20","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00"
+2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Віталій Антропов","+380935947494","День 2019-11-20","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00"
+2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Володимир Мірило","+380661239383","День 2019-11-20","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00"
+2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Костянтин Кобзяк","+380632240893","День 2019-11-20","1210.00","0.00","0.00","0.00","0.00","-181.50","-783.00","49.00","105.00","0.00","350.50"
+2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Микола Горбатий","+380636015751","День 2019-11-20","562.00","0.00","0.00","0.00","0.00","-84.30","-378.00","0.00","70.00","0.00","169.70"
+2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Михайло Мікусь","+380677715633","День 2019-11-20","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00"
+2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Олег Паук","+380955748937","День 2019-11-20","577.00","0.00","0.00","0.00","0.00","-86.55","-331.00","0.00","0.00","0.00","159.45"
+2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Павло Дурбан","+380677227161","День 2019-11-20","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00"
+2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Тарас Білей","+380686776959","День 2019-11-20","583.00","0.00","0.00","0.00","0.00","-87.45","-379.00","25.00","70.00","0.00","186.55"
+2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Юрій Горбатий","+380961066201","День 2019-11-20","1299.00","0.00","0.00","0.00","0.00","-194.85","-758.00","90.00","180.00","0.00","526.15"
+2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Ярослав Сікора","+380636693571","День 2019-11-20","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00"
+2019-11-21 11:18:17 [main] INFO  BoltPaymentRecordDayDAO.saveBatch:65 - Thu Nov 21 11:18:17 EET 2019 .bolt_payment_record_day add 0 records
+2019-11-21 11:18:18 [main] INFO  BoltPaymentRecordDayDAO.saveBatch:72 - save 12 records to bolt_payment_record_day for 1031 ms
+2019-11-21 11:18:21 [main] INFO  BaseBO.waitingForDownloadButtonAppear:61 - WAITING FOR DOWNLOAD BUTTON APPEAR
+2019-11-21 11:18:21 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
+2019-11-21 11:18:26 [main] INFO  BaseBO.waitingForDownloadButtonAppear:64 - DOWNLOAD BUTTON APPEAR
+2019-11-21 11:18:26 [main] INFO  UberLoginBO.login:53 - login SUCCESS
+2019-11-21 11:18:26 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : https://partners.uber.com/p3/fleet-manager/payments
+2019-11-21 11:18:28 [main] INFO  BaseBO.waitingForDownloadButtonAppear:61 - WAITING FOR DOWNLOAD BUTTON APPEAR
+2019-11-21 11:18:28 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
+2019-11-21 11:18:33 [main] INFO  BaseBO.waitingForDownloadButtonAppear:61 - WAITING FOR DOWNLOAD BUTTON APPEAR
+2019-11-21 11:18:33 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
+2019-11-21 11:18:38 [main] INFO  BaseBO.waitingForDownloadButtonAppear:61 - WAITING FOR DOWNLOAD BUTTON APPEAR
+2019-11-21 11:18:38 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
+2019-11-21 11:18:43 [main] INFO  BaseBO.waitingForDownloadButtonAppear:61 - WAITING FOR DOWNLOAD BUTTON APPEAR
+2019-11-21 11:18:43 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
+2019-11-21 11:18:48 [main] INFO  BaseBO.waitingForDownloadButtonAppear:64 - DOWNLOAD BUTTON APPEAR
+2019-11-21 11:18:48 [main] INFO  UberBO.clickDownload:85 - CLICK DOWNLOAD
+2019-11-21 11:18:48 [main] INFO  UberBO.waitingForFileDownload:64 - WAITING FOR FILE APPEAR
+2019-11-21 11:18:48 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
+2019-11-21 11:18:53 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
+2019-11-21 11:18:58 [main] INFO  UberBO.waitingForFileDownload:68 - FILE EXISTS : true
+2019-11-21 11:18:58 [main] INFO  Version.logVersion:46 - HHH000412: Hibernate Core {5.4.3.Final}
+2019-11-21 11:18:59 [main] INFO  Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2019-11-21 11:18:59 [main] WARN  pooling.configure:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-11-21 11:18:59 [main] INFO  pooling.buildCreator:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://46.101.184.197:3306/minfin?useSSL=false&characterEncoding=UTF-8&useUnicode=true&charSet=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Kiev]
+2019-11-21 11:18:59 [main] INFO  pooling.buildCreator:121 - HHH10001001: Connection properties: {password=xwHelpEvgLpoEcHa, user=root}
+2019-11-21 11:18:59 [main] INFO  pooling.buildCreator:129 - HHH10001003: Autocommit mode: false
+2019-11-21 11:18:59 [main] INFO  DriverManagerConnectionProviderImpl.<init>:239 - HHH000115: Hibernate connection pool size: 1000 (min=1)
+2019-11-21 11:18:59 [main] INFO  Dialect.<init>:158 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-21 11:19:00 [main] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
+2019-11-21 11:19:01 [main] INFO  JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-11-21 11:19:02 [main] INFO  UberDriverDAO.findAllWhere:230 - findAllWhere(null) uber_driver : 24
+2019-11-21 11:19:02 [main] INFO  PaymentRecorder.recordToBD:45 - primaryParsedData.size() : 390
+2019-11-21 11:19:02 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
+2019-11-21 11:19:02 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=15, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0}
+2019-11-21 11:19:03 [main] INFO  PaymentRecorder.recordToBD:50 - OLD_RECORD=UberPaymentRecordRow{fileRowIndex=244, driverId=16, tripUUID='31f802fa-b55d-47c2-af1e-52fe175d5e26', amount=-123.9, timestamp=2019-11-20 09:09:31.0, creation=2019-11-20 09:21:48.0, itemType=2, description=1, disclaimer='', week_id=15}
+2019-11-21 11:19:03 [main] INFO  UberDescriptionDAO.findAllWhere:230 - findAllWhere(null) uber_description : 7
+2019-11-21 11:19:03 [main] INFO  UberItemTypeDAO.findAllWhere:230 - findAllWhere(null) uber_item_type : 5
+2019-11-21 11:19:03 [main] INFO  PaymentRecorder.recordToBD:75 - tobeRecorded.size() : 390
+2019-11-21 11:19:03 [main] INFO  UberPaymentRecordRowDAO.saveBatch:65 - Thu Nov 21 11:19:03 EET 2019 .uber_payment_record_row add 0 records
+2019-11-21 11:19:29 [main] INFO  UberPaymentRecordRowDAO.saveBatch:72 - save 390 records to uber_payment_record_row for 26460 ms
+2019-11-21 11:19:29 [main] INFO  PaymentRecorder.recordToBD:78 - RECORDING DONE
+2019-11-21 11:19:29 [main] INFO  UberBO.recordPaymentFile:58 - FILE RECORDING DONE
+2019-11-21 11:19:29 [main] INFO  UberBO.deletePaymentFile:48 - TRY DELETE C:\Users\mykhailo.mikus\Downloads\Payments.csv
+2019-11-21 11:19:29 [main] INFO  UberBO.deletePaymentFile:50 - FILE deleted true
+2019-11-21 11:19:30 [main] INFO  UberBO.clickPreviousWeekButton:76 - CLICK PREVIOUS WEEK
+2019-11-21 11:19:30 [main] INFO  BaseBO.waitingForDownloadButtonAppear:61 - WAITING FOR DOWNLOAD BUTTON APPEAR
+2019-11-21 11:19:30 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
+2019-11-21 11:19:35 [main] INFO  BaseBO.waitingForDownloadButtonAppear:64 - DOWNLOAD BUTTON APPEAR
+2019-11-21 11:19:35 [main] INFO  UberBO.clickDownload:85 - CLICK DOWNLOAD
+2019-11-21 11:19:35 [main] INFO  UberBO.waitingForFileDownload:64 - WAITING FOR FILE APPEAR
+2019-11-21 11:19:35 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
+2019-11-21 11:19:40 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
+2019-11-21 11:19:45 [main] INFO  UberBO.waitingForFileDownload:68 - FILE EXISTS : true
+2019-11-21 11:19:45 [main] INFO  UberDriverDAO.findAllWhere:230 - findAllWhere(null) uber_driver : 24
+2019-11-21 11:19:45 [main] INFO  PaymentRecorder.recordToBD:45 - primaryParsedData.size() : 925
+2019-11-21 11:19:45 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
+2019-11-21 11:19:45 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=1, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0}
+2019-11-21 11:19:46 [main] INFO  PaymentRecorder.recordToBD:50 - OLD_RECORD=UberPaymentRecordRow{fileRowIndex=389, driverId=1, tripUUID='6ae08aef-9cd5-47d9-b977-7a1d20897f20', amount=36.6, timestamp=2019-11-21 11:00:14.0, creation=2019-11-21 11:19:03.0, itemType=1, description=3, disclaimer='', week_id=15}
+2019-11-21 11:19:46 [main] INFO  PaymentRecorder.recordToBD:75 - tobeRecorded.size() : 925
+2019-11-21 11:19:46 [main] INFO  UberPaymentRecordRowDAO.saveBatch:65 - Thu Nov 21 11:19:46 EET 2019 .uber_payment_record_row add 0 records
+2019-11-21 11:20:56 [main] INFO  UberPaymentRecordRowDAO.saveBatch:72 - save 925 records to uber_payment_record_row for 69734 ms
+2019-11-21 11:20:56 [main] INFO  PaymentRecorder.recordToBD:78 - RECORDING DONE
+2019-11-21 11:20:56 [main] INFO  UberBO.recordPaymentFile:58 - FILE RECORDING DONE
+2019-11-21 11:20:56 [main] INFO  UberBO.deletePaymentFile:48 - TRY DELETE C:\Users\mykhailo.mikus\Downloads\Payments.csv
+2019-11-21 11:20:56 [main] INFO  UberBO.deletePaymentFile:50 - FILE deleted true
