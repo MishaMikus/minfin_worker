@@ -1,108 +1,702 @@
-2019-11-21 11:17:54 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : https://fleets.bolt.eu/login
-2019-11-21 11:17:56 [main] INFO  WebDriverManager.detectDriverVersionFromBrowser:575 - Using chromedriver 71.0.3578.137 (since Google Chrome 71 is installed in your machine)
-2019-11-21 11:17:56 [main] INFO  WebDriverManager.exportDriver:1050 - Exporting webdriver.chrome.driver as C:\Users\mykhailo.mikus\.m2\repository\webdriver\chromedriver\win32\71.0.3578.137\chromedriver.exe
-2019-11-21 11:18:01 [main] INFO  BaseBO.inputById:87 - inputById : username text : logan.park.lviv@gmail.com
-2019-11-21 11:18:01 [main] INFO  BaseBO.inputById:87 - inputById : password text : qwsdf@#123era
-2019-11-21 11:18:01 [main] INFO  BaseBO.clickByType:97 - clickByType : submit
-2019-11-21 11:18:02 [main] INFO  Version.logVersion:46 - HHH000412: Hibernate Core {5.4.3.Final}
-2019-11-21 11:18:02 [main] INFO  Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2019-11-21 11:18:02 [main] WARN  pooling.configure:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
-2019-11-21 11:18:02 [main] INFO  pooling.buildCreator:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://46.101.184.197:3306/minfin?useSSL=false&characterEncoding=UTF-8&useUnicode=true&charSet=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Kiev]
-2019-11-21 11:18:02 [main] INFO  pooling.buildCreator:121 - HHH10001001: Connection properties: {password=xwHelpEvgLpoEcHa, user=root}
-2019-11-21 11:18:02 [main] INFO  pooling.buildCreator:129 - HHH10001003: Autocommit mode: false
-2019-11-21 11:18:02 [main] INFO  DriverManagerConnectionProviderImpl.<init>:239 - HHH000115: Hibernate connection pool size: 1000 (min=1)
-2019-11-21 11:18:03 [main] INFO  Dialect.<init>:158 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2019-11-21 11:18:05 [main] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
-2019-11-21 11:18:05 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : https://partners.uber.com/
-2019-11-21 11:18:07 [main] INFO  JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2019-11-21 11:18:07 [main] INFO  WebDriverManager.detectDriverVersionFromBrowser:575 - Using chromedriver 71.0.3578.137 (since Google Chrome 71 is installed in your machine)
-2019-11-21 11:18:07 [main] INFO  WebDriverManager.exportDriver:1050 - Exporting webdriver.chrome.driver as C:\Users\mykhailo.mikus\.m2\repository\webdriver\chromedriver\win32\71.0.3578.137\chromedriver.exe
-2019-11-21 11:18:10 [main] INFO  DayReportBO.newDownloadFile:55 - file : C:\Users\mykhailo.mikus\Downloads\Щоденний звіт Bolt – 20.11.2019 – Lviv Fleet 02_28 park Mikus.csv EXISTS
-2019-11-21 11:18:13 [main] INFO  UberLoginBO.login:43 - input login
-2019-11-21 11:18:13 [main] INFO  UberLoginBO.login:45 - click next button
-2019-11-21 11:18:15 [main] INFO  DayReportBO.downloadMonthTripCsv:75 - month : Листопад
-2019-11-21 11:18:15 [main] INFO  UberLoginBO.login:49 - input password
-2019-11-21 11:18:15 [main] INFO  UberLoginBO.login:51 - click login
-2019-11-21 11:18:15 [main] INFO  BaseBO.waitingForDownloadButtonAppear:61 - WAITING FOR DOWNLOAD BUTTON APPEAR
-2019-11-21 11:18:15 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
-2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:22 - try parse file 20.11.2019
-2019-11-21 11:18:17 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
-2019-11-21 11:18:17 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=15, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0}
-2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Андрій Головацький","+380633227550","День 2019-11-20","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00"
-2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Андрій Торпило","+380682297678","День 2019-11-20","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00"
-2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Віталій Антропов","+380935947494","День 2019-11-20","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00"
-2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Володимир Мірило","+380661239383","День 2019-11-20","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00"
-2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Костянтин Кобзяк","+380632240893","День 2019-11-20","1210.00","0.00","0.00","0.00","0.00","-181.50","-783.00","49.00","105.00","0.00","350.50"
-2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Микола Горбатий","+380636015751","День 2019-11-20","562.00","0.00","0.00","0.00","0.00","-84.30","-378.00","0.00","70.00","0.00","169.70"
-2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Михайло Мікусь","+380677715633","День 2019-11-20","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00"
-2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Олег Паук","+380955748937","День 2019-11-20","577.00","0.00","0.00","0.00","0.00","-86.55","-331.00","0.00","0.00","0.00","159.45"
-2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Павло Дурбан","+380677227161","День 2019-11-20","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00"
-2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Тарас Білей","+380686776959","День 2019-11-20","583.00","0.00","0.00","0.00","0.00","-87.45","-379.00","25.00","70.00","0.00","186.55"
-2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Юрій Горбатий","+380961066201","День 2019-11-20","1299.00","0.00","0.00","0.00","0.00","-194.85","-758.00","90.00","180.00","0.00","526.15"
-2019-11-21 11:18:17 [main] INFO  RecordHelper.recordDayReportToDB:32 - parse ROW : "Ярослав Сікора","+380636693571","День 2019-11-20","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00"
-2019-11-21 11:18:17 [main] INFO  BoltPaymentRecordDayDAO.saveBatch:65 - Thu Nov 21 11:18:17 EET 2019 .bolt_payment_record_day add 0 records
-2019-11-21 11:18:18 [main] INFO  BoltPaymentRecordDayDAO.saveBatch:72 - save 12 records to bolt_payment_record_day for 1031 ms
-2019-11-21 11:18:21 [main] INFO  BaseBO.waitingForDownloadButtonAppear:61 - WAITING FOR DOWNLOAD BUTTON APPEAR
-2019-11-21 11:18:21 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
-2019-11-21 11:18:26 [main] INFO  BaseBO.waitingForDownloadButtonAppear:64 - DOWNLOAD BUTTON APPEAR
-2019-11-21 11:18:26 [main] INFO  UberLoginBO.login:53 - login SUCCESS
-2019-11-21 11:18:26 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : https://partners.uber.com/p3/fleet-manager/payments
-2019-11-21 11:18:28 [main] INFO  BaseBO.waitingForDownloadButtonAppear:61 - WAITING FOR DOWNLOAD BUTTON APPEAR
-2019-11-21 11:18:28 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
-2019-11-21 11:18:33 [main] INFO  BaseBO.waitingForDownloadButtonAppear:61 - WAITING FOR DOWNLOAD BUTTON APPEAR
-2019-11-21 11:18:33 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
-2019-11-21 11:18:38 [main] INFO  BaseBO.waitingForDownloadButtonAppear:61 - WAITING FOR DOWNLOAD BUTTON APPEAR
-2019-11-21 11:18:38 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
-2019-11-21 11:18:43 [main] INFO  BaseBO.waitingForDownloadButtonAppear:61 - WAITING FOR DOWNLOAD BUTTON APPEAR
-2019-11-21 11:18:43 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
-2019-11-21 11:18:48 [main] INFO  BaseBO.waitingForDownloadButtonAppear:64 - DOWNLOAD BUTTON APPEAR
-2019-11-21 11:18:48 [main] INFO  UberBO.clickDownload:85 - CLICK DOWNLOAD
-2019-11-21 11:18:48 [main] INFO  UberBO.waitingForFileDownload:64 - WAITING FOR FILE APPEAR
-2019-11-21 11:18:48 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
-2019-11-21 11:18:53 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
-2019-11-21 11:18:58 [main] INFO  UberBO.waitingForFileDownload:68 - FILE EXISTS : true
-2019-11-21 11:18:58 [main] INFO  Version.logVersion:46 - HHH000412: Hibernate Core {5.4.3.Final}
-2019-11-21 11:18:59 [main] INFO  Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2019-11-21 11:18:59 [main] WARN  pooling.configure:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
-2019-11-21 11:18:59 [main] INFO  pooling.buildCreator:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://46.101.184.197:3306/minfin?useSSL=false&characterEncoding=UTF-8&useUnicode=true&charSet=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Kiev]
-2019-11-21 11:18:59 [main] INFO  pooling.buildCreator:121 - HHH10001001: Connection properties: {password=xwHelpEvgLpoEcHa, user=root}
-2019-11-21 11:18:59 [main] INFO  pooling.buildCreator:129 - HHH10001003: Autocommit mode: false
-2019-11-21 11:18:59 [main] INFO  DriverManagerConnectionProviderImpl.<init>:239 - HHH000115: Hibernate connection pool size: 1000 (min=1)
-2019-11-21 11:18:59 [main] INFO  Dialect.<init>:158 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2019-11-21 11:19:00 [main] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
-2019-11-21 11:19:01 [main] INFO  JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2019-11-21 11:19:02 [main] INFO  UberDriverDAO.findAllWhere:230 - findAllWhere(null) uber_driver : 24
-2019-11-21 11:19:02 [main] INFO  PaymentRecorder.recordToBD:45 - primaryParsedData.size() : 390
-2019-11-21 11:19:02 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
-2019-11-21 11:19:02 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=15, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0}
-2019-11-21 11:19:03 [main] INFO  PaymentRecorder.recordToBD:50 - OLD_RECORD=UberPaymentRecordRow{fileRowIndex=244, driverId=16, tripUUID='31f802fa-b55d-47c2-af1e-52fe175d5e26', amount=-123.9, timestamp=2019-11-20 09:09:31.0, creation=2019-11-20 09:21:48.0, itemType=2, description=1, disclaimer='', week_id=15}
-2019-11-21 11:19:03 [main] INFO  UberDescriptionDAO.findAllWhere:230 - findAllWhere(null) uber_description : 7
-2019-11-21 11:19:03 [main] INFO  UberItemTypeDAO.findAllWhere:230 - findAllWhere(null) uber_item_type : 5
-2019-11-21 11:19:03 [main] INFO  PaymentRecorder.recordToBD:75 - tobeRecorded.size() : 390
-2019-11-21 11:19:03 [main] INFO  UberPaymentRecordRowDAO.saveBatch:65 - Thu Nov 21 11:19:03 EET 2019 .uber_payment_record_row add 0 records
-2019-11-21 11:19:29 [main] INFO  UberPaymentRecordRowDAO.saveBatch:72 - save 390 records to uber_payment_record_row for 26460 ms
-2019-11-21 11:19:29 [main] INFO  PaymentRecorder.recordToBD:78 - RECORDING DONE
-2019-11-21 11:19:29 [main] INFO  UberBO.recordPaymentFile:58 - FILE RECORDING DONE
-2019-11-21 11:19:29 [main] INFO  UberBO.deletePaymentFile:48 - TRY DELETE C:\Users\mykhailo.mikus\Downloads\Payments.csv
-2019-11-21 11:19:29 [main] INFO  UberBO.deletePaymentFile:50 - FILE deleted true
-2019-11-21 11:19:30 [main] INFO  UberBO.clickPreviousWeekButton:76 - CLICK PREVIOUS WEEK
-2019-11-21 11:19:30 [main] INFO  BaseBO.waitingForDownloadButtonAppear:61 - WAITING FOR DOWNLOAD BUTTON APPEAR
-2019-11-21 11:19:30 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
-2019-11-21 11:19:35 [main] INFO  BaseBO.waitingForDownloadButtonAppear:64 - DOWNLOAD BUTTON APPEAR
-2019-11-21 11:19:35 [main] INFO  UberBO.clickDownload:85 - CLICK DOWNLOAD
-2019-11-21 11:19:35 [main] INFO  UberBO.waitingForFileDownload:64 - WAITING FOR FILE APPEAR
-2019-11-21 11:19:35 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
-2019-11-21 11:19:40 [main] INFO  BaseBO.threadSleep:72 - SLEEP 5000 MS
-2019-11-21 11:19:45 [main] INFO  UberBO.waitingForFileDownload:68 - FILE EXISTS : true
-2019-11-21 11:19:45 [main] INFO  UberDriverDAO.findAllWhere:230 - findAllWhere(null) uber_driver : 24
-2019-11-21 11:19:45 [main] INFO  PaymentRecorder.recordToBD:45 - primaryParsedData.size() : 925
-2019-11-21 11:19:45 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
-2019-11-21 11:19:45 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=1, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0}
-2019-11-21 11:19:46 [main] INFO  PaymentRecorder.recordToBD:50 - OLD_RECORD=UberPaymentRecordRow{fileRowIndex=389, driverId=1, tripUUID='6ae08aef-9cd5-47d9-b977-7a1d20897f20', amount=36.6, timestamp=2019-11-21 11:00:14.0, creation=2019-11-21 11:19:03.0, itemType=1, description=3, disclaimer='', week_id=15}
-2019-11-21 11:19:46 [main] INFO  PaymentRecorder.recordToBD:75 - tobeRecorded.size() : 925
-2019-11-21 11:19:46 [main] INFO  UberPaymentRecordRowDAO.saveBatch:65 - Thu Nov 21 11:19:46 EET 2019 .uber_payment_record_row add 0 records
-2019-11-21 11:20:56 [main] INFO  UberPaymentRecordRowDAO.saveBatch:72 - save 925 records to uber_payment_record_row for 69734 ms
-2019-11-21 11:20:56 [main] INFO  PaymentRecorder.recordToBD:78 - RECORDING DONE
-2019-11-21 11:20:56 [main] INFO  UberBO.recordPaymentFile:58 - FILE RECORDING DONE
-2019-11-21 11:20:56 [main] INFO  UberBO.deletePaymentFile:48 - TRY DELETE C:\Users\mykhailo.mikus\Downloads\Payments.csv
-2019-11-21 11:20:56 [main] INFO  UberBO.deletePaymentFile:50 - FILE deleted true
+2019-11-27 12:30:08 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance1.csv
+2019-11-27 12:30:08 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance2.csv
+2019-11-27 12:30:08 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance3.csv
+2019-11-27 12:30:08 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance4.csv
+2019-11-27 12:30:08 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance5.csv
+2019-11-27 12:30:08 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance6.csv
+2019-11-27 12:30:08 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance7.csv
+2019-11-27 12:30:08 [main] WARN  UberWorkerLoadHistory.readTextFromFile:81 - can't read file 'C:\Users\mykhailo.mikus\Downloads\vehicle_performance8.csv'
+2019-11-27 12:30:08 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance8.csv
+2019-11-27 12:30:50 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance1.csv
+2019-11-27 12:30:50 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance2.csv
+2019-11-27 12:30:50 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance3.csv
+2019-11-27 12:30:50 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance4.csv
+2019-11-27 12:30:50 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance5.csv
+2019-11-27 12:30:50 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance6.csv
+2019-11-27 12:30:50 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance7.csv
+2019-11-27 12:30:50 [main] WARN  UberWorkerLoadHistory.readTextFromFile:81 - can't read file 'C:\Users\mykhailo.mikus\Downloads\vehicle_performance8.csv'
+2019-11-27 12:30:50 [main] INFO  BrandingCalculator.calculate:31 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance8.csv
+2019-11-27 12:32:31 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance1.csv
+2019-11-27 12:32:31 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance2.csv
+2019-11-27 12:32:31 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance3.csv
+2019-11-27 12:32:31 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance4.csv
+2019-11-27 12:32:31 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance5.csv
+2019-11-27 12:32:31 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance6.csv
+2019-11-27 12:32:31 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance7.csv
+2019-11-27 12:32:31 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance8.csv
+2019-11-27 12:44:24 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance1.csv
+2019-11-27 12:44:24 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance2.csv
+2019-11-27 12:44:24 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance3.csv
+2019-11-27 12:44:24 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance4.csv
+2019-11-27 12:44:24 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance5.csv
+2019-11-27 12:44:24 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance6.csv
+2019-11-27 12:44:24 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance7.csv
+2019-11-27 12:44:24 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance8.csv
+2019-11-27 12:45:02 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance1.csv
+2019-11-27 12:45:02 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance2.csv
+2019-11-27 12:45:02 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance3.csv
+2019-11-27 12:45:02 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance4.csv
+2019-11-27 12:45:02 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance5.csv
+2019-11-27 12:45:02 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance6.csv
+2019-11-27 12:45:02 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance7.csv
+2019-11-27 12:45:02 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance8.csv
+2019-11-27 12:45:37 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance1.csv
+2019-11-27 12:45:37 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance2.csv
+2019-11-27 12:45:37 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance3.csv
+2019-11-27 12:45:37 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance4.csv
+2019-11-27 12:45:37 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance5.csv
+2019-11-27 12:45:37 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance6.csv
+2019-11-27 12:45:37 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance7.csv
+2019-11-27 12:45:37 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance8.csv
+2019-11-27 12:47:03 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance1.csv
+2019-11-27 12:47:03 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance2.csv
+2019-11-27 12:47:03 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance3.csv
+2019-11-27 12:47:03 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance4.csv
+2019-11-27 12:47:03 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance5.csv
+2019-11-27 12:47:03 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance6.csv
+2019-11-27 12:47:03 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance7.csv
+2019-11-27 12:47:03 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance8.csv
+2019-11-27 12:47:14 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance1.csv
+2019-11-27 12:47:14 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance2.csv
+2019-11-27 12:47:14 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance3.csv
+2019-11-27 12:47:14 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance4.csv
+2019-11-27 12:47:14 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance5.csv
+2019-11-27 12:47:14 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance6.csv
+2019-11-27 12:47:14 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance7.csv
+2019-11-27 12:47:14 [main] INFO  BrandingCalculator.calculate:36 - parse : C:\Users\mykhailo.mikus\Downloads\vehicle_performance8.csv
+2019-11-27 13:31:23 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
+2019-11-27 13:31:23 [main] INFO  SpringBootApplication.logStarting:50 - Starting SpringBootApplication on ws-lv-cp1907 with PID 2372 (C:\Users\mykhailo.mikus\IdeaProjects\minfin_worker\target\classes started by mykhailo.mikus in C:\Users\mykhailo.mikus\IdeaProjects\minfin_worker)
+2019-11-27 13:31:23 [main] INFO  SpringBootApplication.logStartupProfileInfo:675 - No active profile set, falling back to default profiles: default
+2019-11-27 13:31:25 [main] INFO  TomcatWebServer.initialize:90 - Tomcat initialized with port(s): 8080 (http)
+2019-11-27 13:31:26 [main] INFO  ContextLoader.prepareWebApplicationContext:296 - Root WebApplicationContext: initialization completed in 2442 ms
+2019-11-27 13:31:26 [main] INFO  AutowiredAnnotationBeanPostProcessor.lambda$buildAutowiringMetadata$1:447 - Autowired annotation is not supported on static fields: private static java.lang.String server.SpringBootApplication.prop
+2019-11-27 13:31:26 [main] INFO  SpringBootApplication.someFilterRegistration:45 - setup filter server.GeneralFilter
+2019-11-27 13:31:26 [main] INFO  SpringBootApplication.viewResolver:51 - setup Resolver org.springframework.web.servlet.view.InternalResourceViewResolver
+2019-11-27 13:31:26 [main] INFO  SpringBootApplication.viewResolver:56 - setup JstlView org.springframework.web.servlet.view.JstlView
+2019-11-27 13:31:26 [main] INFO  SpringBootApplication.multipartResolver:65 - setup multipartResolver org.springframework.web.multipart.commons.CommonsMultipartResolver
+2019-11-27 13:31:26 [main] INFO  SpringBootApplication.multipartResolver:66 - setup setMaxUploadSize '-1'
+2019-11-27 13:31:26 [main] INFO  ThreadPoolTaskExecutor.initialize:171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-11-27 13:31:27 [main] INFO  TomcatWebServer.start:204 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-11-27 13:31:27 [main] INFO  SpringBootApplication.logStarted:59 - Started SpringBootApplication in 4.452 seconds (JVM running for 5.878)
+2019-11-27 13:32:11 [http-nio-8080-exec-1] INFO  DispatcherServlet.initServletBean:524 - Initializing Servlet 'dispatcherServlet'
+2019-11-27 13:32:11 [http-nio-8080-exec-1] INFO  DispatcherServlet.initServletBean:546 - Completed initialization in 11 ms
+2019-11-27 13:32:11 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/weekly_report_general
+2019-11-27 13:32:11 [http-nio-8080-exec-1] INFO  Version.logVersion:46 - HHH000412: Hibernate Core {5.4.3.Final}
+2019-11-27 13:32:12 [http-nio-8080-exec-1] INFO  Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2019-11-27 13:32:12 [http-nio-8080-exec-1] WARN  pooling.configure:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-11-27 13:32:12 [http-nio-8080-exec-1] INFO  pooling.buildCreator:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://46.101.184.197:3306/minfin?useSSL=false&characterEncoding=UTF-8&useUnicode=true&charSet=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Kiev]
+2019-11-27 13:32:12 [http-nio-8080-exec-1] INFO  pooling.buildCreator:121 - HHH10001001: Connection properties: {password=xwHelpEvgLpoEcHa, user=root}
+2019-11-27 13:32:12 [http-nio-8080-exec-1] INFO  pooling.buildCreator:129 - HHH10001003: Autocommit mode: false
+2019-11-27 13:32:12 [http-nio-8080-exec-1] INFO  DriverManagerConnectionProviderImpl.<init>:239 - HHH000115: Hibernate connection pool size: 1000 (min=1)
+2019-11-27 13:32:13 [http-nio-8080-exec-1] INFO  Dialect.<init>:158 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-27 13:32:14 [http-nio-8080-exec-1] INFO  JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-11-27 13:32:15 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:32:15 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:32:15 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:32:15 [http-nio-8080-exec-1] INFO  BoltPaymentRecordDayDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$614/0x0000000801837040@459ace2d) bolt_payment_record_day : 24
+2019-11-27 13:32:15 [http-nio-8080-exec-1] INFO  UberDriverDAO.findAllWhere:230 - findAllWhere(null) uber_driver : 25
+2019-11-27 13:32:16 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:32:16 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:32:16 [http-nio-8080-exec-1] INFO  AutomaticallyWeeklyReportHelper.parsePrimaryData:26 - find all records for week : WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:32:16 [http-nio-8080-exec-1] INFO  UberPaymentRecordRowDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$614/0x0000000801837040@274f4275) uber_payment_record_row : 350
+2019-11-27 13:32:16 [http-nio-8080-exec-1] INFO  AutomaticallyWeeklyReportHelper.parsePrimaryData:29 - find all records for weekHash dbRowList.size : 350
+2019-11-27 13:32:16 [http-nio-8080-exec-1] INFO  UberItemTypeDAO.findAllWhere:230 - findAllWhere(null) uber_item_type : 5
+2019-11-27 13:32:16 [http-nio-8080-exec-1] INFO  UberDescriptionDAO.findAllWhere:230 - findAllWhere(null) uber_description : 7
+2019-11-27 13:32:16 [http-nio-8080-exec-1] INFO  AutomaticallyWeeklyReportHelper.parsePrimaryData:42 - primaryParsedData.size : 14
+2019-11-27 13:32:17 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:32:18 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[6787 ms] : 
+2019-11-27 13:32:18 [http-nio-8080-exec-2] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/resources/css/styles.css
+2019-11-27 13:32:18 [http-nio-8080-exec-2] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[26 ms] : 
+2019-11-27 13:32:18 [http-nio-8080-exec-3] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/favicon.ico
+2019-11-27 13:32:18 [http-nio-8080-exec-3] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[16 ms] : 
+2019-11-27 13:32:21 [http-nio-8080-exec-5] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:32:22 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:32:22 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:32:22 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:32:22 [http-nio-8080-exec-5] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$614/0x0000000801837040@1b17c89d) uber_filling : 17
+2019-11-27 13:32:23 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:32:23 [http-nio-8080-exec-5] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:32:23 [http-nio-8080-exec-5] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$614/0x0000000801837040@3c6c60be) uber_filling : 6
+2019-11-27 13:32:23 [http-nio-8080-exec-5] INFO  FillingCardDAO.findAllWhere:230 - findAllWhere(null) uber_filling_card : 8
+2019-11-27 13:32:23 [http-nio-8080-exec-5] INFO  VehicleDAO.findAllWhere:230 - findAllWhere(null) uber_vehicle : 7
+2019-11-27 13:32:23 [http-nio-8080-exec-5] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:32:24 [http-nio-8080-exec-5] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@6449caac
+2019-11-27 13:32:24 [http-nio-8080-exec-5] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@3753d801
+2019-11-27 13:32:25 [http-nio-8080-exec-5] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[3142 ms] : 
+2019-11-27 13:34:32 [http-nio-8080-exec-8] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/manual_receipt
+2019-11-27 13:34:32 [http-nio-8080-exec-8] INFO  FillingReportController.postKm:47 - TRY to make new receipt ManualReceiptRequest{date='26.11.2019', time='11:18:17', car='LOGAN_FRANEK_BC4275II', l=40.4, price=521.0, discount=16.0, station='okko', shop='АЗС 064 Львів ОККО-Рітейл', address='Львівська, Львів, Наукова, 2-А', km=235163.0}
+2019-11-27 13:35:59 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
+2019-11-27 13:35:59 [main] INFO  SpringBootApplication.logStarting:50 - Starting SpringBootApplication on ws-lv-cp1907 with PID 18616 (C:\Users\mykhailo.mikus\IdeaProjects\minfin_worker\target\classes started by mykhailo.mikus in C:\Users\mykhailo.mikus\IdeaProjects\minfin_worker)
+2019-11-27 13:35:59 [main] INFO  SpringBootApplication.logStartupProfileInfo:675 - No active profile set, falling back to default profiles: default
+2019-11-27 13:36:01 [main] INFO  TomcatWebServer.initialize:90 - Tomcat initialized with port(s): 8080 (http)
+2019-11-27 13:36:02 [main] INFO  ContextLoader.prepareWebApplicationContext:296 - Root WebApplicationContext: initialization completed in 2526 ms
+2019-11-27 13:36:02 [main] INFO  AutowiredAnnotationBeanPostProcessor.lambda$buildAutowiringMetadata$1:447 - Autowired annotation is not supported on static fields: private static java.lang.String server.SpringBootApplication.prop
+2019-11-27 13:36:02 [main] INFO  SpringBootApplication.someFilterRegistration:45 - setup filter server.GeneralFilter
+2019-11-27 13:36:02 [main] INFO  SpringBootApplication.viewResolver:51 - setup Resolver org.springframework.web.servlet.view.InternalResourceViewResolver
+2019-11-27 13:36:02 [main] INFO  SpringBootApplication.viewResolver:56 - setup JstlView org.springframework.web.servlet.view.JstlView
+2019-11-27 13:36:02 [main] INFO  SpringBootApplication.multipartResolver:65 - setup multipartResolver org.springframework.web.multipart.commons.CommonsMultipartResolver
+2019-11-27 13:36:02 [main] INFO  SpringBootApplication.multipartResolver:66 - setup setMaxUploadSize '-1'
+2019-11-27 13:36:03 [main] INFO  ThreadPoolTaskExecutor.initialize:171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-11-27 13:36:03 [main] INFO  TomcatWebServer.start:204 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-11-27 13:36:03 [main] INFO  SpringBootApplication.logStarted:59 - Started SpringBootApplication in 5.08 seconds (JVM running for 6.388)
+2019-11-27 13:37:23 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
+2019-11-27 13:37:23 [main] INFO  SpringBootApplication.logStarting:50 - Starting SpringBootApplication on ws-lv-cp1907 with PID 19740 (C:\Users\mykhailo.mikus\IdeaProjects\minfin_worker\target\classes started by mykhailo.mikus in C:\Users\mykhailo.mikus\IdeaProjects\minfin_worker)
+2019-11-27 13:37:23 [main] INFO  SpringBootApplication.logStartupProfileInfo:675 - No active profile set, falling back to default profiles: default
+2019-11-27 13:37:25 [main] INFO  TomcatWebServer.initialize:90 - Tomcat initialized with port(s): 8080 (http)
+2019-11-27 13:37:26 [main] INFO  ContextLoader.prepareWebApplicationContext:296 - Root WebApplicationContext: initialization completed in 2287 ms
+2019-11-27 13:37:26 [main] INFO  AutowiredAnnotationBeanPostProcessor.lambda$buildAutowiringMetadata$1:447 - Autowired annotation is not supported on static fields: private static java.lang.String server.SpringBootApplication.prop
+2019-11-27 13:37:26 [main] INFO  SpringBootApplication.someFilterRegistration:45 - setup filter server.GeneralFilter
+2019-11-27 13:37:26 [main] INFO  SpringBootApplication.viewResolver:51 - setup Resolver org.springframework.web.servlet.view.InternalResourceViewResolver
+2019-11-27 13:37:26 [main] INFO  SpringBootApplication.viewResolver:56 - setup JstlView org.springframework.web.servlet.view.JstlView
+2019-11-27 13:37:26 [main] INFO  SpringBootApplication.multipartResolver:65 - setup multipartResolver org.springframework.web.multipart.commons.CommonsMultipartResolver
+2019-11-27 13:37:26 [main] INFO  SpringBootApplication.multipartResolver:66 - setup setMaxUploadSize '-1'
+2019-11-27 13:37:26 [main] INFO  ThreadPoolTaskExecutor.initialize:171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-11-27 13:37:26 [main] INFO  TomcatWebServer.start:204 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-11-27 13:37:26 [main] INFO  SpringBootApplication.logStarted:59 - Started SpringBootApplication in 3.785 seconds (JVM running for 5.228)
+2019-11-27 13:37:56 [http-nio-8080-exec-1] INFO  DispatcherServlet.initServletBean:524 - Initializing Servlet 'dispatcherServlet'
+2019-11-27 13:37:56 [http-nio-8080-exec-1] INFO  DispatcherServlet.initServletBean:546 - Completed initialization in 9 ms
+2019-11-27 13:37:56 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/manual_receipt
+2019-11-27 13:37:57 [http-nio-8080-exec-1] INFO  FillingReportController.postKm:47 - TRY to make new receipt ManualReceiptRequest{date='26.11.2019', time='11:18:17', car='LOGAN_FRANEK_BC4275II', l=40.4, price=521.0, discount=16.0, station='okko', shop='АЗС 064 Львів ОККО-Рітейл', address='Львівська, Львів, Наукова, 2-А', km=235163.0}
+2019-11-27 13:37:57 [http-nio-8080-exec-1] INFO  FillingHelper.makeManualReceipt:125 - Try to save: FillingRecord{date=Tue Nov 26 11:18:17 EET 2019, card='cash', station='okko', amount=505.0, discount=16.0, amountAndDiscount=521.0, sapCode='null', shop='АЗС 064 Львів ОККО-Рітейл', address='Львівська, Львів, Наукова, 2-А', itemAmount=40.4, price=521.0, car='LOGAN_FRANEK_BC4275II', week_id=null, id='1574759897000'}
+2019-11-27 13:37:57 [http-nio-8080-exec-1] INFO  Version.logVersion:46 - HHH000412: Hibernate Core {5.4.3.Final}
+2019-11-27 13:37:57 [http-nio-8080-exec-1] INFO  Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2019-11-27 13:37:57 [http-nio-8080-exec-1] WARN  pooling.configure:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-11-27 13:37:57 [http-nio-8080-exec-1] INFO  pooling.buildCreator:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://46.101.184.197:3306/minfin?useSSL=false&characterEncoding=UTF-8&useUnicode=true&charSet=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Kiev]
+2019-11-27 13:37:57 [http-nio-8080-exec-1] INFO  pooling.buildCreator:121 - HHH10001001: Connection properties: {password=xwHelpEvgLpoEcHa, user=root}
+2019-11-27 13:37:57 [http-nio-8080-exec-1] INFO  pooling.buildCreator:129 - HHH10001003: Autocommit mode: false
+2019-11-27 13:37:57 [http-nio-8080-exec-1] INFO  DriverManagerConnectionProviderImpl.<init>:239 - HHH000115: Hibernate connection pool size: 1000 (min=1)
+2019-11-27 13:37:58 [http-nio-8080-exec-1] INFO  Dialect.<init>:158 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-27 13:37:59 [http-nio-8080-exec-1] INFO  JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-11-27 13:38:00 [http-nio-8080-exec-1] INFO  AbstractBatchImpl.release:201 - HHH000010: On release of batch it still contained JDBC statements
+2019-11-27 13:38:00 [http-nio-8080-exec-1] ERROR BatchingBatch.performExecution:128 - HHH000315: Exception executing batch [java.sql.BatchUpdateException: Column 'week_id' cannot be null], SQL: insert into `uber_filling` (`address`, `amount`, `amountAndDiscount`, `car`, `card`, `discount`, `id`, `itemAmount`, `km`, `price`, `sapCode`, `shop`, `station`, `week_id`, `date`) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2019-11-27 13:38:00 [http-nio-8080-exec-1] WARN  SqlExceptionHelper.logExceptions:137 - SQL Error: 1048, SQLState: 23000
+2019-11-27 13:38:00 [http-nio-8080-exec-1] ERROR SqlExceptionHelper.logExceptions:142 - Column 'week_id' cannot be null
+2019-11-27 13:38:00 [http-nio-8080-exec-1] INFO  FillingRecordDAO.save:42 - save FillingRecord{date=Tue Nov 26 11:18:17 EET 2019, card='cash', station='okko', amount=505.0, discount=16.0, amountAndDiscount=521.0, sapCode='null', shop='АЗС 064 Львів ОККО-Рітейл', address='Львівська, Львів, Наукова, 2-А', itemAmount=40.4, price=521.0, car='LOGAN_FRANEK_BC4275II', week_id=null, id='1574759897000'}
+2019-11-27 13:38:00 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[3397 ms] : 
+2019-11-27 13:38:00 [http-nio-8080-exec-2] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:38:00 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:38:01 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:38:01 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:38:01 [http-nio-8080-exec-2] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$624/0x0000000801875c40@4cd1d78d) uber_filling : 17
+2019-11-27 13:38:01 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:38:01 [http-nio-8080-exec-2] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:38:02 [http-nio-8080-exec-2] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$624/0x0000000801875c40@2d2dd3c1) uber_filling : 6
+2019-11-27 13:38:02 [http-nio-8080-exec-2] INFO  FillingCardDAO.findAllWhere:230 - findAllWhere(null) uber_filling_card : 8
+2019-11-27 13:38:02 [http-nio-8080-exec-2] INFO  VehicleDAO.findAllWhere:230 - findAllWhere(null) uber_vehicle : 7
+2019-11-27 13:38:02 [http-nio-8080-exec-2] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:38:03 [http-nio-8080-exec-2] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@74178161
+2019-11-27 13:38:03 [http-nio-8080-exec-2] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@49beabd3
+2019-11-27 13:38:04 [http-nio-8080-exec-2] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[4425 ms] : 
+2019-11-27 13:40:08 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
+2019-11-27 13:40:08 [main] INFO  SpringBootApplication.logStarting:50 - Starting SpringBootApplication on ws-lv-cp1907 with PID 5132 (C:\Users\mykhailo.mikus\IdeaProjects\minfin_worker\target\classes started by mykhailo.mikus in C:\Users\mykhailo.mikus\IdeaProjects\minfin_worker)
+2019-11-27 13:40:08 [main] INFO  SpringBootApplication.logStartupProfileInfo:675 - No active profile set, falling back to default profiles: default
+2019-11-27 13:40:10 [main] INFO  TomcatWebServer.initialize:90 - Tomcat initialized with port(s): 8080 (http)
+2019-11-27 13:40:11 [main] INFO  ContextLoader.prepareWebApplicationContext:296 - Root WebApplicationContext: initialization completed in 2420 ms
+2019-11-27 13:40:11 [main] INFO  AutowiredAnnotationBeanPostProcessor.lambda$buildAutowiringMetadata$1:447 - Autowired annotation is not supported on static fields: private static java.lang.String server.SpringBootApplication.prop
+2019-11-27 13:40:11 [main] INFO  SpringBootApplication.someFilterRegistration:45 - setup filter server.GeneralFilter
+2019-11-27 13:40:11 [main] INFO  SpringBootApplication.viewResolver:51 - setup Resolver org.springframework.web.servlet.view.InternalResourceViewResolver
+2019-11-27 13:40:11 [main] INFO  SpringBootApplication.viewResolver:56 - setup JstlView org.springframework.web.servlet.view.JstlView
+2019-11-27 13:40:11 [main] INFO  SpringBootApplication.multipartResolver:65 - setup multipartResolver org.springframework.web.multipart.commons.CommonsMultipartResolver
+2019-11-27 13:40:11 [main] INFO  SpringBootApplication.multipartResolver:66 - setup setMaxUploadSize '-1'
+2019-11-27 13:40:11 [main] INFO  ThreadPoolTaskExecutor.initialize:171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-11-27 13:40:11 [main] ERROR LoggingFailureAnalysisReporter.report:42 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8080, or configure this application to listen on another port.
+
+2019-11-27 13:40:11 [main] INFO  ThreadPoolTaskExecutor.shutdown:208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-11-27 13:40:24 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
+2019-11-27 13:40:25 [main] INFO  SpringBootApplication.logStarting:50 - Starting SpringBootApplication on ws-lv-cp1907 with PID 12900 (C:\Users\mykhailo.mikus\IdeaProjects\minfin_worker\target\classes started by mykhailo.mikus in C:\Users\mykhailo.mikus\IdeaProjects\minfin_worker)
+2019-11-27 13:40:25 [main] INFO  SpringBootApplication.logStartupProfileInfo:675 - No active profile set, falling back to default profiles: default
+2019-11-27 13:40:27 [main] INFO  TomcatWebServer.initialize:90 - Tomcat initialized with port(s): 8080 (http)
+2019-11-27 13:40:27 [main] INFO  ContextLoader.prepareWebApplicationContext:296 - Root WebApplicationContext: initialization completed in 2751 ms
+2019-11-27 13:40:27 [main] INFO  AutowiredAnnotationBeanPostProcessor.lambda$buildAutowiringMetadata$1:447 - Autowired annotation is not supported on static fields: private static java.lang.String server.SpringBootApplication.prop
+2019-11-27 13:40:27 [main] INFO  SpringBootApplication.someFilterRegistration:45 - setup filter server.GeneralFilter
+2019-11-27 13:40:28 [main] INFO  SpringBootApplication.viewResolver:51 - setup Resolver org.springframework.web.servlet.view.InternalResourceViewResolver
+2019-11-27 13:40:28 [main] INFO  SpringBootApplication.viewResolver:56 - setup JstlView org.springframework.web.servlet.view.JstlView
+2019-11-27 13:40:28 [main] INFO  SpringBootApplication.multipartResolver:65 - setup multipartResolver org.springframework.web.multipart.commons.CommonsMultipartResolver
+2019-11-27 13:40:28 [main] INFO  SpringBootApplication.multipartResolver:66 - setup setMaxUploadSize '-1'
+2019-11-27 13:40:28 [main] INFO  ThreadPoolTaskExecutor.initialize:171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-11-27 13:40:28 [main] INFO  TomcatWebServer.start:204 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-11-27 13:40:28 [main] INFO  SpringBootApplication.logStarted:59 - Started SpringBootApplication in 4.675 seconds (JVM running for 6.114)
+2019-11-27 13:40:37 [http-nio-8080-exec-1] INFO  DispatcherServlet.initServletBean:524 - Initializing Servlet 'dispatcherServlet'
+2019-11-27 13:40:37 [http-nio-8080-exec-1] INFO  DispatcherServlet.initServletBean:546 - Completed initialization in 10 ms
+2019-11-27 13:40:37 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/manual_receipt
+2019-11-27 13:40:37 [http-nio-8080-exec-1] INFO  FillingReportController.postKm:47 - TRY to make new receipt ManualReceiptRequest{date='26.11.2019', time='11:18:17', car='LOGAN_FRANEK_BC4275II', l=40.4, price=521.0, discount=16.0, station='okko', shop='АЗС 064 Львів ОККО-Рітейл', address='Львівська, Львів, Наукова, 2-А', km=235163.0}
+2019-11-27 13:40:38 [http-nio-8080-exec-1] INFO  Version.logVersion:46 - HHH000412: Hibernate Core {5.4.3.Final}
+2019-11-27 13:40:38 [http-nio-8080-exec-1] INFO  Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2019-11-27 13:40:38 [http-nio-8080-exec-1] WARN  pooling.configure:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-11-27 13:40:38 [http-nio-8080-exec-1] INFO  pooling.buildCreator:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://46.101.184.197:3306/minfin?useSSL=false&characterEncoding=UTF-8&useUnicode=true&charSet=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Kiev]
+2019-11-27 13:40:38 [http-nio-8080-exec-1] INFO  pooling.buildCreator:121 - HHH10001001: Connection properties: {password=xwHelpEvgLpoEcHa, user=root}
+2019-11-27 13:40:38 [http-nio-8080-exec-1] INFO  pooling.buildCreator:129 - HHH10001003: Autocommit mode: false
+2019-11-27 13:40:38 [http-nio-8080-exec-1] INFO  DriverManagerConnectionProviderImpl.<init>:239 - HHH000115: Hibernate connection pool size: 1000 (min=1)
+2019-11-27 13:40:39 [http-nio-8080-exec-1] INFO  Dialect.<init>:158 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-27 13:40:40 [http-nio-8080-exec-1] INFO  JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-11-27 13:40:41 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:40:41 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 26 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:40:41 [http-nio-8080-exec-1] INFO  FillingHelper.makeManualReceipt:126 - Try to save: FillingRecord{date=Tue Nov 26 11:18:17 EET 2019, card='cash', station='okko', amount=505.0, discount=16.0, amountAndDiscount=521.0, sapCode='null', shop='АЗС 064 Львів ОККО-Рітейл', address='Львівська, Львів, Наукова, 2-А', itemAmount=40.4, price=521.0, car='LOGAN_FRANEK_BC4275II', week_id=23, id='1574759897000'}
+2019-11-27 13:40:41 [http-nio-8080-exec-1] INFO  FillingRecordDAO.save:42 - save FillingRecord{date=Tue Nov 26 11:18:17 EET 2019, card='cash', station='okko', amount=505.0, discount=16.0, amountAndDiscount=521.0, sapCode='null', shop='АЗС 064 Львів ОККО-Рітейл', address='Львівська, Львів, Наукова, 2-А', itemAmount=40.4, price=521.0, car='LOGAN_FRANEK_BC4275II', week_id=23, id='1574759897000'}
+2019-11-27 13:40:41 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[3916 ms] : 
+2019-11-27 13:40:41 [http-nio-8080-exec-2] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:40:41 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:40:42 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:40:42 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:40:42 [http-nio-8080-exec-2] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$613/0x000000080184c440@6676448c) uber_filling : 18
+2019-11-27 13:40:42 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:40:42 [http-nio-8080-exec-2] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:40:43 [http-nio-8080-exec-2] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$613/0x000000080184c440@2f6109f9) uber_filling : 6
+2019-11-27 13:40:43 [http-nio-8080-exec-2] INFO  FillingCardDAO.findAllWhere:230 - findAllWhere(null) uber_filling_card : 8
+2019-11-27 13:40:43 [http-nio-8080-exec-2] INFO  VehicleDAO.findAllWhere:230 - findAllWhere(null) uber_vehicle : 7
+2019-11-27 13:40:43 [http-nio-8080-exec-2] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:40:44 [http-nio-8080-exec-2] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@57f2a221
+2019-11-27 13:40:44 [http-nio-8080-exec-2] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@4acf2fa2
+2019-11-27 13:40:45 [http-nio-8080-exec-2] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[4119 ms] : 
+2019-11-27 13:46:00 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
+2019-11-27 13:46:00 [main] INFO  SpringBootApplication.logStarting:50 - Starting SpringBootApplication on ws-lv-cp1907 with PID 13396 (C:\Users\mykhailo.mikus\IdeaProjects\minfin_worker\target\classes started by mykhailo.mikus in C:\Users\mykhailo.mikus\IdeaProjects\minfin_worker)
+2019-11-27 13:46:00 [main] INFO  SpringBootApplication.logStartupProfileInfo:675 - No active profile set, falling back to default profiles: default
+2019-11-27 13:46:02 [main] INFO  TomcatWebServer.initialize:90 - Tomcat initialized with port(s): 8080 (http)
+2019-11-27 13:46:03 [main] INFO  ContextLoader.prepareWebApplicationContext:296 - Root WebApplicationContext: initialization completed in 2343 ms
+2019-11-27 13:46:03 [main] INFO  AutowiredAnnotationBeanPostProcessor.lambda$buildAutowiringMetadata$1:447 - Autowired annotation is not supported on static fields: private static java.lang.String server.SpringBootApplication.prop
+2019-11-27 13:46:03 [main] INFO  SpringBootApplication.someFilterRegistration:45 - setup filter server.GeneralFilter
+2019-11-27 13:46:03 [main] INFO  SpringBootApplication.viewResolver:51 - setup Resolver org.springframework.web.servlet.view.InternalResourceViewResolver
+2019-11-27 13:46:03 [main] INFO  SpringBootApplication.viewResolver:56 - setup JstlView org.springframework.web.servlet.view.JstlView
+2019-11-27 13:46:03 [main] INFO  SpringBootApplication.multipartResolver:65 - setup multipartResolver org.springframework.web.multipart.commons.CommonsMultipartResolver
+2019-11-27 13:46:03 [main] INFO  SpringBootApplication.multipartResolver:66 - setup setMaxUploadSize '-1'
+2019-11-27 13:46:03 [main] INFO  ThreadPoolTaskExecutor.initialize:171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-11-27 13:46:03 [main] INFO  TomcatWebServer.start:204 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-11-27 13:46:03 [main] INFO  SpringBootApplication.logStarted:59 - Started SpringBootApplication in 4.031 seconds (JVM running for 5.686)
+2019-11-27 13:46:15 [http-nio-8080-exec-2] INFO  DispatcherServlet.initServletBean:524 - Initializing Servlet 'dispatcherServlet'
+2019-11-27 13:46:15 [http-nio-8080-exec-2] INFO  DispatcherServlet.initServletBean:546 - Completed initialization in 9 ms
+2019-11-27 13:46:15 [http-nio-8080-exec-2] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/manual_receipt
+2019-11-27 13:46:15 [http-nio-8080-exec-2] INFO  FillingReportController.postKm:47 - TRY to make new receipt ManualReceiptRequest{date='26.11.2019', time='11:18:17', car='LOGAN_FRANEK_BC4275II', l=40.4, price=521.0, discount=16.0, station='okko', shop='АЗС 064 Львів ОККО-Рітейл', address='Львівська, Львів, Наукова, 2-А', km=235163.0}
+2019-11-27 13:46:16 [http-nio-8080-exec-2] INFO  Version.logVersion:46 - HHH000412: Hibernate Core {5.4.3.Final}
+2019-11-27 13:46:16 [http-nio-8080-exec-2] INFO  Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2019-11-27 13:46:16 [http-nio-8080-exec-2] WARN  pooling.configure:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-11-27 13:46:16 [http-nio-8080-exec-2] INFO  pooling.buildCreator:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://46.101.184.197:3306/minfin?useSSL=false&characterEncoding=UTF-8&useUnicode=true&charSet=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Kiev]
+2019-11-27 13:46:16 [http-nio-8080-exec-2] INFO  pooling.buildCreator:121 - HHH10001001: Connection properties: {password=xwHelpEvgLpoEcHa, user=root}
+2019-11-27 13:46:16 [http-nio-8080-exec-2] INFO  pooling.buildCreator:129 - HHH10001003: Autocommit mode: false
+2019-11-27 13:46:16 [http-nio-8080-exec-2] INFO  DriverManagerConnectionProviderImpl.<init>:239 - HHH000115: Hibernate connection pool size: 1000 (min=1)
+2019-11-27 13:46:17 [http-nio-8080-exec-2] INFO  Dialect.<init>:158 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-27 13:46:18 [http-nio-8080-exec-2] INFO  JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-11-27 13:46:19 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:46:19 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 26 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:46:19 [http-nio-8080-exec-2] INFO  FillingHelper.makeManualReceipt:127 - Try to save: FillingRecord{date=Tue Nov 26 11:18:17 EET 2019, card='cash', station='okko', amount=505.0, discount=16.0, amountAndDiscount=521.0, sapCode='null', shop='АЗС 064 Львів ОККО-Рітейл', address='Львівська, Львів, Наукова, 2-А', itemAmount=40.4, price=521.0, car='LOGAN_FRANEK_BC4275II', week_id=23, id='1574759897000'}
+2019-11-27 13:46:19 [http-nio-8080-exec-2] INFO  FillingRecordDAO.save:42 - save FillingRecord{date=Tue Nov 26 11:18:17 EET 2019, card='cash', station='okko', amount=505.0, discount=16.0, amountAndDiscount=521.0, sapCode='null', shop='АЗС 064 Львів ОККО-Рітейл', address='Львівська, Львів, Наукова, 2-А', itemAmount=40.4, price=521.0, car='LOGAN_FRANEK_BC4275II', week_id=23, id='1574759897000'}
+2019-11-27 13:46:19 [http-nio-8080-exec-2] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[3865 ms] : 
+2019-11-27 13:46:19 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:46:19 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:46:20 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:46:20 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:46:20 [http-nio-8080-exec-1] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@15c253c1) uber_filling : 18
+2019-11-27 13:46:20 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:46:20 [http-nio-8080-exec-1] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:46:21 [http-nio-8080-exec-1] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@20dc9a0c) uber_filling : 6
+2019-11-27 13:46:21 [http-nio-8080-exec-1] INFO  FillingCardDAO.findAllWhere:230 - findAllWhere(null) uber_filling_card : 8
+2019-11-27 13:46:21 [http-nio-8080-exec-1] INFO  VehicleDAO.findAllWhere:230 - findAllWhere(null) uber_vehicle : 7
+2019-11-27 13:46:21 [http-nio-8080-exec-1] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:46:22 [http-nio-8080-exec-1] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@c8feb52
+2019-11-27 13:46:22 [http-nio-8080-exec-1] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@3a5f9851
+2019-11-27 13:46:23 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[4213 ms] : 
+2019-11-27 13:48:21 [http-nio-8080-exec-6] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/manual_receipt
+2019-11-27 13:48:21 [http-nio-8080-exec-6] INFO  FillingReportController.postKm:47 - TRY to make new receipt ManualReceiptRequest{date='24.11.2019', time='00:57:27', car='LOGAN_FRANEK_BC4275II', l=40.48, price=514.0, discount=12.0, station='okko', shop='АЗС 090 Львів ОККО-Рітейл', address='Львівська, Львів, пр. Червоної Калини, 34-А', km=234711.0}
+2019-11-27 13:48:21 [http-nio-8080-exec-6] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:48:21 [http-nio-8080-exec-6] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Nov 24 00:00:00 EET 2019 -> WeekRange{id=15, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0}
+2019-11-27 13:48:21 [http-nio-8080-exec-6] INFO  FillingHelper.makeManualReceipt:127 - Try to save: FillingRecord{date=Sun Nov 24 00:57:27 EET 2019, card='cash', station='okko', amount=502.0, discount=12.0, amountAndDiscount=514.0, sapCode='null', shop='АЗС 090 Львів ОККО-Рітейл', address='Львівська, Львів, пр. Червоної Калини, 34-А', itemAmount=40.48, price=514.0, car='LOGAN_FRANEK_BC4275II', week_id=15, id='1574549847000'}
+2019-11-27 13:48:21 [http-nio-8080-exec-6] INFO  FillingRecordDAO.save:42 - save FillingRecord{date=Sun Nov 24 00:57:27 EET 2019, card='cash', station='okko', amount=502.0, discount=12.0, amountAndDiscount=514.0, sapCode='null', shop='АЗС 090 Львів ОККО-Рітейл', address='Львівська, Львів, пр. Червоної Калини, 34-А', itemAmount=40.48, price=514.0, car='LOGAN_FRANEK_BC4275II', week_id=15, id='1574549847000'}
+2019-11-27 13:48:21 [http-nio-8080-exec-6] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[501 ms] : 
+2019-11-27 13:48:21 [http-nio-8080-exec-7] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:48:22 [http-nio-8080-exec-7] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:48:22 [http-nio-8080-exec-7] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:48:22 [http-nio-8080-exec-7] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:48:22 [http-nio-8080-exec-7] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@292b2336) uber_filling : 18
+2019-11-27 13:48:23 [http-nio-8080-exec-7] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:48:23 [http-nio-8080-exec-7] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:48:23 [http-nio-8080-exec-7] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@56774762) uber_filling : 6
+2019-11-27 13:48:23 [http-nio-8080-exec-7] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:48:23 [http-nio-8080-exec-7] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@68dd7d04
+2019-11-27 13:48:24 [http-nio-8080-exec-7] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@739a5a0d
+2019-11-27 13:48:24 [http-nio-8080-exec-7] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2363 ms] : 
+2019-11-27 13:48:33 [http-nio-8080-exec-9] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 13:48:33 [http-nio-8080-exec-9] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=235534, date=1574846497000}
+2019-11-27 13:48:34 [http-nio-8080-exec-9] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@2462f05f) uber_filling : 1
+2019-11-27 13:48:34 [http-nio-8080-exec-9] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-27 11:21:37.0, card='018137', station='upg', amount=327.72, discount=null, amountAndDiscount=null, sapCode='null', shop='АЗС №5 Шевченка', address='м.Львів, вул. Шевченко,200', itemAmount=28.01, price=11.7, car='LOGAN_FRANEK_BC4275II', week_id=23, id='4667204'}
+2019-11-27 13:48:34 [http-nio-8080-exec-9] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-27 11:21:37.0, card='018137', station='upg', amount=327.72, discount=null, amountAndDiscount=null, sapCode='null', shop='АЗС №5 Шевченка', address='м.Львів, вул. Шевченко,200', itemAmount=28.01, price=11.7, car='LOGAN_FRANEK_BC4275II', week_id=23, id='4667204'}
+2019-11-27 13:48:34 [http-nio-8080-exec-9] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[527 ms] : 
+2019-11-27 13:48:34 [http-nio-8080-exec-10] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:48:34 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:48:34 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:48:34 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:48:34 [http-nio-8080-exec-10] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@5649baad) uber_filling : 18
+2019-11-27 13:48:35 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:48:35 [http-nio-8080-exec-10] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:48:35 [http-nio-8080-exec-10] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@3d0e4f23) uber_filling : 6
+2019-11-27 13:48:35 [http-nio-8080-exec-10] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:48:36 [http-nio-8080-exec-10] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@75069059
+2019-11-27 13:48:36 [http-nio-8080-exec-10] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@2f071358
+2019-11-27 13:48:36 [http-nio-8080-exec-10] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2374 ms] : 
+2019-11-27 13:51:18 [http-nio-8080-exec-3] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/manual_receipt
+2019-11-27 13:51:18 [http-nio-8080-exec-3] INFO  FillingReportController.postKm:47 - TRY to make new receipt ManualReceiptRequest{date='24.11.2019', time='00:57:27', car='LOGAN_FRANEK_BC4275II', l=40.48, price=514.0, discount=12.0, station='okko', shop='АЗС 090 Львів ОККО-Рітейл', address='Львівська, Львів, пр. Червоної Калини, 34-А', km=234711.0}
+2019-11-27 13:51:18 [http-nio-8080-exec-3] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:51:18 [http-nio-8080-exec-3] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Nov 24 00:00:00 EET 2019 -> WeekRange{id=15, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0}
+2019-11-27 13:51:18 [http-nio-8080-exec-3] INFO  FillingHelper.makeManualReceipt:127 - Try to save: FillingRecord{date=Sun Nov 24 00:57:27 EET 2019, card='cash', station='okko', amount=502.0, discount=12.0, amountAndDiscount=514.0, sapCode='null', shop='АЗС 090 Львів ОККО-Рітейл', address='Львівська, Львів, пр. Червоної Калини, 34-А', itemAmount=40.48, price=514.0, car='LOGAN_FRANEK_BC4275II', week_id=15, id='1574549847000'}
+2019-11-27 13:51:19 [http-nio-8080-exec-3] INFO  AbstractBatchImpl.release:201 - HHH000010: On release of batch it still contained JDBC statements
+2019-11-27 13:51:19 [http-nio-8080-exec-3] ERROR BatchingBatch.performExecution:128 - HHH000315: Exception executing batch [java.sql.BatchUpdateException: Duplicate entry '2019-11-24 00:57:27' for key 'PRIMARY'], SQL: insert into `uber_filling` (`address`, `amount`, `amountAndDiscount`, `car`, `card`, `discount`, `id`, `itemAmount`, `km`, `price`, `sapCode`, `shop`, `station`, `week_id`, `date`) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2019-11-27 13:51:19 [http-nio-8080-exec-3] WARN  SqlExceptionHelper.logExceptions:137 - SQL Error: 1062, SQLState: 23000
+2019-11-27 13:51:19 [http-nio-8080-exec-3] ERROR SqlExceptionHelper.logExceptions:142 - Duplicate entry '2019-11-24 00:57:27' for key 'PRIMARY'
+2019-11-27 13:51:19 [http-nio-8080-exec-3] INFO  FillingRecordDAO.save:42 - save FillingRecord{date=Sun Nov 24 00:57:27 EET 2019, card='cash', station='okko', amount=502.0, discount=12.0, amountAndDiscount=514.0, sapCode='null', shop='АЗС 090 Львів ОККО-Рітейл', address='Львівська, Львів, пр. Червоної Калини, 34-А', itemAmount=40.48, price=514.0, car='LOGAN_FRANEK_BC4275II', week_id=15, id='1574549847000'}
+2019-11-27 13:51:19 [http-nio-8080-exec-3] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[895 ms] : 
+2019-11-27 13:51:19 [http-nio-8080-exec-6] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:51:19 [http-nio-8080-exec-6] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:51:19 [http-nio-8080-exec-6] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:51:19 [http-nio-8080-exec-6] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:51:20 [http-nio-8080-exec-6] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@3642f87e) uber_filling : 18
+2019-11-27 13:51:20 [http-nio-8080-exec-6] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:51:20 [http-nio-8080-exec-6] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:51:20 [http-nio-8080-exec-6] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@2452b159) uber_filling : 6
+2019-11-27 13:51:20 [http-nio-8080-exec-6] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:51:21 [http-nio-8080-exec-6] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@3318975
+2019-11-27 13:51:22 [http-nio-8080-exec-6] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@6012cd92
+2019-11-27 13:51:22 [http-nio-8080-exec-6] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[3189 ms] : 
+2019-11-27 13:52:13 [http-nio-8080-exec-8] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report/2019.11.19
+2019-11-27 13:52:13 [http-nio-8080-exec-8] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:52:13 [http-nio-8080-exec-8] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=15, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0}
+2019-11-27 13:52:13 [http-nio-8080-exec-8] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:52:13 [http-nio-8080-exec-8] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:52:13 [http-nio-8080-exec-8] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=15, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0}
+2019-11-27 13:52:14 [http-nio-8080-exec-8] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@42c919da) uber_filling : 46
+2019-11-27 13:52:14 [http-nio-8080-exec-8] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:52:14 [http-nio-8080-exec-8] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=21, start=2019-11-11 02:00:00.0, end=2019-11-17 02:00:00.0}
+2019-11-27 13:52:14 [http-nio-8080-exec-8] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@73dc9b94) uber_filling : 0
+2019-11-27 13:52:14 [http-nio-8080-exec-8] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:52:15 [http-nio-8080-exec-8] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@768df1f2
+2019-11-27 13:52:16 [http-nio-8080-exec-8] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@3bdf25ee
+2019-11-27 13:52:16 [http-nio-8080-exec-8] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2981 ms] : 
+2019-11-27 13:52:26 [http-nio-8080-exec-10] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report/2019.11.26
+2019-11-27 13:52:26 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:52:26 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 26 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:52:26 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:52:26 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:52:26 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 26 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:52:27 [http-nio-8080-exec-10] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@6a1d518e) uber_filling : 18
+2019-11-27 13:52:27 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:52:27 [http-nio-8080-exec-10] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:52:27 [http-nio-8080-exec-10] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@1791105) uber_filling : 6
+2019-11-27 13:52:27 [http-nio-8080-exec-10] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:52:28 [http-nio-8080-exec-10] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@54e6c9af
+2019-11-27 13:52:28 [http-nio-8080-exec-10] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@37ebb10b
+2019-11-27 13:52:28 [http-nio-8080-exec-10] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2742 ms] : 
+2019-11-27 13:54:08 [http-nio-8080-exec-4] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 13:54:08 [http-nio-8080-exec-4] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=176028, date=1574810969000}
+2019-11-27 13:54:08 [http-nio-8080-exec-4] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@3697f29) uber_filling : 1
+2019-11-27 13:54:08 [http-nio-8080-exec-4] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-27 01:29:29.0, card='7825390000344935', station='okko', amount=279.28, discount=18.48, amountAndDiscount=297.76, sapCode='24ПК-8276/19', shop='АЗС 090 Львів ОККО-Рітейл', address='Львівська, Львів, пр. Червоної Калини, 34-А', itemAmount=23.1, price=12.89, car='FIESTA_BC6590IA', week_id=23, id='1574810969000'}
+2019-11-27 13:54:08 [http-nio-8080-exec-4] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-27 01:29:29.0, card='7825390000344935', station='okko', amount=279.28, discount=18.48, amountAndDiscount=297.76, sapCode='24ПК-8276/19', shop='АЗС 090 Львів ОККО-Рітейл', address='Львівська, Львів, пр. Червоної Калини, 34-А', itemAmount=23.1, price=12.89, car='FIESTA_BC6590IA', week_id=23, id='1574810969000'}
+2019-11-27 13:54:08 [http-nio-8080-exec-4] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[507 ms] : 
+2019-11-27 13:54:08 [http-nio-8080-exec-5] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:54:08 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:54:09 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:54:09 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:54:09 [http-nio-8080-exec-5] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@b9e296) uber_filling : 18
+2019-11-27 13:54:09 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:54:09 [http-nio-8080-exec-5] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:54:09 [http-nio-8080-exec-5] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@6775e03b) uber_filling : 6
+2019-11-27 13:54:09 [http-nio-8080-exec-5] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:54:10 [http-nio-8080-exec-5] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@6d9c5264
+2019-11-27 13:54:11 [http-nio-8080-exec-5] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@5f30e386
+2019-11-27 13:54:11 [http-nio-8080-exec-5] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2419 ms] : 
+2019-11-27 13:54:34 [http-nio-8080-exec-6] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 13:54:34 [http-nio-8080-exec-6] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=175792, date=1574692613000}
+2019-11-27 13:54:35 [http-nio-8080-exec-6] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@56caf5) uber_filling : 1
+2019-11-27 13:54:35 [http-nio-8080-exec-6] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-25 16:36:53.0, card='7825390000344935', station='okko', amount=277.75, discount=18.69, amountAndDiscount=296.44, sapCode='24ПК-8276/19', shop='АЗС 090 Львів ОККО-Рітейл', address='Львівська, Львів, пр. Червоної Калини, 34-А', itemAmount=23.36, price=12.69, car='FIESTA_BC6590IA', week_id=23, id='1574692613000'}
+2019-11-27 13:54:35 [http-nio-8080-exec-6] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-25 16:36:53.0, card='7825390000344935', station='okko', amount=277.75, discount=18.69, amountAndDiscount=296.44, sapCode='24ПК-8276/19', shop='АЗС 090 Львів ОККО-Рітейл', address='Львівська, Львів, пр. Червоної Калини, 34-А', itemAmount=23.36, price=12.69, car='FIESTA_BC6590IA', week_id=23, id='1574692613000'}
+2019-11-27 13:54:35 [http-nio-8080-exec-6] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[498 ms] : 
+2019-11-27 13:54:35 [http-nio-8080-exec-7] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:54:35 [http-nio-8080-exec-7] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:54:35 [http-nio-8080-exec-7] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:54:35 [http-nio-8080-exec-7] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:54:36 [http-nio-8080-exec-7] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@2c85dd95) uber_filling : 18
+2019-11-27 13:54:36 [http-nio-8080-exec-7] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:54:36 [http-nio-8080-exec-7] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:54:36 [http-nio-8080-exec-7] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@2bf1fb38) uber_filling : 6
+2019-11-27 13:54:36 [http-nio-8080-exec-7] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:54:37 [http-nio-8080-exec-7] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@87410f3
+2019-11-27 13:54:37 [http-nio-8080-exec-7] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@20d8b8b6
+2019-11-27 13:54:37 [http-nio-8080-exec-7] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2406 ms] : 
+2019-11-27 13:55:28 [http-nio-8080-exec-9] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 13:55:28 [http-nio-8080-exec-9] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=205311, date=1574841212000}
+2019-11-27 13:55:28 [http-nio-8080-exec-9] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@1c362321) uber_filling : 1
+2019-11-27 13:55:28 [http-nio-8080-exec-9] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-27 09:53:32.0, card='7825390000344932', station='okko', amount=252.68, discount=16.72, amountAndDiscount=269.4, sapCode='24ПК-8276/19', shop='АЗС 007 Львів ОККО-Рітейл', address='Львівська, Львів, Володимира Великого, 58', itemAmount=20.9, price=12.89, car='LOGAN_BROWN_ВС2646НХ', week_id=23, id='1574841212000'}
+2019-11-27 13:55:28 [http-nio-8080-exec-9] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-27 09:53:32.0, card='7825390000344932', station='okko', amount=252.68, discount=16.72, amountAndDiscount=269.4, sapCode='24ПК-8276/19', shop='АЗС 007 Львів ОККО-Рітейл', address='Львівська, Львів, Володимира Великого, 58', itemAmount=20.9, price=12.89, car='LOGAN_BROWN_ВС2646НХ', week_id=23, id='1574841212000'}
+2019-11-27 13:55:28 [http-nio-8080-exec-9] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[500 ms] : 
+2019-11-27 13:55:28 [http-nio-8080-exec-10] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:55:28 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:55:29 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:55:29 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:55:29 [http-nio-8080-exec-10] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@8f6947f) uber_filling : 18
+2019-11-27 13:55:29 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:55:29 [http-nio-8080-exec-10] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:55:30 [http-nio-8080-exec-10] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@13a935c5) uber_filling : 6
+2019-11-27 13:55:30 [http-nio-8080-exec-10] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:55:30 [http-nio-8080-exec-10] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@368b65be
+2019-11-27 13:55:31 [http-nio-8080-exec-10] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@2ca6a95c
+2019-11-27 13:55:31 [http-nio-8080-exec-10] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2384 ms] : 
+2019-11-27 13:55:58 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 13:55:58 [http-nio-8080-exec-1] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=204989, date=1574754721000}
+2019-11-27 13:55:58 [http-nio-8080-exec-1] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@641c788a) uber_filling : 1
+2019-11-27 13:55:58 [http-nio-8080-exec-1] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-26 09:52:01.0, card='7825390000344932', station='okko', amount=278.19, discount=18.41, amountAndDiscount=296.6, sapCode='24ПК-8276/19', shop='АЗС 007 Львів ОККО-Рітейл', address='Львівська, Львів, Володимира Великого, 58', itemAmount=23.01, price=12.89, car='LOGAN_BROWN_ВС2646НХ', week_id=23, id='1574754721000'}
+2019-11-27 13:55:58 [http-nio-8080-exec-1] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-26 09:52:01.0, card='7825390000344932', station='okko', amount=278.19, discount=18.41, amountAndDiscount=296.6, sapCode='24ПК-8276/19', shop='АЗС 007 Львів ОККО-Рітейл', address='Львівська, Львів, Володимира Великого, 58', itemAmount=23.01, price=12.89, car='LOGAN_BROWN_ВС2646НХ', week_id=23, id='1574754721000'}
+2019-11-27 13:55:58 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[497 ms] : 
+2019-11-27 13:55:58 [http-nio-8080-exec-4] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:55:58 [http-nio-8080-exec-4] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:55:59 [http-nio-8080-exec-4] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:55:59 [http-nio-8080-exec-4] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:55:59 [http-nio-8080-exec-4] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@5cfcf9ab) uber_filling : 18
+2019-11-27 13:55:59 [http-nio-8080-exec-4] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:55:59 [http-nio-8080-exec-4] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:55:59 [http-nio-8080-exec-4] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@48fef21d) uber_filling : 6
+2019-11-27 13:55:59 [http-nio-8080-exec-4] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:56:00 [http-nio-8080-exec-4] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@250ab1f0
+2019-11-27 13:56:00 [http-nio-8080-exec-4] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@21a20004
+2019-11-27 13:56:00 [http-nio-8080-exec-4] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2343 ms] : 
+2019-11-27 13:56:18 [http-nio-8080-exec-3] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 13:56:18 [http-nio-8080-exec-3] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=204674, date=1574669041000}
+2019-11-27 13:56:19 [http-nio-8080-exec-3] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@47c2c6e9) uber_filling : 1
+2019-11-27 13:56:19 [http-nio-8080-exec-3] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-25 10:04:01.0, card='7825390000344932', station='okko', amount=319.96, discount=21.53, amountAndDiscount=341.49, sapCode='24ПК-8276/19', shop='АЗС 007 Львів ОККО-Рітейл', address='Львівська, Львів, Володимира Великого, 58', itemAmount=26.91, price=12.69, car='LOGAN_BROWN_ВС2646НХ', week_id=23, id='1574669041000'}
+2019-11-27 13:56:19 [http-nio-8080-exec-3] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-25 10:04:01.0, card='7825390000344932', station='okko', amount=319.96, discount=21.53, amountAndDiscount=341.49, sapCode='24ПК-8276/19', shop='АЗС 007 Львів ОККО-Рітейл', address='Львівська, Львів, Володимира Великого, 58', itemAmount=26.91, price=12.69, car='LOGAN_BROWN_ВС2646НХ', week_id=23, id='1574669041000'}
+2019-11-27 13:56:19 [http-nio-8080-exec-3] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[726 ms] : 
+2019-11-27 13:56:19 [http-nio-8080-exec-6] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:56:19 [http-nio-8080-exec-6] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:56:19 [http-nio-8080-exec-6] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:56:19 [http-nio-8080-exec-6] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:56:20 [http-nio-8080-exec-6] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@7445f96d) uber_filling : 18
+2019-11-27 13:56:20 [http-nio-8080-exec-6] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:56:20 [http-nio-8080-exec-6] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:56:20 [http-nio-8080-exec-6] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@1f35ed8c) uber_filling : 6
+2019-11-27 13:56:20 [http-nio-8080-exec-6] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:56:21 [http-nio-8080-exec-6] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@2dcdd465
+2019-11-27 13:56:21 [http-nio-8080-exec-6] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@3052f8c4
+2019-11-27 13:56:21 [http-nio-8080-exec-6] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2416 ms] : 
+2019-11-27 13:56:42 [http-nio-8080-exec-7] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 13:56:42 [http-nio-8080-exec-7] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=205130, date=1574805315000}
+2019-11-27 13:56:42 [http-nio-8080-exec-7] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@53ca6420) uber_filling : 1
+2019-11-27 13:56:42 [http-nio-8080-exec-7] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-26 23:55:15.0, card='7825390000344932', station='okko', amount=241.92, discount=16.01, amountAndDiscount=257.93, sapCode='24ПК-8276/19', shop='АЗС 064 Львів ОККО-Рітейл', address='Львівська, Львів, Наукова, 2-А', itemAmount=20.01, price=12.89, car='LOGAN_BROWN_ВС2646НХ', week_id=23, id='1574805315000'}
+2019-11-27 13:56:42 [http-nio-8080-exec-7] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-26 23:55:15.0, card='7825390000344932', station='okko', amount=241.92, discount=16.01, amountAndDiscount=257.93, sapCode='24ПК-8276/19', shop='АЗС 064 Львів ОККО-Рітейл', address='Львівська, Львів, Наукова, 2-А', itemAmount=20.01, price=12.89, car='LOGAN_BROWN_ВС2646НХ', week_id=23, id='1574805315000'}
+2019-11-27 13:56:42 [http-nio-8080-exec-7] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[516 ms] : 
+2019-11-27 13:56:42 [http-nio-8080-exec-9] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:56:43 [http-nio-8080-exec-9] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:56:43 [http-nio-8080-exec-9] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:56:43 [http-nio-8080-exec-9] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:56:43 [http-nio-8080-exec-9] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@1c56276f) uber_filling : 18
+2019-11-27 13:56:43 [http-nio-8080-exec-9] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:56:43 [http-nio-8080-exec-9] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:56:44 [http-nio-8080-exec-9] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@314de145) uber_filling : 6
+2019-11-27 13:56:44 [http-nio-8080-exec-9] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:56:44 [http-nio-8080-exec-9] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@783a3c02
+2019-11-27 13:56:45 [http-nio-8080-exec-9] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@30c1aa0d
+2019-11-27 13:56:45 [http-nio-8080-exec-9] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2375 ms] : 
+2019-11-27 13:57:30 [http-nio-8080-exec-2] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 13:57:30 [http-nio-8080-exec-2] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=204468, date=1574717156000}
+2019-11-27 13:57:30 [http-nio-8080-exec-2] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@181bec27) uber_filling : 1
+2019-11-27 13:57:30 [http-nio-8080-exec-2] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-25 23:25:56.0, card='7825390000344932', station='okko', amount=223.17, discount=15.02, amountAndDiscount=238.19, sapCode='24ПК-8276/19', shop='АЗС 007 Львів ОККО-Рітейл', address='Львівська, Львів, Володимира Великого, 58', itemAmount=18.77, price=12.69, car='LOGAN_BROWN_ВС2646НХ', week_id=23, id='1574717156000'}
+2019-11-27 13:57:30 [http-nio-8080-exec-2] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-25 23:25:56.0, card='7825390000344932', station='okko', amount=223.17, discount=15.02, amountAndDiscount=238.19, sapCode='24ПК-8276/19', shop='АЗС 007 Львів ОККО-Рітейл', address='Львівська, Львів, Володимира Великого, 58', itemAmount=18.77, price=12.69, car='LOGAN_BROWN_ВС2646НХ', week_id=23, id='1574717156000'}
+2019-11-27 13:57:30 [http-nio-8080-exec-2] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[497 ms] : 
+2019-11-27 13:57:30 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:57:31 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:57:31 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:57:31 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:57:31 [http-nio-8080-exec-1] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@5d955250) uber_filling : 18
+2019-11-27 13:57:31 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:57:31 [http-nio-8080-exec-1] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:57:32 [http-nio-8080-exec-1] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@648ca192) uber_filling : 6
+2019-11-27 13:57:32 [http-nio-8080-exec-1] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:57:32 [http-nio-8080-exec-1] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@556be49c
+2019-11-27 13:57:33 [http-nio-8080-exec-1] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@4de2ea81
+2019-11-27 13:57:33 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2635 ms] : 
+2019-11-27 13:57:45 [http-nio-8080-exec-5] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 13:57:45 [http-nio-8080-exec-5] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=204777, date=1574717156000}
+2019-11-27 13:57:45 [http-nio-8080-exec-5] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@2330c907) uber_filling : 1
+2019-11-27 13:57:45 [http-nio-8080-exec-5] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-25 23:25:56.0, card='7825390000344932', station='okko', amount=223.17, discount=15.02, amountAndDiscount=238.19, sapCode='24ПК-8276/19', shop='АЗС 007 Львів ОККО-Рітейл', address='Львівська, Львів, Володимира Великого, 58', itemAmount=18.77, price=12.69, car='LOGAN_BROWN_ВС2646НХ', week_id=23, id='1574717156000'}
+2019-11-27 13:57:46 [http-nio-8080-exec-5] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-25 23:25:56.0, card='7825390000344932', station='okko', amount=223.17, discount=15.02, amountAndDiscount=238.19, sapCode='24ПК-8276/19', shop='АЗС 007 Львів ОККО-Рітейл', address='Львівська, Львів, Володимира Великого, 58', itemAmount=18.77, price=12.69, car='LOGAN_BROWN_ВС2646НХ', week_id=23, id='1574717156000'}
+2019-11-27 13:57:46 [http-nio-8080-exec-5] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[492 ms] : 
+2019-11-27 13:57:46 [http-nio-8080-exec-3] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:57:46 [http-nio-8080-exec-3] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:57:46 [http-nio-8080-exec-3] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:57:46 [http-nio-8080-exec-3] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:57:46 [http-nio-8080-exec-3] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@7f8f9971) uber_filling : 18
+2019-11-27 13:57:47 [http-nio-8080-exec-3] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:57:47 [http-nio-8080-exec-3] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:57:47 [http-nio-8080-exec-3] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@641f5d48) uber_filling : 6
+2019-11-27 13:57:47 [http-nio-8080-exec-3] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:57:47 [http-nio-8080-exec-3] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@49399cc1
+2019-11-27 13:57:48 [http-nio-8080-exec-3] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@7954a3b
+2019-11-27 13:57:48 [http-nio-8080-exec-3] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2385 ms] : 
+2019-11-27 13:58:17 [http-nio-8080-exec-8] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 13:58:17 [http-nio-8080-exec-8] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=353770, date=1574839542000}
+2019-11-27 13:58:17 [http-nio-8080-exec-8] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@3a5bee78) uber_filling : 1
+2019-11-27 13:58:17 [http-nio-8080-exec-8] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-27 09:25:42.0, card='7825390000346984', station='okko', amount=269.84, discount=17.86, amountAndDiscount=287.7, sapCode='24ПК-8276/19', shop='АЗС 010 Львів ОККО-Рітейл', address='Львівська, Львів, Липинського, 54', itemAmount=22.32, price=12.89, car='FABIA_BC5263IE', week_id=23, id='1574839542000'}
+2019-11-27 13:58:18 [http-nio-8080-exec-8] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-27 09:25:42.0, card='7825390000346984', station='okko', amount=269.84, discount=17.86, amountAndDiscount=287.7, sapCode='24ПК-8276/19', shop='АЗС 010 Львів ОККО-Рітейл', address='Львівська, Львів, Липинського, 54', itemAmount=22.32, price=12.89, car='FABIA_BC5263IE', week_id=23, id='1574839542000'}
+2019-11-27 13:58:18 [http-nio-8080-exec-8] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[503 ms] : 
+2019-11-27 13:58:18 [http-nio-8080-exec-7] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:58:18 [http-nio-8080-exec-7] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:58:18 [http-nio-8080-exec-7] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:58:18 [http-nio-8080-exec-7] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:58:18 [http-nio-8080-exec-7] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@796fe46c) uber_filling : 18
+2019-11-27 13:58:19 [http-nio-8080-exec-7] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:58:19 [http-nio-8080-exec-7] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:58:19 [http-nio-8080-exec-7] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@219fdaea) uber_filling : 6
+2019-11-27 13:58:19 [http-nio-8080-exec-7] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:58:19 [http-nio-8080-exec-7] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@51c658f6
+2019-11-27 13:58:20 [http-nio-8080-exec-7] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@18367083
+2019-11-27 13:58:20 [http-nio-8080-exec-7] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2399 ms] : 
+2019-11-27 13:58:46 [http-nio-8080-exec-10] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 13:58:46 [http-nio-8080-exec-10] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=353460, date=1574753330000}
+2019-11-27 13:58:46 [http-nio-8080-exec-10] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@1f99b95c) uber_filling : 1
+2019-11-27 13:58:46 [http-nio-8080-exec-10] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-26 09:28:50.0, card='7825390000346984', station='okko', amount=396.07, discount=26.21, amountAndDiscount=422.28, sapCode='24ПК-8276/19', shop='АЗС 010 Львів ОККО-Рітейл', address='Львівська, Львів, Липинського, 54', itemAmount=32.76, price=12.89, car='FABIA_BC5263IE', week_id=23, id='1574753330000'}
+2019-11-27 13:58:46 [http-nio-8080-exec-10] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-26 09:28:50.0, card='7825390000346984', station='okko', amount=396.07, discount=26.21, amountAndDiscount=422.28, sapCode='24ПК-8276/19', shop='АЗС 010 Львів ОККО-Рітейл', address='Львівська, Львів, Липинського, 54', itemAmount=32.76, price=12.89, car='FABIA_BC5263IE', week_id=23, id='1574753330000'}
+2019-11-27 13:58:46 [http-nio-8080-exec-10] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[515 ms] : 
+2019-11-27 13:58:46 [http-nio-8080-exec-2] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:58:46 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:58:47 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:58:47 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:58:47 [http-nio-8080-exec-2] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@4b97cdfd) uber_filling : 18
+2019-11-27 13:58:47 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:58:47 [http-nio-8080-exec-2] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:58:47 [http-nio-8080-exec-2] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@5741209f) uber_filling : 6
+2019-11-27 13:58:47 [http-nio-8080-exec-2] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:58:48 [http-nio-8080-exec-2] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@1a645c7f
+2019-11-27 13:58:48 [http-nio-8080-exec-2] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@3ebb813
+2019-11-27 13:58:48 [http-nio-8080-exec-2] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2341 ms] : 
+2019-11-27 13:59:33 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 13:59:33 [http-nio-8080-exec-1] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=353561, date=1574798480000}
+2019-11-27 13:59:33 [http-nio-8080-exec-1] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@4d384504) uber_filling : 1
+2019-11-27 13:59:33 [http-nio-8080-exec-1] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-26 22:01:20.0, card='7825390000346984', station='okko', amount=151.97, discount=10.06, amountAndDiscount=162.03, sapCode='24ПК-8276/19', shop='АЗС 010 Львів ОККО-Рітейл', address='Львівська, Львів, Липинського, 54', itemAmount=12.57, price=12.89, car='FABIA_BC5263IE', week_id=23, id='1574798480000'}
+2019-11-27 13:59:33 [http-nio-8080-exec-1] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-26 22:01:20.0, card='7825390000346984', station='okko', amount=151.97, discount=10.06, amountAndDiscount=162.03, sapCode='24ПК-8276/19', shop='АЗС 010 Львів ОККО-Рітейл', address='Львівська, Львів, Липинського, 54', itemAmount=12.57, price=12.89, car='FABIA_BC5263IE', week_id=23, id='1574798480000'}
+2019-11-27 13:59:33 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[496 ms] : 
+2019-11-27 13:59:33 [http-nio-8080-exec-5] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 13:59:33 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:59:34 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:59:34 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 13:59:34 [http-nio-8080-exec-5] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@7ced04be) uber_filling : 18
+2019-11-27 13:59:34 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 13:59:34 [http-nio-8080-exec-5] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 13:59:35 [http-nio-8080-exec-5] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@4283398c) uber_filling : 6
+2019-11-27 13:59:35 [http-nio-8080-exec-5] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 13:59:35 [http-nio-8080-exec-5] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@2935aa96
+2019-11-27 13:59:36 [http-nio-8080-exec-5] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@93f269d
+2019-11-27 13:59:36 [http-nio-8080-exec-5] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2379 ms] : 
+2019-11-27 14:00:00 [http-nio-8080-exec-3] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 14:00:00 [http-nio-8080-exec-3] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=353151, date=1574644160000}
+2019-11-27 14:00:00 [http-nio-8080-exec-3] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@231271c) uber_filling : 1
+2019-11-27 14:00:00 [http-nio-8080-exec-3] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-25 03:09:20.0, card='7825390000346984', station='okko', amount=274.43, discount=18.46, amountAndDiscount=292.89, sapCode='24ПК-8276/19', shop='АЗС 010 Львів ОККО-Рітейл', address='Львівська, Львів, Липинського, 54', itemAmount=23.08, price=12.69, car='FABIA_BC5263IE', week_id=23, id='1574644160000'}
+2019-11-27 14:00:01 [http-nio-8080-exec-3] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-25 03:09:20.0, card='7825390000346984', station='okko', amount=274.43, discount=18.46, amountAndDiscount=292.89, sapCode='24ПК-8276/19', shop='АЗС 010 Львів ОККО-Рітейл', address='Львівська, Львів, Липинського, 54', itemAmount=23.08, price=12.69, car='FABIA_BC5263IE', week_id=23, id='1574644160000'}
+2019-11-27 14:00:01 [http-nio-8080-exec-3] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[520 ms] : 
+2019-11-27 14:00:01 [http-nio-8080-exec-8] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 14:00:01 [http-nio-8080-exec-8] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:00:01 [http-nio-8080-exec-8] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:00:01 [http-nio-8080-exec-8] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 14:00:01 [http-nio-8080-exec-8] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@3aafa181) uber_filling : 18
+2019-11-27 14:00:02 [http-nio-8080-exec-8] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:00:02 [http-nio-8080-exec-8] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 14:00:02 [http-nio-8080-exec-8] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@7e426fae) uber_filling : 6
+2019-11-27 14:00:02 [http-nio-8080-exec-8] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 14:00:03 [http-nio-8080-exec-8] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@3c14b91a
+2019-11-27 14:00:04 [http-nio-8080-exec-8] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@1e08e89
+2019-11-27 14:00:04 [http-nio-8080-exec-8] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[3526 ms] : 
+2019-11-27 14:01:54 [http-nio-8080-exec-10] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 14:01:54 [http-nio-8080-exec-10] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=181795, date=1574787658000}
+2019-11-27 14:01:54 [http-nio-8080-exec-10] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@14648b3c) uber_filling : 1
+2019-11-27 14:01:54 [http-nio-8080-exec-10] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-26 19:00:58.0, card='7825390000344933', station='okko', amount=92.12, discount=6.1, amountAndDiscount=98.22, sapCode='24ПК-8276/19', shop='АЗС 002 Львів ОККО-Рітейл', address='Львівська, Львів, Замарстинівська, 174', itemAmount=7.62, price=12.89, car='DACIA_LOGAN_ВС5278ІА', week_id=23, id='1574787658000'}
+2019-11-27 14:01:55 [http-nio-8080-exec-10] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-26 19:00:58.0, card='7825390000344933', station='okko', amount=92.12, discount=6.1, amountAndDiscount=98.22, sapCode='24ПК-8276/19', shop='АЗС 002 Львів ОККО-Рітейл', address='Львівська, Львів, Замарстинівська, 174', itemAmount=7.62, price=12.89, car='DACIA_LOGAN_ВС5278ІА', week_id=23, id='1574787658000'}
+2019-11-27 14:01:55 [http-nio-8080-exec-10] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[536 ms] : 
+2019-11-27 14:01:55 [http-nio-8080-exec-2] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 14:01:55 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:01:55 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:01:55 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 14:01:55 [http-nio-8080-exec-2] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@76f312b0) uber_filling : 18
+2019-11-27 14:01:56 [http-nio-8080-exec-2] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:01:56 [http-nio-8080-exec-2] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 14:01:56 [http-nio-8080-exec-2] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@19b7c9e1) uber_filling : 6
+2019-11-27 14:01:56 [http-nio-8080-exec-2] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 14:01:57 [http-nio-8080-exec-2] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@1687d999
+2019-11-27 14:01:57 [http-nio-8080-exec-2] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@1ea96171
+2019-11-27 14:01:57 [http-nio-8080-exec-2] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2644 ms] : 
+2019-11-27 14:02:16 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 14:02:16 [http-nio-8080-exec-1] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=181511, date=1574711044000}
+2019-11-27 14:02:16 [http-nio-8080-exec-1] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@19755b0b) uber_filling : 1
+2019-11-27 14:02:16 [http-nio-8080-exec-1] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-25 21:44:04.0, card='7825390000344933', station='okko', amount=158.14, discount=10.64, amountAndDiscount=168.78, sapCode='24ПК-8276/19', shop='АЗС 002 Львів ОККО-Рітейл', address='Львівська, Львів, Замарстинівська, 174', itemAmount=13.3, price=12.69, car='DACIA_LOGAN_ВС5278ІА', week_id=23, id='1574711044000'}
+2019-11-27 14:02:16 [http-nio-8080-exec-1] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-25 21:44:04.0, card='7825390000344933', station='okko', amount=158.14, discount=10.64, amountAndDiscount=168.78, sapCode='24ПК-8276/19', shop='АЗС 002 Львів ОККО-Рітейл', address='Львівська, Львів, Замарстинівська, 174', itemAmount=13.3, price=12.69, car='DACIA_LOGAN_ВС5278ІА', week_id=23, id='1574711044000'}
+2019-11-27 14:02:16 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[529 ms] : 
+2019-11-27 14:02:16 [http-nio-8080-exec-5] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 14:02:17 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:02:17 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:02:17 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 14:02:17 [http-nio-8080-exec-5] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@6fc4f7da) uber_filling : 18
+2019-11-27 14:02:18 [http-nio-8080-exec-5] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:02:18 [http-nio-8080-exec-5] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 14:02:18 [http-nio-8080-exec-5] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@1d59653f) uber_filling : 6
+2019-11-27 14:02:18 [http-nio-8080-exec-5] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 14:02:18 [http-nio-8080-exec-5] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@619362b7
+2019-11-27 14:02:19 [http-nio-8080-exec-5] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@3b0b0f0f
+2019-11-27 14:02:19 [http-nio-8080-exec-5] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2680 ms] : 
+2019-11-27 14:02:41 [http-nio-8080-exec-3] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 14:02:41 [http-nio-8080-exec-3] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=182028, date=1574840238000}
+2019-11-27 14:02:41 [http-nio-8080-exec-3] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@3268db2d) uber_filling : 1
+2019-11-27 14:02:41 [http-nio-8080-exec-3] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-27 09:37:18.0, card='7825390000344933', station='okko', amount=340.21, discount=22.51, amountAndDiscount=362.72, sapCode='24ПК-8276/19', shop='АЗС 011 Львів ОККО-Рітейл', address='Львівська, Львів, Дж.Вашингтона, 12', itemAmount=28.14, price=12.89, car='DACIA_LOGAN_ВС5278ІА', week_id=23, id='1574840238000'}
+2019-11-27 14:02:41 [http-nio-8080-exec-3] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-27 09:37:18.0, card='7825390000344933', station='okko', amount=340.21, discount=22.51, amountAndDiscount=362.72, sapCode='24ПК-8276/19', shop='АЗС 011 Львів ОККО-Рітейл', address='Львівська, Львів, Дж.Вашингтона, 12', itemAmount=28.14, price=12.89, car='DACIA_LOGAN_ВС5278ІА', week_id=23, id='1574840238000'}
+2019-11-27 14:02:41 [http-nio-8080-exec-3] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[497 ms] : 
+2019-11-27 14:02:41 [http-nio-8080-exec-8] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 14:02:42 [http-nio-8080-exec-8] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:02:42 [http-nio-8080-exec-8] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:02:42 [http-nio-8080-exec-8] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 14:02:42 [http-nio-8080-exec-8] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@6f4e20c9) uber_filling : 18
+2019-11-27 14:02:43 [http-nio-8080-exec-8] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:02:43 [http-nio-8080-exec-8] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 14:02:43 [http-nio-8080-exec-8] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@28ad9cb6) uber_filling : 6
+2019-11-27 14:02:43 [http-nio-8080-exec-8] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 14:02:43 [http-nio-8080-exec-8] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@72358807
+2019-11-27 14:02:44 [http-nio-8080-exec-8] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@26ccc4b9
+2019-11-27 14:02:44 [http-nio-8080-exec-8] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2433 ms] : 
+2019-11-27 14:02:54 [http-nio-8080-exec-9] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 14:02:54 [http-nio-8080-exec-9] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=181740, date=1574755512000}
+2019-11-27 14:02:55 [http-nio-8080-exec-9] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@70c9312e) uber_filling : 1
+2019-11-27 14:02:55 [http-nio-8080-exec-9] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-26 10:05:12.0, card='7825390000344933', station='okko', amount=308.06, discount=20.38, amountAndDiscount=328.44, sapCode='24ПК-8276/19', shop='АЗС 002 Львів ОККО-Рітейл', address='Львівська, Львів, Замарстинівська, 174', itemAmount=25.48, price=12.89, car='DACIA_LOGAN_ВС5278ІА', week_id=23, id='1574755512000'}
+2019-11-27 14:02:55 [http-nio-8080-exec-9] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-26 10:05:12.0, card='7825390000344933', station='okko', amount=308.06, discount=20.38, amountAndDiscount=328.44, sapCode='24ПК-8276/19', shop='АЗС 002 Львів ОККО-Рітейл', address='Львівська, Львів, Замарстинівська, 174', itemAmount=25.48, price=12.89, car='DACIA_LOGAN_ВС5278ІА', week_id=23, id='1574755512000'}
+2019-11-27 14:02:55 [http-nio-8080-exec-9] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[506 ms] : 
+2019-11-27 14:02:55 [http-nio-8080-exec-10] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 14:02:55 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:02:55 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:02:55 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 14:02:55 [http-nio-8080-exec-10] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@17faee42) uber_filling : 18
+2019-11-27 14:02:56 [http-nio-8080-exec-10] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:02:56 [http-nio-8080-exec-10] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 14:02:56 [http-nio-8080-exec-10] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@78620081) uber_filling : 6
+2019-11-27 14:02:56 [http-nio-8080-exec-10] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 14:02:57 [http-nio-8080-exec-10] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@538a8688
+2019-11-27 14:02:57 [http-nio-8080-exec-10] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@5ab6fe13
+2019-11-27 14:02:57 [http-nio-8080-exec-10] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2446 ms] : 
+2019-11-27 14:03:12 [http-nio-8080-exec-4] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : POST http://localhost:8080/logan_park/save_km
+2019-11-27 14:03:12 [http-nio-8080-exec-4] INFO  FillingReportController.postKm:40 - TRY to add KmRequest{km=181422, date=1574674717000}
+2019-11-27 14:03:12 [http-nio-8080-exec-4] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@62186355) uber_filling : 1
+2019-11-27 14:03:12 [http-nio-8080-exec-4] INFO  FillingHelper.addKm:100 - try update KM for FillingRecord{date=2019-11-25 11:38:37.0, card='7825390000344933', station='okko', amount=447.42, discount=30.1, amountAndDiscount=477.52, sapCode='24ПК-8276/19', shop='АЗС 010 Львів ОККО-Рітейл', address='Львівська, Львів, Липинського, 54', itemAmount=37.63, price=12.69, car='DACIA_LOGAN_ВС5278ІА', week_id=23, id='1574674717000'}
+2019-11-27 14:03:12 [http-nio-8080-exec-4] INFO  FillingRecordDAO.update:34 - update FillingRecord{date=2019-11-25 11:38:37.0, card='7825390000344933', station='okko', amount=447.42, discount=30.1, amountAndDiscount=477.52, sapCode='24ПК-8276/19', shop='АЗС 010 Львів ОККО-Рітейл', address='Львівська, Львів, Липинського, 54', itemAmount=37.63, price=12.69, car='DACIA_LOGAN_ВС5278ІА', week_id=23, id='1574674717000'}
+2019-11-27 14:03:12 [http-nio-8080-exec-4] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[501 ms] : 
+2019-11-27 14:03:12 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:31 - <<<--- REQUEST : GET http://localhost:8080/logan_park/filling_report
+2019-11-27 14:03:13 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:03:13 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:03:13 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=23, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0}
+2019-11-27 14:03:13 [http-nio-8080-exec-1] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@3839612c) uber_filling : 18
+2019-11-27 14:03:14 [http-nio-8080-exec-1] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-11-27 14:03:14 [http-nio-8080-exec-1] INFO  WeekLinksHelper.getPreviousWeek:46 - getPreviousWeek : WeekRange{id=22, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0}
+2019-11-27 14:03:14 [http-nio-8080-exec-1] INFO  FillingRecordDAO.findAllWhere:230 - findAllWhere(orm.entity.GenericAbstractDAO$$Lambda$623/0x0000000801864040@6562a336) uber_filling : 6
+2019-11-27 14:03:14 [http-nio-8080-exec-1] INFO  FuelHelper.calculateFuelCost:53 - Calculate fuel cost
+2019-11-27 14:03:14 [http-nio-8080-exec-1] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@59dad38
+2019-11-27 14:03:15 [http-nio-8080-exec-1] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@10d2d638
+2019-11-27 14:03:15 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2395 ms] : 

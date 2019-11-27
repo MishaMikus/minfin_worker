@@ -21,24 +21,30 @@ public class BrandingCalculator {
     private static void calculate() {
         List<VehiclePerformance> vehiclePerformanceList = new ArrayList<>();
         int i = 1;
-        String path=DOWNLOAD_FOLDER+FS+"vehicle_performance" + i + ".csv";
+        String path = DOWNLOAD_FOLDER + FS + "vehicle_performance" + i + ".csv";
         while (new File(path).exists()) {
-            path=DOWNLOAD_FOLDER+FS+"vehicle_performance" + i + ".csv";
+            path = DOWNLOAD_FOLDER + FS + "vehicle_performance" + i + ".csv";
             File file = new File(path);
-            try{
-            vehiclePerformanceList.addAll(parseFile(file));}catch (Exception e){}
+            try {
+                if (file.exists()) {
+                    vehiclePerformanceList.addAll(parseFile(file));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             i++;
             LOGGER.info("parse : " + file.getAbsolutePath());
         }
         Map<String, Integer> res = new HashMap<>();
 
         vehiclePerformanceList.forEach(v -> {
+                    System.out.println(v);
                     String vehicle = v.getModel() + " " + v.getLicensePlate();
                     res.putIfAbsent(vehicle, 0);
                     res.put(vehicle, res.get(vehicle) + v.getTrips());
                 }
         );
-        System.out.println(res);
+        System.out.println("res: " + res);
     }
 
 
@@ -69,52 +75,62 @@ public class BrandingCalculator {
             for (String header : headerRow) {
                 headerList.add(header.replaceAll("\"", ""));
             }
-
-            res.setModel(parseString("Model", headerList, rowCells));
-            res.setLicensePlate(parseString("License plate", headerList, rowCells));
-            res.setNetFares(parseDouble("Net Fares", headerList, rowCells));
-            res.setPerTrip(parseDouble("Per trip", headerList, rowCells));
-            res.setPerHourOnline(parseDouble("Per hour online", headerList, rowCells));
-            res.setPerKmOnTrip(parseDouble("Per km on trip", headerList, rowCells));
-            res.setTrips(parseInteger("Trips", headerList, rowCells));
-            res.setHoursOnline(parseHourceOnline(headerList, rowCells));
-            res.setTripsPerHour(parseDouble("Trips per hour", headerList, rowCells));
-            res.setDistancePerTrip(parseDistancePerTrip(headerList, rowCells));
+//"Модель","Номерний знак","ТАРИФИ БЕЗ ПОДАТКІВ І ЗБОРІВ","За поїздку","За годину на лінії","За кілометр поїздки","Поїздки","Години на лінії","Поїздок на годину","Відстань кожної поїздки"
+            res.setModel(parseString(headerList, rowCells, "Model", "Модель"));
+            res.setLicensePlate(parseString(headerList, rowCells, "License plate", "Номерний знак"));
+            res.setNetFares(parseDouble(headerList, rowCells, "Net Fares", "ТАРИФИ БЕЗ ПОДАТКІВ І ЗБОРІВ"));
+            res.setPerTrip(parseDouble(headerList, rowCells, "Per trip", "За поїздку"));
+            res.setPerHourOnline(parseDouble(headerList, rowCells, "Per hour online", "За годину на лінії"));
+            res.setPerKmOnTrip(parseDouble(headerList, rowCells, "Per km on trip", "За кілометр поїздки"));
+            res.setTrips(parseInteger(headerList, rowCells, "Trips", "Поїздки"));
+            res.setHoursOnline(parseHoursOnline(headerList, rowCells, "Hours online", "Години на лінії"));
+            res.setTripsPerHour(parseDouble(headerList, rowCells, "Trips per hour", "Поїздок на годину"));
+            res.setDistancePerTrip(parseDistancePerTrip(headerList, rowCells,"Distance per trip","Відстань кожної поїздки"));
         } else {
             LOGGER.warn("file header(firstRow) Failure");
         }
         return res;
     }
 
-    private static Double parseHourceOnline(List<String> headerList, String[] rowCells) {
-        String value = rowCells[headerList.indexOf("Hours online")];
+    private static Double parseHoursOnline(List<String> headerList, String[] rowCells, String... headerPossibleArray) {
+        String value = rowCells[findIndex(headerList, headerPossibleArray)];
         Integer h = Integer.parseInt(value.split("h ")[0]);
         Integer m = Integer.parseInt(value.split("h ")[1].split("m")[0]);
         return Math.round(100 * (m + h * 60) / 60d) / 100d;
     }
 
-    private static Double parseDistancePerTrip(List<String> headerList, String[] rowCells) {
-        String value = rowCells[headerList.indexOf("Distance per trip")];
+    private static Double parseDistancePerTrip(List<String> headerList, String[] rowCells, String... headerPossibleArray) {
+        String value = rowCells[findIndex(headerList, headerPossibleArray)];
         return Double.parseDouble(value.replaceAll(" KM", ""));
     }
 
-    private static Integer parseInteger(String header, List<String> headerList, String[] values) {
-        return Integer.parseInt(values[headerList.indexOf(header)]);
+    private static Integer parseInteger(List<String> headerList, String[] values, String... headerPossibleArray) {
+        return Integer.parseInt(values[findIndex(headerList, headerPossibleArray)]);
     }
 
-    private static String parseString(String header, List<String> headerList, String[] values) {
-        return values[headerList.indexOf(header)];
+    private static String parseString(List<String> headerList, String[] values, String... headerPossibleArray) {
+        return values[findIndex(headerList, headerPossibleArray)];
     }
 
-    private static Double parseDouble(String header, List<String> headerList, String[] values) {
+    private static Double parseDouble(List<String> headerList, String[] values, String... headerPossibleArray) {
+        int i = findIndex(headerList, headerPossibleArray);
         try {
-            return Double.parseDouble(values[headerList.indexOf(header)]);
+            return Double.parseDouble(values[i]);
         } catch (Exception e) {
-            System.out.println("header : " + header);
+            System.out.println("header : " + i);
             System.out.println("headerList : " + headerList);
             System.out.println("values : " + Arrays.asList(values));
             e.printStackTrace();
         }
         return null;
+    }
+
+    private static int findIndex(List<String> headerList, String[] headerPossibleArray) {
+        for (String headerCandidate : headerPossibleArray) {
+            if (headerList.indexOf(headerCandidate) != -1) return headerList.indexOf(headerCandidate);
+        }
+        System.out.println(headerList);
+        System.out.println(new ArrayList<>(Arrays.asList(headerPossibleArray)));
+        return -1;
     }
 }

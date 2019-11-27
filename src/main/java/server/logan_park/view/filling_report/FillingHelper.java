@@ -1,25 +1,27 @@
 package server.logan_park.view.filling_report;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import orm.entity.logan_park.filling.FillingRecord;
 import orm.entity.logan_park.filling.FillingRecordDAO;
 import orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover;
 import orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftoverDAO;
 import orm.entity.logan_park.week_range.WeekRange;
 import orm.entity.logan_park.week_range.WeekRangeDAO;
-import server.logan_park.view.filling_report.model.DateLabel;
-import server.logan_park.view.filling_report.model.FillingTable;
-import server.logan_park.view.filling_report.model.FillingValue;
-import server.logan_park.view.filling_report.model.KmRequest;
+import server.logan_park.view.filling_report.model.*;
 import server.logan_park.view.weekly_report_general.WeekLinksHelper;
 import ui_automation.common.FuelHelper;
 import util.DateHelper;
 import util.NumberHelper;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.codeborne.selenide.Selenide.$;
+import static server.logan_park.view.filling_report.model.DateLabel.*;
 
 public class FillingHelper {
 
@@ -36,9 +38,9 @@ public class FillingHelper {
                 .findAllWhereEqual("week_id", week_id)
                 .stream().sorted((o1, o2) -> o2.getDate().compareTo(o1.getDate())).collect(Collectors.toList());
 
-        calculateFuel(fillingTable,fillingRecordList);
+        calculateFuel(fillingTable, fillingRecordList);
 
-        addFuelCosts(fillingTable,week_id);
+        addFuelCosts(fillingTable, week_id);
 
         addLeftover(fillingTable);
         return fillingTable;
@@ -103,5 +105,37 @@ public class FillingHelper {
             LOGGER.warn("can't find filling record for " + new Date(kmRequest.getDate()));
         }
 
+    }
+
+    public void makeManualReceipt(ManualReceiptRequest manualReceiptRequest) {
+        FillingRecord fillingRecord = new FillingRecord();
+        fillingRecord.setCard("cash");
+        fillingRecord.setAmount(manualReceiptRequest.getPrice() - manualReceiptRequest.getDiscount());
+        fillingRecord.setDiscount(manualReceiptRequest.getDiscount());
+        fillingRecord.setAmountAndDiscount(manualReceiptRequest.getPrice());
+        fillingRecord.setShop(manualReceiptRequest.getShop());
+        fillingRecord.setAddress(manualReceiptRequest.getAddress());
+        fillingRecord.setPrice(manualReceiptRequest.getPrice());
+        fillingRecord.setItemAmount(manualReceiptRequest.getL());
+        fillingRecord.setCar(manualReceiptRequest.getCar());
+        Date timestamp = parseTimestamp(manualReceiptRequest.getDate(), manualReceiptRequest.getTime());
+        fillingRecord.setId(timestamp.getTime() + "");
+        fillingRecord.setStation(manualReceiptRequest.getStation());
+        fillingRecord.setDate(timestamp);
+        fillingRecord.setWeek_id(weekLinksHelper.findRangeByDate(timestamp).getId());
+        fillingRecord.setKm(manualReceiptRequest.getKm().intValue());
+        LOGGER.info("Try to save: " + fillingRecord);
+        FillingRecordDAO.getInstance().save(fillingRecord);
+    }
+
+    private Date parseTimestamp(String date, String time) {
+        //date : 27.11.2019
+        //time : 07:25:42
+        try {
+            return SDF_DD_MM_YYYY_HH_MM_SS.parse(date + " " + time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return new Date();
     }
 }

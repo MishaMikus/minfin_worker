@@ -78,10 +78,9 @@ public class FillingRecord {
                 ", car='" + car + '\'' +
                 ", week_id=" + week_id +
                 ", id='" + id + '\'' +
+                ", km=" + km +
                 '}';
     }
-
-
 
     public Integer getWeek_id() {
         return week_id;
