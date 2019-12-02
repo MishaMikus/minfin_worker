@@ -81,6 +81,7 @@ public class UpgBo extends BaseUpgBO {
 
     private Date parseDate(String dateString) {
         try {
+            SDF.setTimeZone(TimeZone.getTimeZone("EET"));
             return SDF.parse(dateString);
         } catch (ParseException e) {
             LOGGER.warn("date parsing failure : \n" + e.getMessage());
