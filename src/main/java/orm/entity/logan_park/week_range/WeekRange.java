@@ -17,13 +17,25 @@ public class WeekRange {
     @Column
     private Date end;
 
+    @Column
+    private String creator;
+
     @Override
     public String toString() {
         return "WeekRange{" +
                 "id=" + id +
                 ", start=" + start +
                 ", end=" + end +
+                ", creator='" + creator + '\'' +
                 '}';
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
 
     public Integer getId() {

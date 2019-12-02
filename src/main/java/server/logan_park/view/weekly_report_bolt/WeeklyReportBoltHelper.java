@@ -25,7 +25,7 @@ public class WeeklyReportBoltHelper {
         //Week links
         weeklyReportBolt.setWeekLinksList(new WeekLinksHelper().linkList());
 
-        WeekRange weekRange = WeekRangeDAO.getInstance().findOrCreateWeek(weekFlag);
+        WeekRange weekRange = WeekRangeDAO.getInstance().findOrCreateWeek(weekFlag, "bolt_worker");
         List<BoltPaymentRecordDay> list = BoltPaymentRecordDayDAO.getInstance().findAllByWeekRangeId(weekRange.getId());
         Map<String, DriverStat> tmpMap = new HashMap<>();
 

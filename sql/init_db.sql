@@ -306,6 +306,7 @@ CREATE TABLE `minfin`.`week_range`
     `id`    INT      NOT NULL AUTO_INCREMENT,
     `start` DATETIME NOT NULL,
     `end`   DATETIME NOT NULL,
+    `creator`   VARCHAR(20) NOT NULL,
     PRIMARY KEY (`id`)
 );
 ALTER TABLE `minfin`.`week_range`

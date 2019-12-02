@@ -43,7 +43,7 @@ public class PaymentRecorder {
 
     public void recordToBD(Date weekFlag) {
         LOGGER.info("primaryParsedData.size() : " + primaryParsedData.size());
-        Integer week_id = WeekRangeDAO.getInstance().findOrCreateWeek(weekFlag).getId();
+        Integer week_id = WeekRangeDAO.getInstance().findOrCreateWeek(weekFlag,"ubet_worker").getId();
         List<UberPaymentRecordRow> tobeRecorded = new ArrayList<>();
         if (primaryParsedData.size() > 0) {
             UberPaymentRecordRow oldRecord = UberPaymentRecordRowDAO.getInstance().findLatest();

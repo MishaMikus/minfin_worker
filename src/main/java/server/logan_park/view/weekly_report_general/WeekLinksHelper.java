@@ -32,7 +32,7 @@ public class WeekLinksHelper {
     }
 
     public WeekRange findRangeByDate(Date weekFlag) {
-        return WeekRangeDAO.getInstance().findOrCreateWeek(weekFlag);
+        return WeekRangeDAO.getInstance().findOrCreateWeek(weekFlag, "link_helper");
     }
 
     public WeekRange getPreviousWeek(WeekRange weekRange) {
