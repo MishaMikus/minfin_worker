@@ -700,3 +700,1104 @@ Verify the connector's configuration, identify and stop any process that's liste
 2019-11-27 14:03:14 [http-nio-8080-exec-1] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@59dad38
 2019-11-27 14:03:15 [http-nio-8080-exec-1] INFO  FuelAccountLeftoverDAO.latest:26 - latest : orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@10d2d638
 2019-11-27 14:03:15 [http-nio-8080-exec-1] INFO  GeneralFilter.doFilter:42 - --->>> RESPONSE[2395 ms] : 
+2019-12-02 07:36:39 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/
+2019-12-02 07:36:40 [main] INFO  WebDriverManager.detectDriverVersionFromBrowser:575 - Using chromedriver 78.0.3904.105 (since Google Chrome 78 is installed in your machine)
+2019-12-02 07:36:40 [main] INFO  WebDriverManager.exportDriver:1050 - Exporting webdriver.chrome.driver as /Users/mykhailo.mikus/.m2/repository/webdriver/chromedriver/mac64/78.0.3904.105/chromedriver
+2019-12-02 07:36:43 [main] INFO  BaseBO.inputById:87 - inputById : MFormLogin_login text : mikus
+2019-12-02 07:36:44 [main] INFO  BaseBO.inputById:87 - inputById : MFormLogin_password text : vM-ucL5:E-jEpfb
+2019-12-02 07:36:49 [main] INFO  BaseBO.clickByClassName:92 - clickByClassName : ui-btn-hidden
+2019-12-02 07:36:49 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner
+2019-12-02 07:36:50 [main] INFO  Version.logVersion:46 - HHH000412: Hibernate Core {5.4.3.Final}
+2019-12-02 07:36:50 [main] INFO  Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2019-12-02 07:36:50 [main] WARN  pooling.configure:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-12-02 07:36:50 [main] INFO  pooling.buildCreator:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://46.101.184.197:3306/minfin?useSSL=false&characterEncoding=UTF-8&useUnicode=true&charSet=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Kiev]
+2019-12-02 07:36:50 [main] INFO  pooling.buildCreator:121 - HHH10001001: Connection properties: {password=xwHelpEvgLpoEcHa, user=root}
+2019-12-02 07:36:50 [main] INFO  pooling.buildCreator:129 - HHH10001003: Autocommit mode: false
+2019-12-02 07:36:50 [main] INFO  DriverManagerConnectionProviderImpl.<init>:239 - HHH000115: Hibernate connection pool size: 1000 (min=1)
+2019-12-02 07:36:51 [main] INFO  Dialect.<init>:158 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-12-02 07:36:51 [main] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
+2019-12-02 07:36:52 [main] INFO  JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-12-02 07:36:52 [main] INFO  FuelAccountLeftoverDAO.save:42 - save orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@14590fe2
+2019-12-02 07:36:53 [main] INFO  FillingRecordDAO.latest:27 - latest : FillingRecord{date=2019-12-02 02:41:56.0, card='018137', station='upg', amount=413.12, discount=null, amountAndDiscount=null, sapCode='null', shop='АЗС №5 Шевченка', address='м.Львів, вул. Шевченко,200', itemAmount=35.01, price=11.8, car='LOGAN_FRANEK_BC4275II', week_id=25, id='4682596', km=null}
+2019-12-02 07:36:53 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list
+2019-12-02 07:36:53 [main] INFO  BaseUpgBO.lambda$getAllLatestFillings$1:31 - Read transactions : 018 138 МІКУСЬ МИХАЙЛО РОМАНОВИЧ -> https://upgcard.com.ua/ua/owner/account/list?cid=140951
+2019-12-02 07:36:53 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list?cid=140951
+2019-12-02 07:36:54 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:54 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Dec 01 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:36:54 [main] INFO  FillingCardDAO.findAllWhere:230 - findAllWhere(null) uber_filling_card : 8
+2019-12-02 07:36:54 [main] INFO  VehicleDAO.findAllWhere:230 - findAllWhere(null) uber_vehicle : 7
+2019-12-02 07:36:54 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:54 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:36:55 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:55 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:36:55 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:55 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Nov 24 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:55 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:55 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 23 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:55 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:55 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:55 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:55 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:55 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:55 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:56 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:56 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:56 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:56 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:56 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:56 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:56 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:56 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 18 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:56 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:56 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 15 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:57 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:57 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:57 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:57 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:57 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:57 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:57 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:57 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:57 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:57 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:58 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:58 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:58 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:58 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:58 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:58 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:58 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:58 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:58 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:58 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:59 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:59 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 05 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:59 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:59 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 31 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:59 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:59 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 30 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:59 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:59 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 29 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:59 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:59 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 28 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:36:59 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:36:59 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:00 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:00 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:00 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:00 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:00 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:00 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 23 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:00 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:00 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 22 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:00 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:00 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 21 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:01 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:01 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:01 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:01 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 18 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:01 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:01 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 17 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:01 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:01 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 16 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:01 [main] INFO  BaseUpgBO.lambda$getAllLatestFillings$1:31 - Read transactions : 018 137 МІКУСЬ МИХАЙЛО РОМАНОВИЧ -> https://upgcard.com.ua/ua/owner/account/list?cid=140952
+2019-12-02 07:37:01 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list?cid=140952
+2019-12-02 07:37:02 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:02 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Dec 02 00:00:00 EET 2019 -> WeekRange{id=1, start=2019-12-02 00:00:00.0, end=2019-12-08 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:37:02 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:02 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Dec 01 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:37:02 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:02 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 30 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:37:02 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:02 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 29 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:37:03 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:03 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 29 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:37:03 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:03 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:37:03 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:03 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:37:03 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:03 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:37:03 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:03 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:37:03 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:03 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:04 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:04 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:04 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:04 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:04 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:04 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:04 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:04 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:04 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:04 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:05 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:05 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:05 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:05 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 18 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:05 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:05 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Nov 17 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:05 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:05 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:05 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:05 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:06 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:06 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 13 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:06 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:06 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:06 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:06 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:06 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:06 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:06 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:06 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:06 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:06 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 08 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:07 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:07 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 07 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:07 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:07 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:07 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:07 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 05 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:37:07 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:07 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Oct 26 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:07 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:07 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:08 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:08 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:08 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:08 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:08 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:08 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 22 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:08 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:08 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 21 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:08 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:08 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:09 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:09 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:09 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:09 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Oct 19 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:09 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:37:09 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 18 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:37:09 [main] INFO  FillingRecordDAO.saveBatch:72 - save 0 records to uber_filling for 135 ms
+2019-12-02 07:49:00 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/
+2019-12-02 07:49:01 [main] INFO  WebDriverManager.detectDriverVersionFromBrowser:575 - Using chromedriver 78.0.3904.105 (since Google Chrome 78 is installed in your machine)
+2019-12-02 07:49:01 [main] INFO  WebDriverManager.exportDriver:1050 - Exporting webdriver.chrome.driver as /Users/mykhailo.mikus/.m2/repository/webdriver/chromedriver/mac64/78.0.3904.105/chromedriver
+2019-12-02 07:49:04 [main] INFO  BaseBO.inputById:87 - inputById : MFormLogin_login text : mikus
+2019-12-02 07:49:04 [main] INFO  BaseBO.inputById:87 - inputById : MFormLogin_password text : vM-ucL5:E-jEpfb
+2019-12-02 07:49:04 [main] INFO  BaseBO.clickByClassName:92 - clickByClassName : ui-btn-hidden
+2019-12-02 07:49:04 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner
+2019-12-02 07:49:06 [main] INFO  Version.logVersion:46 - HHH000412: Hibernate Core {5.4.3.Final}
+2019-12-02 07:49:06 [main] INFO  Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2019-12-02 07:49:06 [main] WARN  pooling.configure:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-12-02 07:49:06 [main] INFO  pooling.buildCreator:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://46.101.184.197:3306/minfin?useSSL=false&characterEncoding=UTF-8&useUnicode=true&charSet=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Kiev]
+2019-12-02 07:49:06 [main] INFO  pooling.buildCreator:121 - HHH10001001: Connection properties: {password=xwHelpEvgLpoEcHa, user=root}
+2019-12-02 07:49:06 [main] INFO  pooling.buildCreator:129 - HHH10001003: Autocommit mode: false
+2019-12-02 07:49:06 [main] INFO  DriverManagerConnectionProviderImpl.<init>:239 - HHH000115: Hibernate connection pool size: 1000 (min=1)
+2019-12-02 07:49:07 [main] INFO  Dialect.<init>:158 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-12-02 07:49:07 [main] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
+2019-12-02 07:49:08 [main] INFO  JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-12-02 07:49:08 [main] INFO  FuelAccountLeftoverDAO.save:42 - save orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@6115846e
+2019-12-02 07:49:09 [main] INFO  FillingRecordDAO.latest:27 - latest : FillingRecord{date=2019-12-02 02:41:56.0, card='018137', station='upg', amount=413.12, discount=null, amountAndDiscount=null, sapCode='null', shop='АЗС №5 Шевченка', address='м.Львів, вул. Шевченко,200', itemAmount=35.01, price=11.8, car='LOGAN_FRANEK_BC4275II', week_id=25, id='4682596', km=null}
+2019-12-02 07:49:09 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list
+2019-12-02 07:49:09 [main] INFO  BaseUpgBO.lambda$getAllLatestFillings$1:31 - Read transactions : 018 138 МІКУСЬ МИХАЙЛО РОМАНОВИЧ -> https://upgcard.com.ua/ua/owner/account/list?cid=140951
+2019-12-02 07:49:09 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list?cid=140951
+2019-12-02 07:49:10 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:10 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Dec 01 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:49:10 [main] INFO  FillingCardDAO.findAllWhere:230 - findAllWhere(null) uber_filling_card : 8
+2019-12-02 07:49:10 [main] INFO  VehicleDAO.findAllWhere:230 - findAllWhere(null) uber_vehicle : 7
+2019-12-02 07:49:10 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:10 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:49:10 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:10 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:49:10 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:10 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Nov 24 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:11 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:11 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 23 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:11 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:11 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:11 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:11 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:11 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:11 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:11 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:11 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:12 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:12 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:12 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:12 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:12 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:12 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 18 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:12 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:12 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 15 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:12 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:12 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:13 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:13 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:13 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:13 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:13 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:13 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 05 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 31 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:15 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 30 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:15 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 29 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:15 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 28 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:15 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:15 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:16 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:16 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 23 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:16 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 22 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:16 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 21 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:16 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:17 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:17 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 18 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:17 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:17 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 17 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:17 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:17 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 16 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:17 [main] INFO  BaseUpgBO.lambda$getAllLatestFillings$1:31 - Read transactions : 018 137 МІКУСЬ МИХАЙЛО РОМАНОВИЧ -> https://upgcard.com.ua/ua/owner/account/list?cid=140952
+2019-12-02 07:49:17 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list?cid=140952
+2019-12-02 07:49:18 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Dec 02 00:00:00 EET 2019 -> WeekRange{id=1, start=2019-12-02 00:00:00.0, end=2019-12-08 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:49:18 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Dec 01 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:49:18 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 30 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:49:18 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 30 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:49:18 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 29 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:49:18 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:49:19 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:19 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:49:19 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:19 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:49:19 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:19 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:49:19 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:19 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:19 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:19 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:20 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:20 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:20 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:20 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:20 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:20 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:20 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:20 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:20 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:20 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 18 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Nov 17 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 13 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 13 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 08 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 07 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:49:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Oct 26 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Oct 26 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 22 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 21 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:49:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 18 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:49:25 [main] INFO  FillingRecordDAO.saveBatch:72 - save 0 records to uber_filling for 137 ms
+2019-12-02 07:54:14 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/
+2019-12-02 07:54:14 [main] INFO  WebDriverManager.detectDriverVersionFromBrowser:575 - Using chromedriver 78.0.3904.105 (since Google Chrome 78 is installed in your machine)
+2019-12-02 07:54:14 [main] INFO  WebDriverManager.exportDriver:1050 - Exporting webdriver.chrome.driver as /Users/mykhailo.mikus/.m2/repository/webdriver/chromedriver/mac64/78.0.3904.105/chromedriver
+2019-12-02 07:54:18 [main] INFO  BaseBO.inputById:87 - inputById : MFormLogin_login text : mikus
+2019-12-02 07:54:18 [main] INFO  BaseBO.inputById:87 - inputById : MFormLogin_password text : vM-ucL5:E-jEpfb
+2019-12-02 07:54:18 [main] INFO  BaseBO.clickByClassName:92 - clickByClassName : ui-btn-hidden
+2019-12-02 07:54:18 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner
+2019-12-02 07:54:20 [main] INFO  Version.logVersion:46 - HHH000412: Hibernate Core {5.4.3.Final}
+2019-12-02 07:54:20 [main] INFO  Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2019-12-02 07:54:20 [main] WARN  pooling.configure:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-12-02 07:54:20 [main] INFO  pooling.buildCreator:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://46.101.184.197:3306/minfin?useSSL=false&characterEncoding=UTF-8&useUnicode=true&charSet=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Kiev]
+2019-12-02 07:54:20 [main] INFO  pooling.buildCreator:121 - HHH10001001: Connection properties: {password=xwHelpEvgLpoEcHa, user=root}
+2019-12-02 07:54:20 [main] INFO  pooling.buildCreator:129 - HHH10001003: Autocommit mode: false
+2019-12-02 07:54:20 [main] INFO  DriverManagerConnectionProviderImpl.<init>:239 - HHH000115: Hibernate connection pool size: 1000 (min=1)
+2019-12-02 07:54:20 [main] INFO  Dialect.<init>:158 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-12-02 07:54:21 [main] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
+2019-12-02 07:54:21 [main] INFO  JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-12-02 07:54:22 [main] INFO  FuelAccountLeftoverDAO.save:42 - save orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@6115846e
+2019-12-02 07:54:22 [main] INFO  FillingRecordDAO.latest:27 - latest : FillingRecord{date=2019-12-02 02:41:56.0, card='018137', station='upg', amount=413.12, discount=null, amountAndDiscount=null, sapCode='null', shop='АЗС №5 Шевченка', address='м.Львів, вул. Шевченко,200', itemAmount=35.01, price=11.8, car='LOGAN_FRANEK_BC4275II', week_id=25, id='4682596', km=null}
+2019-12-02 07:54:22 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list
+2019-12-02 07:54:22 [main] INFO  BaseUpgBO.lambda$getAllLatestFillings$1:31 - Read transactions : 018 138 МІКУСЬ МИХАЙЛО РОМАНОВИЧ -> https://upgcard.com.ua/ua/owner/account/list?cid=140951
+2019-12-02 07:54:22 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list?cid=140951
+2019-12-02 07:54:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Dec 01 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:54:23 [main] INFO  FillingCardDAO.findAllWhere:230 - findAllWhere(null) uber_filling_card : 8
+2019-12-02 07:54:23 [main] INFO  VehicleDAO.findAllWhere:230 - findAllWhere(null) uber_vehicle : 7
+2019-12-02 07:54:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:54:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:54:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Nov 24 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 23 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:26 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:26 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 18 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:26 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:26 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 15 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:26 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:26 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:26 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:26 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:27 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:27 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:27 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:27 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:27 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:27 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:27 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:27 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:27 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:27 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:28 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:28 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:28 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:28 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:28 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:28 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:28 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:28 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 05 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:28 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:28 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 31 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:28 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:28 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 30 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:29 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:29 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 29 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:29 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:29 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 28 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:29 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:29 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:29 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:29 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:29 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:29 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:30 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:30 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 23 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:30 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:30 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 22 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:30 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:30 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 21 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:30 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:30 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:30 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:30 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 18 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:31 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:31 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 17 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:31 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:31 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 16 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:31 [main] INFO  BaseUpgBO.lambda$getAllLatestFillings$1:31 - Read transactions : 018 137 МІКУСЬ МИХАЙЛО РОМАНОВИЧ -> https://upgcard.com.ua/ua/owner/account/list?cid=140952
+2019-12-02 07:54:31 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list?cid=140952
+2019-12-02 07:54:31 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:31 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Dec 02 00:00:00 EET 2019 -> WeekRange{id=1, start=2019-12-02 00:00:00.0, end=2019-12-08 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:54:32 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:32 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Dec 01 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:54:32 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:32 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 30 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:54:32 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:32 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 29 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:54:32 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:32 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 29 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:54:32 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:32 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:54:33 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:33 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:54:33 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:33 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:54:33 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:33 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:54:33 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:33 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:33 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:33 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:34 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:34 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:34 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:34 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:34 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:34 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:34 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:34 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:34 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:34 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:35 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:35 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 18 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:35 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:35 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Nov 17 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:35 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:35 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:35 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:35 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:35 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:35 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 13 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:35 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:35 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:36 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:36 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:36 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:36 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:36 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:36 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:36 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:36 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 08 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:36 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:36 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 07 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:37 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:37 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:37 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:37 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 05 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:54:37 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:37 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Oct 26 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:37 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:37 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:37 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:37 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:38 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:38 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:38 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:38 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 22 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:38 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:38 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 21 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:38 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:38 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:38 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:38 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:39 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:39 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Oct 19 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:39 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:54:39 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 18 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:54:39 [main] INFO  FillingRecordDAO.saveBatch:72 - save 0 records to uber_filling for 138 ms
+2019-12-02 07:55:02 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/
+2019-12-02 07:55:03 [main] INFO  WebDriverManager.detectDriverVersionFromBrowser:575 - Using chromedriver 78.0.3904.105 (since Google Chrome 78 is installed in your machine)
+2019-12-02 07:55:03 [main] INFO  WebDriverManager.exportDriver:1050 - Exporting webdriver.chrome.driver as /Users/mykhailo.mikus/.m2/repository/webdriver/chromedriver/mac64/78.0.3904.105/chromedriver
+2019-12-02 07:55:06 [main] INFO  BaseBO.inputById:87 - inputById : MFormLogin_login text : mikus
+2019-12-02 07:55:06 [main] INFO  BaseBO.inputById:87 - inputById : MFormLogin_password text : vM-ucL5:E-jEpfb
+2019-12-02 07:55:06 [main] INFO  BaseBO.clickByClassName:92 - clickByClassName : ui-btn-hidden
+2019-12-02 07:55:06 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner
+2019-12-02 07:55:08 [main] INFO  Version.logVersion:46 - HHH000412: Hibernate Core {5.4.3.Final}
+2019-12-02 07:55:08 [main] INFO  Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2019-12-02 07:55:08 [main] WARN  pooling.configure:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-12-02 07:55:08 [main] INFO  pooling.buildCreator:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://46.101.184.197:3306/minfin?useSSL=false&characterEncoding=UTF-8&useUnicode=true&charSet=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Kiev]
+2019-12-02 07:55:08 [main] INFO  pooling.buildCreator:121 - HHH10001001: Connection properties: {password=xwHelpEvgLpoEcHa, user=root}
+2019-12-02 07:55:08 [main] INFO  pooling.buildCreator:129 - HHH10001003: Autocommit mode: false
+2019-12-02 07:55:08 [main] INFO  DriverManagerConnectionProviderImpl.<init>:239 - HHH000115: Hibernate connection pool size: 1000 (min=1)
+2019-12-02 07:55:09 [main] INFO  Dialect.<init>:158 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-12-02 07:55:09 [main] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
+2019-12-02 07:55:10 [main] INFO  JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-12-02 07:55:10 [main] INFO  FuelAccountLeftoverDAO.save:42 - save orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@b9b97ad
+2019-12-02 07:55:11 [main] INFO  FillingRecordDAO.latest:27 - latest : FillingRecord{date=2019-12-02 02:41:56.0, card='018137', station='upg', amount=413.12, discount=null, amountAndDiscount=null, sapCode='null', shop='АЗС №5 Шевченка', address='м.Львів, вул. Шевченко,200', itemAmount=35.01, price=11.8, car='LOGAN_FRANEK_BC4275II', week_id=25, id='4682596', km=null}
+2019-12-02 07:55:11 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list
+2019-12-02 07:55:11 [main] INFO  BaseUpgBO.lambda$getAllLatestFillings$1:31 - Read transactions : 018 138 МІКУСЬ МИХАЙЛО РОМАНОВИЧ -> https://upgcard.com.ua/ua/owner/account/list?cid=140951
+2019-12-02 07:55:11 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list?cid=140951
+2019-12-02 07:55:12 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:12 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Dec 01 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:55:12 [main] INFO  FillingCardDAO.findAllWhere:230 - findAllWhere(null) uber_filling_card : 8
+2019-12-02 07:55:12 [main] INFO  VehicleDAO.findAllWhere:230 - findAllWhere(null) uber_vehicle : 7
+2019-12-02 07:55:12 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:12 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:55:12 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:12 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:55:13 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Nov 24 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:13 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 23 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:13 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:13 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:13 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 18 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 15 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:15 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:15 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:15 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:15 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:15 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:16 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:16 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:16 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:16 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:16 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 05 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:17 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:17 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 31 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:17 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:17 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 30 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:17 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:17 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 29 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:17 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:17 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 28 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:17 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:17 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:17 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:18 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:18 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 23 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:18 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 22 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:18 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 21 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:18 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:19 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:19 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 18 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:19 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:19 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 17 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:19 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:19 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 16 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:19 [main] INFO  BaseUpgBO.lambda$getAllLatestFillings$1:31 - Read transactions : 018 137 МІКУСЬ МИХАЙЛО РОМАНОВИЧ -> https://upgcard.com.ua/ua/owner/account/list?cid=140952
+2019-12-02 07:55:19 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list?cid=140952
+2019-12-02 07:55:20 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:20 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Dec 02 00:00:00 EET 2019 -> WeekRange{id=1, start=2019-12-02 00:00:00.0, end=2019-12-08 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:55:20 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:20 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Dec 01 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:55:20 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:20 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 30 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:55:20 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:20 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 29 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:55:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 29 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:55:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:55:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:55:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:55:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:55:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 18 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Nov 17 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 13 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 08 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 07 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 05 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:55:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Oct 26 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:26 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:26 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:26 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:26 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:26 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:26 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:26 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:26 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 22 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:26 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:26 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 21 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:26 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:26 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:27 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:27 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:27 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:27 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Oct 19 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:27 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:55:27 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 18 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:55:27 [main] INFO  FillingRecordDAO.saveBatch:72 - save 0 records to uber_filling for 139 ms
+2019-12-02 07:56:00 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/
+2019-12-02 07:56:00 [main] INFO  WebDriverManager.detectDriverVersionFromBrowser:575 - Using chromedriver 78.0.3904.105 (since Google Chrome 78 is installed in your machine)
+2019-12-02 07:56:00 [main] INFO  WebDriverManager.exportDriver:1050 - Exporting webdriver.chrome.driver as /Users/mykhailo.mikus/.m2/repository/webdriver/chromedriver/mac64/78.0.3904.105/chromedriver
+2019-12-02 07:56:03 [main] INFO  BaseBO.inputById:87 - inputById : MFormLogin_login text : mikus
+2019-12-02 07:56:03 [main] INFO  BaseBO.inputById:87 - inputById : MFormLogin_password text : vM-ucL5:E-jEpfb
+2019-12-02 07:56:04 [main] INFO  BaseBO.clickByClassName:92 - clickByClassName : ui-btn-hidden
+2019-12-02 07:56:04 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner
+2019-12-02 07:56:05 [main] INFO  Version.logVersion:46 - HHH000412: Hibernate Core {5.4.3.Final}
+2019-12-02 07:56:05 [main] INFO  Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2019-12-02 07:56:06 [main] WARN  pooling.configure:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-12-02 07:56:06 [main] INFO  pooling.buildCreator:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://46.101.184.197:3306/minfin?useSSL=false&characterEncoding=UTF-8&useUnicode=true&charSet=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Kiev]
+2019-12-02 07:56:06 [main] INFO  pooling.buildCreator:121 - HHH10001001: Connection properties: {password=xwHelpEvgLpoEcHa, user=root}
+2019-12-02 07:56:06 [main] INFO  pooling.buildCreator:129 - HHH10001003: Autocommit mode: false
+2019-12-02 07:56:06 [main] INFO  DriverManagerConnectionProviderImpl.<init>:239 - HHH000115: Hibernate connection pool size: 1000 (min=1)
+2019-12-02 07:56:06 [main] INFO  Dialect.<init>:158 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-12-02 07:56:07 [main] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
+2019-12-02 07:56:07 [main] INFO  JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-12-02 07:56:08 [main] INFO  FuelAccountLeftoverDAO.save:42 - save orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@60f9dc7e
+2019-12-02 07:56:08 [main] INFO  FillingRecordDAO.latest:27 - latest : FillingRecord{date=2019-12-02 04:41:56.0, card='018137', station='upg', amount=413.12, discount=null, amountAndDiscount=null, sapCode='null', shop='АЗС №5 Шевченка', address='м.Львів, вул. Шевченко,200', itemAmount=35.01, price=11.8, car='LOGAN_FRANEK_BC4275II', week_id=25, id='4682596', km=null}
+2019-12-02 07:56:08 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list
+2019-12-02 07:56:08 [main] INFO  BaseUpgBO.lambda$getAllLatestFillings$1:31 - Read transactions : 018 138 МІКУСЬ МИХАЙЛО РОМАНОВИЧ -> https://upgcard.com.ua/ua/owner/account/list?cid=140951
+2019-12-02 07:56:08 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list?cid=140951
+2019-12-02 07:56:09 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
+2019-12-02 07:56:09 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Dec 01 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0, creator='ubet_worker'}
+2019-12-02 07:56:09 [main] INFO  FillingCardDAO.findAllWhere:230 - findAllWhere(null) uber_filling_card : 8
+2019-12-02 07:56:10 [main] INFO  VehicleDAO.findAllWhere:230 - findAllWhere(null) uber_vehicle : 7
+2019-12-02 07:56:10 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
+2019-12-02 07:56:10 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0, creator='ubet_worker'}
+2019-12-02 07:56:10 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
+2019-12-02 07:56:10 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0, creator='ubet_worker'}
+2019-12-02 07:56:10 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
+2019-12-02 07:56:10 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Nov 24 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:10 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
+2019-12-02 07:56:10 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 23 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:11 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
+2019-12-02 07:56:11 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:11 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
+2019-12-02 07:56:11 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:11 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
+2019-12-02 07:56:11 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:11 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
+2019-12-02 07:56:11 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:11 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
+2019-12-02 07:56:11 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:11 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
+2019-12-02 07:56:11 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:12 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 11
+2019-12-02 07:56:12 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 18 00:00:00 EET 2019 -> null
+2019-12-02 07:56:12 [main] INFO  WeekRangeDAO.findOrCreateWeek:42 - create new week_range
+2019-12-02 07:56:12 [main] INFO  WeekRangeDAO.save:42 - save WeekRange{id=20, start=Mon Nov 18 00:00:00 EET 2019, end=Sun Nov 24 00:00:00 EET 2019, creator='upg_worker'}
+2019-12-02 07:56:12 [main] INFO  WeekRangeDAO.findOrCreateWeek:54 - newWeekRange : WeekRange{id=20, start=Mon Nov 18 00:00:00 EET 2019, end=Sun Nov 24 00:00:00 EET 2019, creator='upg_worker'}
+2019-12-02 07:56:12 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:56:12 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 15 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 02:00:00.0, end=2019-11-17 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:12 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:56:12 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 02:00:00.0, end=2019-11-17 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:12 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:56:12 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 02:00:00.0, end=2019-11-17 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:13 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:56:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 02:00:00.0, end=2019-11-17 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:13 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 12
+2019-12-02 07:56:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> null
+2019-12-02 07:56:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:42 - create new week_range
+2019-12-02 07:56:13 [main] INFO  WeekRangeDAO.save:42 - save WeekRange{id=21, start=Mon Nov 11 00:00:00 EET 2019, end=Sun Nov 17 00:00:00 EET 2019, creator='upg_worker'}
+2019-12-02 07:56:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:54 - newWeekRange : WeekRange{id=21, start=Mon Nov 11 00:00:00 EET 2019, end=Sun Nov 17 00:00:00 EET 2019, creator='upg_worker'}
+2019-12-02 07:56:13 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-12-02 07:56:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=21, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:13 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-12-02 07:56:13 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 02:00:00.0, end=2019-11-10 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-12-02 07:56:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 02:00:00.0, end=2019-11-10 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-12-02 07:56:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 02:00:00.0, end=2019-11-10 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-12-02 07:56:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 02:00:00.0, end=2019-11-10 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-12-02 07:56:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 02:00:00.0, end=2019-11-10 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:14 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-12-02 07:56:14 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 05 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 02:00:00.0, end=2019-11-10 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:15 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-12-02 07:56:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 31 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 02:00:00.0, end=2019-11-03 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:15 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-12-02 07:56:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 30 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 02:00:00.0, end=2019-11-03 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:15 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-12-02 07:56:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 29 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 02:00:00.0, end=2019-11-03 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:15 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 13
+2019-12-02 07:56:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 28 00:00:00 EET 2019 -> null
+2019-12-02 07:56:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:42 - create new week_range
+2019-12-02 07:56:15 [main] INFO  WeekRangeDAO.save:42 - save WeekRange{id=22, start=Mon Oct 28 00:00:00 EET 2019, end=Sun Nov 03 00:00:00 EET 2019, creator='upg_worker'}
+2019-12-02 07:56:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:54 - newWeekRange : WeekRange{id=22, start=Mon Oct 28 00:00:00 EET 2019, end=Sun Nov 03 00:00:00 EET 2019, creator='upg_worker'}
+2019-12-02 07:56:15 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 14
+2019-12-02 07:56:15 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 03:00:00.0, end=2019-10-27 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:16 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 14
+2019-12-02 07:56:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 03:00:00.0, end=2019-10-27 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:16 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 14
+2019-12-02 07:56:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 03:00:00.0, end=2019-10-27 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:16 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 14
+2019-12-02 07:56:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 23 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 03:00:00.0, end=2019-10-27 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:16 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 14
+2019-12-02 07:56:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 22 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 03:00:00.0, end=2019-10-27 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:16 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 14
+2019-12-02 07:56:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 21 00:00:00 EEST 2019 -> null
+2019-12-02 07:56:16 [main] INFO  WeekRangeDAO.findOrCreateWeek:42 - create new week_range
+2019-12-02 07:56:17 [main] INFO  WeekRangeDAO.save:42 - save WeekRange{id=23, start=Mon Oct 21 00:00:00 EEST 2019, end=Sun Oct 27 00:00:00 EEST 2019, creator='upg_worker'}
+2019-12-02 07:56:17 [main] INFO  WeekRangeDAO.findOrCreateWeek:54 - newWeekRange : WeekRange{id=23, start=Mon Oct 21 00:00:00 EEST 2019, end=Sun Oct 27 00:00:00 EEST 2019, creator='upg_worker'}
+2019-12-02 07:56:17 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 15
+2019-12-02 07:56:17 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 03:00:00.0, end=2019-10-20 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:17 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 15
+2019-12-02 07:56:17 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 18 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 03:00:00.0, end=2019-10-20 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:17 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 15
+2019-12-02 07:56:17 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 17 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 03:00:00.0, end=2019-10-20 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:17 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 15
+2019-12-02 07:56:17 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 16 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 03:00:00.0, end=2019-10-20 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:17 [main] INFO  BaseUpgBO.lambda$getAllLatestFillings$1:31 - Read transactions : 018 137 МІКУСЬ МИХАЙЛО РОМАНОВИЧ -> https://upgcard.com.ua/ua/owner/account/list?cid=140952
+2019-12-02 07:56:17 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list?cid=140952
+2019-12-02 07:56:18 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 15
+2019-12-02 07:56:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Dec 02 00:00:00 EET 2019 -> null
+2019-12-02 07:56:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:42 - create new week_range
+2019-12-02 07:56:18 [main] INFO  WeekRangeDAO.save:42 - save WeekRange{id=24, start=Mon Dec 02 00:00:00 EET 2019, end=Sun Dec 08 00:00:00 EET 2019, creator='upg_worker'}
+2019-12-02 07:56:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:54 - newWeekRange : WeekRange{id=24, start=Mon Dec 02 00:00:00 EET 2019, end=Sun Dec 08 00:00:00 EET 2019, creator='upg_worker'}
+2019-12-02 07:56:18 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:18 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Dec 01 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0, creator='ubet_worker'}
+2019-12-02 07:56:19 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:19 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 30 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0, creator='ubet_worker'}
+2019-12-02 07:56:19 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:19 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 30 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0, creator='ubet_worker'}
+2019-12-02 07:56:19 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:19 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 29 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0, creator='ubet_worker'}
+2019-12-02 07:56:19 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:19 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0, creator='ubet_worker'}
+2019-12-02 07:56:19 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:19 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0, creator='ubet_worker'}
+2019-12-02 07:56:20 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:20 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0, creator='ubet_worker'}
+2019-12-02 07:56:20 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:20 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 02:00:00.0, end=2019-12-01 02:00:00.0, creator='ubet_worker'}
+2019-12-02 07:56:20 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:20 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:20 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:20 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:20 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:20 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 02:00:00.0, end=2019-11-24 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 18 00:00:00 EET 2019 -> WeekRange{id=20, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:21 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:21 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Nov 17 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 02:00:00.0, end=2019-11-17 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 02:00:00.0, end=2019-11-17 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 02:00:00.0, end=2019-11-17 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 13 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 02:00:00.0, end=2019-11-17 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 13 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 02:00:00.0, end=2019-11-17 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:22 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:22 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 02:00:00.0, end=2019-11-17 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=21, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 02:00:00.0, end=2019-11-10 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 08 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 02:00:00.0, end=2019-11-10 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 07 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 02:00:00.0, end=2019-11-10 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:23 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:23 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 02:00:00.0, end=2019-11-10 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 02:00:00.0, end=2019-11-10 02:00:00.0, creator='bolt_worker'}
+2019-12-02 07:56:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Oct 26 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 03:00:00.0, end=2019-10-27 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Oct 26 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 03:00:00.0, end=2019-10-27 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:24 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:24 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 03:00:00.0, end=2019-10-27 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 03:00:00.0, end=2019-10-27 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 22 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 03:00:00.0, end=2019-10-27 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 21 00:00:00 EEST 2019 -> WeekRange{id=23, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 03:00:00.0, end=2019-10-20 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 03:00:00.0, end=2019-10-20 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 03:00:00.0, end=2019-10-20 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:26 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 16
+2019-12-02 07:56:26 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 18 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 03:00:00.0, end=2019-10-20 03:00:00.0, creator='upg_worker'}
+2019-12-02 07:56:26 [main] INFO  FillingRecordDAO.saveBatch:72 - save 0 records to uber_filling for 141 ms
+2019-12-02 07:59:16 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/
+2019-12-02 07:59:16 [main] INFO  WebDriverManager.detectDriverVersionFromBrowser:575 - Using chromedriver 78.0.3904.105 (since Google Chrome 78 is installed in your machine)
+2019-12-02 07:59:16 [main] INFO  WebDriverManager.exportDriver:1050 - Exporting webdriver.chrome.driver as /Users/mykhailo.mikus/.m2/repository/webdriver/chromedriver/mac64/78.0.3904.105/chromedriver
+2019-12-02 07:59:20 [main] INFO  BaseBO.inputById:87 - inputById : MFormLogin_login text : mikus
+2019-12-02 07:59:20 [main] INFO  BaseBO.inputById:87 - inputById : MFormLogin_password text : vM-ucL5:E-jEpfb
+2019-12-02 07:59:20 [main] INFO  BaseBO.clickByClassName:92 - clickByClassName : ui-btn-hidden
+2019-12-02 07:59:20 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner
+2019-12-02 07:59:22 [main] INFO  Version.logVersion:46 - HHH000412: Hibernate Core {5.4.3.Final}
+2019-12-02 07:59:22 [main] INFO  Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2019-12-02 07:59:22 [main] WARN  pooling.configure:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-12-02 07:59:22 [main] INFO  pooling.buildCreator:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://46.101.184.197:3306/minfin?useSSL=false&characterEncoding=UTF-8&useUnicode=true&charSet=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Kiev]
+2019-12-02 07:59:22 [main] INFO  pooling.buildCreator:121 - HHH10001001: Connection properties: {password=xwHelpEvgLpoEcHa, user=root}
+2019-12-02 07:59:22 [main] INFO  pooling.buildCreator:129 - HHH10001003: Autocommit mode: false
+2019-12-02 07:59:22 [main] INFO  DriverManagerConnectionProviderImpl.<init>:239 - HHH000115: Hibernate connection pool size: 1000 (min=1)
+2019-12-02 07:59:23 [main] INFO  Dialect.<init>:158 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-12-02 07:59:23 [main] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 6.0.16.Final
+2019-12-02 07:59:24 [main] INFO  JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-12-02 07:59:24 [main] INFO  FuelAccountLeftoverDAO.save:42 - save orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover@60f9dc7e
+2019-12-02 07:59:24 [main] INFO  FillingRecordDAO.latest:27 - latest : FillingRecord{date=2019-12-02 02:41:56.0, card='018137', station='upg', amount=413.12, discount=null, amountAndDiscount=null, sapCode='null', shop='АЗС №5 Шевченка', address='м.Львів, вул. Шевченко,200', itemAmount=35.01, price=11.8, car='LOGAN_FRANEK_BC4275II', week_id=25, id='4682596', km=null}
+2019-12-02 07:59:24 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list
+2019-12-02 07:59:25 [main] INFO  BaseUpgBO.lambda$getAllLatestFillings$1:31 - Read transactions : 018 138 МІКУСЬ МИХАЙЛО РОМАНОВИЧ -> https://upgcard.com.ua/ua/owner/account/list?cid=140951
+2019-12-02 07:59:25 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list?cid=140951
+2019-12-02 07:59:25 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:25 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Dec 01 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:59:25 [main] INFO  FillingCardDAO.findAllWhere:230 - findAllWhere(null) uber_filling_card : 8
+2019-12-02 07:59:26 [main] INFO  VehicleDAO.findAllWhere:230 - findAllWhere(null) uber_vehicle : 7
+2019-12-02 07:59:26 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:26 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:59:26 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:26 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:59:26 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:26 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Nov 24 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:26 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:26 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 23 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:27 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:27 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:27 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:27 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:27 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:27 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:27 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:27 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:27 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:27 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:27 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:27 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:28 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:28 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 18 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:28 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:28 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 15 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:28 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:28 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:28 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:28 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:28 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:28 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:29 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:29 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:29 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:29 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:29 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:29 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:29 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:29 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:29 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:29 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:30 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:30 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:30 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:30 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:30 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:30 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 05 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:30 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:30 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 31 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:30 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:30 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 30 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:30 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:31 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 29 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:31 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:31 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 28 00:00:00 EET 2019 -> WeekRange{id=6, start=2019-10-28 00:00:00.0, end=2019-11-03 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:31 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:31 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:31 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:31 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:31 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:31 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:31 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:31 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 23 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:32 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:32 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 22 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:32 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:32 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 21 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:32 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:32 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:32 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:32 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 18 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:32 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:32 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 17 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:33 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:33 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Oct 16 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:33 [main] INFO  BaseUpgBO.lambda$getAllLatestFillings$1:31 - Read transactions : 018 137 МІКУСЬ МИХАЙЛО РОМАНОВИЧ -> https://upgcard.com.ua/ua/owner/account/list?cid=140952
+2019-12-02 07:59:33 [main] INFO  BaseBO.goToPath:33 - GOTO PAGE : http://upgcard.com.ua/ua/owner/account/list?cid=140952
+2019-12-02 07:59:33 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:33 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Dec 02 00:00:00 EET 2019 -> WeekRange{id=1, start=2019-12-02 00:00:00.0, end=2019-12-08 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:59:33 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:33 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Dec 01 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:59:34 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:34 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 30 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:59:34 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:34 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 29 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:59:34 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:34 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 29 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:59:34 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:34 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:59:35 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:35 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:59:35 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:35 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 28 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:59:35 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:35 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 27 00:00:00 EET 2019 -> WeekRange{id=2, start=2019-11-25 00:00:00.0, end=2019-12-01 00:00:00.0, creator='ubet_worker'}
+2019-12-02 07:59:35 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:35 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:36 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:36 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 22 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:36 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:36 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:36 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:36 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 21 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:36 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:36 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 20 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:36 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:36 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:37 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:37 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 19 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:37 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:37 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 18 00:00:00 EET 2019 -> WeekRange{id=5, start=2019-11-18 00:00:00.0, end=2019-11-24 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:37 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:37 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Nov 17 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:37 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:37 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:37 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:37 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 14 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:38 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:38 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 13 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:38 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:38 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:38 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:38 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 12 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:38 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:38 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Nov 11 00:00:00 EET 2019 -> WeekRange{id=4, start=2019-11-11 00:00:00.0, end=2019-11-17 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:38 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:38 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Nov 09 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:38 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:38 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Nov 08 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:39 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:39 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Nov 07 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:39 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:39 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Wed Nov 06 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:39 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:39 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Nov 05 00:00:00 EET 2019 -> WeekRange{id=3, start=2019-11-04 00:00:00.0, end=2019-11-10 00:00:00.0, creator='bolt_worker'}
+2019-12-02 07:59:39 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:39 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Oct 26 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:39 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:39 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:40 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:40 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 25 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:40 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:40 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Thu Oct 24 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:40 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:40 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Tue Oct 22 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:40 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:40 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Mon Oct 21 00:00:00 EEST 2019 -> WeekRange{id=7, start=2019-10-21 00:00:00.0, end=2019-10-27 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:40 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:40 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:41 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:41 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sun Oct 20 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:41 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:41 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Sat Oct 19 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:41 [main] INFO  WeekRangeDAO.findAllWhere:230 - findAllWhere(null) week_range : 8
+2019-12-02 07:59:41 [main] INFO  WeekRangeDAO.findOrCreateWeek:38 - Fri Oct 18 00:00:00 EEST 2019 -> WeekRange{id=8, start=2019-10-14 00:00:00.0, end=2019-10-20 00:00:00.0, creator='upg_worker'}
+2019-12-02 07:59:41 [main] INFO  FillingRecordDAO.saveBatch:72 - save 0 records to uber_filling for 140 ms
