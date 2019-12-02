@@ -70,7 +70,7 @@ VALUES ('1', 'usd', '$');
 INSERT INTO `minfin`.`currency` (`id`, `name`, `symbol`)
 VALUES ('2', 'uah', '₴');
 
-DROP TABLE IF EXISTS  `minfin`.`transaction_type`;
+DROP TABLE IF EXISTS `minfin`.`transaction_type`;
 CREATE TABLE `minfin`.`transaction_type`
 (
     `id`   INT         NOT NULL AUTO_INCREMENT,
@@ -89,7 +89,7 @@ VALUES ('3', '1', '1', 'invest_usd');
 INSERT INTO `minfin`.`transaction_type` (`id`, `from`, `to`, `name`)
 VALUES ('4', '2', '2', 'invest_uah');
 
-DROP TABLE IF EXISTS  `minfin`.`user_role`;
+DROP TABLE IF EXISTS `minfin`.`user_role`;
 CREATE TABLE `minfin`.`user_role`
 (
     `id`   INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -105,7 +105,7 @@ VALUES ('cashier');
 INSERT INTO `minfin`.`user_role` (`name`)
 VALUES ('uber_admin');
 
-DROP TABLE IF EXISTS  `minfin`.`user`;
+DROP TABLE IF EXISTS `minfin`.`user`;
 CREATE TABLE `minfin`.`user`
 (
     `id`    INT         NOT NULL AUTO_INCREMENT,
@@ -274,7 +274,7 @@ CREATE TABLE `minfin`.`uber_filling`
     `itemAmount`        DOUBLE       NULL,
     `price`             DOUBLE       NULL,
     `week_id`           INTEGER      NOT NULL,
-    `id`                INTEGER      NOT NULL,
+    `id`                VARCHAR(22)  NOT NULL,
     `km`                INTEGER      NULL,
     PRIMARY KEY (`date`)
 );
@@ -325,7 +325,7 @@ CREATE TABLE `minfin`.`uber_vehicle`
 DROP TABLE if exists `minfin`.`uber_filling_card`;
 CREATE TABLE `minfin`.`uber_filling_card`
 (
-    `id`         VARCHAR(17)         NOT NULL,
+    `id`         VARCHAR(17) NOT NULL,
     `station`    VARCHAR(45) NOT NULL,
     `vehicle_id` INT         NULL,
     PRIMARY KEY (`id`, `station`)

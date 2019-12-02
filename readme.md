@@ -144,4 +144,21 @@ EOT
 SHELL:
 mvn clean install spring-boot:run
 
+# jenkins sheduler for station job
+At every 5th minute.
+CRON : */5 * * * *
+# minfin_worker
+start webapp
 
+mvn exec:java -Dexec.mainClass="ui_automation.okko.OkkoWorker"
+
+mvn exec:java -Dexec.mainClass="server.SpringBootApplication"
+
+mvn clean install exec:java@okko_worker
+mvn clean install exec:java@upg_worker
+mvn clean install exec:java@bolt_worker
+mvn clean install exec:java@uber_worker
+mvn clean install exec:java@minfin_worker
+
+#restart docker for mysql
+docker restart mysql_db

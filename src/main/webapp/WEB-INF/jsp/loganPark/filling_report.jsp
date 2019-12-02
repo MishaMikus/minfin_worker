@@ -118,5 +118,62 @@
     </c:forEach>
     </tbody>
 </table>
+
+<br>
+Ввести чек вручну
+<br>
+<form
+        action="${pageContext.request.contextPath}/logan_park/manual_receipt"
+        method="post"
+        enctype="application/x-www-form-urlencoded"
+        id="form_manual_receipt">
+    <table class="table-all-borders">
+        <tbody>
+        <tr>
+            <th>дата</th>
+            <td><label><input type="text" name="date"></label></td>
+        </tr>
+        <tr>
+            <th>час</th>
+            <td><label><input type="text" name="time"></label></td>
+        </tr>
+        <tr>
+            <th>автомобіль</th>
+            <td><label><input type="text" name="car"></label></td>
+        </tr>
+        <tr>
+            <th>літрів</th>
+            <td><label><input type="text" name="l"></label></td>
+        </tr>
+        <tr>
+            <th>ціна</th>
+            <td><label><input type="text" name="price"></label></td>
+        </tr>
+        <tr>
+            <th>знижка</th>
+            <td><label><input type="text" name="discount"></label></td>
+        </tr>
+        <tr>
+            <th>мережа</th>
+            <td><label><input type="text" name="station"></label></td>
+        </tr>
+        <tr>
+            <th>магазин</th>
+            <td><label><input type="text" name="shop"></label></td>
+        </tr>
+        <tr>
+            <th>адреса</th>
+            <td><label><input type="text" name="address"></label></td>
+        </tr>
+        <tr>
+            <th>кілометраж</th>
+            <td><label><input type="text" name="km"></label></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="$('#form_manual_receipt').submit()">save</button></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
 </body>
 </html>

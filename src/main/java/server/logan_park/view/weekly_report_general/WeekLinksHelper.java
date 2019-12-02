@@ -21,9 +21,11 @@ public class WeekLinksHelper {
                 .sorted(Comparator.comparing(WeekRange::getStart))
                 .collect(Collectors.toList()).forEach(w -> {
             WeekLink weekLink = new WeekLink();
-            String start = server.logan_park.view.weekly_report_general.DateValidator.SDF.format(w.getStart());
+            Date firstDay=new Date(w.getStart().getTime()+24*60*60*1000L);
+            String start = server.logan_park.view.weekly_report_general.DateValidator.SDF.format(firstDay);
+            String start_Label = server.logan_park.view.weekly_report_general.DateValidator.SDF.format(w.getStart());
             String end = server.logan_park.view.weekly_report_general.DateValidator.SDF.format(w.getEnd());
-            weekLink.setLabel(start + "-" + end);
+            weekLink.setLabel(start_Label + "-" + end);
             weekLink.setHref(start);
             weekLink.setId(i[0]++);
             res.add(weekLink);

@@ -1,7 +1,6 @@
 package server.logan_park.view.filling_report;
 
 import org.apache.log4j.Logger;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import server.BaseController;
 import server.logan_park.view.filling_report.model.KmRequest;
+import server.logan_park.view.filling_report.model.ManualReceiptRequest;
 import server.logan_park.view.weekly_report_general.DateValidator;
 
 import javax.validation.Valid;
@@ -39,6 +39,13 @@ public class FillingReportController extends BaseController {
     public ModelAndView postKm(@Valid KmRequest kmRequest) {
         LOGGER.info("TRY to add "+kmRequest);
         new FillingHelper().addKm(kmRequest);
+        return new ModelAndView(new RedirectView("/logan_park/filling_report", true));
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/logan_park/manual_receipt")
+    public ModelAndView postKm(@Valid ManualReceiptRequest manualReceiptRequest) {
+        LOGGER.info("TRY to make new receipt "+manualReceiptRequest);
+        new FillingHelper().makeManualReceipt(manualReceiptRequest);
         return new ModelAndView(new RedirectView("/logan_park/filling_report", true));
     }
 
