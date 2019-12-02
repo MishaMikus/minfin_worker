@@ -34,7 +34,7 @@ public class OkkoBo extends BaseOkkoBO {
                 $(currentPageLinkLocator).click();
                 FillingRecord parsedFilling = parseFilling(fillingLinkText);
                 if (latestDBRecord.getDate().getTime() < parsedFilling.getDate().getTime()) {
-                    parsedFilling.setWeek_id(WeekRangeDAO.getInstance().findOrCreateWeek(parsedFilling.getDate()).getId());
+                    parsedFilling.setWeek_id(WeekRangeDAO.getInstance().findOrCreateWeek(parsedFilling.getDate(), "okko_worker").getId());
                     //TODO viber notification
                     res.add(parsedFilling);
                 } else {

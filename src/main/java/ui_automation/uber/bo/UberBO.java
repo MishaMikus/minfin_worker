@@ -21,10 +21,8 @@ public class UberBO extends BaseBO {
     private final static Logger LOGGER = Logger.getLogger(UberBO.class);
 
     private static final Long FILE_APPEAR_TIMEOUT_MS = 60 * 1000L;
-    private static final Long ITERATION_TIMEOUT_MS = 5 * 60 * 1000L;
     private static final Long FILE_DOWNLOAD_WAITING_MS = 5 * 1000L;
     private static final Long DOWNLOAD_FILE_APPEAR_ITERATION_TIME_MS = 5 * 1000L;
-    private static final Long DOWNLOAD_FILE_DISAPPEAR_ITERATION_TIME_MS = 5 * 1000L;
     public static final File PAYMENT_DATA_FILE = new File(DOWNLOAD_FOLDER + FS + "Payments.csv");
 
     public void recordPayment() {
@@ -35,12 +33,6 @@ public class UberBO extends BaseBO {
         waitingForFileDownload();
         recordPaymentFile(new Date());
         deletePaymentFile();
-    }
-
-
-    private void waitBeforeNextIteration() {
-        LOGGER.info("WAIT BEFORE NEXT ITERATION");
-        threadSleep(ITERATION_TIMEOUT_MS);
     }
 
     private void deletePaymentFile() {
@@ -88,12 +80,6 @@ public class UberBO extends BaseBO {
         }
     }
 
-
-    private void refreshPage() {
-        driver().getWebDriver().navigate().refresh();
-        LOGGER.info("refreshPage PAYMENT");
-    }
-
     public void recordPaymentWithOneWeekHistory() {
         Date today = new Date();
         Date todayLastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000L);
@@ -104,18 +90,11 @@ public class UberBO extends BaseBO {
         waitingForFileDownload();
         recordPaymentFile(today);
         deletePaymentFile();
-        //if (needPreviousWeekData()) {
-            clickPreviousWeekButton();
-            waitingForDownloadButtonAppear();
-            clickDownload();
-            waitingForFileDownload();
-            recordPaymentFile(todayLastWeek);
-            deletePaymentFile();
-        //}
-    }
-
-    private boolean needPreviousWeekData() {
-        return !UberPaymentRecordRowDAO.getInstance().findLatest().getWeek_id()
-                .equals(WeekRangeDAO.getInstance().findOrCreateWeek(new Date()).getId());
+        clickPreviousWeekButton();
+        waitingForDownloadButtonAppear();
+        clickDownload();
+        waitingForFileDownload();
+        recordPaymentFile(todayLastWeek);
+        deletePaymentFile();
     }
 }

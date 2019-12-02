@@ -55,7 +55,7 @@ public class UberLoginBO extends BaseBO {
     }
 
     private NotRobotResult checkNotRobot() {
-        if (!waitForPasswordInputAppear()) {
+        if (!waitForPasswordInputAppear(10000)) {
             clickIAmNotARobot();
             WebDriver wd = findCaptcha();
             int captchaSize = findCaptchaPlateSize(wd);
@@ -143,10 +143,9 @@ public class UberLoginBO extends BaseBO {
         return wd;
     }
 
-    private boolean waitForPasswordInputAppear() {
+    private boolean waitForPasswordInputAppear(long timeout) {
         long start = new Date().getTime();
         long pingTime = 1000;
-        long timeout = 10000;
         while ((new Date().getTime() - start) < timeout) {
             try {
                 Thread.sleep(pingTime);
@@ -178,7 +177,7 @@ public class UberLoginBO extends BaseBO {
                 LOGGER.info("USER input captcha manually");;
                 return null;
             }
-            if(needPasswordInput()){
+            if(waitForPasswordInputAppear(2000)){
                 LOGGER.info("need password input");
                 return NotRobotResult.PASSWORD_NEED;
             }
@@ -193,7 +192,7 @@ public class UberLoginBO extends BaseBO {
     }
 
     private boolean needPasswordInput() {
-        return $(By.id("password")).isDisplayed();
+        return $(By.xpath("//*[text()='Enter your password']")).isDisplayed();
     }
 
     public static void takeSnapShot(WebDriver webdriver, String fileWithPath) {

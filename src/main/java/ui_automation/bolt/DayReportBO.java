@@ -2,6 +2,7 @@ package ui_automation.bolt;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import util.IOUtils;
 
 import java.io.File;
 import java.text.ParseException;
@@ -65,12 +66,20 @@ public class DayReportBO extends BaseBoltBO {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        String month = monthTripPageSource()
-                .split("data-test-select-picker")[2]
-                .split(">")[1]
-                .split("<")[0]
-                .trim()
-                .split(" ")[0];
+        String pSource = monthTripPageSource();
+        String month = null;
+        try {
+            month = pSource
+                    .split("data-test-select-picker")[2]
+                    .split(">")[1]
+                    .split("<")[0]
+                    .trim()
+                    .split(" ")[0];
+        } catch (Exception e) {
+            e.printStackTrace();
+            IOUtils.saveTextToFile(new File("pSource.html"), pSource);
+            LOGGER.info("can't get month from page source: "+pSource);
+        }
         $(By.xpath("//a[text()=\"Завантажити CSV-файл\"]")).click();
         LOGGER.info("month : " + month);
         return new File(DOWNLOAD_FOLDER + FS + "Bolt - Рахунки пасажирів - " + month + " 2019.csv");

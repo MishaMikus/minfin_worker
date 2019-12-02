@@ -15,7 +15,7 @@ public class DateValidator {
         //valid : 2019.10.14
         try {
             Date date = SDF.parse(stringDate);
-            return WeekRangeDAO.getInstance().findOrCreateWeek(date) != null;
+            return WeekRangeDAO.getInstance().findOrCreateWeek(date, "web_user") != null;
         } catch (ParseException e) {
             LOGGER.warn("invalid date : " + stringDate + " for pattern : " + SDF + "\n" + e.getMessage());
         }

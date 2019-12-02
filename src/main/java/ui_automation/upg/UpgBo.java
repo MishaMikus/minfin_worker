@@ -60,7 +60,7 @@ public class UpgBo extends BaseUpgBO {
         String stationNameString = bound(content, "<p><b>АЗС</b>: ", "</p>");
         String addressString = bound(content, "<p><b>Адреса</b>: ", "</p>");
         fillingRecord.setDate(parseDate(dateString));
-        fillingRecord.setWeek_id(WeekRangeDAO.getInstance().findOrCreateWeek(fillingRecord.getDate()).getId());
+        fillingRecord.setWeek_id(WeekRangeDAO.getInstance().findOrCreateWeek(fillingRecord.getDate(), "upg_worker").getId());
         fillingRecord.setShop(stationNameString);
         fillingRecord.setAddress(addressString);
         fillingRecord.setId(idString);
@@ -81,6 +81,7 @@ public class UpgBo extends BaseUpgBO {
 
     private Date parseDate(String dateString) {
         try {
+            SDF.setTimeZone(TimeZone.getTimeZone("EET"));
             return SDF.parse(dateString);
         } catch (ParseException e) {
             LOGGER.warn("date parsing failure : \n" + e.getMessage());

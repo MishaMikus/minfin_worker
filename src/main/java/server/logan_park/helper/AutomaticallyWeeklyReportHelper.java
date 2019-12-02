@@ -22,7 +22,7 @@ public class AutomaticallyWeeklyReportHelper extends CommonWeeklyReportHelper {
     }
 
     Map<String, Map<Date, PaymentRecordRawRow>> parsePrimaryData(Date weekFlag) {
-        WeekRange weekRange = WeekRangeDAO.getInstance().findOrCreateWeek(weekFlag);
+        WeekRange weekRange = WeekRangeDAO.getInstance().findOrCreateWeek(weekFlag, "ubet_worker");
         LOGGER.info("find all records for week : " + weekRange);
         List<UberPaymentRecordRow> dbRowList = UberPaymentRecordRowDAO.getInstance()
                 .findAllWhereEqual("week_id", weekRange.getId());

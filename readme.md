@@ -13,15 +13,27 @@ copy /b all1.ts+all2.ts+all3.ts all.ts
 #concatanate file range to one media file
 ffmpeg -i all.ts -acodec copy -vcodec copy all.mp4
 
+
+# minfin_worker
+start webapp
+
+mvn exec:java -Dexec.mainClass="ui_automation.okko.OkkoWorker"
+
+mvn exec:java -Dexec.mainClass="server.SpringBootApplication"
+
+mvn clean install exec:java@okko_worker
+mvn clean install exec:java@bolt_worker
+mvn clean install exec:java@uber_worker
+mvn clean install exec:java@minfin_worker
+
 #CREATE DROPLET
 GOTO https://cloud.digitalocean.com
 create droplet
-reseive CRED to mail
-	Droplet Name: ubuntu-s-1vcpu-3gb-fra1-01
-	IP Address: 46.101.184.197
-	Username: root
-	Password: 3b44d721d5b54d8560af723f66
-Login first time and change the password to new (aa898648d10f903956b256f6ca)
+mail
+46.101.184.197
+root
+3b44d721d5b54d8560af723f66
+change to new (aa898648d10f903956b256f6ca)
 
 #DOCKER AT CI MACHINE
 snap install docker

@@ -29,7 +29,7 @@ public class WeekRangeDAO extends GenericAbstractDAO<WeekRange> {
 
     private long msInDay = 24L * 60L * 60L * 1000L;
 
-    public WeekRange findOrCreateWeek(Date date) {
+    public WeekRange findOrCreateWeek(Date date, String creator) {
         date = roundToMidnight(date);
         Date finalDate = date;
         WeekRange weekRange = findAll().stream().filter(r ->
@@ -37,12 +37,17 @@ public class WeekRangeDAO extends GenericAbstractDAO<WeekRange> {
         ).findAny().orElse(null);
         LOGGER.info(date + " -> " + weekRange);
         if (weekRange == null) {
+
+            //create new week_range
             LOGGER.info("create new week_range");
             Date start = roundToMidnight(getWeekStartDate(date));
             Date end = new Date(start.getTime() + 6L * msInDay);
             WeekRange newWeekRange = new WeekRange();
             newWeekRange.setStart(start);
             newWeekRange.setEnd(end);
+            newWeekRange.setCreator(creator);
+
+            //save
             int id = (int) save(newWeekRange);
             newWeekRange.setId(id);
             weekRange = newWeekRange;

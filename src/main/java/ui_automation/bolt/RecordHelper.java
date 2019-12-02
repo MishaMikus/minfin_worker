@@ -20,7 +20,7 @@ public class RecordHelper {
     public List<BoltPaymentRecordDay> recordDayReportToDB(String date, String content) {
         List<String> rowArrayList = new ArrayList<>(Arrays.asList(content.split("\r\n")));
         LOGGER.info("try parse file " + date);
-        Integer weekId = new WeekRangeDAO().findOrCreateWeek(parseDate(date)).getId();
+        Integer weekId = new WeekRangeDAO().findOrCreateWeek(parseDate(date), "bolt_worker").getId();
         int lastRowIndex = rowArrayList.indexOf(",,,,,,,,,,,,,");
         lastRowIndex = lastRowIndex == -1 ? rowArrayList.size() - 1 : lastRowIndex;
 

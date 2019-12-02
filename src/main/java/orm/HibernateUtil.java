@@ -11,6 +11,7 @@ import org.springframework.core.type.filter.AnnotationTypeFilter;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import java.util.Properties;
+import java.util.TimeZone;
 
 import static util.ApplicationPropertyUtil.applicationProperty;
 
@@ -73,7 +74,10 @@ public class HibernateUtil {
 
     public static Session getSession() {
         if (session == null) {
-            session = getSessionFactory().openSession();
+            session = getSessionFactory()
+                    .withOptions()
+                    .jdbcTimeZone(TimeZone.getTimeZone("EET"))
+        .openSession();
         }
         return session;
     }
