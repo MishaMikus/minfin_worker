@@ -16,4 +16,5 @@ public class BmpChrome implements WebDriverProvider {
                 ClientUtil.createSeleniumProxy(Bmp.proxyServer));
         return new ChromeDriver(capabilities);
     }
+
 }

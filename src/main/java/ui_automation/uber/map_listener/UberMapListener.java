@@ -20,55 +20,31 @@ public class UberMapListener {
     }
 
     private static void runListener() {
-
         System.setProperty("selenide.browser", BmpChrome.class.getName());
-        Har har = null;
-
-        // Instantiate a new proxy server.
         Bmp.proxyServer = new BrowserMobProxyServer();
-
-        // Start the proxy server to capture network traffic.
-        // The start() can receive a port number,
-        // if no value is passed then it
-        // defaults to "0".
-        // The value of "0" indicates that the proxy
-        // server will use a random port.
         Bmp.proxyServer.start(0);
+        Bmp.proxyServer.setHarCaptureTypes(CaptureType.RESPONSE_CONTENT);
 
-        // Enables the capturing of all content types.
-        // This can be fine-tuned to get specific content data.
-        // Reference:
-        // net.lightbody.bmp.proxy.CaptureType
-        Bmp.proxyServer.setHarCaptureTypes(CaptureType
-                .getAllContentCaptureTypes());
-
-        // Create a new HTTP Archive to store the
-        // requests and response details.
-        Bmp.proxyServer.newHar("example.com");
-
-        // Get the current HTTP requests and responses from when the proxy
-        // server started up to now.
 
         new UberLoginBO()
                 .loginIfNotAuthorized(ApplicationPropertyUtil.applicationPropertyGet("uber.login")
                         , ApplicationPropertyUtil.applicationPropertyGet("uber.password"))
                 .setSMSCodeIfNeed();
-        har = Bmp.proxyServer.getHar();
+
         new UberBO().gotoMapPage();
+        Bmp.proxyServer.newHar("uber.map");
+        Bmp.proxyServer.newPage();
         try {
-            Thread.sleep(3600000);
+            Thread.sleep(30000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        // Write the results of the HAR to a local file.
         try {
-            har.writeTo(new File("har.json"));
+            Bmp.proxyServer.getHar().writeTo(new File("har.json"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        // Stop capturing the network traffic.
         Bmp.proxyServer.stop();
     }
 }
