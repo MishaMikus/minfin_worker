@@ -303,10 +303,10 @@ CREATE TABLE `minfin`.`bolt_payment_record_day`
 DROP TABLE if exists `minfin`.`week_range`;
 CREATE TABLE `minfin`.`week_range`
 (
-    `id`    INT      NOT NULL AUTO_INCREMENT,
-    `start` DATETIME NOT NULL,
-    `end`   DATETIME NOT NULL,
-    `creator`   VARCHAR(20) NOT NULL,
+    `id`      INT         NOT NULL AUTO_INCREMENT,
+    `start`   DATETIME    NOT NULL,
+    `end`     DATETIME    NOT NULL,
+    `creator` VARCHAR(20) NOT NULL,
     PRIMARY KEY (`id`)
 );
 ALTER TABLE `minfin`.`week_range`
@@ -338,4 +338,27 @@ CREATE TABLE `minfin`.`fuel_account_leftover`
     `station` VARCHAR(45) NOT NULL,
     `value`   DOUBLE      NOT NULL,
     PRIMARY KEY (`date`)
+);
+
+DROP TABLE if exists `minfin`.`bolt_map_pinget_item`;
+CREATE TABLE `minfin`.`bolt_map_pinget_item`
+(
+    `base_id`   INT         NOT NULL AUTO_INCREMENT,
+    `id`        INT         NOT NULL,
+    `timestamp` LONG        NOT NULL,
+    `max_client_distance`        INT         NOT NULL,
+    `lat`        DOUBLE         NOT NULL,
+    `lng`        DOUBLE         NOT NULL,
+    `state`   VARCHAR(45) NOT NULL,
+    `name`   VARCHAR(45) NOT NULL,
+    `phone`   VARCHAR(15) NOT NULL,
+    `app_version`   VARCHAR(11) NOT NULL,
+    `code`   VARCHAR(11) NOT NULL,
+    `model`   VARCHAR(44) NOT NULL,
+    `car_reg_number`   VARCHAR(11) NOT NULL,
+    `city_id`   INT NOT NULL,
+    `city`   VARCHAR(44) NOT NULL,
+    `company_name`   VARCHAR(44) NOT NULL,
+    `seconds_from_started_working`   INT NOT NULL,
+    PRIMARY KEY (`base_id`)
 );

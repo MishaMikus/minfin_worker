@@ -1,8 +1,7 @@
-package orm.entity.bolt;
+package orm.entity.bolt.payment_record_day;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;

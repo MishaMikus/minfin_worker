@@ -9,6 +9,7 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class UberWorkerLoadHistory {
     private static final Logger LOGGER = Logger.getLogger(UberWorkerLoadHistory.class);
+
     public static void main(String[] args) {
         runWorker();
     }

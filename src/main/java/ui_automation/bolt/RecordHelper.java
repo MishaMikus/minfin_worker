@@ -1,8 +1,8 @@
 package ui_automation.bolt;
 
 import org.apache.log4j.Logger;
-import orm.entity.bolt.BoltPaymentRecordDay;
-import orm.entity.bolt.BoltPaymentRecordDayDAO;
+import orm.entity.bolt.payment_record_day.BoltPaymentRecordDay;
+import orm.entity.bolt.payment_record_day.BoltPaymentRecordDayDAO;
 import orm.entity.logan_park.week_range.WeekRangeDAO;
 import util.IOUtils;
 

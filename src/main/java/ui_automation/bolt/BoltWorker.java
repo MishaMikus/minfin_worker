@@ -1,6 +1,6 @@
 package ui_automation.bolt;
 
-import orm.entity.bolt.BoltPaymentRecordDayDAO;
+import orm.entity.bolt.payment_record_day.BoltPaymentRecordDayDAO;
 import util.ApplicationPropertyUtil;
 
 import java.io.File;

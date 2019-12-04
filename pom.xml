@@ -245,6 +245,16 @@
                         </configuration>
                     </execution>
 
+                    <execution>
+                        <id>bolt_map_pinger</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>api_automation.bolt_map.BoltMapPinger</mainClass>
+                        </configuration>
+                    </execution>
+
                 </executions>
             </plugin>
         </plugins>

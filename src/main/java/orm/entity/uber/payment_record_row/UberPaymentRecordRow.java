@@ -1,7 +1,5 @@
 package orm.entity.uber.payment_record_row;
 
-import orm.entity.bolt.BoltPaymentRecordDayPK;
-
 import javax.persistence.*;
 import java.util.Date;
 

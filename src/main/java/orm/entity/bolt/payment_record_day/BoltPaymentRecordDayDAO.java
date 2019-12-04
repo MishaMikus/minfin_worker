@@ -1,4 +1,4 @@
-package orm.entity.bolt;
+package orm.entity.bolt.payment_record_day;
 
 import orm.entity.GenericAbstractDAO;
 

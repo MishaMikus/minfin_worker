@@ -7,6 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public interface RestClient {
+    public static final String HTTPS = "https://";
+    public static final String HTTP = "http://";
+
+    public static final String GET = "GET";
+    public static final String POST = "POST";
     Map<String, String> cookies = new HashMap<>();
 
     /**

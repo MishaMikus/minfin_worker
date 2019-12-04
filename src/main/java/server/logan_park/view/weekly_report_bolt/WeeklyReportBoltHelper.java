@@ -1,8 +1,8 @@
 package server.logan_park.view.weekly_report_bolt;
 
 import org.apache.log4j.Logger;
-import orm.entity.bolt.BoltPaymentRecordDay;
-import orm.entity.bolt.BoltPaymentRecordDayDAO;
+import orm.entity.bolt.payment_record_day.BoltPaymentRecordDay;
+import orm.entity.bolt.payment_record_day.BoltPaymentRecordDayDAO;
 import orm.entity.logan_park.week_range.WeekRange;
 import orm.entity.logan_park.week_range.WeekRangeDAO;
 import server.logan_park.view.weekly_report_bolt.model.DriverStat;
