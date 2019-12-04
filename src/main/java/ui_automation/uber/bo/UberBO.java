@@ -101,4 +101,8 @@ public class UberBO extends BaseBO {
     public void gotoMapPage() {
         goToPath("/p3/fleet-manager/livemap");
     }
+
+    public void gotoDriverPage() {
+        goToPath("/p3/fleet-manager/drivers");
+    }
 }
