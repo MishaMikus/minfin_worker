@@ -1,8 +1,11 @@
 package ui_automation;
 
+//import net.lightbody.bmp.proxy.CaptureType;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import util.ApplicationPropertyUtil;
 
 import java.util.Date;
 
@@ -18,7 +21,11 @@ public class BaseBO {
 
     static {
         timeout = 10000;
-        browser = "chrome";
+
+        if (!ApplicationPropertyUtil.getBoolean("uber.map.listener.mode", false)) {
+            browser = "chrome";
+        }
+
         savePageSource = true;
 
         if (getBoolean("remote", false)) {
@@ -111,4 +118,5 @@ public class BaseBO {
         $(By.xpath(xpath)).click();
         LOGGER.info("clickByXpath " + xpath);
     }
+
 }

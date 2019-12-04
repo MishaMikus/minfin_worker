@@ -1,5 +1,7 @@
 package ui_automation.uber.bo;
 
+//import com.codeborne.selenide.Configuration;
+//import net.lightbody.bmp.proxy.CaptureType;
 import org.apache.commons.io.FileUtils;
 import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.log4j.Logger;
@@ -21,7 +23,6 @@ import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.WebDriverRunner.driver;
-import static com.codeborne.selenide.WebDriverRunner.source;
 import static util.IOUtils.*;
 import static util.SystemUtil.getMyIP;
 import static util.SystemUtil.getMyPort;

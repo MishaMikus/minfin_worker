@@ -97,4 +97,8 @@ public class UberBO extends BaseBO {
         recordPaymentFile(todayLastWeek);
         deletePaymentFile();
     }
+
+    public void gotoMapPage() {
+        goToPath("/p3/fleet-manager/livemap");
+    }
 }
