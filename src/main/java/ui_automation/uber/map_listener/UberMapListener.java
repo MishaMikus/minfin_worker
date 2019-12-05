@@ -208,13 +208,14 @@ public class UberMapListener {
     }
 
     private static UberDriver saveNewDriver(String uuid, String name) {
+        LOGGER.info("try to create driver:"+uuid+" name: "+name);
         UberDriver uberDriver = new UberDriver();
         uberDriver.setDriverType("usual40");
         uberDriver.setDriverUUID(uuid);
-        uberDriver.setName(name);
+        uberDriver.setName(name.replaceAll(" ","_"));
         Integer id = (Integer) UberDriverDAO.getInstance().save(uberDriver);
         uberDriver.setId(id);
-        LOGGER.info("cant find driver, create default : " + uberDriver);
+        LOGGER.info("create default driver: " + uberDriver);
         return uberDriver;
     }
 
