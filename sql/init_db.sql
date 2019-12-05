@@ -340,25 +340,67 @@ CREATE TABLE `minfin`.`fuel_account_leftover`
     PRIMARY KEY (`date`)
 );
 
-DROP TABLE if exists `minfin`.`bolt_map_pinget_item`;
-CREATE TABLE `minfin`.`bolt_map_pinget_item`
+DROP TABLE if exists `minfin`.`map_pinger_item`;
+CREATE TABLE `minfin`.`map_pinger_item`
 (
-    `base_id`   INT         NOT NULL AUTO_INCREMENT,
-    `id`        INT         NOT NULL,
-    `timestamp` LONG        NOT NULL,
-    `max_client_distance`        INT         NOT NULL,
-    `lat`        DOUBLE         NOT NULL,
-    `lng`        DOUBLE         NOT NULL,
-    `state`   VARCHAR(45) NOT NULL,
-    `name`   VARCHAR(45) NOT NULL,
-    `phone`   VARCHAR(15) NOT NULL,
-    `app_version`   VARCHAR(11) NOT NULL,
-    `code`   VARCHAR(11) NOT NULL,
-    `model`   VARCHAR(44) NOT NULL,
-    `car_reg_number`   VARCHAR(11) NOT NULL,
-    `city_id`   INT NOT NULL,
-    `city`   VARCHAR(44) NOT NULL,
-    `company_name`   VARCHAR(44) NOT NULL,
-    `seconds_from_started_working`   INT NOT NULL,
+    `base_id`    INT    NOT NULL AUTO_INCREMENT,
+    `driver_id`  INT    NOT NULL,
+    `timestamp`  LONG   NOT NULL,
+    `vehicle_id` INT    NOT NULL,
+    `lat`        DOUBLE NOT NULL,
+    `lng`        DOUBLE NOT NULL,
+    `state_id`   INT    NOT NULL,
     PRIMARY KEY (`base_id`)
 );
+
+DROP TABLE if exists `minfin`.`map_pinger_state`;
+CREATE TABLE `minfin`.`map_pinger_state`
+(
+    `base_id`       INT         NOT NULL AUTO_INCREMENT,
+    `state`         VARCHAR(44) NOT NULL,
+    `taxi_brand_id` INT         NOT NULL,
+    PRIMARY KEY (`base_id`)
+);
+INSERT INTO `minfin`.`map_pinger_state` (`state`, `taxi_brand_id`)
+VALUES ('waiting_orders', 2);
+INSERT INTO `minfin`.`map_pinger_state` (`state`, `taxi_brand_id`)
+VALUES ('has_order', 2);
+
+DROP TABLE if exists `minfin`.`taxi_brand`;
+CREATE TABLE `minfin`.`taxi_brand`
+(
+    `base_id` INT         NOT NULL AUTO_INCREMENT,
+    `name`    VARCHAR(44) NOT NULL,
+    PRIMARY KEY (`base_id`)
+);
+INSERT INTO `minfin`.`taxi_brand` (`base_id`, `name`)
+VALUES (1, 'uber');
+INSERT INTO `minfin`.`taxi_brand` (`base_id`, `name`)
+VALUES (2, 'bolt');
+
+DROP TABLE if exists `minfin`.`uber_driver_realtime`;
+CREATE TABLE `minfin`.`uber_driver_realtime`
+(
+    `base_id`           INT  NOT NULL AUTO_INCREMENT,
+    `driver_id`         INT  NOT NULL,
+    `timestamp`         LONG NOT NULL,
+    `lastTimeOnline`    LONG NOT NULL,
+    `realtime_state_id` INT  NOT NULL,
+    PRIMARY KEY (`base_id`)
+);
+
+DROP TABLE if exists `minfin`.`uber_driver_realtime_state`;
+CREATE TABLE `minfin`.`uber_driver_realtime_state`
+(
+    `base_id` INT         NOT NULL AUTO_INCREMENT,
+    `state`   VARCHAR(44) NOT NULL,
+    PRIMARY KEY (`base_id`)
+);
+INSERT INTO `minfin`.`uber_driver_realtime_state` (`base_id`, `state`)
+VALUES (1, 'OFFLINE');
+INSERT INTO `minfin`.`uber_driver_realtime_state` (`base_id`, `state`)
+VALUES (2, 'ONTRIP');
+INSERT INTO `minfin`.`uber_driver_realtime_state` (`base_id`, `state`)
+VALUES (3, 'WAITLISTED');
+INSERT INTO `minfin`.`uber_driver_realtime_state` (`base_id`, `state`)
+VALUES (4, 'ONLINE');

@@ -1,4 +1,4 @@
-package orm.entity.bolt.map_pinger_item;
+package orm.entity.logan_park.map_pinger;
 
 import orm.entity.GenericAbstractDAO;
 

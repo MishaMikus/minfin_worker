@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
 import orm.HibernateUtil;
-import orm.entity.logan_park.card.FillingCard;
 
 import javax.persistence.Table;
 import javax.persistence.criteria.*;
@@ -199,7 +198,7 @@ public abstract class GenericAbstractDAO<E> {
     private E findWhere(BiFunction<CriteriaBuilder, Root<E>, Predicate> where, String message) {
         List<E> res = findAllWhere(where);
         if (res.isEmpty()) {
-            System.out.println("can't find any " + getTableName() + " where '" + message + "'");
+            LOGGER.warn("can't find any " + getTableName() + " where '" + message + "'");
             return null;
         }
         return res.get(0);

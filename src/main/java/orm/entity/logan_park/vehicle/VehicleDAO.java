@@ -15,4 +15,8 @@ public class VehicleDAO extends GenericAbstractDAO<Vehicle> {
     public static VehicleDAO getInstance() {
         return INSTANCE;
     }
+
+    public Vehicle findByPlate(String plate) {
+        return findWhereEqual("plate", plate);
+    }
 }
