@@ -319,6 +319,7 @@ CREATE TABLE `minfin`.`uber_vehicle`
     `id`    INT         NOT NULL AUTO_INCREMENT,
     `name`  VARCHAR(45) NULL,
     `plate` VARCHAR(45) NULL,
+    `tracker_id`    INT,
     PRIMARY KEY (`id`)
 );
 

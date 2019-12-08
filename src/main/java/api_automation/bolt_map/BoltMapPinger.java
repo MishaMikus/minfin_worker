@@ -7,6 +7,7 @@ import orm.entity.logan_park.map_pinger.MapPingerItem;
 import orm.entity.logan_park.map_pinger.MapPingerItemDAO;
 import orm.entity.logan_park.vehicle.Vehicle;
 import orm.entity.logan_park.vehicle.VehicleDAO;
+import util.StringUtil;
 
 import java.util.Date;
 
@@ -59,7 +60,7 @@ public class BoltMapPinger {
         if (vehicle == null) {
             vehicle = new Vehicle();
             vehicle.setName(boltDriverStatusDataItem.getModel().toUpperCase().replaceAll(" ", "_"));
-            vehicle.setPlate(boltDriverStatusDataItem.getCar_reg_number().toUpperCase());
+            vehicle.setPlate(StringUtil.turnCyrillicLettersToEnglish(boltDriverStatusDataItem.getCar_reg_number().toUpperCase()));
             vehicle.setId((Integer) VehicleDAO.getInstance().save(vehicle));
         }
         return vehicle.getId();

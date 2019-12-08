@@ -1,6 +1,7 @@
 package server.logan_park.view.vehicle;
 
 import orm.entity.logan_park.vehicle.Vehicle;
+import util.StringUtil;
 
 public class VehicleView extends Vehicle {
     private String upgCard;
@@ -13,7 +14,7 @@ public class VehicleView extends Vehicle {
         super();
         if (vehicle != null) {
             setName(vehicle.getName());
-            setPlate(vehicle.getPlate());
+            setPlate(StringUtil.turnCyrillicLettersToEnglish(vehicle.getPlate()));
             setId(vehicle.getId());
         }
     }

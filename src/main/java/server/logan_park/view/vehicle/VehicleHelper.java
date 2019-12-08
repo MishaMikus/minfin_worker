@@ -4,6 +4,7 @@ import orm.entity.logan_park.card.FillingCard;
 import orm.entity.logan_park.card.FillingCardDAO;
 import orm.entity.logan_park.vehicle.Vehicle;
 import orm.entity.logan_park.vehicle.VehicleDAO;
+import util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +60,7 @@ public class VehicleHelper {
 
     private Vehicle makeVehicle(VehicleView vehicleView) {
         Vehicle vehicle = new Vehicle();
-        vehicle.setPlate(vehicleView.getPlate());
+        vehicle.setPlate(StringUtil.turnCyrillicLettersToEnglish(vehicleView.getPlate()));
         vehicle.setName(vehicleView.getName());
         return vehicle;
     }

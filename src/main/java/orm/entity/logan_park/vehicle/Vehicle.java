@@ -13,6 +13,8 @@ public class Vehicle {
     private String name;
     @Column
     private String plate;
+    @Column
+    private Integer tracker_id;
 
     @Override
     public String toString() {
@@ -20,7 +22,16 @@ public class Vehicle {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", plate='" + plate + '\'' +
+                ", tracker_id=" + tracker_id +
                 '}';
+    }
+
+    public Integer getTracker_id() {
+        return tracker_id;
+    }
+
+    public void setTracker_id(Integer tracker_id) {
+        this.tracker_id = tracker_id;
     }
 
     public Integer getId() {
