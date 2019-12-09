@@ -21,7 +21,7 @@ import java.util.*;
 import static java.lang.Math.round;
 
 public abstract class CommonWeeklyReportHelper {
-    public static final Integer WEEK_EARN_LIMIT = 9000;
+    public static final Integer WEEK_EARN_LIMIT = 8000;
     public static final Integer WEEK_EARN_LIMIT_GORBATY_1 = 10000;
     public static final Integer WEEK_EARN_LIMIT_GORBATY_2 = 12000;
     List<UberDriver> driverList = UberDriverDAO.getInstance().getDriverList();
