@@ -36,8 +36,8 @@ public class PaymentRecordRawRow {
             paymentRecordRawRow.setDescription(uberDescription.getName());
             paymentRecordRawRow.setDisclaimer(row.getDisclaimer());
             paymentRecordRawRow.setDriverUUID(uberDriver.getDriverUUID());
-            paymentRecordRawRow.setFirstName(uberDriver.getName().split("_")[0]);
-            paymentRecordRawRow.setLastName(uberDriver.getName().split("_")[1]);
+            paymentRecordRawRow.setFirstName(uberDriver.getName().split("[_\\s]")[0]);
+            paymentRecordRawRow.setLastName(uberDriver.getName().split("[_\\s]")[1]);
             paymentRecordRawRow.setItemType(uberItemType.getName());
             paymentRecordRawRow.setTimestamp(row.getTimestamp());
             paymentRecordRawRow.setTripUUID(row.getTripUUID());

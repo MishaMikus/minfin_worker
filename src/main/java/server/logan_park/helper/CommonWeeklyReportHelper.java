@@ -3,8 +3,6 @@ package server.logan_park.helper;
 import org.apache.log4j.Logger;
 import orm.entity.logan_park.driver.UberDriver;
 import orm.entity.logan_park.driver.UberDriverDAO;
-import orm.entity.uber.payment_record_row.UberPaymentRecordRow;
-import orm.entity.uber.payment_record_row.UberPaymentRecordRowDAO;
 import server.logan_park.helper.model.GeneralPartnerSummary;
 import server.logan_park.helper.model.PaymentDriverRecord;
 import server.logan_park.helper.model.PaymentOwnerRecord;
@@ -13,17 +11,14 @@ import server.logan_park.service.*;
 import server.logan_park.view.weekly_report_manual_uber.OwnerPaymentView;
 import server.logan_park.view.weekly_report_manual_uber.PaymentView;
 import server.logan_park.view.weekly_report_manual_uber.TripView;
+import util.ApplicationPropertyUtil;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static java.lang.Math.round;
-
 public abstract class CommonWeeklyReportHelper {
-    public static final Integer WEEK_EARN_LIMIT = 8000;
-    public static final Integer WEEK_EARN_LIMIT_GORBATY_1 = 10000;
-    public static final Integer WEEK_EARN_LIMIT_GORBATY_2 = 12000;
+    public static final Integer WEEK_EARN_LIMIT = ApplicationPropertyUtil.getInteger("week_limit",8000);
     List<UberDriver> driverList = UberDriverDAO.getInstance().getDriverList();
 
     abstract Map<String, Map<Date, PaymentRecordRawRow>> parsePrimaryData(Date weekFlag);
@@ -196,70 +191,25 @@ public abstract class CommonWeeklyReportHelper {
     }
 
     private Map<String, PaymentDriverRecord> recalculateWithMotivation(Map<String, PaymentDriverRecord> map) {
-
-//old iurij formula
         for (Map.Entry<String, PaymentDriverRecord> entry : map.entrySet()) {
-            if (entry.getKey().equals("Юрій_Горбатий_старий")) {
-                Integer amount = Integer.valueOf(entry.getValue().getSummary().getAmount());
-                if (amount >= WEEK_EARN_LIMIT_GORBATY_1 && amount < WEEK_EARN_LIMIT_GORBATY_2) {
-                    Integer salary = entry.getValue().getSummary().getSalary() + 500;
-                    entry.getValue().getSummary().setSalary(salary);
-                    Integer change = entry.getValue().getSummary().getChange();
-                    entry.getValue().getSummary().setChange(change - 500);
-                    Integer changeWithoutTips = entry.getValue().getSummary().getChangeWithoutTips();
-                    entry.getValue().getSummary().setChangeWithoutTips(changeWithoutTips - 500);
-                    entry.getValue().getSummary().setFormula("35% + 500/10k");
-
-                    Integer salaryWithTips = salary + entry.getValue().getSummary().getTips();
-                    entry.getValue().getSummary().setSalaryWithTips(salaryWithTips);
-                } else {
-                    if (amount >= WEEK_EARN_LIMIT_GORBATY_2) {
-                        Integer salary = entry.getValue().getSummary().getSalary() + 1000;
-                        entry.getValue().getSummary().setSalary(salary);
-                        Integer change = entry.getValue().getSummary().getChange();
-                        entry.getValue().getSummary().setChange(change - 1000);
-                        Integer changeWithoutTips = entry.getValue().getSummary().getChangeWithoutTips();
-                        entry.getValue().getSummary().setChangeWithoutTips(changeWithoutTips - 1000);
-                        entry.getValue().getSummary().setFormula("35% + 1000/12k");
-
-                        Integer salaryWithTips = salary + entry.getValue().getSummary().getTips();
-                        entry.getValue().getSummary().setSalaryWithTips(salaryWithTips);
-
-                    } else {
-                        entry.getValue().getSummary().setFormula("35%");
-                    }
+            Integer amount = Integer.valueOf(entry.getValue().getSummary().getAmount());
+            if (amount >= WEEK_EARN_LIMIT) {
+                Integer salary = Long.valueOf(Math.round(entry.getValue().getSummary().getAmount() * 0.4d)).intValue();
+                if (entry.getKey().equals("Олег_Тархов")) {
+                    salary = Long.valueOf(Math.round(entry.getValue().getSummary().getAmount() * 0.65d)).intValue();
                 }
+                entry.getValue().getSummary().setSalary(salary);
+                Integer salaryWithTips = salary + entry.getValue().getSummary().getTips();
+                entry.getValue().getSummary().setSalaryWithTips(salaryWithTips);
+
+                Integer change = entry.getValue().getSummary().getCash() - salary;
+                entry.getValue().getSummary().setChange(change);
+                Integer changeWithoutTips = change - entry.getValue().getSummary().getTips();
+                entry.getValue().getSummary().setChangeWithoutTips(changeWithoutTips);
+                entry.getValue().getSummary().setFormula("40%");
+                entry.getValue().setRecordList(recalculate40(entry.getValue().getRecordList()));
             } else {
-                //40 or 60 % calculation for others drivers
-                Integer amount = Integer.valueOf(entry.getValue().getSummary().getAmount());
-                if (amount >= WEEK_EARN_LIMIT) {
-                    Integer salary = Long.valueOf(Math.round(entry.getValue().getSummary().getAmount() * 0.4d)).intValue();
-                    if (entry.getKey().equals("Олег_Тархов")) {
-                        salary = Long.valueOf(Math.round(entry.getValue().getSummary().getAmount() * 0.65d)).intValue();
-                    }
-                    entry.getValue().getSummary().setSalary(salary);
-                    Integer salaryWithTips = salary + entry.getValue().getSummary().getTips();
-                    entry.getValue().getSummary().setSalaryWithTips(salaryWithTips);
-
-                    Integer change = entry.getValue().getSummary().getCash() - salary;
-                    entry.getValue().getSummary().setChange(change);
-                    Integer changeWithoutTips = change - entry.getValue().getSummary().getTips();
-                    entry.getValue().getSummary().setChangeWithoutTips(changeWithoutTips);
-
-                    entry.getValue().getSummary().setFormula("40%");
-                    if (entry.getKey().equals("Олег_Тархов")) {
-                        entry.getValue().getSummary().setFormula("65%");
-                    }
-                    entry.getValue().setRecordList(recalculate40(entry.getValue().getRecordList()));
-                    if (entry.getKey().equals("Олег_Тархов")) {
-                        entry.getValue().setRecordList(recalculate60(entry.getValue().getRecordList()));
-                    }
-                } else {
-                    entry.getValue().getSummary().setFormula("35%");
-                    if (entry.getKey().equals("Олег_Тархов")) {
-                        entry.getValue().getSummary().setFormula("60%");
-                    }
-                }
+                entry.getValue().getSummary().setFormula("35%");
             }
         }
         return map;

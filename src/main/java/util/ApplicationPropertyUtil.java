@@ -47,4 +47,13 @@ public class ApplicationPropertyUtil {
         }
 
     }
+
+    public static Integer getInteger(String key, int defaultValue) {
+        try {
+            return Integer.parseInt(applicationPropertyGet(key));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return defaultValue;
+        }
+    }
 }

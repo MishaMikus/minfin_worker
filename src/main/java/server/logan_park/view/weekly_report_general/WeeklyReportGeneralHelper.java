@@ -86,37 +86,13 @@ public class WeeklyReportGeneralHelper {
             Integer cash = d.getBoltStat().getCash() + d.getUberStat().getCash();
             d.getSum().setAmount(amount);
             d.getSum().setCash(cash);
-            if (d.getDriverName().equals("Юрій_Горбатий_старий")) {
-                d.getUberStat().setSalary((int) round(d.getUberStat().getAmount() * 0.35));
-                d.getBoltStat().setSalary((int) round(d.getBoltStat().getAmount() * 0.35));
-                if (amount < WEEK_EARN_LIMIT_GORBATY_1) {
-                    d.setPlan("35%");
-                    d.getSum().setSalary(d.getUberStat().getSalary() + d.getBoltStat().getSalary() + d.getUberStat().getTips());
-                } else {
-                    d.setPlan("35% + 500");
-                    d.getSum().setSalary(d.getUberStat().getSalary() + d.getBoltStat().getSalary() + 500 + d.getUberStat().getTips());
-                    if (amount >= WEEK_EARN_LIMIT_GORBATY_2) {
-                        d.setPlan("35% + 1000");
-                        d.getSum().setSalary(d.getUberStat().getSalary() + d.getBoltStat().getSalary() + 1000 + d.getUberStat().getTips());
-                    }
-                }
-                d.getSum().setChange(cash - d.getSum().getSalary());
+            if (amount < WEEK_EARN_LIMIT) {
+                setSalary(d, 35);
             } else {
-                if (amount < WEEK_EARN_LIMIT) {
-                    setSalary(d, 35);
-                    if (d.getDriverName().equals("Олег_Тархов")) {
-                        setSalary(d, 60);
-                    }
-
-                } else {
-                    setSalary(d, 40);
-                    if (d.getDriverName().equals("Олег_Тархов")) {
-                        setSalary(d, 65);
-                    }
-                }
-                d.getSum().setSalary(d.getBoltStat().getSalary() + d.getUberStat().getSalary() + d.getUberStat().getTips());
-                d.getSum().setChange(cash - d.getSum().getSalary());
+                setSalary(d, 40);
             }
+            d.getSum().setSalary(d.getBoltStat().getSalary() + d.getUberStat().getSalary() + d.getUberStat().getTips());
+            d.getSum().setChange(cash - d.getSum().getSalary());
         });
 
         //Calculate OWNER
