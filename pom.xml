@@ -268,12 +268,12 @@
                     </execution>
 
                     <execution>
-                        <id>bolt_map_pinger</id>
+                        <id>map_pinger</id>
                         <goals>
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>api_automation.bolt_map.BoltMapPinger</mainClass>
+                            <mainClass>api_automation.Pinger</mainClass>
                         </configuration>
                     </execution>
 

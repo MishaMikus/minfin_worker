@@ -17,19 +17,7 @@ import static ui_automation.uber.map_listener.UberMapListener.findStateId;
 public class BoltMapPinger {
     private static final Logger LOGGER = Logger.getLogger(BoltMapPinger.class);
 
-    public static void main(String[] args) {
-        while (true) {
-            try {
-                BoltDriverStatusResponse boltDriverStatusResponse = BoltMapHttpClient.ping();
-                saveLodToDB(boltDriverStatusResponse);
-                Thread.sleep(5000);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private static void saveLodToDB(BoltDriverStatusResponse boltDriverStatusResponse) {
+    public static void saveLodToDB(BoltDriverStatusResponse boltDriverStatusResponse) {
         for (BoltDriverStatusDataItem boltDriverStatusDataItem : boltDriverStatusResponse.getData().getList()) {
             MapPingerItem mapPingerItem = new MapPingerItem();
             mapPingerItem.setVehicle_id(findVehicleId(boltDriverStatusDataItem));

@@ -378,6 +378,8 @@ INSERT INTO `minfin`.`taxi_brand` (`base_id`, `name`)
 VALUES (1, 'uber');
 INSERT INTO `minfin`.`taxi_brand` (`base_id`, `name`)
 VALUES (2, 'bolt');
+INSERT INTO `minfin`.`taxi_brand` (`base_id`, `name`)
+VALUES (3, 'tracker');
 
 DROP TABLE if exists `minfin`.`uber_driver_realtime`;
 CREATE TABLE `minfin`.`uber_driver_realtime`

@@ -16,4 +16,5 @@ public class TaxiBrandDAO extends GenericAbstractDAO<TaxiBrand> {
 
     public static final TaxiBrand UBER = getInstance().findWhereEqual("name", "uber");
     public static final TaxiBrand BOLT = getInstance().findWhereEqual("name", "bolt");
+    public static final TaxiBrand TRACKER = getInstance().findWhereEqual("name", "tracker");
 }

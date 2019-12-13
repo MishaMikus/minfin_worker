@@ -11,9 +11,19 @@ import java.util.List;
 import static com.codeborne.selenide.Selenide.close;
 
 public class UpgWorker {
+    private static final long TIMEOUT = 60 * 1000;
 
     public static void main(String[] args) {
-        runWorker();
+        com.codeborne.selenide.Configuration.headless = true;
+        while (true) {
+            runWorker();
+            try {
+                Thread.sleep(TIMEOUT);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        //System.exit(0);
     }
 
     public static void runWorker() {
@@ -25,7 +35,6 @@ public class UpgWorker {
         List<FillingRecord> allRecords = upgBo.getAllLatestFillings(getLatestFillingRecord());
         FillingRecordDAO.getInstance().saveBatch(allRecords);
         close();
-        System.exit(0);
     }
 
     private static FillingRecord getLatestFillingRecord() {
