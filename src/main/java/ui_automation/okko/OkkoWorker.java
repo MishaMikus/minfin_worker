@@ -3,7 +3,6 @@ package ui_automation.okko;
 import orm.entity.logan_park.filling.FillingRecord;
 import orm.entity.logan_park.filling.FillingRecordDAO;
 import orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftoverDAO;
-import ui_automation.upg.UpgBo;
 import util.ApplicationPropertyUtil;
 
 import java.util.Date;
@@ -14,7 +13,14 @@ import static com.codeborne.selenide.Selenide.close;
 public class OkkoWorker {
 
     public static void main(String[] args) {
-        runWorker();
+        while (true) {
+            try {
+                runWorker();
+                Thread.sleep(60000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static void runWorker() {
