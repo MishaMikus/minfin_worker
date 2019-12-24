@@ -15,15 +15,8 @@ public class UpgWorker {
 
     public static void main(String[] args) {
         com.codeborne.selenide.Configuration.headless = true;
-        while (true) {
-            runWorker();
-            try {
-                Thread.sleep(TIMEOUT);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        //System.exit(0);
+        runWorker();
+        System.exit(0);
     }
 
     public static void runWorker() {

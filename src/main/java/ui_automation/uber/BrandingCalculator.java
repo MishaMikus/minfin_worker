@@ -61,6 +61,7 @@ public class BrandingCalculator {
                 res.add(makeVehiclePerformanceRecordFromRawRow(headerRow, row));
             }
         }
+        System.out.println(res);
         return res;
     }
 
