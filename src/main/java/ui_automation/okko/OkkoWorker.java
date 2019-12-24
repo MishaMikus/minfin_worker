@@ -13,14 +13,8 @@ import static com.codeborne.selenide.Selenide.close;
 public class OkkoWorker {
 
     public static void main(String[] args) {
-        while (true) {
-            try {
-                runWorker();
-                Thread.sleep(60000);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        runWorker();
+        System.exit(0);
     }
 
     public static void runWorker() {
