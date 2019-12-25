@@ -11,6 +11,7 @@ import orm.entity.uber.uber_captcha.UberCaptcha;
 import orm.entity.uber.uber_captcha.UberCaptchaDAO;
 import client.viber.ViberUberRestClient;
 import ui_automation.BaseBO;
+import util.ApplicationPropertyUtil;
 import util.IOUtils;
 
 import java.io.File;
@@ -28,6 +29,14 @@ import static util.SystemUtil.getMyIP;
 import static util.SystemUtil.getMyPort;
 
 public class UberLoginBO extends BaseBO {
+
+    public static void login() {
+        new UberLoginBO()
+                .loginIfNotAuthorized(ApplicationPropertyUtil.applicationPropertyGet("uber.login")
+                        , ApplicationPropertyUtil.applicationPropertyGet("uber.password"))
+                .setSMSCodeIfNeed();
+    }
+
     //Thu, 31 Dec 2099 03:00:00 EET;
     private static final SimpleDateFormat SDF_FULL = new SimpleDateFormat("E, dd MMM yyyy hh:mm:ss Z");
     private final static Logger LOGGER = Logger.getLogger(UberLoginBO.class);

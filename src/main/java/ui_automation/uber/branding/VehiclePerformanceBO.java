@@ -1,4 +1,4 @@
-package ui_automation.uber;
+package ui_automation.uber.branding;
 
 import org.apache.log4j.Logger;
 import server.logan_park.helper.model.VehiclePerformance;
@@ -10,15 +10,9 @@ import java.util.*;
 import static ui_automation.uber.bo.UberBO.DOWNLOAD_FOLDER;
 import static util.IOUtils.FS;
 
-public class BrandingCalculator {
-
-    private final static Logger LOGGER = Logger.getLogger(BrandingCalculator.class);
-
-    public static void main(String[] args) {
-        calculate();
-    }
-
-    private static void calculate() {
+public class VehiclePerformanceBO {
+    private final static Logger LOGGER = Logger.getLogger(VehiclePerformanceBO.class);
+    static void calculate() {
         List<VehiclePerformance> vehiclePerformanceList = new ArrayList<>();
         int i = 1;
         String path = DOWNLOAD_FOLDER + FS + "vehicle_performance" + i + ".csv";

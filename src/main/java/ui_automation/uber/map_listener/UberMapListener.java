@@ -15,12 +15,10 @@ import orm.entity.uber.driver_realtime_table.UberDriverRealTimeDAO;
 import orm.entity.uber.driver_realtime_table.state.UberDriverRealTimeState;
 import orm.entity.uber.driver_realtime_table.state.UberDriverRealTimeStateDAO;
 import ui_automation.uber.bo.UberBO;
-import ui_automation.uber.bo.UberLoginBO;
 import ui_automation.uber.map_listener.model.list.UberDriverList;
 import ui_automation.uber.map_listener.model.list.UberDriverListDriver;
 import ui_automation.uber.map_listener.model.map.UberDriverEvent;
 import ui_automation.uber.map_listener.model.map.UberMapPingItem;
-import util.ApplicationPropertyUtil;
 import util.IOUtils;
 
 import java.io.File;
@@ -33,6 +31,7 @@ import java.util.List;
 
 import static net.lightbody.bmp.proxy.CaptureType.*;
 import static orm.entity.logan_park.map_pinger.taxi_brand.TaxiBrandDAO.UBER;
+import static ui_automation.uber.bo.UberLoginBO.login;
 
 public class UberMapListener {
 
@@ -233,12 +232,6 @@ public class UberMapListener {
         Bmp.proxyServer.stop();
     }
 
-    private static void login() {
-        new UberLoginBO()
-                .loginIfNotAuthorized(ApplicationPropertyUtil.applicationPropertyGet("uber.login")
-                        , ApplicationPropertyUtil.applicationPropertyGet("uber.password"))
-                .setSMSCodeIfNeed();
-    }
 
     private static void setupProxy() {
         System.setProperty("selenide.browser", BmpChrome.class.getName());
