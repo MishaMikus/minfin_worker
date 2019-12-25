@@ -21,6 +21,7 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HttpContext;
 import client.rest.model.RequestModel;
 import client.rest.model.ResponseModel;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,9 +33,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ApacheRestClient implements RestClient {
+    private final static Logger LOGGER = Logger.getLogger(ApacheRestClient.class);
 
     @Override
     public ResponseModel call(RequestModel requestModel) {
+        ResponseModel responseModel = executeRequest(requestModel);
+        LOGGER.info(requestModel.getMethod() + " " + requestModel.getURL() + " " + responseModel.getStatusCode() + " " + responseModel.getResponseTime() + " ms");
+        return responseModel;
+    }
+
+    private ResponseModel executeRequest(RequestModel requestModel) {
+
         HttpEntityEnclosingRequestBase request = null;
         HttpClientBuilder httpClient = null;
         try {
@@ -61,8 +70,8 @@ public class ApacheRestClient implements RestClient {
 
             //BODY
             if (requestModel.getBody() != null) {
-                String charset=null==requestModel.getCharset()?"UTF-8":requestModel.getCharset();
-                request.setEntity(new StringEntity(requestModel.getBody().toString(),charset));
+                String charset = null == requestModel.getCharset() ? "UTF-8" : requestModel.getCharset();
+                request.setEntity(new StringEntity(requestModel.getBody().toString(), charset));
             }
 
 
@@ -80,8 +89,15 @@ public class ApacheRestClient implements RestClient {
 
             //COOKIES
             httpClient = HttpClientBuilder.create();
-            if (requestModel.getUseCookie()) {
+            if (!requestModel.getUseCookie()) {
                 httpClient.disableCookieManagement();
+            } else {
+                BasicCookieStore cookieStore = new BasicCookieStore();
+                cookies.forEach((key, value) -> {
+                    BasicClientCookie cookie = new BasicClientCookie(key, value);
+                    cookieStore.addCookie(cookie);
+                });
+                httpClient.setDefaultCookieStore(cookieStore);
             }
 
 

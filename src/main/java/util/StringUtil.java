@@ -20,6 +20,13 @@ public class StringUtil {
         CYRILLIC_ENGLISH_CHAR_MAPPING.put('\u0425', "X");
     }
 
+    private static final HashMap<Character, String> URL_MAPPING = new HashMap<>();
+
+    static {
+        URL_MAPPING.put('=', "%3D");
+        URL_MAPPING.put(':', "%3A");
+    }
+
     public static void main(String[] args) {
         CYRILLIC_ENGLISH_CHAR_MAPPING.entrySet().forEach(System.out::println);
         //"А=A,Р=P,С=C,В=B,Т=T,У=Y,Е=E,Х=X,К=K,М=M,Н=H,О=O";
@@ -27,8 +34,17 @@ public class StringUtil {
     }
 
     public static String turnCyrillicLettersToEnglish(String target) {
+        return encodeUsingMapping(CYRILLIC_ENGLISH_CHAR_MAPPING, target);
+    }
+
+    private static String encodeUsingMapping(HashMap<Character, String> encodeMap, String target) {
         final String[] result = {target};
-        CYRILLIC_ENGLISH_CHAR_MAPPING.forEach((key, value) -> result[0] = result[0].replaceAll(key + "", value));
+        encodeMap.forEach((key, value) -> result[0] = result[0].replaceAll(key + "", value));
         return result[0];
+    }
+
+
+    public static String urlEncode(String input) {
+        return encodeUsingMapping(URL_MAPPING, input);
     }
 }

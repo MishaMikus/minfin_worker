@@ -276,7 +276,6 @@
                             <mainClass>api_automation.Pinger</mainClass>
                         </configuration>
                     </execution>
-
                 </executions>
             </plugin>
         </plugins>

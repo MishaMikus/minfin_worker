@@ -18,7 +18,6 @@ public class BoltMapHttpClient extends BaseClient {
                 ApplicationPropertyUtil.applicationPropertyGet("bolt.map.auth"));
         requestModel.setMethod(GET);
         ResponseModel responseModel=CLIENT.call(requestModel);
-        LOGGER.info(requestModel.getMethod()+" "+requestModel.getURL()+" "+responseModel.getStatusCode()+" "+responseModel.getResponseTime()+" ms");
         return new BoltDriverStatusResponse().makeMyFromJsonString(responseModel.getBody());
     }
 }
