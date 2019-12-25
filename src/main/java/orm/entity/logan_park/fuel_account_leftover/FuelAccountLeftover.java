@@ -40,4 +40,13 @@ public class FuelAccountLeftover {
     public void setValue(Double value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "FuelAccountLeftover{" +
+                "date=" + date +
+                ", station='" + station + '\'' +
+                ", value=" + value +
+                '}';
+    }
 }

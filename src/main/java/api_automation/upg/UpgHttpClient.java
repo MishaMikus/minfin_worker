@@ -13,37 +13,38 @@ import static client.rest.client.RestClient.POST;
 public class UpgHttpClient extends BaseClient {
     private final static Logger LOGGER = Logger.getLogger(UpgHttpClient.class);
 
-    public static void main(String[] args) {
-        ResponseModel responseModel=getHost();
-        String tkn = responseModel.getBody().split("value=\"")[1].split("\"")[0];
-        System.out.println(responseModel.getCookiesMap());
-        postLogin(tkn);
+    static ResponseModel getHomePage() {
+        return upgGet("ua/owner");
     }
 
     public static ResponseModel getHost() {
+        return upgGet("");
+    }
+
+    static ResponseModel getListPage() {
+        return upgGet("ua/owner/account/list");
+    }
+
+    static ResponseModel upgGet(String path) {
         RequestModel requestModel = baseHttpsGet();
         requestModel.setHost("upgcard.com.ua");
-        requestModel.setPath("/");
+        requestModel.setPath("/"+path);
         requestModel.setMethod(GET);
         return CLIENT.call(requestModel);
     }
 
-    private static ResponseModel postLogin(String tkn) {
+    static ResponseModel postLogin(String tkn) {
         RequestModel requestModel = baseHttpsGet();
         requestModel.setHost("upgcard.com.ua");
         requestModel.setPath("/");
         String login = ApplicationPropertyUtil.applicationPropertyGet("upg.login");
         String pass = ApplicationPropertyUtil.applicationPropertyGet("upg.pass");
-        StringUtil.urlEncode(tkn);
-        requestModel.setBody("tkn=" + tkn
-                + "&MFormLogin[login]=" + login
-                + "&MFormLogin[password]=" + pass);
-        requestModel.setAllLog(true);
+        requestModel.setBody("tkn=" + StringUtil.urlEncode(tkn)
+                + "&"+StringUtil.urlEncode("MFormLogin[login]")+"=" + login
+                + "&"+StringUtil.urlEncode("MFormLogin[password]")+"=" + StringUtil.urlEncode(pass));
         requestModel.addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
         requestModel.setBodyEncoding("UTF-8");
         requestModel.setMethod(POST);
-        ResponseModel responseModel=CLIENT.call(requestModel);
-        System.out.println(responseModel.getCookiesMap());
-        return responseModel;
+        return CLIENT.call(requestModel);
     }
 }

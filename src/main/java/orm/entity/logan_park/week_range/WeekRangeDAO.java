@@ -27,8 +27,6 @@ public class WeekRangeDAO extends GenericAbstractDAO<WeekRange> {
 //            2019-10-14 14:15:05,088 [main]  INFO WeekRangeDAO.findOrCreateWeek:28 - create new week_range
 //2019-10-14 14:15:05,279 [main]  INFO WeekRangeDAO.save:42 - save WeekRange{id=5, start=Mon Jul 08 07:50:19 EEST 2019, end=Sun Jul 14 07:50:19 EEST 2019}
 
-    private long msInDay = 24L * 60L * 60L * 1000L;
-
     public WeekRange findOrCreateWeek(Date date, String creator) {
         date = roundToMidnight(date);
         Date finalDate = date;
@@ -41,6 +39,7 @@ public class WeekRangeDAO extends GenericAbstractDAO<WeekRange> {
             //create new week_range
             LOGGER.info("create new week_range");
             Date start = roundToMidnight(getWeekStartDate(date));
+            long msInDay = 24L * 60L * 60L * 1000L;
             Date end = new Date(start.getTime() + 6L * msInDay);
             WeekRange newWeekRange = new WeekRange();
             newWeekRange.setStart(start);

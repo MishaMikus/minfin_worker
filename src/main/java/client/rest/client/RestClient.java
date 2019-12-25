@@ -2,6 +2,8 @@ package client.rest.client;
 
 import client.rest.model.RequestModel;
 import client.rest.model.ResponseModel;
+import org.apache.http.cookie.Cookie;
+import org.apache.http.impl.cookie.BasicClientCookie;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +14,7 @@ public interface RestClient {
 
     public static final String GET = "GET";
     public static final String POST = "POST";
-    Map<String, String> cookies = new HashMap<>();
+    Map<String, org.apache.http.cookie.Cookie> cookies = new HashMap<>();
 
     /**
      * =========== Request Builder :

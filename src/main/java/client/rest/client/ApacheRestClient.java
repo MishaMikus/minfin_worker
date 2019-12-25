@@ -93,10 +93,7 @@ public class ApacheRestClient implements RestClient {
                 httpClient.disableCookieManagement();
             } else {
                 BasicCookieStore cookieStore = new BasicCookieStore();
-                cookies.forEach((key, value) -> {
-                    BasicClientCookie cookie = new BasicClientCookie(key, value);
-                    cookieStore.addCookie(cookie);
-                });
+                cookies.forEach((key, value) -> cookieStore.addCookie(value));
                 httpClient.setDefaultCookieStore(cookieStore);
             }
 
@@ -198,10 +195,10 @@ public class ApacheRestClient implements RestClient {
         return headerMap;
     }
 
-    private Map<String, String> parseCookies(CookieStore cookieStore) {
-        Map<String, String> cookiesMap = new HashMap<>();
+    private Map<String, Cookie> parseCookies(CookieStore cookieStore) {
+        Map<String, Cookie> cookiesMap = new HashMap<>();
         for (Cookie cookie : cookieStore.getCookies()) {
-            cookiesMap.put(cookie.getName(), cookie.getValue());
+            cookiesMap.put(cookie.getName(), cookie);
         }
         return cookiesMap;
     }

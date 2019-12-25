@@ -27,7 +27,13 @@ public class VehiclePerformanceDownloadeBO {
 
     private static List<Integer> getCurrentMonthDayList() {
         $(By.xpath("//div[@class=\"cursor--pointer primary-font--semibold push-tiny--left\"][1]")).click();
-        $(By.xpath("//*[@class=\"datepicker__cal flush\"][1]")).findElements(By.xpath("//td/span")).forEach(e-> System.out.println(e.getText()));
+        $(By.xpath("//*[@class=\"datepicker__cal flush\"][1]")).findElements(By.xpath("//td/span"))
+                .forEach(e ->
+                {
+                    System.out.println(e.getText());
+                    e.click();
+                    System.out.println();
+                });
         return new ArrayList<>();
     }
 

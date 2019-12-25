@@ -28,7 +28,7 @@ public class ResponseModel {
     private Integer statusCode;
     private Long responseTime;
     private Date headerDate;
-    private Map<String, String> cookiesMap = new HashMap<>();
+    private Map<String, org.apache.http.cookie.Cookie> cookiesMap = new HashMap<>();
     private Map<String, String> headerMap = new HashMap<>();
 
     public String getBodyEncoding() {
@@ -51,11 +51,11 @@ public class ResponseModel {
         this.statusLine = statusLine;
     }
 
-    public Map<String, String> getCookiesMap() {
+    public Map<String, org.apache.http.cookie.Cookie> getCookiesMap() {
         return cookiesMap;
     }
 
-    public void setCookiesMap(Map<String, String> cookiesMap) {
+    public void setCookiesMap(Map<String, org.apache.http.cookie.Cookie> cookiesMap) {
         this.cookiesMap = cookiesMap;
     }
 
