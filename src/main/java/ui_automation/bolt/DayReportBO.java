@@ -68,13 +68,16 @@ public class DayReportBO extends BaseBoltBO {
         }
         String pSource = monthTripPageSource();
         String month = null;
+        String year = null;
         try {
-            month = pSource
+            String dateString=pSource
                     .split("data-test-select-picker")[2]
                     .split(">")[1]
                     .split("<")[0]
-                    .trim()
-                    .split(" ")[0];
+                    .trim();
+            LOGGER.info(dateString);
+            month = dateString.split(" ")[0];
+            year=dateString.split(" ")[1];
         } catch (Exception e) {
             e.printStackTrace();
             IOUtils.saveTextToFile(new File("pSource.html"), pSource);
@@ -82,7 +85,7 @@ public class DayReportBO extends BaseBoltBO {
         }
         $(By.xpath("//a[text()=\"Завантажити CSV-файл\"]")).click();
         LOGGER.info("month : " + month);
-        return new File(DOWNLOAD_FOLDER + FS + "Bolt - Рахунки пасажирів - " + month + " 2019.csv");
+        return new File(DOWNLOAD_FOLDER + FS + "Bolt - Рахунки пасажирів - " + month + " "+year+".csv");
     }
 
     public String monthTripPageSource() {
