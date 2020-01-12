@@ -49,4 +49,8 @@ public class StringUtil {
     public static String urlEncode(String input) {
         return encodeUsingMapping(URL_MAPPING, input);
     }
+
+    public static String bound(String content, String from, String to) {
+        return content.split(from)[1].split(to)[0];
+    }
 }

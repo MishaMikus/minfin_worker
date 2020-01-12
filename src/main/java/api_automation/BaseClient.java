@@ -16,6 +16,13 @@ public class BaseClient {
         return requestModel;
     }
 
+    protected static RequestModel baseHttpGet() {
+        RequestModel requestModel = new RequestModel();
+        requestModel.setProtocol(HTTP);
+        requestModel.setMethod(GET);
+        return requestModel;
+    }
+
     protected static RequestModel baseHttpPost() {
         RequestModel requestModel = new RequestModel();
         requestModel.setProtocol(HTTP);

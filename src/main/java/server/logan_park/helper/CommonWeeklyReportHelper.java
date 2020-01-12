@@ -159,9 +159,6 @@ public abstract class CommonWeeklyReportHelper {
                         Long promotion = getPromotion(rangeMap);
 
                         Long salary = Math.round(amount.doubleValue() * 0.35);
-                        if (driver.equals("Олег_Тархов")) {
-                            salary = Math.round(amount.doubleValue() * 0.6);
-                        }
                         PaymentView paymentView = new PaymentView(workoutName, count + "", amount + "", cash + "", salary + "", (cash - salary) + "");
                         paymentView.setTips(tips + "");
                         paymentView.setPromotion(promotion + "");
@@ -195,9 +192,6 @@ public abstract class CommonWeeklyReportHelper {
             Integer amount = Integer.valueOf(entry.getValue().getSummary().getAmount());
             if (amount >= WEEK_EARN_LIMIT) {
                 Integer salary = Long.valueOf(Math.round(entry.getValue().getSummary().getAmount() * 0.4d)).intValue();
-                if (entry.getKey().equals("Олег_Тархов")) {
-                    salary = Long.valueOf(Math.round(entry.getValue().getSummary().getAmount() * 0.65d)).intValue();
-                }
                 entry.getValue().getSummary().setSalary(salary);
                 Integer salaryWithTips = salary + entry.getValue().getSummary().getTips();
                 entry.getValue().getSummary().setSalaryWithTips(salaryWithTips);
@@ -217,10 +211,6 @@ public abstract class CommonWeeklyReportHelper {
 
     private List<PaymentView> recalculate40(List<PaymentView> recordList) {
         return recalculate(40, recordList);
-    }
-
-    private List<PaymentView> recalculate60(List<PaymentView> recordList) {
-        return recalculate(60, recordList);
     }
 
     private List<PaymentView> recalculate(int percentage, List<PaymentView> recordList) {

@@ -34,10 +34,8 @@ public class WeeklyReportBoltHelper {
             tmpMap.putIfAbsent(boltPaymentRecordDay.getDriverName(), new DriverStat());
             tmpMap.get(boltPaymentRecordDay.getDriverName()).getWorkoutList().add(makeWorkout(boltPaymentRecordDay));
             tmpMap.get(boltPaymentRecordDay.getDriverName()).setDriverName(boltPaymentRecordDay.getDriverName());
+
             tmpMap.get(boltPaymentRecordDay.getDriverName()).setPlan("35 %");
-            if(boltPaymentRecordDay.getDriverName().equals("Олег_Тархов")){
-                tmpMap.get(boltPaymentRecordDay.getDriverName()).setPlan("60 %");
-            }
         }
 
         //second run (calculate summary)
@@ -63,9 +61,6 @@ public class WeeklyReportBoltHelper {
             entry.getValue().setChange(change);
             entry.getValue().setWorkoutCount(workoutCount);
             generalProfit+=amount* 0.65;
-            if(entry.getKey().equals("Олег_Тархов")){
-                generalProfit+=amount* 0.4;
-            }
             if (amount > 0) {
                 weeklyReportBolt.getDriverStatList().add(entry.getValue());
             }
@@ -93,9 +88,6 @@ public class WeeklyReportBoltHelper {
         workout.setCash(-boltPaymentRecordDay.getCash().intValue());
         workout.setName(SDF_DATE.format(boltPaymentRecordDay.getTimestamp()));
         long salary = round(clearAmount * 0.35);
-        if(boltPaymentRecordDay.getDriverName().equals("Олег_Тархов")){
-            salary = round(clearAmount * 0.6);
-        }
         workout.setSalary((int) salary);
         workout.setChange((int) ((-boltPaymentRecordDay.getCash().longValue() - salary)));
         return workout;

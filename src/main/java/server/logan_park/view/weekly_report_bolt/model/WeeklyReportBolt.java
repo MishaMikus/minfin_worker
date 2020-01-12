@@ -7,7 +7,8 @@ import java.util.List;
 
 public class WeeklyReportBolt {
     private List<WeekLink> weekLinksList = new ArrayList<>();
-    private List<DriverStat> driverStatList=new ArrayList<>();
+    private List<DriverStat> driverStatList = new ArrayList<>();
+    private List<DriverStat> ownerStatList = new ArrayList<>();
     private Integer generalAmount;
     private Integer generalProfit;
 

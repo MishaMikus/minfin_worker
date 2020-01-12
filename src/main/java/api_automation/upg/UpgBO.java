@@ -26,7 +26,7 @@ public class UpgBO {
         getFuelReport();
     }
 
-    private static void getFuelReport() {
+    public static void getFuelReport() {
         ResponseModel responseModel=getHost();
         String tkn = responseModel.getBody().split("value=\"")[1].split("\"")[0];
         postLogin(tkn);
