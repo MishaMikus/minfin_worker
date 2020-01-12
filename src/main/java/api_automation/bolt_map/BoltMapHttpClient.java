@@ -20,4 +20,8 @@ public class BoltMapHttpClient extends BaseClient {
         ResponseModel responseModel=CLIENT.call(requestModel);
         return new BoltDriverStatusResponse().makeMyFromJsonString(responseModel.getBody());
     }
+
+    public static void main(String[] args) {
+        System.out.println(ping());
+    }
 }

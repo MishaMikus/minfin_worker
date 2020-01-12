@@ -13,9 +13,25 @@ public class Pinger {
         while (true) {
             try {
                 BoltMapPinger.saveLodToDB(BoltMapHttpClient.ping());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
                 TrackerMapHttp.ping();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
                 OkkoBO.getFuelReport();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
                 UpgBO.getFuelReport();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
                 Thread.sleep(PING_TIME_MS);
             } catch (Exception e) {
                 e.printStackTrace();
