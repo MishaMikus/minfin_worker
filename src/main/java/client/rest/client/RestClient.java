@@ -37,4 +37,6 @@ public interface RestClient {
      */
     ResponseModel call(RequestModel responseModel);
 
+    void clearCookie();
+
 }

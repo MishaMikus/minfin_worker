@@ -8,6 +8,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 import static server.logan_park.view.weekly_report_general.DateValidator.SDF;
+import static util.DateHelper.getWeekStartDate;
+import static util.DateHelper.roundToMidnight;
 
 public class WeekRangeDAO extends GenericAbstractDAO<WeekRange> {
     private static final Logger LOGGER = Logger.getLogger(WeekRangeDAO.class);
@@ -55,21 +57,5 @@ public class WeekRangeDAO extends GenericAbstractDAO<WeekRange> {
         return weekRange;
     }
 
-    private Date roundToMidnight(Date date) {
-        try {
-            return SDF.parse(SDF.format(date));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return date;
-    }
 
-    private Date getWeekStartDate(Date date) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
-            calendar.add(Calendar.DATE, -1);
-        }
-        return calendar.getTime();
-    }
 }

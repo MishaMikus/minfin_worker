@@ -34,7 +34,9 @@ import java.util.Map;
 
 public class ApacheRestClient implements RestClient {
     private final static Logger LOGGER = Logger.getLogger(ApacheRestClient.class);
-
+    public void clearCookie(){
+        cookies.clear();
+    }
     @Override
     public ResponseModel call(RequestModel requestModel) {
         ResponseModel responseModel = executeRequest(requestModel);

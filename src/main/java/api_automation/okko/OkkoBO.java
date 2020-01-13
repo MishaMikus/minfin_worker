@@ -6,7 +6,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.openqa.selenium.By;
 import orm.entity.logan_park.filling.FillingRecord;
 import orm.entity.logan_park.filling.FillingRecordDAO;
 import orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftover;
@@ -20,7 +19,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static api_automation.okko.OkkoHttpClient.getHost;
-import static com.codeborne.selenide.Selenide.$;
 
 public class OkkoBO {
     private final static Logger LOGGER = Logger.getLogger(OkkoBO.class);
@@ -32,7 +30,7 @@ public class OkkoBO {
     public static void getFuelReport() {
         ResponseModel responseModel = getHost();
         String urlToken = parseUrlToken(responseModel.getBody());
-        ResponseModel responseModelLoginRedirect = OkkoHttpClient.postLogin(urlToken);
+        OkkoHttpClient.postLogin(urlToken);
         ResponseModel responseModelHomePage = OkkoHttpClient.getHomePage();
         FuelAccountLeftoverDAO.getInstance().save(findLeftover(responseModelHomePage));
 
