@@ -1,5 +1,8 @@
 package util;
 
+import org.apache.log4j.Logger;
+import ui_automation.uber.UberWorkerLoadHistory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -9,6 +12,7 @@ import java.util.Properties;
 
 public class ApplicationPropertyUtil {
     private static final Properties properties = new Properties();
+    private static final Logger LOGGER = Logger.getLogger(ApplicationPropertyUtil.class);
 
     static {
         try {
@@ -25,7 +29,11 @@ public class ApplicationPropertyUtil {
     }
 
     public static String applicationPropertyGet(String propertyName) {
-        return applicationProperty().getProperty(propertyName);
+        String res = applicationProperty().getProperty(propertyName);
+        if (res == null) {
+            LOGGER.warn(propertyName + " requared in application.properties file");
+        }
+        return res;
     }
 
 
