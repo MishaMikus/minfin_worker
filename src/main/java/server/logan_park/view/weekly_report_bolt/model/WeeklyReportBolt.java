@@ -1,5 +1,6 @@
 package server.logan_park.view.weekly_report_bolt.model;
 
+import server.logan_park.view.weekly_report_general.model.OwnerStat;
 import server.logan_park.view.weekly_report_general.model.WeekLink;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 public class WeeklyReportBolt {
     private List<WeekLink> weekLinksList = new ArrayList<>();
     private List<DriverStat> driverStatList = new ArrayList<>();
-    private List<DriverStat> ownerStatList = new ArrayList<>();
+    private List<OwnerStat> ownerStatList = new ArrayList<>();
     private Integer generalAmount;
     private Integer generalProfit;
 
@@ -27,6 +28,14 @@ public class WeeklyReportBolt {
                 ", generalAmount='" + generalAmount + '\'' +
                 ", generalProfit='" + generalProfit + '\'' +
                 '}';
+    }
+
+    public List<OwnerStat> getOwnerStatList() {
+        return ownerStatList;
+    }
+
+    public void setOwnerStatList(List<OwnerStat> ownerStatList) {
+        this.ownerStatList = ownerStatList;
     }
 
     public List<WeekLink> getWeekLinksList() {

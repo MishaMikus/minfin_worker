@@ -3,9 +3,12 @@ package server.logan_park.view.weekly_report_bolt;
 import org.apache.log4j.Logger;
 import orm.entity.bolt.payment_record_day.BoltPaymentRecordDay;
 import orm.entity.bolt.payment_record_day.BoltPaymentRecordDayDAO;
+import orm.entity.logan_park.driver.UberDriver;
+import orm.entity.logan_park.driver.UberDriverDAO;
 import orm.entity.logan_park.week_range.WeekRange;
 import orm.entity.logan_park.week_range.WeekRangeDAO;
 import server.logan_park.view.weekly_report_bolt.model.DriverStat;
+import server.logan_park.view.weekly_report_general.model.OwnerStat;
 import server.logan_park.view.weekly_report_bolt.model.WeeklyReportBolt;
 import server.logan_park.view.weekly_report_bolt.model.Workout;
 import server.logan_park.view.weekly_report_general.WeekLinksHelper;
@@ -20,6 +23,8 @@ public class WeeklyReportBoltHelper {
 
     private final static Logger LOGGER = Logger.getLogger(WeeklyReportBoltHelper.class);
 
+    private static final List<UberDriver> UBER_DRIVER_LIST = UberDriverDAO.getInstance().findAll();
+
     public static WeeklyReportBolt makeReport(Date weekFlag) {
         WeeklyReportBolt weeklyReportBolt = new WeeklyReportBolt();
         //Week links
@@ -28,14 +33,30 @@ public class WeeklyReportBoltHelper {
         WeekRange weekRange = WeekRangeDAO.getInstance().findOrCreateWeek(weekFlag, "bolt_worker");
         List<BoltPaymentRecordDay> list = BoltPaymentRecordDayDAO.getInstance().findAllByWeekRangeId(weekRange.getId());
         Map<String, DriverStat> tmpMap = new HashMap<>();
+        Map<String, OwnerStat> ownerMap = new HashMap<>();
 
         //firstRun (separate driver)
         for (BoltPaymentRecordDay boltPaymentRecordDay : list) {
-            tmpMap.putIfAbsent(boltPaymentRecordDay.getDriverName(), new DriverStat());
-            tmpMap.get(boltPaymentRecordDay.getDriverName()).getWorkoutList().add(makeWorkout(boltPaymentRecordDay));
-            tmpMap.get(boltPaymentRecordDay.getDriverName()).setDriverName(boltPaymentRecordDay.getDriverName());
+            UberDriver driver = UBER_DRIVER_LIST.stream().filter(d -> d.getName().equals(boltPaymentRecordDay.getDriverName())).findFirst().orElse(null);
+            if (driver == null) {
+                LOGGER.warn("UNKNOWN driver " + boltPaymentRecordDay.getDriverName());
+            }
+            if (driver != null && driver.getDriverType().equals("usual40")) {
+                tmpMap.putIfAbsent(boltPaymentRecordDay.getDriverName(), new DriverStat());
+                tmpMap.get(boltPaymentRecordDay.getDriverName()).getWorkoutList().add(makeWorkout(boltPaymentRecordDay));
+                tmpMap.get(boltPaymentRecordDay.getDriverName()).setDriverName(boltPaymentRecordDay.getDriverName());
+                tmpMap.get(boltPaymentRecordDay.getDriverName()).setPlan("35 %");
+            }
 
-            tmpMap.get(boltPaymentRecordDay.getDriverName()).setPlan("35 %");
+            if (driver != null && driver.getDriverType().equals("owner_5")) {
+                ownerMap.putIfAbsent(driver.getName(), new OwnerStat());
+                ownerMap.get(driver.getName()).setDriverName(driver.getName());
+                int clearAmount = (int) round((boltPaymentRecordDay.getAmount() + boltPaymentRecordDay.getBolt_commission() + boltPaymentRecordDay.getBonus()));
+                ownerMap.get(driver.getName()).setAmount(ownerMap.get(driver.getName()).getAmount() + clearAmount);
+                ownerMap.get(driver.getName()).setCommission(ownerMap.get(driver.getName()).getCommission() - boltPaymentRecordDay.getBolt_commission().intValue());
+                ownerMap.get(driver.getName()).setCash(ownerMap.get(driver.getName()).getCash() + boltPaymentRecordDay.getCash().intValue());
+            }
+
         }
 
         //second run (calculate summary)
@@ -60,7 +81,7 @@ public class WeeklyReportBoltHelper {
             entry.getValue().setSalary(salary);
             entry.getValue().setChange(change);
             entry.getValue().setWorkoutCount(workoutCount);
-            generalProfit+=amount* 0.65;
+            generalProfit += amount * 0.65;
             if (amount > 0) {
                 weeklyReportBolt.getDriverStatList().add(entry.getValue());
             }
@@ -76,13 +97,20 @@ public class WeeklyReportBoltHelper {
         //add Company summary
         weeklyReportBolt.setGeneralAmount(generalAmount);
         weeklyReportBolt.setGeneralProfit(generalProfit);
+
+        //owner
+        weeklyReportBolt.setOwnerStatList(new ArrayList<>(ownerMap.values()));
+        weeklyReportBolt.getOwnerStatList().forEach(d -> {
+            d.setCash(-d.getCash());
+            d.setWithdraw(d.getAmount() - d.getCash());
+        });
         return weeklyReportBolt;
     }
 
 
     private static Workout makeWorkout(BoltPaymentRecordDay boltPaymentRecordDay) {
         Workout workout = new Workout();
-        int clearAmount = (int) round((boltPaymentRecordDay.getAmount() + boltPaymentRecordDay.getBolt_commission()+boltPaymentRecordDay.getBonus()));
+        int clearAmount = (int) round((boltPaymentRecordDay.getAmount() + boltPaymentRecordDay.getBolt_commission() + boltPaymentRecordDay.getBonus()));
 
         workout.setAmount(clearAmount);//without commission
         workout.setCash(-boltPaymentRecordDay.getCash().intValue());

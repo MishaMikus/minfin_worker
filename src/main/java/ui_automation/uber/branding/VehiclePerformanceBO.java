@@ -38,7 +38,8 @@ public class VehiclePerformanceBO {
                     res.put(vehicle, res.get(vehicle) + v.getTrips());
                 }
         );
-        System.out.println("res: " + res);
+        System.out.println("res: ");
+        res.entrySet().forEach(System.out::println);
     }
 
 

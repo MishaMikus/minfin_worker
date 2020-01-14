@@ -2,21 +2,9 @@ package server.logan_park.view.weekly_report_general.model;
 
 public class DriverOwnerStat {
     private String name;
-    private Integer amount;
-    private Integer cash;
-    private Integer commission;
-    private Integer withdraw;
-
-    @Override
-    public String toString() {
-        return "DriverOwnerStat{" +
-                "name='" + name + '\'' +
-                ", amount='" + amount + '\'' +
-                ", cash='" + cash + '\'' +
-                ", commission='" + commission + '\'' +
-                ", withdraw='" + withdraw + '\'' +
-                '}';
-    }
+    private OwnerStat bolt_stat=new OwnerStat();
+    private OwnerStat uber_stat=new OwnerStat();
+    private OwnerStat general_stat=new OwnerStat();
 
     public String getName() {
         return name;
@@ -26,35 +14,27 @@ public class DriverOwnerStat {
         this.name = name;
     }
 
-    public Integer getAmount() {
-        return amount;
+    public OwnerStat getBolt_stat() {
+        return bolt_stat;
     }
 
-    public void setAmount(Integer amount) {
-        this.amount = amount;
+    public void setBolt_stat(OwnerStat bolt_stat) {
+        this.bolt_stat = bolt_stat;
     }
 
-    public Integer getCash() {
-        return cash;
+    public OwnerStat getUber_stat() {
+        return uber_stat;
     }
 
-    public void setCash(Integer cash) {
-        this.cash = cash;
+    public void setUber_stat(OwnerStat uber_stat) {
+        this.uber_stat = uber_stat;
     }
 
-    public Integer getCommission() {
-        return commission;
+    public OwnerStat getGeneral_stat() {
+        return general_stat;
     }
 
-    public void setCommission(Integer commission) {
-        this.commission = commission;
-    }
-
-    public Integer getWithdraw() {
-        return withdraw;
-    }
-
-    public void setWithdraw(Integer withdraw) {
-        this.withdraw = withdraw;
+    public void setGeneral_stat(OwnerStat general_stat) {
+        this.general_stat = general_stat;
     }
 }

@@ -8,6 +8,7 @@ import server.logan_park.view.weekly_report_bolt.WeeklyReportBoltHelper;
 import server.logan_park.view.weekly_report_bolt.model.WeeklyReportBolt;
 import server.logan_park.view.weekly_report_general.model.DriverOwnerStat;
 import server.logan_park.view.weekly_report_general.model.DriverStatGeneral;
+import server.logan_park.view.weekly_report_general.model.OwnerStat;
 import server.logan_park.view.weekly_report_general.model.WeeklyReportGeneral;
 
 import java.util.Comparator;
@@ -99,39 +100,64 @@ public class WeeklyReportGeneralHelper {
         Map<String, PaymentOwnerRecord> ownerTable = automaticallyWeeklyReportHelper.makeOwnerMap();
         ownerTable.forEach((driverName, paymentDriverRecord) -> {
             DriverOwnerStat driverOwnerStat = new DriverOwnerStat();
-            driverOwnerStat.setAmount(paymentDriverRecord.getOwnerPaymentViews().getAmount());
-            driverOwnerStat.setCash(paymentDriverRecord.getOwnerPaymentViews().getCash());
-            driverOwnerStat.setCommission((int) round(driverOwnerStat.getAmount() * 0.05));
+
+            //Uber
+            driverOwnerStat.getUber_stat().setAmount(paymentDriverRecord.getOwnerPaymentViews().getAmount());
+            driverOwnerStat.getUber_stat().setCash(paymentDriverRecord.getOwnerPaymentViews().getCash());
+            driverOwnerStat.getUber_stat().setCommission((int) round(driverOwnerStat.getUber_stat().getAmount() * 0.05));
+            driverOwnerStat.getUber_stat().setWithdraw(driverOwnerStat.getUber_stat().getAmount() - driverOwnerStat.getUber_stat().getCash() - driverOwnerStat.getUber_stat().getCommission());
+
+            //Bolt
+            OwnerStat ownerStat = weeklyReportBolt
+                    .getOwnerStatList()
+                    .stream()
+                    .filter(s -> s.getDriverName()
+                            .equals(driverName))
+                    .findAny().orElse(null);
+
+            driverOwnerStat.getBolt_stat().setAmount(ownerStat == null ? 0 : ownerStat.getAmount());
+            driverOwnerStat.getBolt_stat().setCash(ownerStat == null ? 0 : ownerStat.getCash());
+            driverOwnerStat.getBolt_stat().setCommission(ownerStat == null ? 0 : ownerStat.getCommission());
+            driverOwnerStat.getBolt_stat().setWithdraw(driverOwnerStat.getBolt_stat().getAmount() - driverOwnerStat.getBolt_stat().getCash());
+
+            //General
+            driverOwnerStat.getGeneral_stat().setAmount(driverOwnerStat.getUber_stat().getAmount() + driverOwnerStat.getBolt_stat().getAmount());
+            driverOwnerStat.getGeneral_stat().setCommission(driverOwnerStat.getUber_stat().getCommission() + driverOwnerStat.getBolt_stat().getCommission());
+            driverOwnerStat.getGeneral_stat().setCash(driverOwnerStat.getUber_stat().getCash() + driverOwnerStat.getBolt_stat().getCash());
+            driverOwnerStat.getGeneral_stat().setWithdraw(driverOwnerStat.getUber_stat().getWithdraw() + driverOwnerStat.getBolt_stat().getWithdraw());
+
             driverOwnerStat.setName(driverName);
-            driverOwnerStat.setWithdraw(driverOwnerStat.getAmount() - driverOwnerStat.getCash() - driverOwnerStat.getCommission());
             weeklyReportGeneral.getDriverOwnerStatList().add(driverOwnerStat);
         });
 
         weeklyReportGeneral.getCompanyAccountStat().setBrandingUber(uberBranding[0]);
 
         Integer driverAmount = weeklyReportGeneral.getDriverStatList().stream().mapToInt(d -> d.getSum().getAmount()).sum();
-        Integer ownerAmount = weeklyReportGeneral.getDriverOwnerStatList().stream().mapToInt(DriverOwnerStat::getAmount).sum();
-        weeklyReportGeneral.getCompanyAccountStat().setGeneralAmount(driverAmount + ownerAmount);
+        Integer ownerAmount_bolt = weeklyReportGeneral.getDriverOwnerStatList().stream().mapToInt(d -> d.getBolt_stat().getAmount()).sum();
+        Integer ownerAmount_uber = weeklyReportGeneral.getDriverOwnerStatList().stream().mapToInt(d -> d.getUber_stat().getAmount()).sum();
+        weeklyReportGeneral.getCompanyAccountStat().setGeneralAmount(driverAmount + ownerAmount_bolt + ownerAmount_uber);
 
         Integer driverCash = weeklyReportGeneral.getDriverStatList().stream().mapToInt(d -> d.getSum().getCash()).sum();
-        Integer ownerCash = weeklyReportGeneral.getDriverOwnerStatList().stream().mapToInt(DriverOwnerStat::getCash).sum();
-        weeklyReportGeneral.getCompanyAccountStat().setCash(driverCash + ownerCash);
+        Integer ownerCashUber = weeklyReportGeneral.getDriverOwnerStatList().stream().mapToInt(d -> d.getUber_stat().getCash()).sum();
+        Integer ownerCashBolt = weeklyReportGeneral.getDriverOwnerStatList().stream().mapToInt(d -> d.getBolt_stat().getCash()).sum();
+        weeklyReportGeneral.getCompanyAccountStat().setCash(driverCash + ownerCashUber + ownerCashBolt);
 
 
         Integer driverAmountUber = weeklyReportGeneral.getDriverStatList().stream().mapToInt(d -> d.getUberStat().getAmount()).sum();
         Integer driverCashUber = weeklyReportGeneral.getDriverStatList().stream().mapToInt(d -> d.getUberStat().getCash()).sum();
         int noCashDriverUber = driverAmountUber - driverCashUber;
-        int noCashDriverOwnerUber = ownerAmount - ownerCash;
+        int noCashDriverOwnerUber = ownerAmount_uber - ownerCashUber;
         int noCash = noCashDriverUber + noCashDriverOwnerUber;
         weeklyReportGeneral.getCompanyAccountStat().setTax((int) round(noCash * 0.05));
 
         int driverSalary = weeklyReportGeneral.getDriverStatList().stream().mapToInt(d -> d.getSum().getSalary()).sum();
-        int ownerWithdraw = weeklyReportGeneral.getDriverOwnerStatList().stream().mapToInt(DriverOwnerStat::getWithdraw).sum();
-        int profit = weeklyReportGeneral.getCompanyAccountStat().getGeneralAmount() - driverSalary - ownerWithdraw - ownerCash;
+        int ownerWithdrawUber = weeklyReportGeneral.getDriverOwnerStatList().stream().mapToInt(d -> d.getUber_stat().getWithdraw()).sum();
+        int ownerWithdrawBolt = weeklyReportGeneral.getDriverOwnerStatList().stream().mapToInt(d -> d.getBolt_stat().getWithdraw()).sum();
+        int profit = weeklyReportGeneral.getCompanyAccountStat().getGeneralAmount() - driverSalary - ownerWithdrawUber - ownerWithdrawBolt - ownerCashUber - ownerCashBolt;
 
         weeklyReportGeneral.getCompanyAccountStat().setGeneralProfit(profit - weeklyReportGeneral.getCompanyAccountStat().getTax());
 
-        weeklyReportGeneral.getCompanyAccountStat().setClearDriverOwnerProfit((int) round(ownerCash * 0.05));
+        weeklyReportGeneral.getCompanyAccountStat().setClearDriverOwnerProfit((int) round(ownerCashUber * 0.05));
 
         return weeklyReportGeneral;
     }

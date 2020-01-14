@@ -60,7 +60,21 @@
 <table class="table-all-borders">
     <tbody>
     <tr>
+        <th></th>
+        <th colspan="4">убер</th>
+        <th colspan="4">болт</th>
+        <th colspan="4">разом</th>
+    </tr>
+    <tr>
         <th>Водій</th>
+        <th>вал</th>
+        <th>готівка</th>
+        <th>комісія</th>
+        <th>на виведення</th>
+        <th>вал</th>
+        <th>готівка</th>
+        <th>комісія</th>
+        <th>на виведення</th>
         <th>вал</th>
         <th>готівка</th>
         <th>комісія</th>
@@ -69,10 +83,21 @@
     <c:forEach items="${weeklyReport.driverOwnerStatList}" var="driverOwnerStat">
         <tr>
             <td>${driverOwnerStat.name}</td>
-            <td>${driverOwnerStat.amount}</td>
-            <td>${driverOwnerStat.cash}</td>
-            <td>${driverOwnerStat.commission}</td>
-            <th>${driverOwnerStat.withdraw}</th>
+
+            <td>${driverOwnerStat.uber_stat.amount}</td>
+            <td>${driverOwnerStat.uber_stat.cash}</td>
+            <td>${driverOwnerStat.uber_stat.commission}</td>
+            <th>${driverOwnerStat.uber_stat.withdraw}</th>
+
+            <td>${driverOwnerStat.bolt_stat.amount}</td>
+            <td>${driverOwnerStat.bolt_stat.cash}</td>
+            <td>${driverOwnerStat.bolt_stat.commission}</td>
+            <th>${driverOwnerStat.bolt_stat.withdraw}</th>
+
+            <td>${driverOwnerStat.general_stat.amount}</td>
+            <td>${driverOwnerStat.general_stat.cash}</td>
+            <td>${driverOwnerStat.general_stat.commission}</td>
+            <th>${driverOwnerStat.general_stat.withdraw}</th>
         </tr>
     </c:forEach>
     </tbody>
