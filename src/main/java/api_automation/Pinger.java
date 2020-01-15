@@ -48,6 +48,7 @@ public class Pinger {
                 e.printStackTrace();
             }
         }
+        System.exit(0);
     }
 
     private static void clearCookie() {
