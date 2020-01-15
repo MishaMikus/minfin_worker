@@ -64,4 +64,13 @@ public class ApplicationPropertyUtil {
             return defaultValue;
         }
     }
+
+    public static long getLong(String key, long defaultValue) {
+        try {
+            return Integer.parseInt(applicationPropertyGet(key));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return defaultValue;
+        }
+    }
 }
