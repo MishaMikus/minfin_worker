@@ -27,7 +27,6 @@ public class BoltWorker {
         recordHelper.recordDayReportToDB(dayMap);
         recordHelper.recordMonthTripToDB(monthTripCsv);
         recordHelper.recordMonthTripPDFMapping(pageSource);
-
         System.exit(0);
     }
 }

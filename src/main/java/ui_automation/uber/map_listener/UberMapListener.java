@@ -73,6 +73,7 @@ public class UberMapListener {
         try {
             saveMapDriverInfoToDB(saveHarFile("driver.har.json"));
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

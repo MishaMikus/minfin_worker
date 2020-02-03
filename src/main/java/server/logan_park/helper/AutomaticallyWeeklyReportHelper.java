@@ -30,6 +30,7 @@ public class AutomaticallyWeeklyReportHelper extends CommonWeeklyReportHelper {
         Map<String, Map<Date, PaymentRecordRawRow>> driverMap = new HashMap<>();
         int i = 0;
         for (UberPaymentRecordRow row : dbRowList) {
+
             PaymentRecordRawRow paymentRecordRawRow = PaymentRecordRawRow.makeMeFromDBRow(row, driverList);
             driverMap.putIfAbsent(paymentRecordRawRow.driverName(), new HashMap<>());
             if (paymentRecordRawRow.getTimestamp() != null) {

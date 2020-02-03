@@ -137,8 +137,6 @@ public abstract class CommonWeeklyReportHelper {
     }
 
     public Map<String, PaymentDriverRecord> makeMap() {
-
-        //"ac67df0b-abbb-4d15-876d-6cc76f95b7c3","","Юрий","Сосинский","18.0","2019-08-16T14:19:45+03:00","promotion","Промокод","Компенсація сервісного збору Убер"
         Map<String, PaymentDriverRecord> map = new HashMap<>();
         Map<String, Map<Date, PaymentRecordRawRow>> driverMap = getPrimaryParsedData();
         for (String driver : driverMap.keySet()) {
@@ -226,18 +224,21 @@ public abstract class CommonWeeklyReportHelper {
     private Map<String, PaymentDriverRecord> makeRateAndSortByRate(Map<String, PaymentDriverRecord> map) {
         TreeMap<Double, PaymentDriverRecord> sortMap = new TreeMap<>();
         for (PaymentDriverRecord paymentDriverRecord : map.values()) {
-            sortMap.put(-paymentDriverRecord.getSummary().getUahPerHour(), paymentDriverRecord);
+            //TODO improve to avoid overriting
+            sortMap.put(-paymentDriverRecord.getSummary().getUahPerHour()+new Random().nextDouble(), paymentDriverRecord);
         }
 
         List<PaymentDriverRecord> list = new ArrayList<>(sortMap.values());
         for (PaymentDriverRecord paymentDriverRecord : new ArrayList<>(sortMap.values())) {
             paymentDriverRecord.getSummary().setRate(list.indexOf(paymentDriverRecord));
+            System.out.println(paymentDriverRecord.getDriverName());
         }
-
+        list.forEach(System.out::println);
         Map<String, PaymentDriverRecord> linkedHashMap = new LinkedHashMap<>();
         for (Map.Entry<Double, PaymentDriverRecord> entry : sortMap.entrySet()) {
             linkedHashMap.put(entry.getValue().getDriverName(), entry.getValue());
         }
+
         return linkedHashMap;
     }
 
