@@ -11,12 +11,12 @@ public class UberWorkerLoadHistory {
 
     public static void main(String[] args) {
         runWorker();
+        System.exit(0);
     }
 
-    private static void runWorker() {
+    public static void runWorker() {
         login();
         new UberBO().recordPaymentWithOneWeekHistory();
         close();
-        System.exit(0);
     }
 }

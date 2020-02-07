@@ -12,6 +12,7 @@ public class BoltWorker {
 
     public static void main(String[] args) {
         runWorker();
+        System.exit(0);
     }
 
     public static void runWorker() {
@@ -27,6 +28,5 @@ public class BoltWorker {
         recordHelper.recordDayReportToDB(dayMap);
         recordHelper.recordMonthTripToDB(monthTripCsv);
         recordHelper.recordMonthTripPDFMapping(pageSource);
-        System.exit(0);
     }
 }

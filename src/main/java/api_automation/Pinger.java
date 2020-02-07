@@ -15,9 +15,15 @@ public class Pinger {
     private static final long PING_TIME_MS = 5000;
 
     public static void main(String[] args) {
-        long api_worker_lifetime_ms= ApplicationPropertyUtil.getLong("api_worker_lifetime_ms",3600000);
-        long start=new Date().getTime();
-        while (new Date().getTime()-start<api_worker_lifetime_ms) {
+        runWorker();
+        System.exit(0);
+    }
+
+    public static void runWorker() {
+
+        long api_worker_lifetime_ms = ApplicationPropertyUtil.getLong("api_worker_lifetime_ms", 3600000);
+        long start = new Date().getTime();
+      //  while (new Date().getTime() - start < api_worker_lifetime_ms) {
             try {
                 BoltMapPinger.saveLodToDB(BoltMapHttpClient.ping());
                 clearCookie();
@@ -47,8 +53,7 @@ public class Pinger {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-        System.exit(0);
+       // }
     }
 
     private static void clearCookie() {
