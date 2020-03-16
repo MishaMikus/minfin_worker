@@ -31,4 +31,8 @@ public class UberDriverDAO extends GenericAbstractDAO<UberDriver> {
     public UberDriver findDriverByDriverName(String name) {
         return findWhereEqual("name", name.replaceAll(" ", "_"));
     }
+
+    public UberDriver findDriverByBoltDriverName(String name) {
+        return findWhereEqual("bolt_name", name.replaceAll(" ", "_"));
+    }
 }

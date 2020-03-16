@@ -5,6 +5,9 @@ package ui_automation;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.PageLoadStrategy;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import util.ApplicationPropertyUtil;
 
 import java.util.Date;
@@ -12,6 +15,7 @@ import java.util.Date;
 import static com.codeborne.selenide.Configuration.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 import static util.ApplicationPropertyUtil.getBoolean;
 
 public class BaseBO {
@@ -33,6 +37,17 @@ public class BaseBO {
             LOGGER.info("remote : " + remote);
         }
         headless = getBoolean("headless", true);
+        System.setProperty("webdriver.chrome.driver","driver/chromedriver_80");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("enable-automation");
+        //options.addArguments("--headless");
+        options.addArguments("--window-size=1920,1080");
+        //options.addArguments("--no-sandbox");
+        //options.addArguments("--disable-extensions");
+        //options.addArguments("--dns-prefetch-disable");
+        //options.addArguments("--disable-gpu");
+        options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+        setWebDriver(new ChromeDriver(options));
     }
 
 

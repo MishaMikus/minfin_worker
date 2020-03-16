@@ -31,12 +31,16 @@ public class BoltMapPinger {
     }
 
     private static Integer findDriverId(BoltDriverStatusDataItem boltDriverStatusDataItem) {
-        UberDriver driver = UberDriverDAO.getInstance().findDriverByDriverName(boltDriverStatusDataItem.getName());
+        UberDriverDAO uberDriverDAO=UberDriverDAO.getInstance();
+        UberDriver driver = uberDriverDAO.findDriverByDriverName(boltDriverStatusDataItem.getName());
+        if(driver==null){
+            driver=uberDriverDAO.findDriverByBoltDriverName(boltDriverStatusDataItem.getName());
+        }
         if (driver == null) {
             driver = new UberDriver();
             driver.setDriverType("usual40");
             driver.setName(boltDriverStatusDataItem.getName().replaceAll(" ", "_"));
-            Integer id = (Integer) UberDriverDAO.getInstance().save(driver);
+            Integer id = (Integer) uberDriverDAO.save(driver);
             driver.setId(id);
             LOGGER.info("cant find driver, create default : " + driver);
         }

@@ -42,12 +42,12 @@ public class Pinger {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            try {
-                UpgBO.getFuelReport();
-                clearCookie();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            try {
+//                UpgBO.getFuelReport();
+//                clearCookie();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
             try {
                 Thread.sleep(PING_TIME_MS);
             } catch (Exception e) {

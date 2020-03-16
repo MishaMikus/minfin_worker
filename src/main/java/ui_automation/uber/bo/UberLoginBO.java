@@ -174,7 +174,7 @@ public class UberLoginBO extends BaseBO {
     private NotRobotResult waitForCaptchaSolved(Integer id) {
         long start = new Date().getTime();
         long pingTime = 10000;
-        long timeout = 100000;
+        long timeout = 1000000;
         while ((new Date().getTime() - start) < timeout) {
             try {
                 Thread.sleep(pingTime);

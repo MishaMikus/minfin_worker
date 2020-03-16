@@ -9,15 +9,24 @@ public class UberDriver {
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
     @Column
     private String driverUUID;
     @Column
     private String driverType;
     @Column
     private String name;
+    @Column
+    private String bolt_name;
 
     public UberDriver() {
+    }
+
+    public String getBolt_name() {
+        return bolt_name;
+    }
+
+    public void setBolt_name(String bolt_name) {
+        this.bolt_name = bolt_name;
     }
 
     public Integer getId() {

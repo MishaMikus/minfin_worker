@@ -37,7 +37,10 @@ public class WeeklyReportBoltHelper {
 
         //firstRun (separate driver)
         for (BoltPaymentRecordDay boltPaymentRecordDay : list) {
-            UberDriver driver = UBER_DRIVER_LIST.stream().filter(d -> d.getName().equals(boltPaymentRecordDay.getDriverName())).findFirst().orElse(null);
+            UberDriver driver = UBER_DRIVER_LIST.stream().filter(d ->
+                    d.getName().equals(boltPaymentRecordDay.getDriverName())
+                    ||boltPaymentRecordDay.getDriverName().equals(d.getBolt_name())
+            ).findFirst().orElse(null);
             if (driver == null) {
                 LOGGER.warn("UNKNOWN driver " + boltPaymentRecordDay.getDriverName());
             }
