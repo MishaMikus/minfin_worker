@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import util.ApplicationPropertyUtil;
 
+import java.io.File;
 import java.util.Date;
 
 import static com.codeborne.selenide.Configuration.*;
@@ -37,6 +38,7 @@ public class BaseBO {
             LOGGER.info("remote : " + remote);
         }
         headless = getBoolean("headless", true);
+        if(new File("driver/chromedriver_80").exists()){
         System.setProperty("webdriver.chrome.driver","driver/chromedriver_80");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("enable-automation");
@@ -47,7 +49,7 @@ public class BaseBO {
         //options.addArguments("--dns-prefetch-disable");
         //options.addArguments("--disable-gpu");
         options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-        setWebDriver(new ChromeDriver(options));
+        setWebDriver(new ChromeDriver(options));}
     }
 
 
