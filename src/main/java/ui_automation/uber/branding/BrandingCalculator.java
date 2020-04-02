@@ -4,7 +4,7 @@ public class BrandingCalculator {
 
 
     public static void main(String[] args) throws InterruptedException {
-        VehiclePerformanceDownloadeBO.download();
+        //VehiclePerformanceDownloadeBO.download();
         VehiclePerformanceBO.calculate();
     }
 }
