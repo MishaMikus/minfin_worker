@@ -15,6 +15,8 @@ public class BoltPaymentRecordDay {
     @Column
     private Date timestamp;
 
+    @Column
+    private Integer driver_id;
     private Date creation;
     private Double amount;
     private Double reject_amount;
@@ -29,15 +31,24 @@ public class BoltPaymentRecordDay {
     private Double week_balance;
     private Integer week_id;
 
+    public Integer getDriver_id() {
+        return driver_id;
+    }
+
+    public void setDriver_id(Integer driver_id) {
+        this.driver_id = driver_id;
+    }
+
     public BoltPaymentRecordDay() {
     }
 
-    public BoltPaymentRecordDay(Date creation, String driverName, Date timestamp, Double amount,
+    public BoltPaymentRecordDay(Date creation, String driverName, Integer driverId,Date timestamp, Double amount,
                                 Double reject_amount, Double booking_payment_amount, Double booking_payment_minus,
                                 Double additional_payment, Double bolt_commission, Double cash,
                                 Double cash_turn, Double bonus, Double compensation, Double week_balance, Integer week_id) {
         this.creation = creation;
         this.driverName = driverName;
+        this.driver_id=driverId;
         this.timestamp = timestamp;
         this.amount = amount;
         this.reject_amount = reject_amount;

@@ -3,6 +3,8 @@ package ui_automation.bolt;
 import org.apache.log4j.Logger;
 import orm.entity.bolt.payment_record_day.BoltPaymentRecordDay;
 import orm.entity.bolt.payment_record_day.BoltPaymentRecordDayDAO;
+import orm.entity.logan_park.driver.UberDriver;
+import orm.entity.logan_park.driver.UberDriverDAO;
 import orm.entity.logan_park.week_range.WeekRangeDAO;
 import util.IOUtils;
 
@@ -16,12 +18,13 @@ public class RecordHelper {
     //"05.10.2019 21:41
     public static final SimpleDateFormat SDF_DATE_TIME = new SimpleDateFormat("dd.MM.yyyy HH:mm");
     private final static Logger LOGGER = Logger.getLogger(RecordHelper.class);
+    private static final String DEFAULT_DRIVER_TYPE = "usual40";
 
     public List<BoltPaymentRecordDay> recordDayReportToDB(String date, String content) {
         List<String> rowArrayList = new ArrayList<>(Arrays.asList(content.split("\r\n")));
         LOGGER.info("try parse file " + date);
         Integer weekId = new WeekRangeDAO().findOrCreateWeek(parseDate(date), "bolt_worker").getId();
-        int lastRowIndex = rowArrayList.indexOf(",,,,,,,,,,,,,");
+        int lastRowIndex = rowArrayList.indexOf(",,,,,,,,,,,,,,");
         lastRowIndex = lastRowIndex == -1 ? rowArrayList.size() - 1 : lastRowIndex;
 
         List<String> dayRowArrayList = rowArrayList.subList(2, lastRowIndex);
@@ -33,10 +36,13 @@ public class RecordHelper {
             String[] cellArray = row.replaceAll("\"", "").split(",");
             //"Водій","Телефон водія","Період","Загальний тариф","Плата за скасування","Збір за бронювання (платіж)","Збір за бронювання (відрахування)","Додаткові збори","Комісія Bolt","Готівкові поїздки (отримано водієм)","Компенсована сума знижки Bolt за готівкові поїздки ","Водійський бонус","Компенсації","Тижневий баланс"
             //"Юрій Горбатий","+380961066201","День 2019-10-05","268.00","0.00","0.00","0.00","0.00","-32.16","-172.00","30.00","0.00","0.00","63.84"
-
+            String driverName=cellArray[0].replace(" ", "_");
+            UberDriver driver = findOrCreateBoltDriver(driverName);
+            int driverId = driver.getId();
             boltPaymentRecordDayList.add(new BoltPaymentRecordDay(
                     new Date(),
                     cellArray[0].replace(" ", "_"),
+                    driverId,
                     parseDate(date),
                     Double.parseDouble(cellArray[3]),
                     Double.parseDouble(cellArray[4]),
@@ -54,6 +60,25 @@ public class RecordHelper {
 
         }
         return boltPaymentRecordDayList;
+    }
+
+    private UberDriver findOrCreateBoltDriver(String driverName) {
+        UberDriverDAO uberDriverDAO = UberDriverDAO.getInstance();
+        UberDriver uberDriver = uberDriverDAO.findDriverByDriverName(driverName);
+        if (uberDriver == null) {
+            uberDriver = uberDriverDAO.findDriverByBoltDriverName(driverName);
+        }
+        if (uberDriver == null) {
+            uberDriver = new UberDriver();
+            uberDriver.setDriverType(DEFAULT_DRIVER_TYPE);
+            uberDriver.setBolt_name(driverName);
+            uberDriver.setDriverUUID("fake_bolt_UUID");
+            uberDriver.setName(driverName);
+            Integer id = (Integer) uberDriverDAO.save(uberDriver);
+            uberDriver.setId(id);
+            LOGGER.info("cant find driver, create default : " + uberDriver);
+        }
+        return uberDriver;
     }
 
     private Date parseDate(String content) {

@@ -1,6 +1,7 @@
 package worker;
 
 
+import ui_automation.bolt.BoltWorker;
 import ui_automation.uber.UberWorkerLoadHistory;
 
 public class DailyWorkerUber {
