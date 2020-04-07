@@ -38,7 +38,8 @@ public class WeeklyReportGeneralHelper {
         return makeReport(weeklyReportBolt, automaticallyWeeklyReportHelper);
     }
 
-    private static WeeklyReportGeneral makeReport(WeeklyReportBolt weeklyReportBolt, AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper) {
+    private static WeeklyReportGeneral makeReport(WeeklyReportBolt weeklyReportBolt,
+                                                  AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper) {
         WeeklyReportGeneral weeklyReportGeneral = new WeeklyReportGeneral();
 
         //Week links

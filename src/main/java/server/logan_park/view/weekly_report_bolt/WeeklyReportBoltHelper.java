@@ -32,6 +32,10 @@ public class WeeklyReportBoltHelper {
 
         WeekRange weekRange = WeekRangeDAO.getInstance().findOrCreateWeek(weekFlag, "bolt_worker");
         List<BoltPaymentRecordDay> list = BoltPaymentRecordDayDAO.getInstance().findAllByWeekRangeId(weekRange.getId());
+
+        //UderDriverNameAdaptation
+        uderDriverNameAdaptation(list);
+
         Map<String, DriverStat> tmpMap = new HashMap<>();
         Map<String, OwnerStat> ownerMap = new HashMap<>();
 
@@ -44,8 +48,10 @@ public class WeeklyReportBoltHelper {
             if (driver == null) {
                 LOGGER.warn("UNKNOWN driver " + boltPaymentRecordDay.getDriverName());
             }
+
             if (driver != null && driver.getDriverType().equals("usual40")) {
                 tmpMap.putIfAbsent(boltPaymentRecordDay.getDriverName(), new DriverStat());
+                tmpMap.get(boltPaymentRecordDay.getDriverName()).setDriverName(driver.getName());
                 tmpMap.get(boltPaymentRecordDay.getDriverName()).getWorkoutList().add(makeWorkout(boltPaymentRecordDay));
                 tmpMap.get(boltPaymentRecordDay.getDriverName()).setDriverName(boltPaymentRecordDay.getDriverName());
                 tmpMap.get(boltPaymentRecordDay.getDriverName()).setPlan("35 %");
@@ -108,6 +114,26 @@ public class WeeklyReportBoltHelper {
             d.setWithdraw(d.getAmount() - d.getCash());
         });
         return weeklyReportBolt;
+    }
+
+    private static void uderDriverNameAdaptation(List<BoltPaymentRecordDay> list) {
+        for (BoltPaymentRecordDay boltPaymentRecordDay : list) {
+            UberDriver uberDriver=findDriver(boltPaymentRecordDay.getDriverName());
+            if(uberDriver!=null){
+                if(uberDriver.getName()!=null){
+                    boltPaymentRecordDay.setDriverName(uberDriver.getName());
+                }
+            }
+        }
+    }
+
+    private static UberDriver findDriver(String driverName) {
+                for(UberDriver uberDriver:UBER_DRIVER_LIST){
+                    if(uberDriver.getBolt_name()!=null&&uberDriver.getBolt_name().equals(driverName)){return uberDriver;}
+                    if(uberDriver.getName()!=null&&uberDriver.getName().equals(driverName)){return uberDriver;}
+                }
+                LOGGER.warn("Driver "+driverName + " not found");
+                return null;
     }
 
 

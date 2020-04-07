@@ -224,16 +224,14 @@ public abstract class CommonWeeklyReportHelper {
     private Map<String, PaymentDriverRecord> makeRateAndSortByRate(Map<String, PaymentDriverRecord> map) {
         TreeMap<Double, PaymentDriverRecord> sortMap = new TreeMap<>();
         for (PaymentDriverRecord paymentDriverRecord : map.values()) {
-            //TODO improve to avoid overriting
+            //TODO improve to avoid overriding
             sortMap.put(-paymentDriverRecord.getSummary().getUahPerHour()+new Random().nextDouble(), paymentDriverRecord);
         }
 
         List<PaymentDriverRecord> list = new ArrayList<>(sortMap.values());
         for (PaymentDriverRecord paymentDriverRecord : new ArrayList<>(sortMap.values())) {
             paymentDriverRecord.getSummary().setRate(list.indexOf(paymentDriverRecord));
-            System.out.println(paymentDriverRecord.getDriverName());
         }
-        list.forEach(System.out::println);
         Map<String, PaymentDriverRecord> linkedHashMap = new LinkedHashMap<>();
         for (Map.Entry<Double, PaymentDriverRecord> entry : sortMap.entrySet()) {
             linkedHashMap.put(entry.getValue().getDriverName(), entry.getValue());
