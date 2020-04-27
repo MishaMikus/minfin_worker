@@ -162,3 +162,33 @@ mvn clean install exec:java@minfin_worker
 
 #restart docker for mysql
 docker restart mysql_db
+
+#sniff IOS application https://andydavies.me/blog/2019/12/12/capturing-and-decrypting-https-traffic-from-ios-apps/
+xcode-select --install
+system_profiler SPUSBDataType | sed -n -e '/iPad/,/Serial/p;/iPhone/,/Serial/p;/iPod/,/Serial/p'
+extract id: 10d661d6dfbeae255356651733d22dad742d82d7
+
+rvictl -s 10d661d6dfbeae255356651733d22dad742d82d7
+sudo tcpdump -i rvi0 -w capture.pcap -P
+
+https://estimate.utaxcloud.net/
+
+https://balanced.utaxcloud.net/
+https://balanced.utaxcloud.net/index.php
+https://balanced.utaxcloud.net/privacy-policy
+https://balanced.utaxcloud.net/login
+
+IP addresses 18.196.146.25, 3.122.198.47, 35.156.69.0
+HostingAmazon AWS
+ServerNginx 1.12.2
+LanguagePHP 7.3.11
+
+dws.utaxcloud.net
+gws.utaxcloud.net
+
+https://tile.utax.com.ua/
+http://dev-miranda.megakit.pro/
+
+https://tile.utax.com.ua
+socket
+No query results for mo

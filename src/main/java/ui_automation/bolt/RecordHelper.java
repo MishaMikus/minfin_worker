@@ -19,47 +19,90 @@ public class RecordHelper {
     public static final SimpleDateFormat SDF_DATE_TIME = new SimpleDateFormat("dd.MM.yyyy HH:mm");
     private final static Logger LOGGER = Logger.getLogger(RecordHelper.class);
     private static final String DEFAULT_DRIVER_TYPE = "usual40";
+    private static final CharSequence COMMA_TABLE_SEPARATOR = ",,,,,,,,,,,,,,,";
 
     public List<BoltPaymentRecordDay> recordDayReportToDB(String date, String content) {
         List<String> rowArrayList = new ArrayList<>(Arrays.asList(content.split("\r\n")));
         LOGGER.info("try parse file " + date);
         Integer weekId = new WeekRangeDAO().findOrCreateWeek(parseDate(date), "bolt_worker").getId();
-        int lastRowIndex = rowArrayList.indexOf(",,,,,,,,,,,,,,");
-        lastRowIndex = lastRowIndex == -1 ? rowArrayList.size() - 1 : lastRowIndex;
-
+        int lastRowIndex = findCommaSeparatedEmptyRow(rowArrayList);
+        ArrayList<String> header = new ArrayList<>(Arrays.asList(rowArrayList.get(0).split(",")));
         List<String> dayRowArrayList = rowArrayList.subList(2, lastRowIndex);
+
+        //TODO use that table for trip counting
         List<String> tripRowArrayList = rowArrayList.subList(lastRowIndex, rowArrayList.size());
-        tripRowArrayList.forEach(System.out::println);
+
         List<BoltPaymentRecordDay> boltPaymentRecordDayList = new ArrayList<>();
         for (String row : dayRowArrayList) {
             LOGGER.info("parse ROW : " + row);
-            String[] cellArray = row.replaceAll("\"", "").split(",");
-            //"Водій","Телефон водія","Період","Загальний тариф","Плата за скасування","Збір за бронювання (платіж)","Збір за бронювання (відрахування)","Додаткові збори","Комісія Bolt","Готівкові поїздки (отримано водієм)","Компенсована сума знижки Bolt за готівкові поїздки ","Водійський бонус","Компенсації","Тижневий баланс"
-            //"Юрій Горбатий","+380961066201","День 2019-10-05","268.00","0.00","0.00","0.00","0.00","-32.16","-172.00","30.00","0.00","0.00","63.84"
-            String driverName=cellArray[0].replace(" ", "_");
+            String[] splitRow = row.replaceAll("\"", "").split(",");
+
+            //"Водій","Телефон водія","Період","Загальний тариф","Плата за скасування",
+            // "Авторизаційцний платіж (платіж)","Авторизаційцний платіж (відрахування)","Додатковий збір",
+            // "Комісія Bolt","Поїздки за готівку (зібрана готівка)","Сума знижки Bolt за готівкові поїздки ",
+            // "Водійський бонус","Компенсації","Повернення коштів","Чайові","Тижневий баланс"
+
+            //"Ігор Максим'як","+380632168490","День 2020-04-24","0.00","0.00","0.00","0.00","0.00","0.00","0.00",
+            // "0.00","0.00","","0.00","0.00","0.00"
+
+            String driverName = find("Водій", header, splitRow).replace(" ", "_");
             UberDriver driver = findOrCreateBoltDriver(driverName);
             int driverId = driver.getId();
-            boltPaymentRecordDayList.add(new BoltPaymentRecordDay(
-                    new Date(),
-                    cellArray[0].replace(" ", "_"),
-                    driverId,
-                    parseDate(date),
-                    Double.parseDouble(cellArray[3]),
-                    Double.parseDouble(cellArray[4]),
-                    Double.parseDouble(cellArray[5]),
-                    Double.parseDouble(cellArray[6]),
-                    Double.parseDouble(cellArray[7]),
-                    Double.parseDouble(cellArray[8]),
-                    Double.parseDouble(cellArray[9]),
-                    Double.parseDouble(cellArray[10]),
-                    Double.parseDouble(cellArray[11]),
-                    Double.parseDouble(cellArray[12]),
-                    Double.parseDouble(cellArray[13]),
-                    weekId
-            ));
+            try {
+                BoltPaymentRecordDay boltPaymentRecordDay = new BoltPaymentRecordDay();
 
+                boltPaymentRecordDay.setCreation(new Date());
+                boltPaymentRecordDay.setDriverName(driverName);
+                boltPaymentRecordDay.setDriver_id(driverId);
+                boltPaymentRecordDay.setTimestamp(parseDate(date));
+                boltPaymentRecordDay.setAmount(findDouble("Загальний тариф", header, splitRow));
+                boltPaymentRecordDay.setReject_amount(findDouble("Плата за скасування", header, splitRow));
+                boltPaymentRecordDay.setBooking_payment_amount(findDouble("Авторизаційцний платіж (платіж)", header, splitRow));
+                boltPaymentRecordDay.setBooking_payment_minus(findDouble("Авторизаційцний платіж (відрахування)", header, splitRow));
+                boltPaymentRecordDay.setAdditional_payment(findDouble("Додатковий збір", header, splitRow));
+                boltPaymentRecordDay.setBolt_commission(findDouble("Комісія Bolt", header, splitRow));
+                boltPaymentRecordDay.setCash(findDouble("Поїздки за готівку (зібрана готівка)", header, splitRow));
+                boltPaymentRecordDay.setCash_turn(findDouble("Сума знижки Bolt за готівкові поїздки ", header, splitRow));
+                boltPaymentRecordDay.setBonus(findDouble("Водійський бонус", header, splitRow));
+                boltPaymentRecordDay.setCompensation(findDouble("Компенсації", header, splitRow));
+                boltPaymentRecordDay.setWeek_balance(findDouble("Тижневий баланс", header, splitRow));
+                boltPaymentRecordDay.setWeek_id(weekId);
+
+                boltPaymentRecordDayList.add(boltPaymentRecordDay);
+            } catch (Exception e) {
+                LOGGER.warn("can't parse row: " + row);
+                e.printStackTrace();
+            }
         }
+        boltPaymentRecordDayList.forEach(System.out::println);
         return boltPaymentRecordDayList;
+    }
+
+    private Double findDouble(String key, ArrayList<String> header, String[] splitRow) {
+        try {
+            return Double.parseDouble(Objects.requireNonNull(find(key, header, splitRow)));
+        }catch (Exception e){
+            LOGGER.info("can't parse "+key);
+        }
+        return 0d;
+    }
+
+    private String find(String key, ArrayList<String> header, String[] splitRow) {
+        int index = header.indexOf("\""+key+"\"");
+        if (index >= 0 && index < splitRow.length) {
+            return splitRow[index];
+        }
+        LOGGER.warn("invalid index for " + key);
+        return null;
+    }
+
+    private int findCommaSeparatedEmptyRow(List<String> rowArrayList) {
+        for (String row : rowArrayList) {
+            if (row.contains(COMMA_TABLE_SEPARATOR)) {
+                return rowArrayList.indexOf(row);
+            }
+        }
+        return rowArrayList.indexOf(COMMA_TABLE_SEPARATOR);
     }
 
     private UberDriver findOrCreateBoltDriver(String driverName) {
