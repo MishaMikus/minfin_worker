@@ -49,6 +49,7 @@ public class UberLoginBO extends BaseBO {
 
 
     public UberLoginBO login(String login, String password) {
+        if(!checkLogged()){
         $(By.id("useridInput")).setValue(login);
         LOGGER.info("input login");
         $(By.tagName("button")).click();
@@ -58,10 +59,19 @@ public class UberLoginBO extends BaseBO {
         $(By.id("password")).setValue(password);
         LOGGER.info("input password");
         $(By.tagName("button")).click();
-        LOGGER.info("click login");
+        LOGGER.info("click login");}
         waitingForDownloadButtonAppear();
         LOGGER.info("login SUCCESS");
         return this;
+    }
+
+    private boolean checkLogged() {
+        long startMs=new Date().getTime();
+        while (!$(By.linkText("Download CSV")).isDisplayed() && timeout(startMs, 5000L)) {
+            LOGGER.info("WAITING FOR DOWNLOAD BUTTON APPEAR");
+            threadSleep(1000L);
+        }
+        return $(By.linkText("Download CSV")).isDisplayed();
     }
 
     private NotRobotResult checkNotRobot() {

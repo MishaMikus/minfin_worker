@@ -2,6 +2,7 @@ package ui_automation;
 
 //import net.lightbody.bmp.proxy.CaptureType;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -11,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import util.ApplicationPropertyUtil;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.Date;
 
 import static com.codeborne.selenide.Configuration.*;
@@ -25,6 +27,11 @@ public class BaseBO {
     private static final Long DOWNLOAD_BUTTON_APPEAR_ITERATION_TIME_MS = 5 * 1000L;
 
     static {
+
+        WebDriverManager
+                .chromedriver()
+                .version(ChromeHelper.getChromeVersion())
+                .setup();
         timeout = 10000;
 
         if (!ApplicationPropertyUtil.getBoolean("uber.map.listener.mode", false)) {
@@ -38,18 +45,20 @@ public class BaseBO {
             LOGGER.info("remote : " + remote);
         }
         headless = getBoolean("headless", true);
-        if(new File("driver/chromedriver_80").exists()){
-        System.setProperty("webdriver.chrome.driver","driver/chromedriver_80");
+        //if(new File("driver/chromedriver_80").exists()){
+       // System.setProperty("webdriver.chrome.driver","driver/chromedriver_80");
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("enable-automation");
+        //options.addArguments("enable-automation");
         //options.addArguments("--headless");
-        options.addArguments("--window-size=1920,1080");
+        //options.addArguments("--window-size=1920,1080");
         //options.addArguments("--no-sandbox");
         //options.addArguments("--disable-extensions");
         //options.addArguments("--dns-prefetch-disable");
         //options.addArguments("--disable-gpu");
-        options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-        setWebDriver(new ChromeDriver(options));}
+        //options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+        options.addArguments(Collections.singletonList("user-data-dir=" + new File("chrome_profile").getAbsolutePath()));
+        setWebDriver(new ChromeDriver(options));
+    //}
     }
 
 

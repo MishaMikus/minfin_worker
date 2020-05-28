@@ -1,9 +1,9 @@
 package ui_automation.uber;
 
+import com.codeborne.selenide.WebDriverRunner;
 import org.apache.log4j.Logger;
 import ui_automation.uber.bo.UberBO;
 
-import static com.codeborne.selenide.Selenide.close;
 import static ui_automation.uber.bo.UberLoginBO.login;
 
 public class UberWorkerLoadHistory {
@@ -17,6 +17,6 @@ public class UberWorkerLoadHistory {
     public static void runWorker() {
         login();
         new UberBO().recordPaymentWithOneWeekHistory();
-        close();
+        WebDriverRunner.getWebDriver().close();
     }
 }
