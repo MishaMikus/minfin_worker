@@ -156,6 +156,7 @@ public class RecordHelper {
     }
 
     public void recordMonthTripToDB(File monthTripCsv) {
+        if(!monthTripCsv.exists()) return;
         String content = IOUtils.readTextFromFile(monthTripCsv);
         monthTripCsv.deleteOnExit();
         List<String> rowArrayList = new ArrayList<>(Arrays.asList(content.split("\n")));

@@ -45,20 +45,9 @@ public class BaseBO {
             LOGGER.info("remote : " + remote);
         }
         headless = getBoolean("headless", true);
-        //if(new File("driver/chromedriver_80").exists()){
-       // System.setProperty("webdriver.chrome.driver","driver/chromedriver_80");
         ChromeOptions options = new ChromeOptions();
-        //options.addArguments("enable-automation");
-        //options.addArguments("--headless");
-        //options.addArguments("--window-size=1920,1080");
-        //options.addArguments("--no-sandbox");
-        //options.addArguments("--disable-extensions");
-        //options.addArguments("--dns-prefetch-disable");
-        //options.addArguments("--disable-gpu");
-        //options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
         options.addArguments(Collections.singletonList("user-data-dir=" + new File("chrome_profile").getAbsolutePath()));
         setWebDriver(new ChromeDriver(options));
-    //}
     }
 
 
