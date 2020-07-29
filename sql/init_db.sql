@@ -131,6 +131,7 @@ CREATE TABLE `minfin`.`uber_driver`
     `driverUUID` VARCHAR(36)  NOT NULL,
     `driverType` VARCHAR(127) NOT NULL,
     `name`       VARCHAR(255) NOT NULL,
+    `partner_id` INT NULL,
     PRIMARY KEY (`id`)
 );
 INSERT INTO `minfin`.`uber_driver` (`driverUUID`, `driverType`, `name`)
@@ -296,6 +297,8 @@ CREATE TABLE `minfin`.`bolt_payment_record_day`
     `bonus`                  DOUBLE       NOT NULL,
     `compensation`           DOUBLE       NOT NULL,
     `week_balance`           DOUBLE       NOT NULL,
+    `return_amount`           DOUBLE       NOT NULL,
+    `tips`           DOUBLE       NOT NULL,
     `week_id`                INTEGER      NOT NULL,
     PRIMARY KEY (`driverName`, `timestamp`)
 );
@@ -407,3 +410,9 @@ INSERT INTO `minfin`.`uber_driver_realtime_state` (`base_id`, `state`)
 VALUES (3, 'WAITLISTED');
 INSERT INTO `minfin`.`uber_driver_realtime_state` (`base_id`, `state`)
 VALUES (4, 'ONLINE');
+
+DROP TABLE if exists `minfin`.`partner`;
+CREATE TABLE `minfin`.`partner` (
+  `idpartner` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  PRIMARY KEY (`idpartner`));

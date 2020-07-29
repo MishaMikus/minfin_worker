@@ -18,7 +18,7 @@ import static util.IOUtils.FS;
 public class DayReportBO extends BaseBoltBO {
     private final static Logger LOGGER = Logger.getLogger(DayReportBO.class);
 
-    public Map<String, File> downloadAllNewCSV(Date latestDate) {
+    public Map<String, File> downloadAllNewCSV(Date latestDate) throws InterruptedException {
         $(By.xpath("//*[text()='Daily Reports' or text()='Щоденні звіти']")).click();
         //company/26068/reports/daily/07.10.2019
         List<String> hrefList = new ArrayList<>();
@@ -34,6 +34,7 @@ public class DayReportBO extends BaseBoltBO {
             }
             if (latestDate == null || (currentDate != null && currentDate.getTime() > latestDate.getTime())) {
                 $(By.xpath("//*[text()='" + date + "']/following-sibling::td//a")).click();
+                Thread.sleep(1000);
                 res.put(date, newDownloadFile(date));
             }
         }

@@ -192,3 +192,8 @@ http://dev-miranda.megakit.pro/
 https://tile.utax.com.ua
 socket
 No query results for mo
+
+GOOGLE_LON_GLAT
+https://www.google.com/maps/search/?api=1&query=49.846205,24.02775
+24.02804	49.8465217
+24.02775	49.846205

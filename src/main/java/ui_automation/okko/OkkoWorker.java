@@ -1,5 +1,6 @@
 package ui_automation.okko;
 
+import com.codeborne.selenide.WebDriverRunner;
 import orm.entity.logan_park.filling.FillingRecord;
 import orm.entity.logan_park.filling.FillingRecordDAO;
 import orm.entity.logan_park.fuel_account_leftover.FuelAccountLeftoverDAO;
@@ -14,7 +15,7 @@ public class OkkoWorker {
 
     public static void main(String[] args) {
         runWorker();
-        System.exit(0);
+        WebDriverRunner.getWebDriver().close();
     }
 
     public static void runWorker() {

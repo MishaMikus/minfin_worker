@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <div class="topnav" id="topnav">
+    <a href="/logan_park/new_report_general">Тижневий звіт 2</a>
     <a href="/logan_park/weekly_report_general">Тижневий звіт</a>
     <a href="/logan_park/weekly_report_uber">Тижневий звіт UBER</a>
     <a href="${pageContext.request.contextPath}/logan_park/weekly_report_bolt">Тижневий звіт BOLT</a>

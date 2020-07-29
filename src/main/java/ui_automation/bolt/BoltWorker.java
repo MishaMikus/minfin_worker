@@ -7,16 +7,18 @@ import util.ApplicationPropertyUtil;
 import java.io.File;
 import java.util.Map;
 
-import static com.codeborne.selenide.Selenide.close;
-
 public class BoltWorker {
 
     public static void main(String[] args) {
-        runWorker();
+        try {
+            runWorker();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.exit(0);
     }
 
-    public static void runWorker() {
+    public static void runWorker() throws InterruptedException {
             String login = ApplicationPropertyUtil.applicationPropertyGet("bolt.login");
             String pass = ApplicationPropertyUtil.applicationPropertyGet("bolt.pass");
             new BoltLogonBo().login(login, pass);

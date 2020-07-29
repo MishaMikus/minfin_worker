@@ -18,7 +18,19 @@ public class UberDriver {
     @Column
     private String bolt_name;
 
+    @Column
+    private Integer partner_id;
+
+
     public UberDriver() {
+    }
+
+    public Integer getPartner_id() {
+        return partner_id;
+    }
+
+    public void setPartner_id(Integer partner_id) {
+        this.partner_id = partner_id;
     }
 
     public String getBolt_name() {
@@ -68,6 +80,8 @@ public class UberDriver {
                 ", driverUUID='" + driverUUID + '\'' +
                 ", driverType='" + driverType + '\'' +
                 ", name='" + name + '\'' +
+                ", bolt_name='" + bolt_name + '\'' +
+                ", partner_id='" + partner_id + '\'' +
                 '}';
     }
 }

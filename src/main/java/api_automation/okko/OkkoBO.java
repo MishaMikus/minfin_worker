@@ -42,9 +42,9 @@ public class OkkoBO {
 
     private static String parseUrlToken(String body) {
         String res = body.split("OKKO-online")[1].split("\" rel=\"stylesheet\"")[0].split("jspx")[1];
-//<head><title>OKKO-online: Login</title>
-// <link class="component" href="/a4j/s/3_3_3.Finalorg/richfaces/renderkit/html/css/basic_classes.xcss/DATB/eAF7sqpgb-jyGdIAFrMEaw__.jspx
-// ;jsessionid=bJPpph8T0RjtqxknJgBnY62PB2QgNh8Bhlvbrt8WcfYtplvDsY3C!-1496176412" rel="stylesheet"
+        //<head><title>OKKO-online: Login</title>
+        // <link class="component" href="/a4j/s/3_3_3.Finalorg/richfaces/renderkit/html/css/basic_classes.xcss/DATB/eAF7sqpgb-jyGdIAFrMEaw__.jspx
+        // ;jsessionid=bJPpph8T0RjtqxknJgBnY62PB2QgNh8Bhlvbrt8WcfYtplvDsY3C!-1496176412" rel="stylesheet"
         return res;
     }
 

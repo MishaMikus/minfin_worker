@@ -1,4 +1,6 @@
-package orm.entity.bolt.payment_record_day;
+package orm.entity.bolt.payment_record_trip;
+
+import orm.entity.bolt.payment_record_day.BoltPaymentRecordDayPK;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -6,35 +8,29 @@ import java.util.Date;
 @Entity
 @Table(schema = "minfin", name = "bolt_payment_record_day")
 @IdClass(BoltPaymentRecordDayPK.class)
-public class BoltPaymentRecordDay {
+public class BoltPaymentRecordTrip {
 
     @Id
     @Column
-    private String driverName;//"Водій", //"Богдан Трунко",
-
+    private String driverName;
     @Id
     @Column
-    private Date timestamp;// "Період", // "День 2020-07-24",
+    private Date timestamp;
 
     @Column
-    private Integer driver_id; // generated
-    private Date creation; // generated
-
-    private Double amount;// "Загальний тариф", // "1526.00",
-    private Double reject_amount; // "Плата за скасування", // "0.00",
-    private Double booking_payment_amount;// "Авторизаційцний платіж (платіж)", // "0.00",
-    private Double booking_payment_minus; // "Авторизаційцний платіж (відрахування)", // "0.00",
-    private Double additional_payment;// "Додатковий збір", // "0.00",
-    private Double bolt_commission;// "Комісія Bolt", // "-305.20",
-    private Double cash; // "Поїздки за готівку (зібрана готівка)", // "-636.00",
-    private Double cash_turn; // "Сума знижки Bolt за готівкові поїздки ", // "65.00",
-    private Double bonus;// "Водійський бонус", // "0.00",
-    private Double compensation; // "Компенсації", // "",
-
-    private Double return_amount; // "Повернення коштів", // "0.00",
-    private Double tips; // "Чайові", // "0.00",
-
-    private Double week_balance;// "Тижневий баланс" // "584.80"
+    private Integer driver_id;
+    private Date creation;
+    private Double amount;
+    private Double reject_amount;
+    private Double booking_payment_amount;
+    private Double booking_payment_minus;
+    private Double additional_payment;
+    private Double bolt_commission;
+    private Double cash;
+    private Double cash_turn;
+    private Double bonus;
+    private Double compensation;
+    private Double week_balance;
     private Integer week_id;
 
     public Integer getDriver_id() {
@@ -45,23 +41,29 @@ public class BoltPaymentRecordDay {
         this.driver_id = driver_id;
     }
 
-    public BoltPaymentRecordDay() {
+    public BoltPaymentRecordTrip() {
     }
 
-    public Double getReturn_amount() {
-        return return_amount;
-    }
-
-    public void setReturn_amount(Double return_amount) {
-        this.return_amount = return_amount;
-    }
-
-    public Double getTips() {
-        return tips;
-    }
-
-    public void setTips(Double tips) {
-        this.tips = tips;
+    public BoltPaymentRecordTrip(Date creation, String driverName, Integer driverId, Date timestamp, Double amount,
+                                 Double reject_amount, Double booking_payment_amount, Double booking_payment_minus,
+                                 Double additional_payment, Double bolt_commission, Double cash,
+                                 Double cash_turn, Double bonus, Double compensation, Double week_balance, Integer week_id) {
+        this.creation = creation;
+        this.driverName = driverName;
+        this.driver_id=driverId;
+        this.timestamp = timestamp;
+        this.amount = amount;
+        this.reject_amount = reject_amount;
+        this.booking_payment_amount = booking_payment_amount;
+        this.booking_payment_minus = booking_payment_minus;
+        this.additional_payment = additional_payment;
+        this.bolt_commission = bolt_commission;
+        this.cash = cash;
+        this.cash_turn = cash_turn;
+        this.bonus = bonus;
+        this.compensation = compensation;
+        this.week_balance = week_balance;
+        this.week_id = week_id;
     }
 
     public Integer getWeek_id() {
@@ -187,10 +189,9 @@ public class BoltPaymentRecordDay {
     @Override
     public String toString() {
         return "BoltPaymentRecordDay{" +
-                "driverName='" + driverName + '\'' +
+                "creation=" + creation +
+                ", driverName=" + driverName +
                 ", timestamp=" + timestamp +
-                ", driver_id=" + driver_id +
-                ", creation=" + creation +
                 ", amount=" + amount +
                 ", reject_amount=" + reject_amount +
                 ", booking_payment_amount=" + booking_payment_amount +
@@ -201,10 +202,7 @@ public class BoltPaymentRecordDay {
                 ", cash_turn=" + cash_turn +
                 ", bonus=" + bonus +
                 ", compensation=" + compensation +
-                ", return_amount=" + return_amount +
-                ", tips=" + tips +
                 ", week_balance=" + week_balance +
-                ", week_id=" + week_id +
                 '}';
     }
 }

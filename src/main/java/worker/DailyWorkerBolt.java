@@ -2,7 +2,6 @@ package worker;
 
 
 import ui_automation.bolt.BoltWorker;
-import ui_automation.uber.UberWorkerLoadHistory;
 
 public class DailyWorkerBolt {
     public static void main(String[] args) {
@@ -10,8 +9,12 @@ public class DailyWorkerBolt {
     }
 
     public static void runWorker() {
-        BoltWorker.runWorker();
-       //UberWorkerLoadHistory.runWorker();
+        try {
+            BoltWorker.runWorker();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //UberWorkerLoadHistory.runWorker();
         //Pinger.runWorker();
     }
 }
