@@ -30,7 +30,8 @@ public class WeekLinksHelper {
             weekLink.setId(i[0]++);
             res.add(weekLink);
         });
-        return res;
+
+        return res.subList(res.size()<3?0:res.size()-3,res.size());
     }
 
     public WeekRange findRangeByDate(Date weekFlag) {
