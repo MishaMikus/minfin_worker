@@ -14,7 +14,16 @@ public class DriverStat {
     private Integer amount;
     private Integer cash;
     private Integer salary;
+    private Integer tips;
     private Integer change;
+
+    public Integer getTips() {
+        return tips;
+    }
+
+    public void setTips(Integer tips) {
+        this.tips = tips;
+    }
 
     public String getPlan() {
         return plan;
@@ -98,6 +107,7 @@ public class DriverStat {
                 ", workoutCount='" + workoutCount + '\'' +
                 ", amount='" + amount + '\'' +
                 ", cash='" + cash + '\'' +
+                ", tips='" + cash + '\'' +
                 ", salary='" + salary + '\'' +
                 ", change='" + change + '\'' +
                 '}';

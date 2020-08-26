@@ -3,11 +3,15 @@ package server.logan_park.helper;
 import org.apache.log4j.Logger;
 import orm.entity.logan_park.driver.UberDriver;
 import orm.entity.logan_park.driver.UberDriverDAO;
+import orm.entity.logan_park.partner.Partner;
+import orm.entity.logan_park.partner.PartnerDAO;
 import server.logan_park.helper.model.GeneralPartnerSummary;
 import server.logan_park.helper.model.PaymentDriverRecord;
 import server.logan_park.helper.model.PaymentOwnerRecord;
 import server.logan_park.helper.model.SummaryPaymentDriverRecord;
 import server.logan_park.service.*;
+import server.logan_park.view.weekly_report_bolt.model.WeeklyReportBolt;
+import server.logan_park.view.weekly_report_general.model.OwnerStat;
 import server.logan_park.view.weekly_report_manual_uber.OwnerPaymentView;
 import server.logan_park.view.weekly_report_manual_uber.PaymentView;
 import server.logan_park.view.weekly_report_manual_uber.TripView;
@@ -18,8 +22,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public abstract class CommonWeeklyReportHelper {
-    public static final Integer WEEK_EARN_LIMIT = ApplicationPropertyUtil.getInteger("week_limit",8000);
+    public static final Integer WEEK_EARN_LIMIT = ApplicationPropertyUtil.getInteger("week_limit", 8000);
     List<UberDriver> driverList = UberDriverDAO.getInstance().getDriverList();
+    List<Partner> partnerList = PartnerDAO.getInstance().findAll();
 
     abstract Map<String, Map<Date, PaymentRecordRawRow>> parsePrimaryData(Date weekFlag);
 
@@ -225,7 +230,7 @@ public abstract class CommonWeeklyReportHelper {
         TreeMap<Double, PaymentDriverRecord> sortMap = new TreeMap<>();
         for (PaymentDriverRecord paymentDriverRecord : map.values()) {
             //TODO improve to avoid overriding
-            sortMap.put(-paymentDriverRecord.getSummary().getUahPerHour()+new Random().nextDouble(), paymentDriverRecord);
+            sortMap.put(-paymentDriverRecord.getSummary().getUahPerHour() + new Random().nextDouble(), paymentDriverRecord);
         }
 
         List<PaymentDriverRecord> list = new ArrayList<>(sortMap.values());
@@ -419,7 +424,6 @@ public abstract class CommonWeeklyReportHelper {
 
     Map<String, Map<Date, PaymentRecordRawRow>> primaryParsedData;
 
-
     public Map<String, PaymentOwnerRecord> makeOwnerMap() {
         Map<String, PaymentOwnerRecord> map = new HashMap<>();
         for (String driver : primaryParsedData.keySet()) {
@@ -430,6 +434,7 @@ public abstract class CommonWeeklyReportHelper {
                 Date start = rangeMap.keySet().stream().min(Date::compareTo).orElse(new Date());
                 Date end = rangeMap.keySet().stream().max(Date::compareTo).orElse(new Date());
                 map.get(driver).setDriverName(driver);
+                map.get(driver).setPartner(getPartnerName(currentDriver));
 
                 Long cash = getCash(rangeMap);
                 // готівка
@@ -482,9 +487,20 @@ public abstract class CommonWeeklyReportHelper {
         return map;
     }
 
+    private String getPartnerName(UberDriver currentDriver) {
+        if(currentDriver.getPartner_id()==null) return null;
+        Partner partner = partnerList.stream()
+                .filter(p -> p.getIdpartner()!=null
+                        &&p.getIdpartner().intValue() == currentDriver.getPartner_id())
+                .findAny()
+                .orElse(null);
+        if (partner == null) {
+            return null;
+        } else return partner.getName();
+    }
+
     private Long getAmountForOwner(Map<Date, PaymentRecordRawRow> rangeMap) {
         return collectAmount(rangeMap.values(), "trip")
-                + collectAmount(rangeMap.values(), "tip")
                 + collectAmount(rangeMap.values(), "promotion");
     }
 
@@ -569,4 +585,20 @@ public abstract class CommonWeeklyReportHelper {
         return amount;
     }
 
+    public Map<String, PaymentOwnerRecord> makeOwnerMapBolt(WeeklyReportBolt weeklyReportBolt) {
+        Map<String, PaymentOwnerRecord> map = new HashMap<>();
+        weeklyReportBolt.getOwnerStatList().forEach(o->{
+            map.putIfAbsent(o.getDriverName(),new PaymentOwnerRecord());
+            UberDriver currentDriver = driverByName(o.getDriverName(), driverList);
+            map.get(o.getDriverName()).setPartner(getPartnerName(currentDriver));
+            map.get(o.getDriverName()).setOwnerPaymentViews(makeOwnerPaymentViews(o));
+        });
+        return map;
+    }
+
+    private OwnerPaymentView makeOwnerPaymentViews(OwnerStat ownerStat) {
+        OwnerPaymentView ownerPaymentView=new OwnerPaymentView(0,ownerStat.getAmount(),ownerStat.getCash());
+        ownerPaymentView.setTips(ownerStat.getTips());
+        return ownerPaymentView;
+    }
 }

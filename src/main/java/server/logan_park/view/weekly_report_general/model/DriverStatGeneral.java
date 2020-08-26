@@ -3,6 +3,8 @@ package server.logan_park.view.weekly_report_general.model;
 public class DriverStatGeneral {
     private WeekDriverStat uberStat=new WeekDriverStat();
     private WeekDriverStat boltStat=new WeekDriverStat();
+    private WeekDriverStat uklonStat=new WeekDriverStat();
+    private WeekDriverStat stat838=new WeekDriverStat();
     private WeekDriverStat sum=new WeekDriverStat();
     private String plan;
     private Integer rate;
@@ -13,11 +15,29 @@ public class DriverStatGeneral {
         return "DriverStatGeneral{" +
                 "uberStat=" + uberStat +
                 ", boltStat=" + boltStat +
+                ", uklonStat=" + uklonStat +
+                ", stat838=" + stat838 +
                 ", sum=" + sum +
                 ", plan='" + plan + '\'' +
-                ", rate='" + rate + '\'' +
+                ", rate=" + rate +
                 ", driverName='" + driverName + '\'' +
                 '}';
+    }
+
+    public WeekDriverStat getUklonStat() {
+        return uklonStat;
+    }
+
+    public void setUklonStat(WeekDriverStat uklonStat) {
+        this.uklonStat = uklonStat;
+    }
+
+    public WeekDriverStat getStat838() {
+        return stat838;
+    }
+
+    public void setStat838(WeekDriverStat stat838) {
+        this.stat838 = stat838;
     }
 
     public String getDriverName() {

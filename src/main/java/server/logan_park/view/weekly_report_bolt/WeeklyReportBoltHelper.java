@@ -75,6 +75,7 @@ public class WeeklyReportBoltHelper {
             int workoutCount = 0;
             int amount = 0;
             int cash = 0;
+            int tips = 0;
             int salary = 0;
             int change = 0;
             for (Workout workout : entry.getValue().getWorkoutList()) {
@@ -82,11 +83,13 @@ public class WeeklyReportBoltHelper {
                 amount += workout.getAmount();
                 cash += workout.getCash();
                 salary += workout.getSalary();
+                tips += workout.getTips();
                 change += workout.getChange();
             }
             generalAmount += amount;
             entry.getValue().setAmount(amount);
             entry.getValue().setCash(cash);
+            entry.getValue().setTips(tips);
             entry.getValue().setSalary(salary);
             entry.getValue().setChange(change);
             entry.getValue().setWorkoutCount(workoutCount);
@@ -139,9 +142,13 @@ public class WeeklyReportBoltHelper {
 
     private static Workout makeWorkout(BoltPaymentRecordDay boltPaymentRecordDay) {
         Workout workout = new Workout();
-        int clearAmount = (int) round((boltPaymentRecordDay.getAmount() + boltPaymentRecordDay.getBolt_commission() + boltPaymentRecordDay.getBonus()));
+        int clearAmount = (int) round((boltPaymentRecordDay.getAmount()
+                + boltPaymentRecordDay.getBolt_commission()
+                + boltPaymentRecordDay.getBonus()
+                +boltPaymentRecordDay.getReject_amount()));
 
         workout.setAmount(clearAmount);//without commission
+        workout.setTips((int) round(boltPaymentRecordDay.getTips()));
         workout.setCash(-boltPaymentRecordDay.getCash().intValue());
         workout.setName(SDF_DATE.format(boltPaymentRecordDay.getTimestamp()));
         long salary = round(clearAmount * 0.35);

@@ -19,6 +19,7 @@ public class DayReportBO extends BaseBoltBO {
     private final static Logger LOGGER = Logger.getLogger(DayReportBO.class);
 
     public Map<String, File> downloadAllNewCSV(Date latestDate) throws InterruptedException {
+        LOGGER.info("download for last date "+latestDate);
         $(By.xpath("//*[text()='Daily Reports' or text()='Щоденні звіти']")).click();
         //company/26068/reports/daily/07.10.2019
         List<String> hrefList = new ArrayList<>();

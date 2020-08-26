@@ -14,6 +14,14 @@ public class BoltPaymentRecordDayPK implements Serializable {
     @Column
     private Date timestamp;
 
+    public BoltPaymentRecordDayPK() {
+    }
+
+    public BoltPaymentRecordDayPK(String driverName, Date timestamp) {
+        this.driverName=driverName;
+        this.timestamp=timestamp;
+    }
+
     @Override
     public String toString() {
         return "BoltPaymentRecordDayPK{" +

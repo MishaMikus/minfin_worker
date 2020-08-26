@@ -4,6 +4,7 @@ public class Workout {
     private String name;
     private Integer amount;
     private Integer cash;
+    private Integer tips;
     private Integer salary;
     private Integer change;
 
@@ -13,6 +14,7 @@ public class Workout {
                 "name='" + name + '\'' +
                 ", amount=" + amount +
                 ", cash=" + cash +
+                ", tips=" + tips +
                 ", salary=" + salary +
                 ", change=" + change +
                 '}';
@@ -56,5 +58,13 @@ public class Workout {
 
     public void setChange(Integer change) {
         this.change = change;
+    }
+
+    public Integer getTips() {
+        return tips;
+    }
+
+    public void setTips(Integer tips) {
+        this.tips = tips;
     }
 }

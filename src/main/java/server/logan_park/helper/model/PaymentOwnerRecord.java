@@ -6,6 +6,15 @@ import server.logan_park.view.weekly_report_manual_uber.OwnerPaymentView;
 public class PaymentOwnerRecord {
     private OwnerPaymentView ownerPaymentViews;
     private String driverName;
+    private String partner;
+
+    public String getPartner() {
+        return partner;
+    }
+
+    public void setPartner(String partner) {
+        this.partner = partner;
+    }
 
     public OwnerPaymentView getOwnerPaymentViews() {
         return ownerPaymentViews;
@@ -29,6 +38,7 @@ public class PaymentOwnerRecord {
         return "PaymentOwnerRecord{" +
                 "ownerPaymentViews=" + ownerPaymentViews +
                 ", driverName='" + driverName + '\'' +
+                ", partner='" + partner + '\'' +
                 '}';
     }
 }

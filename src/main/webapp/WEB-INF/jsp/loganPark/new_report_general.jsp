@@ -10,7 +10,7 @@
 <br>
 Історія<br>
 <c:forEach items="${weeklyReport.weekLinksList}" var="weekLink">
-    тиджень ${weekLink.id} : <a href="/logan_park/weekly_report_general_2/${weekLink.href}">${weekLink.label}</a>
+    тиджень ${weekLink.id} : <a href="/logan_park/new_report_general/${weekLink.href}">${weekLink.label}</a>
     <br>
 </c:forEach>
 Водії на автомобілях компанії
@@ -19,20 +19,24 @@
         <tbody>
         <tr>
             <th colspan=2>${driverStat.driverName}</th>
-            <th colspan=2>${driverStat.plan}</th>
+            <th></th>
+            <th></th>
+            <th>${driverStat.plan}</th>
             <th>${driverStat.rate}</th>
         </tr>
         <tr>
             <th>таксі</th>
             <th>вал</th>
             <th>готівка</th>
-            <th>зарплата</th>
+            <th>чайові</th>
+            <th>вал_водія</th>
             <th>решту</th>
         </tr>
         <tr>
             <td>BOLT</td>
             <td>${driverStat.boltStat.amount}</td>
             <td>${driverStat.boltStat.cash}</td>
+            <td>${driverStat.boltStat.tips}</td>
             <td>${driverStat.boltStat.salary}</td>
             <td>${driverStat.boltStat.change}</td>
         </tr>
@@ -40,13 +44,31 @@
             <td>UBER</td>
             <td>${driverStat.uberStat.amount}</td>
             <td>${driverStat.uberStat.cash}</td>
+            <td>${driverStat.uberStat.tips}</td>
             <td>${driverStat.uberStat.salary}</td>
             <td>${driverStat.uberStat.change}</td>
+        </tr>
+        <tr>
+            <td>UKLON</td>
+            <td>${driverStat.uklonStat.amount}</td>
+            <td>${driverStat.uklonStat.cash}</td>
+            <td>${driverStat.uklonStat.tips}</td>
+            <td>${driverStat.uklonStat.salary}</td>
+            <td>${driverStat.uklonStat.change}</td>
+        </tr>
+        <tr>
+            <td>838</td>
+            <td>${driverStat.stat838.amount}</td>
+            <td>${driverStat.stat838.cash}</td>
+            <td>${driverStat.stat838.tips}</td>
+            <td>${driverStat.stat838.salary}</td>
+            <td>${driverStat.stat838.change}</td>
         </tr>
         <tr>
             <th></th>
             <th>${driverStat.sum.amount}</th>
             <th>${driverStat.sum.cash}</th>
+            <td>${driverStat.sum.tips}</td>
             <th>${driverStat.sum.salary}</th>
             <th>${driverStat.sum.change}</th>
         </tr>
@@ -56,46 +78,60 @@
 </c:forEach>
 
 <br>
-Водії на своїх автомобілях
+Партнери
 <table class="table-all-borders">
     <tbody>
     <tr>
         <th></th>
-        <th colspan="4">убер</th>
-        <th colspan="4">болт</th>
-        <th colspan="4">разом</th>
+        <th></th>
+        <th colspan="3">убер</th>
+        <th colspan="3">болт</th>
+        <th colspan="3">уклон</th>
+        <th colspan="5">разом</th>
     </tr>
     <tr>
+        <th>Партнер</th>
         <th>Водій</th>
+
         <th>вал</th>
         <th>готівка</th>
-        <th>комісія</th>
-        <th>на виведення</th>
+        <th>чайові</th>
+
         <th>вал</th>
         <th>готівка</th>
-        <th>комісія</th>
-        <th>на виведення</th>
+        <th>чайові</th>
+
         <th>вал</th>
         <th>готівка</th>
+        <th>чайові</th>
+
+        <th>вал</th>
+        <th>готівка</th>
+        <th>чайові</th>
+
         <th>комісія</th>
         <th>на виведення</th>
     </tr>
     <c:forEach items="${weeklyReport.driverOwnerStatList}" var="driverOwnerStat">
         <tr>
+            <td>${driverOwnerStat.partner}</td>
             <td>${driverOwnerStat.name}</td>
 
             <td>${driverOwnerStat.uber_stat.amount}</td>
             <td>${driverOwnerStat.uber_stat.cash}</td>
-            <td>${driverOwnerStat.uber_stat.commission}</td>
-            <th>${driverOwnerStat.uber_stat.withdraw}</th>
+            <td>${driverOwnerStat.uber_stat.tips}</td>
 
             <td>${driverOwnerStat.bolt_stat.amount}</td>
             <td>${driverOwnerStat.bolt_stat.cash}</td>
-            <td>${driverOwnerStat.bolt_stat.commission}</td>
-            <th>${driverOwnerStat.bolt_stat.withdraw}</th>
+            <td>${driverOwnerStat.bolt_stat.tips}</td>
+
+            <td>${driverOwnerStat.uklon_stat.amount}</td>
+            <td>${driverOwnerStat.uklon_stat.cash}</td>
+            <td>${driverOwnerStat.uklon_stat.tips}</td>
 
             <td>${driverOwnerStat.general_stat.amount}</td>
             <td>${driverOwnerStat.general_stat.cash}</td>
+            <td>${driverOwnerStat.general_stat.tips}</td>
             <td>${driverOwnerStat.general_stat.commission}</td>
             <th>${driverOwnerStat.general_stat.withdraw}</th>
         </tr>

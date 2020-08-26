@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
 import orm.HibernateUtil;
+import orm.entity.bolt.payment_record_day.BoltPaymentRecordDay;
 
 import javax.persistence.Table;
 import javax.persistence.criteria.*;
@@ -59,7 +60,10 @@ public abstract class GenericAbstractDAO<E> {
         Long start = new Date().getTime();
         beginTransaction();
         for (int i = 0; i < entityList.size(); i++) {
-            getSession().saveOrUpdate(entityList.get(i));
+            try{
+            getSession().saveOrUpdate(entityList.get(i));}catch (Exception e){
+                LOGGER.warn("can't save "+entityList.get(i)+"\n"+e.getLocalizedMessage());
+            }
             if (i % STATEMENT_BATCH_SIZE == 0) {
                 LOGGER.info(new Date() + " " + getCatalogName() + "." + getTableName() + " add " + i + " records");
                 getSession().flush();
@@ -368,7 +372,7 @@ public abstract class GenericAbstractDAO<E> {
         return res;
     }
 
-    public void deleteById(Integer id) {
+    public void deleteById(Serializable id) {
         beginTransaction();
         getSession().delete(getSession().load(entityClass, id));
         commitTransaction();
@@ -382,5 +386,8 @@ public abstract class GenericAbstractDAO<E> {
         commitTransaction();
         closeSession();
         LOGGER.info("saveOrUpdate " + entity);
+    }
+
+    protected void delete(BoltPaymentRecordDay p) {
     }
 }

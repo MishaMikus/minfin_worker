@@ -1,14 +1,12 @@
 package server.logan_park.view.weekly_report_general.model;
 
-import orm.entity.bolt.payment_record_day.BoltPaymentRecordDay;
-
 public class OwnerStat {
     private String driverName;
     private Integer amount=0;
     private Integer cash=0;
+    private Integer tips=0;
     private Integer commission=0;
     private Integer withdraw=0;
-
 
     @Override
     public String toString() {
@@ -16,8 +14,18 @@ public class OwnerStat {
                 "driverName='" + driverName + '\'' +
                 ", amount=" + amount +
                 ", cash=" + cash +
+                ", tips=" + tips +
+                ", commission=" + commission +
                 ", withdraw=" + withdraw +
                 '}';
+    }
+
+    public Integer getTips() {
+        return tips;
+    }
+
+    public void setTips(Integer tips) {
+        this.tips = tips;
     }
 
     public Integer getCommission() {
