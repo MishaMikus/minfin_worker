@@ -54,6 +54,7 @@ public class NewWeeklyReportGeneralHelper {
                 .calculateGeneralCash()
                 .calculateTax()
                 .calculateProfit()
+                .makeSortedOwnerMapTable()
                 .build();
     }
 

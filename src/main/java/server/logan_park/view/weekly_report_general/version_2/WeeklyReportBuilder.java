@@ -16,6 +16,7 @@ import server.logan_park.view.weekly_report_general.model.OwnerStat;
 import server.logan_park.view.weekly_report_general.model.WeeklyReportGeneral;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.lang.Math.round;
 import static server.logan_park.helper.CommonWeeklyReportHelper.WEEK_EARN_LIMIT;
@@ -239,5 +240,21 @@ if(driverOwnerStat.getGeneral_stat().getAmount()>0){
             d.getSum().setChange(d.getSum().getCash() - d.getSum().getSalary() - d.getSum().getTips());
         });
         return this;
+    }
+
+    public WeeklyReportBuilder makeSortedOwnerMapTable() {
+        List<Partner> partnerList= PartnerDAO.getInstance().findAll();
+        partnerList.forEach(p->{
+            weeklyReportGeneral.getDriverOwnerStatMap().put(p.getName(),
+                    getOwnerDriverList(p.getName(),weeklyReportGeneral.getDriverOwnerStatList()))
+            ;
+        });
+        return this;
+    }
+
+
+
+    private static List<DriverOwnerStat> getOwnerDriverList(String partner, List<DriverOwnerStat> driverOwnerStatList) {
+        return driverOwnerStatList.stream().filter(d->d.getPartner().equals(partner)).collect(Collectors.toList());
     }
 }

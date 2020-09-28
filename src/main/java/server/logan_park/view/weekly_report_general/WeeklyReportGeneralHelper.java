@@ -1,6 +1,8 @@
 package server.logan_park.view.weekly_report_general;
 
 import org.apache.log4j.Logger;
+import orm.entity.logan_park.partner.Partner;
+import orm.entity.logan_park.partner.PartnerDAO;
 import server.logan_park.helper.AutomaticallyWeeklyReportHelper;
 import server.logan_park.helper.model.PaymentDriverRecord;
 import server.logan_park.helper.model.PaymentOwnerRecord;
@@ -11,9 +13,7 @@ import server.logan_park.view.weekly_report_general.model.DriverStatGeneral;
 import server.logan_park.view.weekly_report_general.model.OwnerStat;
 import server.logan_park.view.weekly_report_general.model.WeeklyReportGeneral;
 
-import java.util.Comparator;
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.lang.Math.round;
@@ -160,8 +160,10 @@ public class WeeklyReportGeneralHelper {
 
         weeklyReportGeneral.getCompanyAccountStat().setClearDriverOwnerProfit((int) round(ownerCashUber * 0.05));
 
+
         return weeklyReportGeneral;
     }
+
 
     private static void setSalary(DriverStatGeneral d, int percentage) {
         d.setPlan(percentage + "%");

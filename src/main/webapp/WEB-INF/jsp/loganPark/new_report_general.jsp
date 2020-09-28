@@ -139,6 +139,66 @@
     </tbody>
 </table>
 
+
+<c:forEach items="${weeklyReport.driverOwnerStatMap}" var="entry">
+    ${entry.key}
+
+    <table class="table-all-borders">
+        <tbody>
+        <tr>
+            <th></th>
+            <th colspan="4">убер</th>
+            <th colspan="4">болт</th>
+            <th colspan="4">разом</th>
+        </tr>
+        <tr>
+            <th>Водій</th>
+            <th>вал</th>
+            <th>готівка</th>
+            <th>комісія</th>
+            <th>на виведення</th>
+            <th>вал</th>
+            <th>готівка</th>
+            <th>комісія</th>
+            <th>на виведення</th>
+            <th>вал</th>
+            <th>готівка</th>
+            <th>комісія</th>
+            <th>на виведення</th>
+        </tr>
+        <c:forEach items="${entry.value}" var="value">
+            <tr>
+
+                <td>${value.partner}</td>
+                <td>${value.name}</td>
+
+                <td>${value.uber_stat.amount}</td>
+                <td>${value.uber_stat.cash}</td>
+                <td>${value.uber_stat.tips}</td>
+
+                <td>${value.bolt_stat.amount}</td>
+                <td>${value.bolt_stat.cash}</td>
+                <td>${value.bolt_stat.tips}</td>
+
+                <td>${value.uklon_stat.amount}</td>
+                <td>${value.uklon_stat.cash}</td>
+                <td>${value.uklon_stat.tips}</td>
+
+                <td>${value.general_stat.amount}</td>
+                <td>${value.general_stat.cash}</td>
+                <td>${value.general_stat.tips}</td>
+                <td>${value.general_stat.commission}</td>
+                <th>${value.general_stat.withdraw}</th>
+
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+    <br/>
+
+</c:forEach>
+
+<br>
 <br>
 Загальна статистика компанії
 <table class="table-all-borders">

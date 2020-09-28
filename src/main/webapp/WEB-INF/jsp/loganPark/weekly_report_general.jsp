@@ -103,7 +103,6 @@
     </tbody>
 </table>
 
-<br>
 Загальна статистика компанії
 <table class="table-all-borders">
     <tbody>

@@ -1,12 +1,15 @@
 package server.logan_park.view.weekly_report_general.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class WeeklyReportGeneral {
     private List<WeekLink> weekLinksList = new ArrayList<>();
     private List<DriverStatGeneral> driverStatList = new ArrayList<>();
     private List<DriverOwnerStat> driverOwnerStatList = new ArrayList<>();
+    private Map<String, List<DriverOwnerStat>> driverOwnerStatMap = new HashMap<>();
     private CompanyAccountStat companyAccountStat=new CompanyAccountStat();
 
     @Override
@@ -40,6 +43,14 @@ public class WeeklyReportGeneral {
 
     public void setDriverOwnerStatList(List<DriverOwnerStat> driverOwnerStatList) {
         this.driverOwnerStatList = driverOwnerStatList;
+    }
+
+    public Map<String, List<DriverOwnerStat>> getDriverOwnerStatMap() {
+        return driverOwnerStatMap;
+    }
+
+    public void setDriverOwnerStatMap(Map<String, List<DriverOwnerStat>> driverOwnerStatMap) {
+        this.driverOwnerStatMap = driverOwnerStatMap;
     }
 
     public CompanyAccountStat getCompanyAccountStat() {

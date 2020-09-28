@@ -43,7 +43,7 @@ public class UberLoginBO extends BaseBO {
     private final static File COOKIE_FILE = new File("cookie.csv");
 
     public UberLoginBO() {
-        baseUrl = "https://partners.uber.com";
+        baseUrl = "https://drivers.uber.com";
         goToPath("/");
     }
 
@@ -388,7 +388,7 @@ public class UberLoginBO extends BaseBO {
 
     public UberLoginBO loginIfNotAuthorized(String login, String pass) {
         if (!authorized()) return login(login, pass);
-        goToPath("p3/payments/statements");//start page
+        goToPath("/p3/fleet-manager/payments");//start page
         return this;
     }
 
