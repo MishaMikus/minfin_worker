@@ -147,22 +147,32 @@
         <tbody>
         <tr>
             <th></th>
-            <th colspan="4">убер</th>
-            <th colspan="4">болт</th>
-            <th colspan="4">разом</th>
+            <th></th>
+            <th colspan="3">убер</th>
+            <th colspan="3">болт</th>
+            <th colspan="3">уклон</th>
+            <th colspan="5">разом</th>
         </tr>
         <tr>
+            <th>Партнер</th>
             <th>Водій</th>
+
             <th>вал</th>
             <th>готівка</th>
-            <th>комісія</th>
-            <th>на виведення</th>
+            <th>чайові</th>
+
             <th>вал</th>
             <th>готівка</th>
-            <th>комісія</th>
-            <th>на виведення</th>
+            <th>чайові</th>
+
             <th>вал</th>
             <th>готівка</th>
+            <th>чайові</th>
+
+            <th>вал</th>
+            <th>готівка</th>
+            <th>чайові</th>
+
             <th>комісія</th>
             <th>на виведення</th>
         </tr>
@@ -197,6 +207,73 @@
     <br/>
 
 </c:forEach>
+
+
+
+
+
+Партнери
+<table class="table-all-borders">
+    <tbody>
+    <tr>
+        <th></th>
+        <th></th>
+        <th colspan="3">убер</th>
+        <th colspan="3">болт</th>
+        <th colspan="3">уклон</th>
+        <th colspan="5">разом</th>
+    </tr>
+    <tr>
+        <th>Партнер</th>
+        <th>Водій</th>
+
+        <th>вал</th>
+        <th>готівка</th>
+        <th>чайові</th>
+
+        <th>вал</th>
+        <th>готівка</th>
+        <th>чайові</th>
+
+        <th>вал</th>
+        <th>готівка</th>
+        <th>чайові</th>
+
+        <th>вал</th>
+        <th>готівка</th>
+        <th>чайові</th>
+
+        <th>комісія</th>
+        <th>на виведення</th>
+    </tr>
+    <c:forEach items="${weeklyReport.driverOwnerStatList}" var="driverOwnerStat">
+        <tr>
+            <td>${driverOwnerStat.partner}</td>
+            <td>${driverOwnerStat.name}</td>
+
+            <td>${driverOwnerStat.uber_stat.amount}</td>
+            <td>${driverOwnerStat.uber_stat.cash}</td>
+            <td>${driverOwnerStat.uber_stat.tips}</td>
+
+            <td>${driverOwnerStat.bolt_stat.amount}</td>
+            <td>${driverOwnerStat.bolt_stat.cash}</td>
+            <td>${driverOwnerStat.bolt_stat.tips}</td>
+
+            <td>${driverOwnerStat.uklon_stat.amount}</td>
+            <td>${driverOwnerStat.uklon_stat.cash}</td>
+            <td>${driverOwnerStat.uklon_stat.tips}</td>
+
+            <td>${driverOwnerStat.general_stat.amount}</td>
+            <td>${driverOwnerStat.general_stat.cash}</td>
+            <td>${driverOwnerStat.general_stat.tips}</td>
+            <td>${driverOwnerStat.general_stat.commission}</td>
+            <th>${driverOwnerStat.general_stat.withdraw}</th>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
+
+
 
 <br>
 <br>
