@@ -98,7 +98,7 @@ public class WeeklyReportBuilder {
                 setSalary(d, 40);
             }
             d.getSum().setSalary(d.getBoltStat().getSalary() + d.getUberStat().getSalary());
-            d.getSum().setChange(d.getBoltStat().getChange()+d.getUberStat().getChange());
+            d.getSum().setChange(d.getBoltStat().getChange() + d.getUberStat().getChange());
         });
         return this;
     }
@@ -147,8 +147,9 @@ public class WeeklyReportBuilder {
                             + driverOwnerStat.getGeneral_stat().getTips());
 
             driverOwnerStat.setName(driverName);
-if(driverOwnerStat.getGeneral_stat().getAmount()>0){
-            weeklyReportGeneral.getDriverOwnerStatList().add(driverOwnerStat);}
+            if (driverOwnerStat.getGeneral_stat().getAmount() > 0) {
+                weeklyReportGeneral.getDriverOwnerStatList().add(driverOwnerStat);
+            }
         });
 
         return this;
@@ -243,18 +244,29 @@ if(driverOwnerStat.getGeneral_stat().getAmount()>0){
     }
 
     public WeeklyReportBuilder makeSortedOwnerMapTable() {
-        List<Partner> partnerList= PartnerDAO.getInstance().findAll();
-        partnerList.forEach(p->{
+        List<Partner> partnerList = PartnerDAO.getInstance().findAll();
+        partnerList.forEach(p -> {
             weeklyReportGeneral.getDriverOwnerStatMap().put(p.getName(),
-                    getOwnerDriverList(p.getName(),weeklyReportGeneral.getDriverOwnerStatList()))
+                    getOwnerDriverList(p.getName(), weeklyReportGeneral.getDriverOwnerStatList()))
             ;
         });
         return this;
     }
 
 
-
     private static List<DriverOwnerStat> getOwnerDriverList(String partner, List<DriverOwnerStat> driverOwnerStatList) {
-        return driverOwnerStatList.stream().filter(d->d.getPartner().equals(partner)).collect(Collectors.toList());
+        return driverOwnerStatList.stream().filter(d -> d.getPartner().equals(partner)).collect(Collectors.toList());
+    }
+
+    public WeeklyReportBuilder clearZeroOwnerMap() {
+        weeklyReportGeneral.setDriverOwnerStatMap(weeklyReportGeneral
+                .getDriverOwnerStatMap().entrySet().stream()
+                .filter(e -> isZeroOwner(e.getValue()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+        return this;
+    }
+
+    private boolean isZeroOwner(List<DriverOwnerStat> driverOwnerStatList) {
+        return driverOwnerStatList.stream().anyMatch(d -> d.getGeneral_stat().getAmount() > 0);
     }
 }
