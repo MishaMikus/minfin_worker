@@ -255,7 +255,11 @@ public class WeeklyReportBuilder {
 
 
     private static List<DriverOwnerStat> getOwnerDriverList(String partner, List<DriverOwnerStat> driverOwnerStatList) {
-        return driverOwnerStatList.stream().filter(d -> d.getPartner().equals(partner)).collect(Collectors.toList());
+        return driverOwnerStatList.stream().filter(d ->
+
+                d.getPartner()!=null&&d.getPartner().equals(partner)
+
+        ).collect(Collectors.toList());
     }
 
     public WeeklyReportBuilder clearZeroOwnerMap() {

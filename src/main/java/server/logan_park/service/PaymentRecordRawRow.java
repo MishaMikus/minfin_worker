@@ -48,8 +48,12 @@ public class PaymentRecordRawRow {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         PaymentRecordRawRow that = (PaymentRecordRawRow) o;
         return Objects.equals(driverUUID, that.driverUUID) &&
                 Objects.equals(tripUUID, that.tripUUID) &&

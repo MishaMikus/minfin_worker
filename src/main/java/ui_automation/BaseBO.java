@@ -6,7 +6,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import util.ApplicationPropertyUtil;
@@ -26,11 +25,19 @@ public class BaseBO {
     private static final Long TIMEOUT_MS = 10 * 60 * 1000L;
     private static final Long DOWNLOAD_BUTTON_APPEAR_ITERATION_TIME_MS = 5 * 1000L;
 
+    public static void main(String[] args) {
+        init();
+    }
+
     static {
+        init();
+    }
+
+    static void init() {
 
         WebDriverManager
                 .chromedriver()
-                .version(ChromeHelper.getChromeVersion())
+                //  .version(ChromeHelper.getChromeVersion())
                 .setup();
         timeout = 10000;
 

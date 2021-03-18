@@ -49,6 +49,9 @@ public class PaymentRecorder {
             UberPaymentRecordRow oldRecord = UberPaymentRecordRowDAO.getInstance().findLatest();
             LOGGER.info("OLD_RECORD=" + oldRecord);
             for (PaymentRecordRawRow paymentRecordRawRow : primaryParsedData) {
+
+                LOGGER.info("try to parse "+ paymentRecordRawRow);
+
                 UberPaymentRecordRow uberPaymentRecordRow = new UberPaymentRecordRow();
                 uberPaymentRecordRow.setAmount(paymentRecordRawRow.getAmount());
                 uberPaymentRecordRow.setCreation(new Date());
@@ -65,6 +68,7 @@ public class PaymentRecorder {
 
                 uberPaymentRecordRow.setDriverId(id);
                 uberPaymentRecordRow.setFileRowIndex(primaryParsedData.indexOf(paymentRecordRawRow));
+
                 uberPaymentRecordRow.setItemType(UberItemTypeDAO.getInstance()
                         .getItemTypeByName(paymentRecordRawRow.getItemType()).getId());
                 uberPaymentRecordRow.setTimestamp(paymentRecordRawRow.getTimestamp());
