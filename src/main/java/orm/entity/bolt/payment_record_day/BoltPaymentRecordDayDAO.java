@@ -31,7 +31,6 @@ public class BoltPaymentRecordDayDAO extends GenericAbstractDAO<BoltPaymentRecor
     }
 
     public static void main(String[] args) {
-
         getInstance().findAll().forEach(p->{
         if (p.getTimestamp().getTime()>new Date().getTime()
         -7*24*60*60*1000L){
