@@ -7,12 +7,10 @@ import orm.entity.logan_park.partner.PartnerDAO;
 import server.logan_park.helper.AutomaticallyWeeklyReportHelper;
 import server.logan_park.helper.model.PaymentDriverRecord;
 import server.logan_park.helper.model.PaymentOwnerRecord;
-import server.logan_park.service.PaymentRecordRawRow;
 import server.logan_park.view.weekly_report_bolt.model.WeeklyReportBolt;
 import server.logan_park.view.weekly_report_general.WeekLinksHelper;
 import server.logan_park.view.weekly_report_general.model.DriverOwnerStat;
 import server.logan_park.view.weekly_report_general.model.DriverStatGeneral;
-import server.logan_park.view.weekly_report_general.model.OwnerStat;
 import server.logan_park.view.weekly_report_general.model.WeeklyReportGeneral;
 
 import java.util.*;
@@ -22,6 +20,7 @@ import static java.lang.Math.round;
 import static server.logan_park.helper.CommonWeeklyReportHelper.WEEK_EARN_LIMIT;
 
 public class WeeklyReportBuilder {
+    private final static org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(WeeklyReportBuilder.class);
     private final WeeklyReportGeneral weeklyReportGeneral;
     private final WeeklyReportBolt weeklyReportBolt;
     private final AutomaticallyWeeklyReportHelper automaticallyWeeklyReportHelper;
@@ -110,6 +109,7 @@ public class WeeklyReportBuilder {
     }
 
     public WeeklyReportBuilder calculateOwner() {
+        LOGGER.info("calculateOwner");
         //Calculate OWNER
         Map<String, PaymentOwnerRecord> uberOwnerTable = automaticallyWeeklyReportHelper.makeOwnerMap();
         Map<String, PaymentOwnerRecord> boltOwnerTable = automaticallyWeeklyReportHelper.makeOwnerMapBolt(weeklyReportBolt);
@@ -137,7 +137,7 @@ public class WeeklyReportBuilder {
             //General
             driverOwnerStat.getGeneral_stat().setAmount(driverOwnerStat.getUber_stat().getAmount() + driverOwnerStat.getBolt_stat().getAmount());
             driverOwnerStat.getGeneral_stat().setTips(driverOwnerStat.getUber_stat().getTips() + driverOwnerStat.getBolt_stat().getTips());
-            driverOwnerStat.getGeneral_stat().setCommission((int) round(driverOwnerStat.getGeneral_stat().getAmount() * 0.05));
+            driverOwnerStat.getGeneral_stat().setCommission((int) round(driverOwnerStat.getGeneral_stat().getAmount() * partnerCommission(driverName)));
             driverOwnerStat.getGeneral_stat().setCash(driverOwnerStat.getUber_stat().getCash() + driverOwnerStat.getBolt_stat().getCash());
 
             driverOwnerStat.getGeneral_stat().setWithdraw(
@@ -153,6 +153,14 @@ public class WeeklyReportBuilder {
         });
 
         return this;
+    }
+
+    static final double PARTNER_5 = 0.05;
+    static final double PARTNER_0 = 0;
+
+    private static Double partnerCommission(String driverName) {
+        UberDriver driver = UberDriverDAO.getInstance().findDriverByDriverName(driverName);
+        return driver.getDriverType().equals("owner_5")?PARTNER_5:PARTNER_0;
     }
 
     List<Partner> partnerList = PartnerDAO.getInstance().findAll();
@@ -257,7 +265,7 @@ public class WeeklyReportBuilder {
     private static List<DriverOwnerStat> getOwnerDriverList(String partner, List<DriverOwnerStat> driverOwnerStatList) {
         return driverOwnerStatList.stream().filter(d ->
 
-                d.getPartner()!=null&&d.getPartner().equals(partner)
+                d.getPartner() != null && d.getPartner().equals(partner)
 
         ).collect(Collectors.toList());
     }

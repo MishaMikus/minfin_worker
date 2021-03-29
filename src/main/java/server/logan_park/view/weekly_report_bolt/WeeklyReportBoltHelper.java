@@ -67,6 +67,18 @@ public class WeeklyReportBoltHelper {
                 ownerMap.get(driver.getName()).setTips(ownerMap.get(driver.getName()).getTips()+boltPaymentRecordDay.getTips().intValue());
             }
 
+            //zero partner
+            if (driver != null && driver.getDriverType().equals("owner_0")) {
+                ownerMap.putIfAbsent(driver.getName(), new OwnerStat());
+                ownerMap.get(driver.getName()).setDriverName(driver.getName());
+                int clearAmount = (int) round((boltPaymentRecordDay.getAmount() + boltPaymentRecordDay.getBolt_commission()
+                        + boltPaymentRecordDay.getBonus()+boltPaymentRecordDay.getReject_amount()));
+                ownerMap.get(driver.getName()).setAmount(ownerMap.get(driver.getName()).getAmount() + clearAmount);
+                ownerMap.get(driver.getName()).setCommission(ownerMap.get(driver.getName()).getCommission() - boltPaymentRecordDay.getBolt_commission().intValue());
+                ownerMap.get(driver.getName()).setCash(ownerMap.get(driver.getName()).getCash() + boltPaymentRecordDay.getCash().intValue());
+                ownerMap.get(driver.getName()).setTips(ownerMap.get(driver.getName()).getTips()+boltPaymentRecordDay.getTips().intValue());
+            }
+
         }
 
         //second run (calculate summary)

@@ -149,6 +149,7 @@ public class WeeklyReportGeneralHelper {
         int noCashDriverUber = driverAmountUber - driverCashUber;
         int noCashDriverOwnerUber = ownerAmount_uber - ownerCashUber;
         int noCash = noCashDriverUber + noCashDriverOwnerUber;
+
         weeklyReportGeneral.getCompanyAccountStat().setTax((int) round(noCash * 0.05));
 
         int driverSalary = weeklyReportGeneral.getDriverStatList().stream().mapToInt(d -> d.getSum().getSalary()).sum();
